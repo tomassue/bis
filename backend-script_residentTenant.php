@@ -12,21 +12,18 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 
-  $householdnumberData = array(); 
+	$householdnumberData = array();
 
-	  while($row = $result->fetch_assoc()) {
+	while ($row = $result->fetch_assoc()) {
 
-	   // $data['id']    = $row['id_household']; 
-	   // $data['value'] = $row['id_household'].' '.'['.'Household #: '.$row['household_number'].']';
+		// $data['id']    = $row['id_household']; 
+		// $data['value'] = $row['id_household'].' '.'['.'Household #: '.$row['household_number'].']';
 
-	  	$data['id']    = $row['id_household']; 
-			$data['value'] = $row['id_household'].' '.'Household No: '.$row['id_household'].' '.'['.'Name: '.$row['firstname'].' '.$row['lastname'].']';
+		$data['id']    = $row['id_household'];
+		$data['value'] = $row['id_household'] . ' ' . 'Household No: ' . $row['id_household'] . ' ' . '[' . 'Name: ' . $row['firstname'] . ' ' . $row['lastname'] . ']';
 
-	   array_push($householdnumberData, $data);
-	} 
+		array_push($householdnumberData, $data);
+	}
 }
 
 echo json_encode($householdnumberData);
-
-
-?>
