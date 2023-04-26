@@ -1,0 +1,3 @@
+For PUSHING and PULLING.
+
+Always update the SQL when made changes.
