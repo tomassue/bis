@@ -1,0 +1,922 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 25, 2023 at 05:19 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bis`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblblotter`
+--
+
+CREATE TABLE `tblblotter` (
+  `id_blotter` int(11) NOT NULL,
+  `noc_id` varchar(100) DEFAULT NULL,
+  `noc_others` varchar(100) DEFAULT 'N/A',
+  `comp_id` varchar(10) DEFAULT 'N/A',
+  `comp_nameNotResident` varchar(255) DEFAULT 'N/A',
+  `comp_addNotResident` varchar(255) DEFAULT 'N/A',
+  `comp_cnumNotResident` varchar(255) DEFAULT 'N/A',
+  `comp_what` text DEFAULT NULL,
+  `comp_what2` text DEFAULT NULL,
+  `resp_id` varchar(255) DEFAULT NULL,
+  `blotter_status` varchar(50) DEFAULT 'Active',
+  `created_at_blotter` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at_blotter` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_user` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tblblotter`
+--
+
+INSERT INTO `tblblotter` (`id_blotter`, `noc_id`, `noc_others`, `comp_id`, `comp_nameNotResident`, `comp_addNotResident`, `comp_cnumNotResident`, `comp_what`, `comp_what2`, `resp_id`, `blotter_status`, `created_at_blotter`, `updated_at_blotter`, `id_user`) VALUES
+(8, '1', 'N/A', '1', 'N/A', 'N/A', 'N/A', 'try', 'try', '2', 'Active', '2023-04-22 07:59:25', '2023-04-22 10:17:30', '11'),
+(9, 'Others', 'Testing Again', 'N/A', 'Shinobu', 'Zone 5 Upper, Iponan, CDO', '09094568876', 'try', 'try', '3', 'Forwarded to Lupon', '2023-04-22 08:00:39', '2023-04-22 10:20:25', '11'),
+(10, '1', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Swordsmith Village', '09097786675', 'wdefrew', 'fewfwe', '5', 'Active', '2023-04-22 10:18:34', '2023-04-22 10:21:13', '11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblblotter_schedule`
+--
+
+CREATE TABLE `tblblotter_schedule` (
+  `id_blotter_schedule` int(11) NOT NULL,
+  `id_blotter` int(11) NOT NULL,
+  `blotter_date` date NOT NULL,
+  `blotter_time` time NOT NULL,
+  `created_at_blotter_schedule` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at_blotter_schedule` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblblotter_schedule`
+--
+
+INSERT INTO `tblblotter_schedule` (`id_blotter_schedule`, `id_blotter`, `blotter_date`, `blotter_time`, `created_at_blotter_schedule`, `updated_at_blotter_schedule`) VALUES
+(28, 9, '2023-04-22', '13:30:00', '2023-04-22 10:13:25', '2023-04-22 10:13:25'),
+(29, 10, '2023-04-22', '14:20:00', '2023-04-22 10:18:34', '2023-04-22 10:18:34'),
+(31, 8, '2023-04-22', '13:30:00', '2023-04-22 10:20:20', '2023-04-22 10:20:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblblotter_schedule_archive`
+--
+
+CREATE TABLE `tblblotter_schedule_archive` (
+  `id_blotter_schedule_archive` int(11) NOT NULL,
+  `id_blotter` int(11) NOT NULL,
+  `archive_blotter_date` date NOT NULL,
+  `archive_blotter_time` time NOT NULL,
+  `created_at_blotter_schedule_archive` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at_blotter_schedule_archive` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblblotter_schedule_archive`
+--
+
+INSERT INTO `tblblotter_schedule_archive` (`id_blotter_schedule_archive`, `id_blotter`, `archive_blotter_date`, `archive_blotter_time`, `created_at_blotter_schedule_archive`, `updated_at_blotter_schedule_archive`) VALUES
+(3, 8, '2023-04-22', '12:00:00', '2023-04-22 07:59:25', '2023-04-22 07:59:25'),
+(4, 8, '2023-04-22', '13:00:00', '2023-04-22 07:59:35', '2023-04-22 07:59:35'),
+(5, 9, '2023-04-22', '12:00:00', '2023-04-22 08:00:39', '2023-04-22 08:00:39'),
+(6, 9, '2023-04-22', '12:30:00', '2023-04-22 08:01:37', '2023-04-22 08:01:37'),
+(7, 8, '2023-04-22', '13:30:00', '2023-04-22 07:59:56', '2023-04-22 07:59:56'),
+(8, 8, '2023-04-22', '12:30:00', '2023-04-22 08:13:05', '2023-04-22 08:13:05'),
+(9, 8, '2023-04-23', '12:30:00', '2023-04-22 08:39:38', '2023-04-22 08:39:38'),
+(10, 8, '2023-04-22', '12:30:00', '2023-04-22 08:40:19', '2023-04-22 08:40:19'),
+(11, 9, '2023-04-22', '13:30:00', '2023-04-22 08:10:13', '2023-04-22 08:10:13'),
+(12, 9, '2023-04-22', '12:30:00', '2023-04-22 09:13:37', '2023-04-22 09:13:37'),
+(13, 8, '2023-04-22', '13:30:00', '2023-04-22 08:42:26', '2023-04-22 08:42:26'),
+(14, 8, '2023-04-22', '13:20:00', '2023-04-22 10:19:48', '2023-04-22 10:19:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblbrgy_info`
+--
+
+CREATE TABLE `tblbrgy_info` (
+  `id_brgy_info` int(11) NOT NULL,
+  `province` varchar(100) DEFAULT NULL,
+  `town` varchar(100) DEFAULT NULL,
+  `brgy_name` varchar(50) DEFAULT NULL,
+  `contact_number` varchar(50) DEFAULT NULL,
+  `dashboard_text` text DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  `city_logo` varchar(100) DEFAULT NULL,
+  `brgy_logo` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblbrgy_info`
+--
+
+INSERT INTO `tblbrgy_info` (`id_brgy_info`, `province`, `town`, `brgy_name`, `contact_number`, `dashboard_text`, `image`, `city_logo`, `brgy_logo`) VALUES
+(1, 'Misamis Oriental', 'Cagayan de Oro', 'Barangay 25', '09124434562', 'Land of something\r\n', '08012023200651IMG_5300.jpg', '28122022062802download.jpg', '28122022062802LOGO.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblchairmanship`
+--
+
+CREATE TABLE `tblchairmanship` (
+  `id_chairmanship` int(11) NOT NULL,
+  `title` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblchairmanship`
+--
+
+INSERT INTO `tblchairmanship` (`id_chairmanship`, `title`) VALUES
+(1, 'Committee on Infrastructure'),
+(2, 'Committee on Education'),
+(3, 'Committee on Health'),
+(4, 'Committee on Agriculture'),
+(5, 'Committee on Finance'),
+(6, 'Committee on Peace and Order'),
+(7, 'Committee on Tourism and Sports'),
+(8, 'Senior Citizen');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblofficials`
+--
+
+CREATE TABLE `tblofficials` (
+  `id_officials` int(11) NOT NULL,
+  `honorifics` varchar(10) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `id_chairmanship` varchar(50) DEFAULT NULL,
+  `id_position` varchar(50) DEFAULT NULL,
+  `termstart` date DEFAULT NULL,
+  `termend` date DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblofficials`
+--
+
+INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_chairmanship`, `id_position`, `termstart`, `termend`, `status`) VALUES
+(1, 'Hon.', 'Reuben U. Pacalioga', '1', '1', '2023-02-13', '2024-02-13', 'Incumbent'),
+(2, 'Hon.', 'Venus N. Ahmee', '8', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(3, 'Hon.', 'Noel S. Ilogon', '1', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(5, 'Hon.', 'Glenn T. Inesin', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(6, 'Hon.', 'Democrito D. Elevado', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(7, 'Hon.', 'Democrito D. Elevado', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(8, 'Hon.', 'Alvin P. Garrote', '5', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(9, 'Hon.', 'Pedro C. Sacal', '6', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(10, 'Hon.', 'Rey M. Galla', '7', '4', '2023-02-13', '2024-02-13', 'Incumbent'),
+(11, 'Ms.', 'Mirra G. Gabatan', '7', '5', '2023-02-13', '2024-02-13', 'Incumbent'),
+(12, 'Ms.', 'Maricris O. Mabao', '6', '2', '2023-02-13', '2024-02-13', 'Incumbent');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblpayments`
+--
+
+CREATE TABLE `tblpayments` (
+  `id_payments` int(11) NOT NULL,
+  `amounts` decimal(10,2) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpayments`
+--
+
+INSERT INTO `tblpayments` (`id_payments`, `amounts`, `name`) VALUES
+(1, 50.00, 'Tom  Abella'),
+(2, 60.00, 'Motsur  Calapis'),
+(3, 1000.00, 'Choco Shake'),
+(4, 50.00, 'Tom  Abella'),
+(5, 1000.00, 'Choco Shake'),
+(6, 40.00, 'Motsur  Calapis'),
+(7, 50.00, 'Test Testtwo Red'),
+(8, 1000.00, 'Abella Construction Corp'),
+(9, 500.00, 'Motsur  Calapis');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblpermit`
+--
+
+CREATE TABLE `tblpermit` (
+  `id_permit` int(11) NOT NULL,
+  `name` varchar(80) DEFAULT NULL,
+  `location` varchar(250) DEFAULT NULL,
+  `applied` date DEFAULT NULL,
+  `id_user` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpermit`
+--
+
+INSERT INTO `tblpermit` (`id_permit`, `name`, `location`, `applied`, `id_user`) VALUES
+(1, 'Milk Shake', 'Infinity Castle', '2023-02-13', '11'),
+(2, 'Jaime P. Ramen', 'Zone 06', '2023-03-17', '11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblposition`
+--
+
+CREATE TABLE `tblposition` (
+  `id_position` int(11) NOT NULL,
+  `position` varchar(50) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblposition`
+--
+
+INSERT INTO `tblposition` (`id_position`, `position`, `order`) VALUES
+(1, 'Barangay Chairman', 1),
+(2, 'Barangay Secretary', 5),
+(3, 'Barangay Kagawad', 2),
+(4, 'SK Chairman', 3),
+(5, 'Barangay Treasurer', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblprecinct`
+--
+
+CREATE TABLE `tblprecinct` (
+  `id_precinct` int(11) NOT NULL,
+  `precinct` varchar(100) DEFAULT NULL,
+  `details` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblpurok`
+--
+
+CREATE TABLE `tblpurok` (
+  `id_purok` int(11) NOT NULL,
+  `purok_name` varchar(255) DEFAULT NULL,
+  `purok_details` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpurok`
+--
+
+INSERT INTO `tblpurok` (`id_purok`, `purok_name`, `purok_details`) VALUES
+(1, 'Zone 01', 'Zone 01'),
+(2, 'Zone 02', 'Zone 02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblresident2`
+--
+
+CREATE TABLE `tblresident2` (
+  `id_resident` int(11) NOT NULL,
+  `national_id` varchar(100) NOT NULL,
+  `region` varchar(10) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `province` varchar(100) NOT NULL,
+  `barangay` varchar(100) NOT NULL,
+  `citizenship` varchar(100) NOT NULL,
+  `picture` text NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `middlename` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `ext` varchar(10) NOT NULL,
+  `alias` varchar(20) NOT NULL,
+  `birthplace` varchar(100) NOT NULL,
+  `birthdate` date NOT NULL,
+  `sex` varchar(20) NOT NULL,
+  `civilstatus` varchar(20) NOT NULL,
+  `residence_type` varchar(25) NOT NULL COMMENT 'new; co-occupant; tenant',
+  `id_household` int(80) NOT NULL,
+  `family_head` varchar(10) NOT NULL,
+  `date_of_residence` date NOT NULL,
+  `vstatus` varchar(10) NOT NULL,
+  `identified_as` varchar(20) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `occupation` varchar(100) NOT NULL,
+  `resident_type` int(20) NOT NULL DEFAULT 1 COMMENT '1 = Alive; 0 = Deceased',
+  `id_org` varchar(100) NOT NULL,
+  `pwd` varchar(5) NOT NULL,
+  `indigent` varchar(5) NOT NULL,
+  `remarks` text NOT NULL,
+  `res_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblresident2`
+--
+
+INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `province`, `barangay`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `ext`, `alias`, `birthplace`, `birthdate`, `sex`, `civilstatus`, `residence_type`, `id_household`, `family_head`, `date_of_residence`, `vstatus`, `identified_as`, `phone`, `email`, `occupation`, `resident_type`, `id_org`, `pwd`, `indigent`, `remarks`, `res_updated_at`, `id_user`) VALUES
+(1, '1234-5678-9000', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090530unnamed.jpg', 'Tom', '', 'Abella', '', 'Tom', 'Bulua', '2001-01-29', 'Male', 'single', 'new', 1, 'yes', '2019-02-13', 'Yes', 'Confirmed', '09876543212', '', 'Student', 0, '1', 'No', 'Yes', '', '2023-03-31 02:51:39', 11),
+(2, '0909-8765-3456', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090731uzui.jpg', 'Motsur', '', 'Calapis', 'IV', 'Mot', 'Bulua', '2001-01-01', 'Male', 'single', 'co-occupant', 1, 'no', '2023-02-13', 'No', '', '', '', 'Student', 1, 'none', 'Yes', 'Yes', '', '2023-03-13 04:57:23', 11),
+(3, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090852tom.jpg', 'Tomas', '', 'Howland', '', 'Tom', 'Tacloban City', '2001-01-29', 'Female', 'single', 'tenant', 2, 'no', '2021-02-13', 'No', '', '', '', 'Student', 1, '1', 'No', 'No', '', '2023-02-14 16:29:23', 11),
+(4, '1111-1111-1111-1111', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Japanese', 'person.png', 'Sample', 'Sample', 'Sample', '', 'Samp', 'Samps', '2019-03-13', 'Male', 'single', 'new', 1, 'yes', '2023-03-13', 'Yes', 'Confirmed', '', 'samp@mail.com', 'Student', 1, 'none', 'No', 'No', '', '2023-03-13 04:55:37', 11),
+(5, '1223-3445-5677', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '170320231121111143202.jpg', 'Test', 'Testtwo', 'Red', 'Sr.', 'Tom', 'Japan', '2002-03-17', 'Male', 'married', 'tenant', 1, 'no', '2023-03-17', 'Yes', 'Unconfirmed', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-03-17 03:21:11', 11),
+(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 1, 'no', '2023-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-04-22 10:29:19', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cert_appearance`
+--
+
+CREATE TABLE `tbl_cert_appearance` (
+  `id_cert_appearance` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `venue` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `purpose` varchar(100) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `id_user` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_cert_appearance`
+--
+
+INSERT INTO `tbl_cert_appearance` (`id_cert_appearance`, `name`, `venue`, `date`, `purpose`, `created_at`, `id_user`) VALUES
+(1, 'RUSTOM C. ABELLA', 'SWORDSMITH VILLAGE', '2023-02-13', 'Meeting with the Hashira', '2023-02-13', '11'),
+(2, 'Tom Abella', 'Barangay 25 Hall', '2023-03-17', 'Employment', '2023-03-17', '11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_household`
+--
+
+CREATE TABLE `tbl_household` (
+  `id_household` int(11) NOT NULL,
+  `household_number` int(100) NOT NULL,
+  `house_no` int(100) NOT NULL COMMENT '(2.1)',
+  `id_purok` varchar(50) NOT NULL,
+  `household_street_name` varchar(100) NOT NULL COMMENT '(2.2)',
+  `household_address` varchar(250) NOT NULL COMMENT '(2.3)',
+  `household_type` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_household`
+--
+
+INSERT INTO `tbl_household` (`id_household`, `household_number`, `house_no`, `id_purok`, `household_street_name`, `household_address`, `household_type`) VALUES
+(1, 1, 1, '1', 'Maagad St.', 'Abella\'s residence', 'residential'),
+(2, 2, 2, '2', 'Pacana St.', 'Ella\'s Apartment', 'apartment'),
+(3, 3, 23, '2', 'Laroka St.', 'scac', 'boarding house');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_nature_of_case`
+--
+
+CREATE TABLE `tbl_nature_of_case` (
+  `noc_id` int(11) NOT NULL,
+  `noc_name` varchar(100) NOT NULL,
+  `noc_details` varchar(255) NOT NULL,
+  `id_user` varchar(10) NOT NULL,
+  `noc_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_nature_of_case`
+--
+
+INSERT INTO `tbl_nature_of_case` (`noc_id`, `noc_name`, `noc_details`, `id_user`, `noc_updated_at`) VALUES
+(1, 'Light coercion', 'Light coercion', '11', '2023-02-13 00:36:04'),
+(2, 'Physical Injury', 'Physical Injury', '11', '2023-02-13 00:36:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_org`
+--
+
+CREATE TABLE `tbl_org` (
+  `id_org` int(11) NOT NULL,
+  `org_name` varchar(100) DEFAULT NULL,
+  `details` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_org`
+--
+
+INSERT INTO `tbl_org` (`id_org`, `org_name`, `details`) VALUES
+(1, 'Senior Citizen', 'Senior Citizen'),
+(2, 'SK', 'SK');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_special_permit`
+--
+
+CREATE TABLE `tbl_special_permit` (
+  `id_special_permit` int(11) NOT NULL,
+  `grantee` varchar(100) DEFAULT NULL,
+  `representative` varchar(100) DEFAULT NULL,
+  `action` text DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `issued_date` date NOT NULL,
+  `id_user` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_special_permit`
+--
+
+INSERT INTO `tbl_special_permit` (`id_special_permit`, `grantee`, `representative`, `action`, `start_date`, `end_date`, `issued_date`, `id_user`) VALUES
+(1, 'Choco Shake', 'Rustom Abella', 'to perform installation of  streamer /tarpaulin along CM Recto – Julio Pacana St. junction. The  installation will start from August 25, 2015 and will expire on September 25,  2015.', '2023-02-13', '2024-02-13', '2023-02-13', '11'),
+(2, 'Abella Construction Corp', 'Rustom Abella', 'to install', '2023-03-17', '2023-03-24', '2023-03-17', '11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_support`
+--
+
+CREATE TABLE `tbl_support` (
+  `id_support` int(11) NOT NULL,
+  `id_user` varchar(10) NOT NULL,
+  `number` varchar(20) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `status_support` varchar(10) NOT NULL DEFAULT 'pending',
+  `date` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_support`
+--
+
+INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
+(1, '10', '', 'TRY lang', 'Dili ko access.', 'pending', '2023-03-17 03:59:43'),
+(2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_transactions`
+--
+
+CREATE TABLE `tbl_transactions` (
+  `id_payments` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `transact_no` text NOT NULL,
+  `date_transact` timestamp NOT NULL DEFAULT current_timestamp(),
+  `details_transact` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_transactions`
+--
+
+INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`) VALUES
+(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
+(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
+(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
+(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
+(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
+(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
+(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
+(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
+(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
+(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
+(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
+(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
+(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
+(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
+(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
+(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
+(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
+(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
+(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
+(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
+(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
+(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
+(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
+(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
+(7, 11, '20230317705289000001', '2023-03-17 03:23:39', 'Barangay Clearance Payment'),
+(8, 11, '20230317722073000001', '2023-03-17 03:31:08', 'Special Permit Payment'),
+(9, 11, '20230402761046000001', '2023-04-02 07:00:16', 'Barangay Clearance Payment');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_users`
+--
+
+CREATE TABLE `tbl_users` (
+  `id_user` int(11) NOT NULL,
+  `user_username` varchar(50) DEFAULT NULL,
+  `user_firstname` varchar(100) NOT NULL,
+  `user_middlename` varchar(100) NOT NULL,
+  `user_lastname` varchar(100) NOT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `user_type` varchar(20) DEFAULT NULL,
+  `avatar` text DEFAULT NULL,
+  `status` varchar(8) NOT NULL DEFAULT 'Active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`id_user`, `user_username`, `user_firstname`, `user_middlename`, `user_lastname`, `password`, `user_type`, `avatar`, `status`, `created_at`, `updated_at`) VALUES
+(10, 'staff', 'Marie Mae', 'Kump', 'Bullhorse', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 'staff', '03052021043218icon.png', 'Active', '2021-05-03 02:32:18', '2023-03-17 03:42:14'),
+(11, 'admin', 'Rustom', 'Calapis', 'Abella', 'cbfdac6008f9cab4083784cbd1874f76618d2a97', 'administrator', '13022023093336head.jpg', 'Active', '2021-05-03 02:33:03', '2023-02-13 01:33:36'),
+(26, 'tom', 'Tom', '', 'Abella', '96835dd8bfa718bd6447ccc87af89ae1675daeca', 'staff', '13022023083722casual-sleeve2.jpg', 'Active', '2023-02-13 00:37:22', '2023-02-13 00:37:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_logs`
+--
+
+CREATE TABLE `tbl_user_logs` (
+  `id_user_logs` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `details` varchar(100) NOT NULL,
+  `id_user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_user_logs`
+--
+
+INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUES
+(1, '2023-02-12 14:00:55', 'admin, has logged out.', '1'),
+(2, '2023-02-12 22:36:38', 'admin, has logged in.', '11'),
+(3, '2023-02-12 22:37:49', 'admin, has logged out.', '11'),
+(4, '2023-02-12 22:37:52', 'admin, has logged in.', '11'),
+(5, '2023-02-12 22:38:44', 'admin, has logged out.', '11'),
+(6, '2023-02-12 22:38:49', 'admin, has logged in.', '11'),
+(7, '2023-02-12 22:41:37', 'admin, has logged out.', '11'),
+(8, '2023-02-12 22:41:44', 'admin, has logged in.', '11'),
+(9, '2023-02-12 22:44:41', 'admin, has logged out.', '11'),
+(10, '2023-02-13 00:28:33', 'admin, has logged in.', '11'),
+(11, '2023-02-13 16:31:33', 'admin, has logged out.', '11'),
+(12, '2023-02-13 16:31:38', 'admin, has logged in.', '11'),
+(13, '2023-02-13 16:31:52', 'admin, has logged out.', '11'),
+(14, '2023-02-14 14:26:14', 'admin, has logged in.', '11'),
+(15, '2023-02-14 14:26:43', 'admin, has logged out.', '11'),
+(16, '2023-02-14 14:26:46', 'admin, has logged in.', '11'),
+(17, '2023-02-14 16:29:49', 'admin, has logged out.', '11'),
+(18, '2023-02-14 18:19:54', 'admin, has logged in.', '11'),
+(19, '2023-02-14 18:20:06', 'admin, has logged out.', '11'),
+(20, '2023-02-14 18:46:32', 'admin, has logged in.', '11'),
+(21, '2023-03-17 03:54:32', 'admin, has logged out.', '11'),
+(22, '2023-03-17 03:54:40', 'staff, has logged in.', '10'),
+(23, '2023-03-17 03:59:49', 'staff, has logged out.', '10'),
+(24, '2023-03-17 03:59:55', 'admin, has logged in.', '11'),
+(25, '2023-03-20 05:44:16', 'admin, has logged out.', '11'),
+(26, '2023-03-27 03:22:26', 'admin, has logged in.', '11'),
+(27, '2023-03-27 04:05:26', 'admin, has logged out.', '11'),
+(28, '2023-03-28 06:27:20', 'admin, has logged in.', '11'),
+(29, '2023-03-30 03:47:15', 'admin, has logged out.', '11'),
+(30, '2023-03-30 03:47:18', 'admin, has logged in.', '11'),
+(31, '2023-04-02 07:48:15', 'admin, has logged in.', '11'),
+(32, '2023-04-02 08:45:18', 'admin, has logged in.', '11'),
+(33, '2023-04-02 09:00:35', 'admin, has logged out.', '11'),
+(34, '2023-04-02 09:00:39', 'staff, has logged in.', '10'),
+(35, '2023-04-02 09:01:06', 'staff, has logged out.', '10'),
+(36, '2023-04-02 09:01:10', 'admin, has logged in.', '11'),
+(37, '2023-04-02 09:52:14', 'admin, has logged out.', '11'),
+(38, '2023-04-02 09:52:16', 'admin, has logged in.', '11'),
+(39, '2023-04-02 14:46:13', 'admin, has logged out.', '11'),
+(40, '2023-04-03 02:06:17', 'admin, has logged in.', '11'),
+(41, '2023-04-03 05:59:58', 'admin, has logged out.', '11'),
+(42, '2023-04-03 06:00:02', 'staff, has logged in.', '10'),
+(43, '2023-04-03 06:09:15', 'staff, has logged out.', '10'),
+(44, '2023-04-03 06:09:18', 'admin, has logged in.', '11'),
+(45, '2023-04-03 06:09:43', 'admin, has logged out.', '11'),
+(46, '2023-04-03 06:10:03', 'staff, has logged in.', '10'),
+(47, '2023-04-03 06:15:14', 'staff, has logged out.', '10'),
+(48, '2023-04-03 06:15:18', 'admin, has logged in.', '11'),
+(49, '2023-04-03 06:20:14', 'admin, has logged out.', '11'),
+(50, '2023-04-03 06:20:18', 'staff, has logged in.', '10'),
+(51, '2023-04-03 06:33:30', 'staff, has logged out.', '10'),
+(52, '2023-04-03 06:33:34', 'admin, has logged in.', '11'),
+(53, '2023-04-03 09:09:57', 'admin, has logged out.', '11'),
+(54, '2023-04-03 15:43:00', 'admin, has logged in.', '11'),
+(55, '2023-04-03 16:20:02', 'admin, has logged out.', '11'),
+(56, '2023-04-03 16:20:04', 'admin, has logged in.', '11'),
+(57, '2023-04-03 16:21:33', 'admin, has logged out.', '11'),
+(58, '2023-04-04 00:25:16', 'admin, has logged in.', '11'),
+(59, '2023-04-04 03:47:20', 'admin, has logged out.', '11'),
+(60, '2023-04-04 03:48:04', 'staff, has logged in.', '10'),
+(61, '2023-04-04 03:48:11', 'staff, has logged out.', '10'),
+(62, '2023-04-04 03:48:17', 'admin, has logged in.', '11'),
+(63, '2023-04-12 15:25:24', 'admin, has logged in.', '11');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tblblotter`
+--
+ALTER TABLE `tblblotter`
+  ADD PRIMARY KEY (`id_blotter`),
+  ADD KEY `noc` (`noc_id`),
+  ADD KEY `comp_name` (`comp_id`),
+  ADD KEY `resp_name` (`resp_id`);
+
+--
+-- Indexes for table `tblblotter_schedule`
+--
+ALTER TABLE `tblblotter_schedule`
+  ADD PRIMARY KEY (`id_blotter_schedule`);
+
+--
+-- Indexes for table `tblblotter_schedule_archive`
+--
+ALTER TABLE `tblblotter_schedule_archive`
+  ADD PRIMARY KEY (`id_blotter_schedule_archive`);
+
+--
+-- Indexes for table `tblbrgy_info`
+--
+ALTER TABLE `tblbrgy_info`
+  ADD PRIMARY KEY (`id_brgy_info`);
+
+--
+-- Indexes for table `tblchairmanship`
+--
+ALTER TABLE `tblchairmanship`
+  ADD PRIMARY KEY (`id_chairmanship`);
+
+--
+-- Indexes for table `tblofficials`
+--
+ALTER TABLE `tblofficials`
+  ADD PRIMARY KEY (`id_officials`),
+  ADD KEY `chairmanship` (`id_chairmanship`),
+  ADD KEY `position` (`id_position`);
+
+--
+-- Indexes for table `tblpayments`
+--
+ALTER TABLE `tblpayments`
+  ADD PRIMARY KEY (`id_payments`);
+
+--
+-- Indexes for table `tblpermit`
+--
+ALTER TABLE `tblpermit`
+  ADD PRIMARY KEY (`id_permit`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- Indexes for table `tblposition`
+--
+ALTER TABLE `tblposition`
+  ADD PRIMARY KEY (`id_position`);
+
+--
+-- Indexes for table `tblprecinct`
+--
+ALTER TABLE `tblprecinct`
+  ADD PRIMARY KEY (`id_precinct`);
+
+--
+-- Indexes for table `tblpurok`
+--
+ALTER TABLE `tblpurok`
+  ADD PRIMARY KEY (`id_purok`);
+
+--
+-- Indexes for table `tblresident2`
+--
+ALTER TABLE `tblresident2`
+  ADD PRIMARY KEY (`id_resident`),
+  ADD KEY `householdnumber` (`id_household`),
+  ADD KEY `organization` (`id_org`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- Indexes for table `tbl_cert_appearance`
+--
+ALTER TABLE `tbl_cert_appearance`
+  ADD PRIMARY KEY (`id_cert_appearance`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- Indexes for table `tbl_household`
+--
+ALTER TABLE `tbl_household`
+  ADD PRIMARY KEY (`id_household`),
+  ADD UNIQUE KEY `household_number` (`household_number`),
+  ADD KEY `household_purok` (`id_purok`),
+  ADD KEY `household_number_2` (`household_number`);
+
+--
+-- Indexes for table `tbl_nature_of_case`
+--
+ALTER TABLE `tbl_nature_of_case`
+  ADD PRIMARY KEY (`noc_id`),
+  ADD KEY `noc_username` (`id_user`);
+
+--
+-- Indexes for table `tbl_org`
+--
+ALTER TABLE `tbl_org`
+  ADD PRIMARY KEY (`id_org`);
+
+--
+-- Indexes for table `tbl_special_permit`
+--
+ALTER TABLE `tbl_special_permit`
+  ADD PRIMARY KEY (`id_special_permit`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- Indexes for table `tbl_support`
+--
+ALTER TABLE `tbl_support`
+  ADD PRIMARY KEY (`id_support`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- Indexes for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `tbl_user_logs`
+--
+ALTER TABLE `tbl_user_logs`
+  ADD PRIMARY KEY (`id_user_logs`),
+  ADD KEY `username` (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tblblotter`
+--
+ALTER TABLE `tblblotter`
+  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tblblotter_schedule`
+--
+ALTER TABLE `tblblotter_schedule`
+  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `tblblotter_schedule_archive`
+--
+ALTER TABLE `tblblotter_schedule_archive`
+  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tblbrgy_info`
+--
+ALTER TABLE `tblbrgy_info`
+  MODIFY `id_brgy_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tblchairmanship`
+--
+ALTER TABLE `tblchairmanship`
+  MODIFY `id_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tblofficials`
+--
+ALTER TABLE `tblofficials`
+  MODIFY `id_officials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tblpayments`
+--
+ALTER TABLE `tblpayments`
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tblpermit`
+--
+ALTER TABLE `tblpermit`
+  MODIFY `id_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tblposition`
+--
+ALTER TABLE `tblposition`
+  MODIFY `id_position` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tblprecinct`
+--
+ALTER TABLE `tblprecinct`
+  MODIFY `id_precinct` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tblpurok`
+--
+ALTER TABLE `tblpurok`
+  MODIFY `id_purok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tblresident2`
+--
+ALTER TABLE `tblresident2`
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_cert_appearance`
+--
+ALTER TABLE `tbl_cert_appearance`
+  MODIFY `id_cert_appearance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_household`
+--
+ALTER TABLE `tbl_household`
+  MODIFY `id_household` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_nature_of_case`
+--
+ALTER TABLE `tbl_nature_of_case`
+  MODIFY `noc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_org`
+--
+ALTER TABLE `tbl_org`
+  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_special_permit`
+--
+ALTER TABLE `tbl_special_permit`
+  MODIFY `id_special_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_support`
+--
+ALTER TABLE `tbl_support`
+  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_logs`
+--
+ALTER TABLE `tbl_user_logs`
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
