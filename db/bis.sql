@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 05:19 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 27, 2023 at 11:22 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,7 +75,7 @@ CREATE TABLE `tblblotter_schedule` (
 INSERT INTO `tblblotter_schedule` (`id_blotter_schedule`, `id_blotter`, `blotter_date`, `blotter_time`, `created_at_blotter_schedule`, `updated_at_blotter_schedule`) VALUES
 (28, 9, '2023-04-22', '13:30:00', '2023-04-22 10:13:25', '2023-04-22 10:13:25'),
 (29, 10, '2023-04-22', '14:20:00', '2023-04-22 10:18:34', '2023-04-22 10:18:34'),
-(31, 8, '2023-04-22', '13:30:00', '2023-04-22 10:20:20', '2023-04-22 10:20:20');
+(32, 8, '2023-05-03', '09:00:00', '2023-04-27 08:38:46', '2023-04-27 08:38:46');
 
 -- --------------------------------------------------------
 
@@ -89,26 +89,28 @@ CREATE TABLE `tblblotter_schedule_archive` (
   `archive_blotter_date` date NOT NULL,
   `archive_blotter_time` time NOT NULL,
   `created_at_blotter_schedule_archive` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at_blotter_schedule_archive` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at_blotter_schedule_archive` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at_blotter_schedule` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblblotter_schedule_archive`
 --
 
-INSERT INTO `tblblotter_schedule_archive` (`id_blotter_schedule_archive`, `id_blotter`, `archive_blotter_date`, `archive_blotter_time`, `created_at_blotter_schedule_archive`, `updated_at_blotter_schedule_archive`) VALUES
-(3, 8, '2023-04-22', '12:00:00', '2023-04-22 07:59:25', '2023-04-22 07:59:25'),
-(4, 8, '2023-04-22', '13:00:00', '2023-04-22 07:59:35', '2023-04-22 07:59:35'),
-(5, 9, '2023-04-22', '12:00:00', '2023-04-22 08:00:39', '2023-04-22 08:00:39'),
-(6, 9, '2023-04-22', '12:30:00', '2023-04-22 08:01:37', '2023-04-22 08:01:37'),
-(7, 8, '2023-04-22', '13:30:00', '2023-04-22 07:59:56', '2023-04-22 07:59:56'),
-(8, 8, '2023-04-22', '12:30:00', '2023-04-22 08:13:05', '2023-04-22 08:13:05'),
-(9, 8, '2023-04-23', '12:30:00', '2023-04-22 08:39:38', '2023-04-22 08:39:38'),
-(10, 8, '2023-04-22', '12:30:00', '2023-04-22 08:40:19', '2023-04-22 08:40:19'),
-(11, 9, '2023-04-22', '13:30:00', '2023-04-22 08:10:13', '2023-04-22 08:10:13'),
-(12, 9, '2023-04-22', '12:30:00', '2023-04-22 09:13:37', '2023-04-22 09:13:37'),
-(13, 8, '2023-04-22', '13:30:00', '2023-04-22 08:42:26', '2023-04-22 08:42:26'),
-(14, 8, '2023-04-22', '13:20:00', '2023-04-22 10:19:48', '2023-04-22 10:19:48');
+INSERT INTO `tblblotter_schedule_archive` (`id_blotter_schedule_archive`, `id_blotter`, `archive_blotter_date`, `archive_blotter_time`, `created_at_blotter_schedule_archive`, `updated_at_blotter_schedule_archive`, `created_at_blotter_schedule`) VALUES
+(3, 8, '2023-04-22', '12:00:00', '2023-04-22 07:59:25', '2023-04-22 07:59:25', '2023-04-27 08:40:51'),
+(4, 8, '2023-04-22', '13:00:00', '2023-04-22 07:59:35', '2023-04-22 07:59:35', '2023-04-27 08:40:51'),
+(5, 9, '2023-04-22', '12:00:00', '2023-04-22 08:00:39', '2023-04-22 08:00:39', '2023-04-27 08:40:51'),
+(6, 9, '2023-04-22', '12:30:00', '2023-04-22 08:01:37', '2023-04-22 08:01:37', '2023-04-27 08:40:51'),
+(7, 8, '2023-04-22', '13:30:00', '2023-04-22 07:59:56', '2023-04-22 07:59:56', '2023-04-27 08:40:51'),
+(8, 8, '2023-04-22', '12:30:00', '2023-04-22 08:13:05', '2023-04-22 08:13:05', '2023-04-27 08:40:51'),
+(9, 8, '2023-04-23', '12:30:00', '2023-04-22 08:39:38', '2023-04-22 08:39:38', '2023-04-27 08:40:51'),
+(10, 8, '2023-04-22', '12:30:00', '2023-04-22 08:40:19', '2023-04-22 08:40:19', '2023-04-27 08:40:51'),
+(11, 9, '2023-04-22', '13:30:00', '2023-04-22 08:10:13', '2023-04-22 08:10:13', '2023-04-27 08:40:51'),
+(12, 9, '2023-04-22', '12:30:00', '2023-04-22 09:13:37', '2023-04-22 09:13:37', '2023-04-27 08:40:51'),
+(13, 8, '2023-04-22', '13:30:00', '2023-04-22 08:42:26', '2023-04-22 08:42:26', '2023-04-27 08:40:51'),
+(14, 8, '2023-04-22', '13:20:00', '2023-04-22 10:19:48', '2023-04-22 10:19:48', '2023-04-27 08:40:51'),
+(15, 8, '2023-04-22', '13:30:00', '2023-04-22 10:20:20', '2023-04-22 10:20:20', '2023-04-27 08:40:51');
 
 -- --------------------------------------------------------
 
@@ -170,7 +172,6 @@ CREATE TABLE `tblofficials` (
   `id_officials` int(11) NOT NULL,
   `honorifics` varchar(10) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
-  `id_chairmanship` varchar(50) DEFAULT NULL,
   `id_position` varchar(50) DEFAULT NULL,
   `termstart` date DEFAULT NULL,
   `termend` date DEFAULT NULL,
@@ -181,19 +182,50 @@ CREATE TABLE `tblofficials` (
 -- Dumping data for table `tblofficials`
 --
 
-INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_chairmanship`, `id_position`, `termstart`, `termend`, `status`) VALUES
-(1, 'Hon.', 'Reuben U. Pacalioga', '1', '1', '2023-02-13', '2024-02-13', 'Incumbent'),
-(2, 'Hon.', 'Venus N. Ahmee', '8', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(3, 'Hon.', 'Noel S. Ilogon', '1', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(5, 'Hon.', 'Glenn T. Inesin', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(6, 'Hon.', 'Democrito D. Elevado', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(7, 'Hon.', 'Democrito D. Elevado', '4', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(8, 'Hon.', 'Alvin P. Garrote', '5', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(9, 'Hon.', 'Pedro C. Sacal', '6', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(10, 'Hon.', 'Rey M. Galla', '7', '4', '2023-02-13', '2024-02-13', 'Incumbent'),
-(11, 'Ms.', 'Mirra G. Gabatan', '7', '5', '2023-02-13', '2024-02-13', 'Incumbent'),
-(12, 'Ms.', 'Maricris O. Mabao', '6', '2', '2023-02-13', '2024-02-13', 'Incumbent');
+INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_position`, `termstart`, `termend`, `status`) VALUES
+(1, 'Hon.', 'Reuben U. Pacalioga', '1', '2023-02-13', '2024-02-13', 'Incumbent'),
+(2, 'Hon.', 'Venus N. Ahmee', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(3, 'Hon.', 'Noel S. Ilogon', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(5, 'Hon.', 'Glenn T. Inesin', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(6, 'Hon.', 'Democrito D. Elevado', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(7, 'Hon.', 'Democrito D. Elevado', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(8, 'Hon.', 'Alvin P. Garrote', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(9, 'Hon.', 'Pedro C. Sacal', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
+(10, 'Hon.', 'Rey M. Galla', '4', '2023-02-13', '2024-02-13', 'Incumbent'),
+(11, 'Ms.', 'Mirra G. Gabatan', '5', '2023-02-13', '2024-02-13', 'Incumbent'),
+(12, 'Ms.', 'Maricris O. Mabao', '2', '2023-02-13', '2024-02-13', 'Incumbent'),
+(20, 'Hon.', 'Tom Abella', '3', '2023-04-27', '2023-04-29', 'Incumbent'),
+(21, 'Hon.', 'Tomxkie Abellxkie', '3', '2023-04-27', '2023-04-29', 'Incumbent');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblofficials_chairmanships`
+--
+
+CREATE TABLE `tblofficials_chairmanships` (
+  `id_officials_chairmanship` int(11) NOT NULL,
+  `id_officials` int(11) NOT NULL,
+  `id_chairmanship` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblofficials_chairmanships`
+--
+
+INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
+(1, 20, 1),
+(2, 20, 4),
+(3, 20, 8),
+(4, 21, 1),
+(5, 21, 2),
+(6, 21, 3),
+(7, 21, 4),
+(8, 21, 5),
+(9, 21, 6),
+(10, 21, 7),
+(11, 21, 8);
 
 -- --------------------------------------------------------
 
@@ -212,15 +244,15 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`, `name`) VALUES
-(1, 50.00, 'Tom  Abella'),
-(2, 60.00, 'Motsur  Calapis'),
-(3, 1000.00, 'Choco Shake'),
-(4, 50.00, 'Tom  Abella'),
-(5, 1000.00, 'Choco Shake'),
-(6, 40.00, 'Motsur  Calapis'),
-(7, 50.00, 'Test Testtwo Red'),
-(8, 1000.00, 'Abella Construction Corp'),
-(9, 500.00, 'Motsur  Calapis');
+(1, '50.00', 'Tom  Abella'),
+(2, '60.00', 'Motsur  Calapis'),
+(3, '1000.00', 'Choco Shake'),
+(4, '50.00', 'Tom  Abella'),
+(5, '1000.00', 'Choco Shake'),
+(6, '40.00', 'Motsur  Calapis'),
+(7, '50.00', 'Test Testtwo Red'),
+(8, '1000.00', 'Abella Construction Corp'),
+(9, '500.00', 'Motsur  Calapis');
 
 -- --------------------------------------------------------
 
@@ -649,7 +681,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (60, '2023-04-04 03:48:04', 'staff, has logged in.', '10'),
 (61, '2023-04-04 03:48:11', 'staff, has logged out.', '10'),
 (62, '2023-04-04 03:48:17', 'admin, has logged in.', '11'),
-(63, '2023-04-12 15:25:24', 'admin, has logged in.', '11');
+(63, '2023-04-12 15:25:24', 'admin, has logged in.', '11'),
+(64, '2023-04-26 07:54:46', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -693,8 +726,13 @@ ALTER TABLE `tblchairmanship`
 --
 ALTER TABLE `tblofficials`
   ADD PRIMARY KEY (`id_officials`),
-  ADD KEY `chairmanship` (`id_chairmanship`),
   ADD KEY `position` (`id_position`);
+
+--
+-- Indexes for table `tblofficials_chairmanships`
+--
+ALTER TABLE `tblofficials_chairmanships`
+  ADD PRIMARY KEY (`id_officials_chairmanship`);
 
 --
 -- Indexes for table `tblpayments`
@@ -806,13 +844,13 @@ ALTER TABLE `tblblotter`
 -- AUTO_INCREMENT for table `tblblotter_schedule`
 --
 ALTER TABLE `tblblotter_schedule`
-  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule_archive`
 --
 ALTER TABLE `tblblotter_schedule_archive`
-  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblbrgy_info`
@@ -830,7 +868,13 @@ ALTER TABLE `tblchairmanship`
 -- AUTO_INCREMENT for table `tblofficials`
 --
 ALTER TABLE `tblofficials`
-  MODIFY `id_officials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_officials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `tblofficials_chairmanships`
+--
+ALTER TABLE `tblofficials_chairmanships`
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
@@ -914,7 +958,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

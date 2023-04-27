@@ -78,7 +78,7 @@ function editOfficial(that){
     id = $(that).attr('data-id');
     honorifics = $(that).attr('data-honorifics');
     na = $(that).attr('data-name');
-    chair = $(that).attr('data-chair');
+    // chair = $(that).attr('data-chair');
     pos = $(that).attr('data-pos');
     start = $(that).attr('data-start');
     end = $(that).attr('data-end');
@@ -87,7 +87,7 @@ function editOfficial(that){
     $('#off_id').val(id);
     $('#honorifics').val(honorifics);
     $('#name').val(na);
-    $('#chair').val(chair);
+    // $('#chair').val(chair);
     $('#position').val(pos);
     $('#start').val(start);
     $('#end').val(end);

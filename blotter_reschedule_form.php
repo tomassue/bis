@@ -141,7 +141,7 @@
                                                     <?php if (!empty($schedHistory)) : ?>
                                                         <?php foreach ($schedHistory as $row) : ?>
                                                             <li class="feed-item feed-item-danger">
-                                                                <time class="date"><?= date("M d", strtotime($row['created_at_blotter_schedule_archive'])) ?></time>
+                                                                <time class="date"><?= date("M d", strtotime($row['created_at_blotter_schedule'])) ?></time>
                                                                 <span class="text">
                                                                     <?= $blotter['user_username'] ?>, set a schedule to
                                                                     <a href="generate_blotter_report.php?id=<?= $id ?>">"<?= date("M d", strtotime($row['archive_blotter_date'])) . ' ' . date("h:i A", strtotime($row['archive_blotter_time'])) ?>"</a>
