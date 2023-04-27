@@ -136,10 +136,12 @@ while ($row = $res_o->fetch_assoc()) {
 																	<td><?= $row['status'] == 'Incumbent' ? '<span class="badge badge-primary">Incumbent</span>' : '<span class="badge badge-danger">Inactive</span>' ?></td>
 																<?php endif ?>
 																<td>
-																	<a type="button" href="#edit<?= $row['id_officials'] ?>" data-toggle="modal" class="btn btn-link btn-primary" title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id_officials'] ?>" data-honorifics="<?= $row['honorifics'] ?>" data-name="<?= $row['name'] ?>" data-pos="<?= $row['id_position'] ?>" data-start="<?= $row['termstart'] ?>" data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
+																	<a type="button" href="#edit<?= $row['id_officials'] ?>" data-toggle="modal" class="btn btn-link btn-primary" title="Edit Position">
 																		<i class="fa fa-edit"></i>
 																	</a>
-																	<?php include 'officials_try_modal.php' ?>
+																	<?php include 'officials_edit_form_modal.php' ?>
+
+																	<!--This is for removing-->
 																	<!-- <?php if ($_SESSION['role'] == 'administrator') : ?> -->
 																	<!-- <a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
 																		<i class="fa fa-times"></i>
@@ -331,6 +333,7 @@ while ($row = $res_o->fetch_assoc()) {
 					</div>
 				</div>
 			</div> -->
+
 			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
 			<!-- End Main Footer -->
