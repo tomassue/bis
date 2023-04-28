@@ -37,21 +37,7 @@
                             <div class="selectgroup selectgroup-pills">
                                 <?php
                                 $id_official = $row['id_officials'];
-                                // $query_get_chair = "SELECT * FROM tblofficials_chairmanships JOIN tblchairmanship ON tblchairmanship.id_chairmanship=tblofficials_chairmanships.id_chairmanship WHERE `id_officials` = '$id_official'";
-                                // $query_get_chair = "SELECT * FROM tblofficials_chairmanships WHERE 'id_officials' = '$id_official'";
-                                // $result_get_chair = $conn->query($query_get_chair);
-                                // $get_chairmanship = $result_get_chair->fetch_array();
-                                // $get_chairmanship = array();
-                                // while ($get_chairmanship_row = $result_get_chair->fetch_assoc()) {
-                                // $get_chairmanship[] = $get_chairmanship_row;
-                                // }
                                 $fetch_chairmanship = $conn->query("SELECT * FROM tblchairmanship");
-
-
-                                // $get_chair = array();
-                                // while ($chair_row = $result_get_chair->fetch_assoc()) {
-                                //     $get_chair[] = $chair_row;
-                                // }
                                 ?>
                                 <?php while ($fc = $fetch_chairmanship->fetch_assoc()) : ?>
                                     <?php

@@ -23,6 +23,7 @@ if (!empty($honorifics) && !empty($name) && !empty($chairmanship) && !empty($pos
     $last_id_official_inserted = mysqli_insert_id($conn);
 
     //INSERT THE ID OF THE LAST OFFICIAL INSERTED
+    //It has to be inside of a foreach loop because we want to insert the chairmanships in a separate records.
     foreach ($chairmanship as $chair) {
         $insert_query_chairmanship = "INSERT INTO tblofficials_chairmanships (`id_officials`, `id_chairmanship`) VALUES ('$last_id_official_inserted', '$chair')";
         $result_query_chairmanship = $conn->query($insert_query_chairmanship);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 11:22 AM
+-- Generation Time: Apr 28, 2023 at 06:09 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -215,17 +215,9 @@ CREATE TABLE `tblofficials_chairmanships` (
 --
 
 INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
-(1, 20, 1),
 (2, 20, 4),
 (3, 20, 8),
-(4, 21, 1),
-(5, 21, 2),
-(6, 21, 3),
-(7, 21, 4),
-(8, 21, 5),
-(9, 21, 6),
-(10, 21, 7),
-(11, 21, 8);
+(17, 21, 8);
 
 -- --------------------------------------------------------
 
@@ -522,7 +514,7 @@ CREATE TABLE `tbl_support` (
 --
 
 INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
-(1, '10', '', 'TRY lang', 'Dili ko access.', 'pending', '2023-03-17 03:59:43'),
+(1, '10', '', 'TRY lang', 'Dili ko access.', 'resolved', '2023-03-17 03:59:43'),
 (2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03');
 
 -- --------------------------------------------------------
@@ -682,7 +674,9 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (61, '2023-04-04 03:48:11', 'staff, has logged out.', '10'),
 (62, '2023-04-04 03:48:17', 'admin, has logged in.', '11'),
 (63, '2023-04-12 15:25:24', 'admin, has logged in.', '11'),
-(64, '2023-04-26 07:54:46', 'admin, has logged in.', '11');
+(64, '2023-04-26 07:54:46', 'admin, has logged in.', '11'),
+(65, '2023-04-28 01:10:51', 'admin, has logged out.', '11'),
+(66, '2023-04-28 01:12:34', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -874,7 +868,7 @@ ALTER TABLE `tblofficials`
 -- AUTO_INCREMENT for table `tblofficials_chairmanships`
 --
 ALTER TABLE `tblofficials_chairmanships`
-  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
@@ -958,7 +952,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
