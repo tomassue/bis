@@ -1,53 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php
 
-// $query = "SELECT * FROM tblresident WHERE resident_type=1";
-// $result = $conn->query($query);
-// $total = $result->num_rows;
-
-// $query1 = "SELECT * FROM tblresident WHERE sex='Male' AND resident_type=1";
-// $result1 = $conn->query($query1);
-// $male = $result1->num_rows;
-
-// $query2 = "SELECT * FROM tblresident WHERE sex='Female' AND resident_type=1";
-// $result2 = $conn->query($query2);
-// $female = $result2->num_rows;
-
-// $query3 = "SELECT * FROM tblresident WHERE voterstatus='Yes' AND resident_type=1";
-// $result3 = $conn->query($query3);
-// $totalvoters = $result3->num_rows;
-
-// $query4 = "SELECT * FROM tblresident WHERE voterstatus='No' AND resident_type=1";
-// $non = $conn->query($query4)->num_rows;
-
-// $query5 = "SELECT * FROM tblpurok";
-// $purok = $conn->query($query5)->num_rows;
-
-// $query6 = "SELECT * FROM tblprecinct";
-// $precinct = $conn->query($query6)->num_rows;
-
-// $query7 = "SELECT * FROM tblblotter";
-// $blotter = $conn->query($query7)->num_rows;
-
-// $date = date('Y-m-d'); 
-// $query8 = "SELECT SUM(amounts) as am FROM tblpayments WHERE `date`='$date'";
-// $revenue = $conn->query($query8)->fetch_assoc();
-
-// $query9 = "SELECT * FROM tbl_household";
-// $household = $conn->query($query9)->num_rows;
-
-// $query10 = "SELECT * FROM tblresident WHERE organization='1'";
-// $sc = $conn->query($query10)->num_rows;
-
-// $query11 = "SELECT * FROM tblresident WHERE pwd='Yes'";
-// $pwd = $conn->query($query11)->num_rows;
-
-// $query12 = "SELECT * FROM tblresident WHERE resident_type=0";
-// $deceased = $conn->query($query12)->num_rows;
-
-// $query13 = "SELECT * FROM tblresident WHERE indigent='Yes'";
-// $indigent = $conn->query($query13)->num_rows;
-
 $query = "SELECT * FROM tblresident2 WHERE resident_type=1";
 $result = $conn->query($query);
 $total = $result->num_rows;
@@ -84,9 +37,6 @@ if ($result_trans > 0) {
 	$revenue = $conn->query($query8)->fetch_assoc();
 } else {
 }
-// $query8 = "SELECT SUM(amounts) as am FROM tbl_transactions WHERE `date`='$date'";
-// $query8 = "SELECT SUM(tblpayments.amounts) as am FROM tbl_transactions JOIN tblpayments ON tblpayments.id_payments=tbl_transactions.id_payments WHERE date(tbl_transactions.date_transact) ='$date'";
-// $revenue = $conn->query($query8)->fetch_assoc();
 
 $query9 = "SELECT * FROM tbl_household";
 $household = $conn->query($query9)->num_rows;

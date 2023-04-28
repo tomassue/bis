@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 06:09 AM
+-- Generation Time: Apr 28, 2023 at 10:44 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -160,7 +160,7 @@ INSERT INTO `tblchairmanship` (`id_chairmanship`, `title`) VALUES
 (5, 'Committee on Finance'),
 (6, 'Committee on Peace and Order'),
 (7, 'Committee on Tourism and Sports'),
-(8, 'Senior Citizen');
+(8, 'Committee on Senior Citizen');
 
 -- --------------------------------------------------------
 
@@ -175,28 +175,27 @@ CREATE TABLE `tblofficials` (
   `id_position` varchar(50) DEFAULT NULL,
   `termstart` date DEFAULT NULL,
   `termend` date DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
+  `status` varchar(20) DEFAULT NULL,
+  `archive` int(5) DEFAULT NULL COMMENT '0-NO; 1-YES;'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblofficials`
 --
 
-INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_position`, `termstart`, `termend`, `status`) VALUES
-(1, 'Hon.', 'Reuben U. Pacalioga', '1', '2023-02-13', '2024-02-13', 'Incumbent'),
-(2, 'Hon.', 'Venus N. Ahmee', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(3, 'Hon.', 'Noel S. Ilogon', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(5, 'Hon.', 'Glenn T. Inesin', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(6, 'Hon.', 'Democrito D. Elevado', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(7, 'Hon.', 'Democrito D. Elevado', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(8, 'Hon.', 'Alvin P. Garrote', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(9, 'Hon.', 'Pedro C. Sacal', '3', '2023-02-13', '2024-02-13', 'Incumbent'),
-(10, 'Hon.', 'Rey M. Galla', '4', '2023-02-13', '2024-02-13', 'Incumbent'),
-(11, 'Ms.', 'Mirra G. Gabatan', '5', '2023-02-13', '2024-02-13', 'Incumbent'),
-(12, 'Ms.', 'Maricris O. Mabao', '2', '2023-02-13', '2024-02-13', 'Incumbent'),
-(20, 'Hon.', 'Tom Abella', '3', '2023-04-27', '2023-04-29', 'Incumbent'),
-(21, 'Hon.', 'Tomxkie Abellxkie', '3', '2023-04-27', '2023-04-29', 'Incumbent');
+INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_position`, `termstart`, `termend`, `status`, `archive`) VALUES
+(1, 'Hon.', 'Reuben U. Pacalioga', '1', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(2, 'Ms.', 'Venus N. Ahmee', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(3, 'Hon.', 'Noel S. Ilogon', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(5, 'Hon.', 'Glenn T. Inesin', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(6, 'Hon.', 'Democrito D. Elevado', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(7, 'Hon.', 'Alvin P. Garrote', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(8, 'Hon.', 'Pedro C. Sacal', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(9, 'Hon.', 'Rey M. Galla', '4', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(10, 'Ms.', 'Mirra G. Gabata', '5', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(11, 'Ms.', 'Maricris O. Mabao', '2', '2023-04-28', '2024-04-28', 'Incumbent', 0),
+(12, 'Ms.', 'Shinobu', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0);
 
 -- --------------------------------------------------------
 
@@ -215,9 +214,28 @@ CREATE TABLE `tblofficials_chairmanships` (
 --
 
 INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
-(2, 20, 4),
-(3, 20, 8),
-(17, 21, 8);
+(11, 1, 1),
+(12, 1, 4),
+(13, 2, 2),
+(14, 2, 8),
+(17, 4, 1),
+(18, 4, 2),
+(19, 4, 5),
+(20, 4, 6),
+(21, 5, 1),
+(22, 5, 2),
+(23, 5, 4),
+(24, 6, 1),
+(25, 6, 2),
+(26, 6, 5),
+(27, 7, 3),
+(28, 7, 5),
+(29, 7, 6),
+(30, 8, 1),
+(31, 8, 8),
+(50, 3, 2),
+(51, 3, 5),
+(52, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -676,7 +694,11 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (63, '2023-04-12 15:25:24', 'admin, has logged in.', '11'),
 (64, '2023-04-26 07:54:46', 'admin, has logged in.', '11'),
 (65, '2023-04-28 01:10:51', 'admin, has logged out.', '11'),
-(66, '2023-04-28 01:12:34', 'admin, has logged in.', '11');
+(66, '2023-04-28 01:12:34', 'admin, has logged in.', '11'),
+(67, '2023-04-28 06:06:56', 'admin, has logged out.', '11'),
+(68, '2023-04-28 06:07:00', 'staff, has logged in.', '10'),
+(69, '2023-04-28 06:21:08', 'staff, has logged out.', '10'),
+(70, '2023-04-28 06:21:11', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -862,13 +884,13 @@ ALTER TABLE `tblchairmanship`
 -- AUTO_INCREMENT for table `tblofficials`
 --
 ALTER TABLE `tblofficials`
-  MODIFY `id_officials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_officials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tblofficials_chairmanships`
 --
 ALTER TABLE `tblofficials_chairmanships`
-  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
@@ -952,7 +974,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

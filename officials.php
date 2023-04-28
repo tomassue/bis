@@ -2,12 +2,12 @@
 <?php
 if (isset($_SESSION['role'])) {
 	if ($_SESSION['role'] == 'staff') {
-		$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position  WHERE `status`='Incumbent' ORDER BY tblposition.order ASC ";
+		$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position  WHERE `status`='Incumbent' AND `archive`='0' ORDER BY tblposition.order ASC ";
 	} else {
-		$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position  ORDER BY tblposition.order ASC, `status` ASC ";
+		$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position WHERE `archive`='0' ORDER BY tblposition.order ASC, `status` ASC ";
 	}
 } else {
-	$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position  WHERE `status`='Incumbent' ORDER BY tblposition.order DESC ";
+	$off_q = "SELECT *,tblofficials.id_officials as id, tblposition.id_position as pos_id FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position  WHERE `status`='Incumbent' AND `archive`='0' ORDER BY tblposition.order DESC ";
 }
 
 $res_o = $conn->query($off_q);
@@ -80,6 +80,12 @@ while ($row = $res_o->fetch_assoc()) {
 										<div class="card-title">Current Barangay Officials</div>
 										<?php if (isset($_SESSION['username'])) : ?>
 											<div class="card-tools">
+												<?php if ($_SESSION['role'] == 'administrator') : ?>
+													<a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
+														<i class="fas fa-file-archive"></i>&nbsp
+														Archive
+													</a>
+												<?php endif; ?>
 												<!-- <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm"> -->
 												<a href="#add" data-toggle="modal" class="btn btn-info btn-sm">
 													<i class="fa fa-plus"></i>&nbsp
@@ -153,7 +159,7 @@ while ($row = $res_o->fetch_assoc()) {
 													<?php endforeach ?>
 												<?php else : ?>
 													<tr>
-														<td colspan="3" class="text-center">No Available Data</td>
+														<td colspan="5" class="text-center">No Available Data</td>
 													</tr>
 												<?php endif ?>
 											</tbody>
@@ -208,7 +214,7 @@ while ($row = $res_o->fetch_assoc()) {
 									</div>
 								</div>
 								<div class="form-group">
-									<label>Chairmanship<span class="text-danger"><b> *</b></span></label>
+									<label>Chairmanship</label>
 									<div class="overflow-auto" style="max-height: 300px; margin-bottom: 10px; overflow:scroll; -webkit-overflow-scrolling: touch;">
 										<div class="selectgroup selectgroup-pills">
 											<?php foreach ($chair as $row) : ?>

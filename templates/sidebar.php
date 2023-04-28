@@ -191,46 +191,6 @@ $current_page = PageName();
                         </div>
                     </li>
 
-
-                    <!--NAKA DROPDOWN NA SIYA SO GI-COMMENT OUT NAKO SIYA OKAY?!-->
-                    <!-- <li class="nav-item <?= $current_page == 'resident_certification.php' || $current_page == 'generate_brgy_cert.php' ? 'active' : null ?>">
-                    <a href="resident_certification.php">
-                        <i class="fa fa-certificate"></i>
-                        <p>Barangay Clearance</p>
-                    </a>
-                </li> -->
-                    <!-- <li class="nav-item <?= $current_page == 'resident_indigency.php' || $current_page == 'generate_indi_cert.php' ? 'active' : null ?>">
-                    <a href="resident_indigency.php">
-                        <i class="fa fa-certificate"></i>
-                        <p>Certificate of Indigency</p>
-                    </a>
-                </li> -->
-                    <!-- <li class="nav-item <?= $current_page == 'resident_cert_of_oneness.php' || $current_page == 'generate_cert_of_oneness.php' ? 'active' : null ?>">
-                    <a href="resident_cert_of_oneness.php">
-                        <i class="fa fa-certificate"></i>
-                        <p>Certificate of Oneness</p>
-                    </a>
-                </li> -->
-                    <!-- <li class="nav-item <?= $current_page == 'certificate_appearance.php' || $current_page == 'generate_cert_appearance.php' ? 'active' : null ?>">
-                    <a href="certificate_appearance.php">
-                        <i class="fa fa-certificate"></i>
-                        <p>Certificate of Appearance</p>
-                    </a>
-                </li> -->
-                    <!-- <li class="nav-item <?= $current_page == 'business_permit.php' || $current_page == 'generate_business_permit.php' ? 'active' : null ?>">
-                    <a href="business_permit.php">
-                        <i class="fa fa-briefcase"></i>
-                        <p>Construction Clearance</p>
-                    </a>
-                </li> -->
-                    <!-- <li class="nav-item <?= $current_page == 'special_permit.php' || $current_page == 'generate_special_permit.php' ? 'active' : null ?>">
-                    <a href="special_permit.php">
-                        <i class="fa fa-briefcase"></i>
-                        <p>Special Permit</p>
-                    </a>
-                </li> -->
-                    <!--NAKA DROPDOWN NA SIYA SO GI-COMMENT OUT NAKO SIYA OKAY?!-->
-
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
@@ -297,7 +257,7 @@ $current_page = PageName();
                             <h4 class="text-section">System</h4>
                         </li>
 
-                        <li class="nav-item <?= $current_page == 'organization_or_association.php' || $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'chairmanship.php' || $current_page == 'precinct.php' || $current_page == 'users.php' || $current_page == 'support.php' || $current_page == 'backup.php' || $current_page == 'nature_of_case.php' || $current_page == 'household_number.php' ? 'active' : null ?>">
+                        <li class="nav-item <?= $current_page == 'organization_or_association.php' || $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'chairmanship.php' || $current_page == 'precinct.php' || $current_page == 'users.php' || $current_page == 'support.php' || $current_page == 'backup.php' || $current_page == 'nature_of_case.php' || $current_page == 'officials_archives.php' || $current_page == 'household_number.php' ? 'active' : null ?>">
                             <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="icon-wrench"></i>
                                 <p>Settings</p>
@@ -306,7 +266,7 @@ $current_page = PageName();
                                 <?php endif ?>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'household_number.php' || $current_page == 'organization_or_association.php' || $current_page == 'nature_of_case.php' || $current_page == 'position.php'  || $current_page == 'precinct.php' || $current_page == 'chairmanship.php' || $current_page == 'users.php' || $current_page == 'support.php' || $current_page == 'backup.php' || $current_page == 'nature_of_case.php' ? 'show' : null ?>" id="settings">
+                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'household_number.php' || $current_page == 'organization_or_association.php' || $current_page == 'nature_of_case.php' || $current_page == 'position.php'  || $current_page == 'precinct.php' || $current_page == 'chairmanship.php' || $current_page == 'users.php' || $current_page == 'support.php' ||  $current_page == 'backup.php' || $current_page == 'officials_archives.php' || $current_page == 'nature_of_case.php' ? 'show' : null ?>" id="settings">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="#barangay" data-toggle="modal">
@@ -368,6 +328,11 @@ $current_page = PageName();
                                                 <?php if ($resultSupport > 0) : ?>
                                                     <span class="badge badge-danger"><?= number_format($resultSupport) ?></span>
                                                 <?php endif ?>
+                                            </a>
+                                        </li>
+                                        <li class="<?= $current_page == 'officials_archives.php' ? 'active' : null ?>">
+                                            <a href="officials_archives.php">
+                                                <span class="sub-item">Officials archives</span>
                                             </a>
                                         </li>
                                         <li>

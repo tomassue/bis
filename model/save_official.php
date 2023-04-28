@@ -15,10 +15,11 @@ $pos               = $conn->real_escape_string($_POST['position']);
 $start             = $conn->real_escape_string($_POST['start']);
 $end               = $conn->real_escape_string($_POST['end']);
 $status            = $conn->real_escape_string($_POST['status']);
+$archive           = $conn->real_escape_string('0');
 
-if (!empty($honorifics) && !empty($name) && !empty($chairmanship) && !empty($pos) && !empty($start) && !empty($end) && !empty($status)) {
+if (!empty($honorifics) && !empty($name) && !empty($pos) && !empty($start) && !empty($end) && !empty($status)) {
     //INSERT OFFICIAL
-    $insert  = "INSERT INTO tblofficials (`honorifics`,`name`, `id_position`, termstart, termend, `status`) VALUES ('$honorifics','$name','$pos', '$start','$end', '$status')";
+    $insert  = "INSERT INTO tblofficials (`honorifics`,`name`, `id_position`, termstart, termend, `status`, `archive`) VALUES ('$honorifics','$name','$pos', '$start','$end', '$status', '$archive')";
     $result  = $conn->query($insert);
     $last_id_official_inserted = mysqli_insert_id($conn);
 
