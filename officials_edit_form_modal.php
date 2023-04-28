@@ -37,22 +37,39 @@
                             <div class="selectgroup selectgroup-pills">
                                 <?php
                                 $id_official = $row['id_officials'];
-                                $query_get_chair = "SELECT * FROM tblofficials_chairmanships JOIN tblchairmanship ON tblchairmanship.id_chairmanship=tblofficials_chairmanships.id_chairmanship";
-                                $result_get_chair = $conn->query($query_get_chair);
+                                // $query_get_chair = "SELECT * FROM tblofficials_chairmanships JOIN tblchairmanship ON tblchairmanship.id_chairmanship=tblofficials_chairmanships.id_chairmanship WHERE `id_officials` = '$id_official'";
+                                // $query_get_chair = "SELECT * FROM tblofficials_chairmanships WHERE 'id_officials' = '$id_official'";
+                                // $result_get_chair = $conn->query($query_get_chair);
+                                // $get_chairmanship = $result_get_chair->fetch_array();
+                                // $get_chairmanship = array();
+                                // while ($get_chairmanship_row = $result_get_chair->fetch_assoc()) {
+                                // $get_chairmanship[] = $get_chairmanship_row;
+                                // }
+                                $fetch_chairmanship = $conn->query("SELECT * FROM tblchairmanship");
 
-                                $get_chair = array();
-                                while ($chair_row = $result_get_chair->fetch_assoc()) {
-                                    $get_chair[] = $chair_row;
-                                }
+
+                                // $get_chair = array();
+                                // while ($chair_row = $result_get_chair->fetch_assoc()) {
+                                //     $get_chair[] = $chair_row;
+                                // }
                                 ?>
-                                <?php foreach ($get_chair as $chair_row) : ?>
-                                    <label class="selectgroup-item">
-                                        <input type="checkbox" name="chairmanship[]" value="<?= $chair_row['id_chairmanship'] ?>" class="selectgroup-input" <?php if ($chair_row['id_chairmanship'] == $chair_row['id_chairmanship']) {
-                                                                                                                                                                echo 'checked = "checked"';
-                                                                                                                                                            } ?>>
-                                        <span class="selectgroup-button"><?= $chair_row['title'] ?></span>
-                                    </label>
-                                <?php endforeach ?>
+                                <?php while ($fc = $fetch_chairmanship->fetch_assoc()) : ?>
+                                    <?php
+                                    $id_chairmanship = $fc['id_chairmanship'];
+                                    $query_get_chair = $conn->query("SELECT * FROM tblofficials_chairmanships WHERE id_officials = '$id_official' AND id_chairmanship = '$id_chairmanship'");
+                                    ?>
+                                    <?php if ($query_get_chair->num_rows > 0) : ?>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="chairmanship[]" value="<?= $fc['id_chairmanship'] ?>" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button"><?= $fc['title'] ?></span>
+                                        </label>
+                                    <?php else : ?>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="chairmanship[]" value="<?= $fc['id_chairmanship'] ?>" class="selectgroup-input">
+                                            <span class="selectgroup-button"><?= $fc['title'] ?></span>
+                                        </label>
+                                    <?php endif; ?>
+                                <?php endwhile; ?>
                             </div>
                         </div>
                     </div>
