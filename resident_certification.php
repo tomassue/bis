@@ -216,16 +216,18 @@ while ($row = $result1->fetch_assoc()) {
 																			<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a> -->
-																			<a type="button" data-toggle="modal" href="#payment_brgy_cert" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																			<a type="button" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" data-toggle="modal" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_certification_modal.php'; ?>
 																		<?php elseif ($currentTime < $dateOfresidence) : ?>
 																			<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a> -->
-																			<a type="button" data-toggle="modal" href="#payment_brgy_cert" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																			<a type="button" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" data-toggle="modal" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_certification_modal.php'; ?>
 																		<?php endif ?>
 																	</div>
 																</td>
@@ -265,7 +267,7 @@ while ($row = $result1->fetch_assoc()) {
 			</div>
 
 			<!-- Modal -->
-			<div class="modal fade" id="payment_brgy_cert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<!-- <div class="modal fade" id="purpose_brgy_cert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -275,16 +277,24 @@ while ($row = $result1->fetch_assoc()) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="#">
+							<form method="POST" action="generate_brgy_cert.php">
 								<div class="form-group">
-									<label>Name</label>
-									<input type="text" class="form-control" placeholder="Enter Purok Name" name="purok" required>
+									<label>Amount<span class="text-danger"><b> *</b></span></label>
+									<input type="text" class="form-control" placeholder="Enter amount" name="amount" onkeypress="return isNumberKey(event)" required></input>
 								</div>
 								<div class="form-group">
-									<label>Purok Details(Optional)</label>
-									<textarea class="form-control" placeholder="Set Bounderies for each Purok" name="details"></textarea>
+									<label>Date Issued<span class="text-danger"><b> *</b></span></label>
+									<input type="date" class="form-control" name="date_issued" value="<?= date('Y-m-d') ?>" disabled></input>
 								</div>
-
+								<div class="form-group">
+									<label>Transaction details<span class="text-danger"><b> *</b></span></label>
+									<textarea class="form-control" onkeypress="return onlyAlphabets(event);" name="details" required>Barangay Clearance</textarea>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label>Purpose<span class="text-danger"><b> *</b></span></label>
+									<textarea class="form-control" onkeypress="return onlyAlphabets(event);" placeholder="E.g. employment" name="purpose" required></textarea>
+								</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -293,7 +303,7 @@ while ($row = $result1->fetch_assoc()) {
 						</form>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
@@ -307,6 +317,23 @@ while ($row = $result1->fetch_assoc()) {
 		$(document).ready(function() {
 			$('#residenttable').DataTable();
 		});
+
+		function isNumberKey(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode;
+			if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+				return false;
+			}
+			return true;
+		}
+
+		function onlyAlphabets(evt) {
+			evt = (evt) ? evt : window.event;
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode == 9 || charCode == 32) {
+				return true;
+			}
+			return false;
+		}
 	</script>
 </body>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 10:44 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Apr 29, 2023 at 05:30 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -214,8 +214,6 @@ CREATE TABLE `tblofficials_chairmanships` (
 --
 
 INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
-(11, 1, 1),
-(12, 1, 4),
 (13, 2, 2),
 (14, 2, 8),
 (17, 4, 1),
@@ -248,21 +246,6 @@ CREATE TABLE `tblpayments` (
   `amounts` decimal(10,2) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tblpayments`
---
-
-INSERT INTO `tblpayments` (`id_payments`, `amounts`, `name`) VALUES
-(1, '50.00', 'Tom  Abella'),
-(2, '60.00', 'Motsur  Calapis'),
-(3, '1000.00', 'Choco Shake'),
-(4, '50.00', 'Tom  Abella'),
-(5, '1000.00', 'Choco Shake'),
-(6, '40.00', 'Motsur  Calapis'),
-(7, '50.00', 'Test Testtwo Red'),
-(8, '1000.00', 'Abella Construction Corp'),
-(9, '500.00', 'Motsur  Calapis');
 
 -- --------------------------------------------------------
 
@@ -549,39 +532,6 @@ CREATE TABLE `tbl_transactions` (
   `details_transact` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_transactions`
---
-
-INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`) VALUES
-(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
-(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
-(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
-(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
-(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
-(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
-(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
-(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
-(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
-(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
-(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
-(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
-(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
-(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
-(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
-(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
-(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
-(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
-(1, 11, '20230213428594000001', '2023-02-13 01:09:16', 'Barangay Clearance Payment'),
-(2, 11, '20230213093033000001', '2023-02-13 01:13:49', 'Barangay Clearance Payment'),
-(3, 11, '20230213553865000001', '2023-02-13 02:00:32', 'Special Permit Payment'),
-(4, 11, '20230213696736000001', '2023-02-13 02:45:24', 'Barangay Clearance Payment'),
-(5, 11, '20230213112724000001', '2023-02-13 02:59:42', 'Special Permit Payment'),
-(6, 11, '20230213124928000001', '2023-02-13 03:08:24', 'Barangay Clearance Payment'),
-(7, 11, '20230317705289000001', '2023-03-17 03:23:39', 'Barangay Clearance Payment'),
-(8, 11, '20230317722073000001', '2023-03-17 03:31:08', 'Special Permit Payment'),
-(9, 11, '20230402761046000001', '2023-04-02 07:00:16', 'Barangay Clearance Payment');
-
 -- --------------------------------------------------------
 
 --
@@ -698,7 +648,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (67, '2023-04-28 06:06:56', 'admin, has logged out.', '11'),
 (68, '2023-04-28 06:07:00', 'staff, has logged in.', '10'),
 (69, '2023-04-28 06:21:08', 'staff, has logged out.', '10'),
-(70, '2023-04-28 06:21:11', 'admin, has logged in.', '11');
+(70, '2023-04-28 06:21:11', 'admin, has logged in.', '11'),
+(71, '2023-04-29 11:46:43', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -896,7 +847,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -974,7 +925,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
