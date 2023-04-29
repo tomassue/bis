@@ -5,15 +5,12 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
 
-    // $_SESSION['user']      = $_SESSION['username'];
     $_SESSION['name']      = $conn->real_escape_string($_POST['name']);
     $_SESSION['amount']    = $conn->real_escape_string($_POST['amount']);
-    /*$_SESSION['date']      = date('Y-m-d');*/
     $_SESSION['details']   = $conn->real_escape_string($_POST['details']);
-
     $_SESSION['purpose']   = $conn->real_escape_string($_POST['purpose']);
 
-    header('Location: model/save_pment.php');
+    // header('Location: model/save_pment.php');
 }
 ?>
 
@@ -157,18 +154,7 @@ $sec = $conn->query($s)->fetch_assoc();
                                                 <img id="bg-brgylogo" src="assets/uploads/<?= $brgy_logo ?>" />
 
                                                 <div class="col-12 p-3 text-center" id="head">
-                                                    <!-- <span class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;">Republic of the Philippines</span><br>
-                                                    <span class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;">City of <?= ucwords($town) ?></span><br>
-                                                    <span class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;"><?= ucwords($brgy) ?></span>
-                                                    <p class="fw-bold" style="font-size: 20px; padding-right: 0px; font-family: Book Antiqua;">OFFICE OF THE BARANGAY CHAIRMAN</p> -->
-
                                                     <p class="fw-bold" style="font-size: 20px; font-family: Book Antiqua; line-height: 23px;">Republic of the Philippines<br>City of <?= ucwords($town) ?><br><?= ucwords($brgy) ?><br><br>OFFICE OF THE BARANGAY CHAIRMAN</p>
-
-                                                    <!-- <h3 class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;">Republic of the Philippines</h3>
-                                                    <h3 class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;">City of <?= ucwords($town) ?></h3>
-                                                    <h3 class="mb-0 fw-bold" style="font-size: 20px; font-family: Book Antiqua;"><?= ucwords($brgy) ?></h3><br>
-                                                    <h3 class="mb-0 fw-bold" style="font-size: 20px; padding-right: 0px; font-family: Book Antiqua;">OFFICE OF THE BARANGAY CHAIRMAN</h3> -->
-
                                                     <br>
                                                     <br>
                                                 </div>
@@ -186,13 +172,6 @@ $sec = $conn->query($s)->fetch_assoc();
                                                     <?php if (!empty($officials)) : ?>
                                                         <?php foreach ($officials as $row) : ?>
                                                             <h3 class="mb-0" style="line-height: 20px; font-family: Georgia;"><span class="fw-bold text-uppercase font-italic">
-
-                                                                    <!--                                                                 <?php if ($row['position'] == 'Secretary' || $row['position'] == 'Treasurer') : ?>
-                                                                MS.  
-                                                                <?php else : ?>
-                                                                HON. 
-                                                                <?php endif ?> -->
-
                                                                     <?= $row['honorifics'] ?> <?= ucwords($row['name']) ?></span><br>
                                                                 <h5 style="font-family: Georgia;"><i><?= ucwords($row['position']) ?></i></h5>
                                                             </h3>
@@ -200,20 +179,16 @@ $sec = $conn->query($s)->fetch_assoc();
                                                         <?php endforeach ?>
                                                     <?php endif ?>
                                                 </div>
-                                                <!-- <div class="vl"></div> -->
                                             </div>
-
                                         </div>
 
                                         <div class="col-md-8">
                                             <div class="text-center">
                                                 <h2 class="mt-4 fw-bold"> </h2>
                                             </div>
-
                                             <br>
                                             <br>
                                             <br>
-
                                             <div class="text-center">
                                                 <h1 class="mt-4 fw-bold mb-5" style="font-family: Book Antiqua; font-size: 30px;">C E R T I F I C A T I O N</h1>
                                             </div>
@@ -254,7 +229,6 @@ $sec = $conn->query($s)->fetch_assoc();
                                                 <p class="mr-3"></p>
                                             </div>
 
-
                                             <br>
                                             <br>
                                             <br>
@@ -275,26 +249,6 @@ $sec = $conn->query($s)->fetch_assoc();
                                                 <p class="mr-3"></p>
                                             </div>
                                         </div>
-
-                                        <!-- <div class="col-md-12">
-                                            <div class="p-3 text-right mr-3">
-                                                <h2 style="line-height: 20px;"><span class="fw-bold text-uppercase"><?= ucwords($captain['name']) ?></span><br>Barangay Chairman</h2>
-                                                <p class="mr-3"></p>
-                                            </div>
-                                            <div class="p-3 text-left">
-                                                <h2 class="fw-bold mb-0 text-uppercase"><?= empty($sec['name']) ? 'Please Create Official with Secretary Position' : ucwords($sec['name']) ?></h2>
-                                                <p class="ml-2">BARANGAY SECRETARY</p>
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="col-md-12 d-flex flex-wrap justify-content-end">
-                                            <div class="p-3 text-center">
-                                                <div class="border mb-3" style="height:150px;width:290px">
-                                                    <p class="mt-5 mb-0 pt-5">Right Thumb Mark</p>
-                                                </div>
-                                                <h2 class="fw-bold mb-0"><?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname']) ?></h2>
-                                                <p>Tax Payer's Signature</p>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -304,17 +258,13 @@ $sec = $conn->query($s)->fetch_assoc();
             </div>
 
             <!-- Payment Modal -->
-            <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <!-- <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Create Payment</h5>
-                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button> -->
                         </div>
                         <div class="modal-body">
-                            <!-- <form method="POST" action="model/save_pment.php" > -->
                             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <div class="form-group">
                                     <label>Amount<span class="text-danger"><b> *</b></span></label>
@@ -341,27 +291,27 @@ $sec = $conn->query($s)->fetch_assoc();
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Main Footer -->
             <?php include 'templates/main-footer.php' ?>
             <!-- End Main Footer -->
-            <?php if (!isset($_GET['closeModal'])) { ?>
+            <!-- <?php if (!isset($_GET['closeModal'])) { ?>
 
                 <script>
                     setTimeout(function() {
                         openModal();
                     }, 1000);
                 </script>
-            <?php } ?>
+            <?php } ?> -->
         </div>
 
     </div>
     <?php include 'templates/footer.php' ?>
     <script>
-        function openModal() {
-            $('#pment').modal('show');
-        }
+        // function openModal() {
+        //     $('#pment').modal('show');
+        // }
 
         function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;

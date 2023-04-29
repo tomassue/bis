@@ -208,19 +208,22 @@ while ($row = $result1->fetch_assoc()) {
 																<?php endif ?>
 																<td>
 																	<div class="form-button-action">
-																		<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
-																	<i class="fas fa-file-alt"></i>
-																</a> -->
 																		<?php
 																		$currentTime = date('Y-m-d');
 																		$dateOfresidence = date('Y-m-d', strtotime("+6 months", strtotime($row['date_of_residence'])));
 																		?>
 																		<?php if ($currentTime >= $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																			<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																				<i class="fas fa-file-alt"></i>
+																			</a> -->
+																			<a type="button" data-toggle="modal" href="#payment_brgy_cert" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
 																		<?php elseif ($currentTime < $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																			<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																				<i class="fas fa-file-alt"></i>
+																			</a> -->
+																			<a type="button" data-toggle="modal" href="#payment_brgy_cert" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
 																		<?php endif ?>
@@ -261,10 +264,40 @@ while ($row = $result1->fetch_assoc()) {
 				</div>
 			</div>
 
+			<!-- Modal -->
+			<div class="modal fade" id="payment_brgy_cert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Create Purok</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form method="POST" action="#">
+								<div class="form-group">
+									<label>Name</label>
+									<input type="text" class="form-control" placeholder="Enter Purok Name" name="purok" required>
+								</div>
+								<div class="form-group">
+									<label>Purok Details(Optional)</label>
+									<textarea class="form-control" placeholder="Set Bounderies for each Purok" name="details"></textarea>
+								</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Create</button>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
 			<!-- End Main Footer -->
-
 		</div>
 
 	</div>
