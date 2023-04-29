@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 $id = $_GET['id'];
-// $query = "SELECT * FROM tblresident WHERE id='$id'";
 $query = "SELECT * FROM tblresident2 WHERE id_resident='$id'";
 $result = $conn->query($query);
 $resident = $result->fetch_assoc();
