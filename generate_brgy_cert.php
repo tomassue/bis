@@ -136,7 +136,7 @@ if (isset($_POST["submit"])) {
                                                     <i class="fa fa-print"></i>
                                                     Print Certificate
                                                 </button>
-                                                <a type="button" href="resident_certification.php" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure you want to go back?')" data-original-title="Go Back">
+                                                <a type="button" href="resident_certification.php" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure you want to go back? You will have to repeat the process again from the previous page.')" data-original-title="Go Back">
                                                     <i class="fas fa-file-alt"></i>&nbsp Go Back
                                                 </a>
                                             </div>
@@ -314,7 +314,8 @@ if (isset($_POST["submit"])) {
                 window.print();
                 document.body.innerHTML = originalContents;
 
-                window.location.replace("resident_certification.php");
+                // window.location.replace("resident_certification.php");
+                window.location.replace("model/save_pment.php");
             }
         </script>
     </body>

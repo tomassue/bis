@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2023 at 05:30 PM
+-- Generation Time: Apr 30, 2023 at 02:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -246,6 +246,14 @@ CREATE TABLE `tblpayments` (
   `amounts` decimal(10,2) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpayments`
+--
+
+INSERT INTO `tblpayments` (`id_payments`, `amounts`, `name`) VALUES
+(1, 0.00, 'Sample Name'),
+(2, 0.00, 'Sample Name');
 
 -- --------------------------------------------------------
 
@@ -531,6 +539,14 @@ CREATE TABLE `tbl_transactions` (
   `date_transact` timestamp NOT NULL DEFAULT current_timestamp(),
   `details_transact` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_transactions`
+--
+
+INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`) VALUES
+(1, 11, '20230430118038000001', '2023-04-30 00:36:00', 'Sample details'),
+(2, 11, '20230430448140000001', '2023-04-30 00:37:27', 'Sample details');
 
 -- --------------------------------------------------------
 
@@ -847,7 +863,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`

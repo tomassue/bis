@@ -16,9 +16,12 @@ if (!isset($_SESSION['username'])) {
 session_start();
 
 $user           = $_SESSION['id']; //ID of the user
-$name           = $_SESSION['name'];
-$amount         = $_SESSION['amount'];
-$details        = $_SESSION['details'];
+// $name           = $_SESSION['name'];
+$name           = "Sample Name";
+// $amount         = $_SESSION['amount'];
+$amount         = "Sample amount";
+// $details        = $_SESSION['details'];
+$details        = "Sample details";
 
 //FOR THE TRANSACTION NUMBER
 $counter = 0;
@@ -72,5 +75,7 @@ if (!empty($user) && !empty($name)) {
 unset($_SESSION["name"]);
 unset($_SESSION["date"]);
 unset($_SESSION["details"]);
+
+header("Location: ../resident_certification.php");
 
 $conn->close();
