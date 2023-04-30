@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 
-<?php if ($_SESSION['role'] == 'administrator') : ?>
+<?php if ($_SESSION['role'] == 'administrator' || $_SESSION['role'] == 'staff') : ?>
     <?php
     $id = $_GET['id'];
     $query = "SELECT * FROM tblblotter JOIN tblblotter_schedule ON tblblotter_schedule.id_blotter=tblblotter.id_blotter JOIN tbl_users ON tbl_users.id_user=tblblotter.id_user WHERE tblblotter_schedule.id_blotter='$id' ORDER BY tblblotter_schedule.id_blotter_schedule DESC LIMIT 1";
