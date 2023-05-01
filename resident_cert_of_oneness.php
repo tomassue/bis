@@ -200,18 +200,19 @@ while ($row = $result1->fetch_assoc()) {
 																		$dateOfresidence = date('Y-m-d', strtotime("+6 months", strtotime($row['date_of_residence'])));
 																		?>
 																		<?php if ($currentTime >= $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_cert_of_oneness.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																			<a type="button" data-toggle="modal" href="#oneness<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_cert_of_oneness_modal.php' ?>
 																		<?php elseif ($currentTime < $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_cert_of_oneness.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																			<a type="button" data-toggle="modal" href="#oneness<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_cert_of_oneness_modal.php' ?>
 																		<?php endif ?>
 																	</div>
 																</td>
 															<?php endif ?>
-
 														</tr>
 													<?php $no++;
 													endforeach ?>
@@ -258,6 +259,23 @@ while ($row = $result1->fetch_assoc()) {
 		$(document).ready(function() {
 			$('#residenttable').DataTable();
 		});
+
+		function isNumberKey(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode;
+			if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+				return false;
+			}
+			return true;
+		}
+
+		function onlyAlphabets(evt) {
+			evt = (evt) ? evt : window.event;
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode == 9 || charCode == 32) {
+				return true;
+			}
+			return false;
+		}
 	</script>
 </body>
 

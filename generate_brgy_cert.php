@@ -1,12 +1,18 @@
 <?php include 'server/server.php' ?>
 
 <?php
-
 if (isset($_POST["submit"])) {
+    $recipients_name = $_POST['recipients_name'];
     $amount = $_POST['amount'];
     $details = $_POST['details'];
     $purpose = $_POST['purpose'];
-    $id = $_POST['id_resident'];
+    $id = $_POST['id_resident']; //id_resident
+
+    $_SESSION['recipients_name'] = $recipients_name;
+    $_SESSION['amount'] = $amount;
+    $_SESSION['details'] = $details;
+    //$_SESSION['id_resident'] = $id; //id_resident
+    $_SESSION['page'] = 'brgy_cert';
 ?>
 
     <?php
@@ -290,11 +296,50 @@ if (isset($_POST["submit"])) {
                 </div>
             </div> -->
 
+                <!-- Printing Modal -->
+                <!-- <div class="modal fade" id="print" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Print Certificate</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="generate_brgy_cert_print.php">
+                                    <div class="form-group">
+                                        <label>Amount<span class="text-danger"><b> *</b></span></label>
+                                        <input type="number" class="form-control" name="amount" value="<?= $amount ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Date Issued<span class="text-danger"><b> *</b></span></label>
+                                        <input type="date" class="form-control" name="date" value="<?= date('Y-m-d') ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Payment Details(Optional)</label>
+                                        <textarea class="form-control" name="details" value="<?= $details ?>">Barangay Clearance Payment</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Purpose<span class="text-danger"><b> *</b></span></label>
+                                        <input type="text" name="purpose" id="purpose" class="form-control" value="<?= $purpose ?>" oninput="this.value = this.value.replace(/[^A-z\s]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Name of the resident<span class="text-danger"><b> *</b></span></label>
+                                        <input type="text" name="name" value="<?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname']) ?>">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="text" name="id" value="<?= $id ?>">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> -->
+
                 <!-- Main Footer -->
                 <?php include 'templates/main-footer.php' ?>
                 <!-- End Main Footer -->
                 <!-- <?php if (!isset($_GET['closeModal'])) { ?>
-
                 <script>
                     setTimeout(function() {
                         openModal();
@@ -307,6 +352,7 @@ if (isset($_POST["submit"])) {
         <?php include 'templates/footer.php' ?>
         <script>
             function printDiv(divName) {
+
                 var printContents = document.getElementById(divName).innerHTML;
                 var originalContents = document.body.innerHTML;
 

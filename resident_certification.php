@@ -1,17 +1,5 @@
 <?php include 'server/server.php' ?>
 <?php
-/*$query = "SELECT * FROM tblresident";
-    $result = $conn->query($query);*/
-
-/*$query = "SELECT * tblresident JOIN tblpurok ON tblresident.purok=tblpurok.id";
-    $result = $conn->query($query);
-
-    $resident = array();
-	while($row = $result->fetch_assoc()){
-		$resident[] = $row; 
-	}*/
-
-// $query = "SELECT *, tblresident.id as id, tblpurok.id as purok_id, tbl_org.id as org_id FROM tblresident JOIN tblpurok ON tblpurok.id=tblresident.purok JOIN tbl_org ON tbl_org.id=tblresident.organization ";
 $query = "SELECT * FROM tblresident2";
 $result = $conn->query($query);
 $resident = array();

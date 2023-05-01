@@ -1,15 +1,5 @@
 <?php include 'server/server.php' ?>
 <?php
-/*$query = "SELECT * FROM tblresident";
-    $result = $conn->query($query);
-
-    $resident = array();
-	while($row = $result->fetch_assoc()){
-		$resident[] = $row; 
-	}*/
-
-/*$query = "SELECT *, tblresident.id as id, tblpurok.id as purok_id, tbl_org.id as org_id FROM tblresident JOIN tblpurok ON tblpurok.id=tblresident.purok JOIN tbl_org ON tbl_org.id=tblresident.organization ";
-    $result = $conn->query($query);*/
 $query = "SELECT * FROM tblresident2";
 $result = $conn->query($query);
 $resident = array();
@@ -209,13 +199,15 @@ while ($row = $result1->fetch_assoc()) {
 																		$dateOfresidence = date('Y-m-d', strtotime("+6 months", strtotime($row['date_of_residence'])));
 																		?>
 																		<?php if ($currentTime >= $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_indi_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																			<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_indigency_modal.php' ?>
 																		<?php elseif ($currentTime < $dateOfresidence) : ?>
-																			<a type="button" data-toggle="tooltip" href="generate_indi_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																			<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																			<?php include 'resident_indigency_modal.php' ?>
 																		<?php endif ?>
 																	</div>
 																</td>
@@ -267,6 +259,23 @@ while ($row = $result1->fetch_assoc()) {
 		$(document).ready(function() {
 			$('#residenttable').DataTable();
 		});
+
+		function isNumberKey(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode;
+			if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+				return false;
+			}
+			return true;
+		}
+
+		function onlyAlphabets(evt) {
+			evt = (evt) ? evt : window.event;
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode == 9 || charCode == 32) {
+				return true;
+			}
+			return false;
+		}
 	</script>
 </body>
 

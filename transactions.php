@@ -1,13 +1,11 @@
 <?php include 'server/server.php' ?>
 <?php
-// $sql = "SELECT * FROM tbl_transactions ORDER BY `date_transact` DESC";
 $sql = "SELECT *, 
-	tbl_users.id_user as user_id, 
-	tblpayments.id_payments as id_payments 
+	tbl_users.id_user as user_id
 	FROM tbl_transactions 
 	JOIN tbl_users ON tbl_users.id_user=tbl_transactions.id_user 
-	JOIN tblpayments ON tblpayments.id_payments=tbl_transactions.id_payments 
 	ORDER BY tbl_transactions.date_transact DESC";
+// $sql = "SELECT * FROM tbl_transactions";
 $result = $conn->query($sql);
 
 $transactions = array();
@@ -98,9 +96,23 @@ while ($row = $result->fetch_assoc()) {
 															?>
 															<td><?= $date_transact ?></td>
 															<td><?= $row['transact_no'] ?></td>
-															<td><?= $row['name'] ?></td>
+															<td><?= $row['recipient_name'] ?></td>
 															<td><?= $row['details_transact'] ?></td>
-															<td><?= 'P' . $row['amounts'] ?></td>
+															<td>
+																<?php
+																if ($row['id_payments'] == '0') {
+																	echo 'None';
+																} else {
+																	$id_payments = $row['id_payments'];
+
+																	$query_payment = "SELECT * FROM tblpayments WHERE `id_payments`='$id_payments'";
+																	$result_payment = $conn->query($query_payment);
+																	$payment = $result_payment->fetch_assoc();
+
+																	echo $payment['amounts'];
+																}
+																?>
+															</td>
 															<td><?= $row['user_username'] ?></td>
 														</tr>
 													<?php $no++;
