@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 06:34 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 02, 2023 at 04:59 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -252,11 +252,12 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, 20000.00),
-(2, 60000.00),
-(3, 99999999.99),
-(4, 399.00),
-(5, 6969.00);
+(1, '20000.00'),
+(2, '60000.00'),
+(3, '99999999.99'),
+(4, '399.00'),
+(5, '6969.00'),
+(6, '22.00');
 
 -- --------------------------------------------------------
 
@@ -388,7 +389,8 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (3, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090852tom.jpg', 'Tomas', '', 'Howland', '', 'Tom', 'Tacloban City', '2001-01-29', 'Female', 'single', 'tenant', 2, 'no', '2021-02-13', 'No', '', '', '', 'Student', 1, '1', 'No', 'No', '', '2023-02-14 16:29:23', 11),
 (4, '1111-1111-1111-1111', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Japanese', 'person.png', 'Sample', 'Sample', 'Sample', '', 'Samp', 'Samps', '2019-03-13', 'Male', 'single', 'new', 1, 'yes', '2023-03-13', 'Yes', 'Confirmed', '', 'samp@mail.com', 'Student', 1, 'none', 'No', 'No', '', '2023-03-13 04:55:37', 11),
 (5, '1223-3445-5677', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '170320231121111143202.jpg', 'Test', 'Testtwo', 'Red', 'Sr.', 'Tom', 'Japan', '2002-03-17', 'Male', 'married', 'tenant', 1, 'no', '2023-03-17', 'Yes', 'Unconfirmed', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-03-17 03:21:11', 11),
-(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 1, 'no', '2023-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-04-22 10:29:19', 11);
+(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 1, 'no', '2023-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-04-22 10:29:19', 11),
+(7, '1234-5678-9097-8876', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Weis', '', 'Wise', '', 'WEE', 'Japan', '2016-01-01', 'Male', 'single', 'co-occupant', 1, '', '2021-01-02', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-02 01:15:20', 11);
 
 -- --------------------------------------------------------
 
@@ -413,7 +415,9 @@ CREATE TABLE `tbl_cert_appearance` (
 INSERT INTO `tbl_cert_appearance` (`id_cert_appearance`, `name`, `venue`, `date`, `purpose`, `created_at`, `id_user`) VALUES
 (1, 'RUSTOM C. ABELLA', 'SWORDSMITH VILLAGE', '2023-02-13', 'Meeting with the Hashira', '2023-02-13', '11'),
 (2, 'Tom Abella', 'Barangay 25 Hall', '2023-03-17', 'Employment', '2023-03-17', '11'),
-(3, 'Shinobu', 'Swordsmith Village', '2023-04-12', 'to kill Muzan Kibutsuji', '2023-05-02', '11');
+(3, 'Shinobu', 'Swordsmith Village', '2023-04-12', 'to kill Muzan Kibutsuji', '2023-05-02', '11'),
+(4, 'Weise Weise', 'Entertainment Arc', '2023-05-02', 'Meeting with the hashira.', '2023-05-02', '11'),
+(5, 'Sample Me', 'Cak', '2023-05-01', 'visit tempest city', '2023-05-02', '11');
 
 -- --------------------------------------------------------
 
@@ -568,7 +572,13 @@ INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_t
 (0, 11, '20230502815615000001', '2023-05-01 16:11:53', 'Certificate of Appearance for Shinobu', 'Ngek'),
 (0, 11, '20230502484127000001', '2023-05-01 16:14:46', 'Construction Clearance for Shinobu', 'James Reid'),
 (4, 11, '20230502499088000001', '2023-05-01 16:28:03', 'Special Permit for Choco Shake. REPRESENTATIVE: Rustom Abella', 'Nadine Lustre'),
-(5, 11, '20230502759245000001', '2023-05-01 16:31:15', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomassue');
+(5, 11, '20230502759245000001', '2023-05-01 16:31:15', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomassue'),
+(6, 11, '20230502571627000001', '2023-05-02 01:16:09', 'Barangay Clearance for Wise, Weis ', 'Tom Abella'),
+(0, 11, '20230502781133000001', '2023-05-02 01:21:36', 'Certificate of Indigency for Wise, Weis ', 'Tom Abella'),
+(0, 11, '20230502897122000001', '2023-05-02 01:24:22', 'Certificate of Oneness for Wise, Weis ', 'Tom Abella'),
+(0, 11, '20230502168865000001', '2023-05-02 01:37:40', 'Certificate of Appearance for Weise Weise', 'James Maximus'),
+(0, 11, '20230502965388000001', '2023-05-02 01:48:05', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Tom Abella'),
+(0, 11, '20230502750550000001', '2023-05-02 01:55:47', 'Certificate of Appearance for Sample Me', 'Sample Me');
 
 -- --------------------------------------------------------
 
@@ -707,7 +717,10 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (87, '2023-05-01 10:07:02', 'mismaan, has logged in.', '27'),
 (88, '2023-05-01 10:08:42', 'mismaan, has logged out.', '27'),
 (89, '2023-05-01 10:08:47', 'admin, has logged in.', '11'),
-(90, '2023-05-01 11:36:45', 'admin, has logged in.', '11');
+(90, '2023-05-01 11:36:45', 'admin, has logged in.', '11'),
+(91, '2023-05-02 02:51:48', 'admin, has logged out.', '11'),
+(92, '2023-05-02 02:52:48', 'admin, has logged in.', '11'),
+(93, '2023-05-02 02:52:50', 'admin, has logged out.', '11');
 
 --
 -- Indexes for dumped tables
@@ -905,7 +918,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -935,13 +948,13 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
 --
 ALTER TABLE `tbl_cert_appearance`
-  MODIFY `id_cert_appearance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cert_appearance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_household`
@@ -983,7 +996,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
