@@ -150,26 +150,26 @@ while ($row = $result->fetch_assoc()) {
 						<div class="modal-body">
 							<form method="POST" action="model/save_special_permit.php">
 								<div class="form-group">
-									<label>Grantee</label>
-									<input type="text" class="form-control" placeholder="Enter Business Name" name="grantee" required>
+									<label>Grantee<span class="text-danger"><b> *</b></span></label>
+									<input type="text" class="form-control" onkeypress="return onlyAlphabets(event)" placeholder="Enter Business Name" name="grantee" required>
 								</div>
 								<div class="form-group">
-									<label>Representative</label>
-									<input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="representative" required>
+									<label>Representative<span class="text-danger"><b> *</b></span></label>
+									<input type="text" class="form-control mb-2" onkeypress="return onlyAlphabets(event)" placeholder="Enter Owner Name" name="representative" required>
 								</div>
 								<div class="form-group">
-									<label>Action</label>
+									<label>Action<span class="text-danger"><b> *</b></span></label>
 									<textarea class="form-control" name="action" placeholder="To function..." required></textarea>
+									<small class="form-text text-muted text-dark">NOTE: Don't put a period (.) at the end of the sentence.</small>
 								</div>
 								<div class="form-group">
-									<label>Starting Date</label>
+									<label>Starting Date<span class="text-danger"><b> *</b></span></label>
 									<input type="date" class="form-control" name="start_date" required>
 								</div>
 								<div class="form-group">
-									<label>Expiration Date</label>
+									<label>Expiration Date<span class="text-danger"><b> *</b></span></label>
 									<input type="date" class="form-control" name="end_date" required>
 								</div>
-
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

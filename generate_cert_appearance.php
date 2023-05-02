@@ -207,8 +207,8 @@ if (isset($_POST['submit'])) {
                                                     Date<span style="padding-left: 109px;">:&nbsp &nbsp<?= $cert_appearance['date'] ?></span>
                                                 </h2>
 
-                                                <h2 class="mt-3 mb-5 text-uppercase fw-bold" style="font-family: Book Antiqua; line-height: 50px; text-align: justify;">
-                                                    Purpose/s<span style="padding-left: 50px;">:&nbsp<?= $cert_appearance['purpose'] ?></span>
+                                                <h2 class="mt-3 mb-5 fw-bold" style="font-family: Book Antiqua; line-height: 50px; text-align: justify;">
+                                                    <span class="text-uppercase">Purpose/s</span><span style="padding-left: 50px;">:&nbsp &nbsp<?= $cert_appearance['purpose'] ?></span>
                                                 </h2>
                                                 <br>
                                                 <br>

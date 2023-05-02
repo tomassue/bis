@@ -146,20 +146,20 @@ while ($row = $result->fetch_assoc()) {
 						<div class="modal-body">
 							<form method="POST" action="model/save_cert_appearance.php">
 								<div class="form-group">
-									<label>Name</label>
-									<input type="text" class="form-control" placeholder="Enter Name" name="name" required>
+									<label>Name<span class="text-danger"><b> *</b></span></label>
+									<input type="text" class="form-control" onkeypress="return onlyAlphabets(event)" placeholder="Enter Name" name="name" required>
 								</div>
 								<div class="form-group">
-									<label>Venue</label>
-									<input type="text" class="form-control mb-2" placeholder="Enter Venue" name="venue" required>
+									<label>Venue<span class="text-danger"><b> *</b></span></label>
+									<input type="text" class="form-control mb-2" onkeypress="return onlyAlphabets(event)" placeholder="Enter Venue" name="venue" required>
 								</div>
 								<div class="form-group">
-									<label>Date</label>
+									<label>Date<span class="text-danger"><b> *</b></span></label>
 									<input type="date" class="form-control" name="date" required>
 								</div>
 								<div class="form-group">
-									<label>Purpose</label>
-									<input type="text" class="form-control" placeholder="Enter purpose" name="purpose" required>
+									<label>Purpose<span class="text-danger"><b> *</b></span></label>
+									<textarea class="form-control" onkeypress="return onlyAlphabets(event)" placeholder="Enter purpose" name="purpose" required></textarea>
 								</div>
 						</div>
 						<div class="modal-footer">
