@@ -7,6 +7,13 @@ while ($row = $result->fetch_assoc()) {
 	$org[] = $row;
 }
 
+$query2 = "SELECT * FROM tbl_household JOIN tblpurok ON tblpurok.id_purok=tbl_household.id_purok JOIN tblresident2 ON tblresident2.id_household=tbl_household.id_household ORDER BY household_number ASC";
+$result2 = $conn->query($query2);
+$household = array();
+while ($row2 = $result2->fetch_assoc()) {
+	$household[] = $row2;
+}
+
 $res_id = $_GET['res_id'];
 $query2 = "SELECT * FROM tblresident2 WHERE id_resident='$res_id'";
 $result2 = $conn->query($query2);
@@ -21,6 +28,12 @@ $res_info = $result2->fetch_assoc();
 	<link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 	<link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
 	<title>Edit Resident</title>
+
+	<!-- Select2 CSS -->
+	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
+	<link rel="stylesheet" href="assets/css/select2.min.css">
+	<!-- <link rel="stylesheet" href="/path/to/select2.css"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 </head>
 
 <body>
@@ -284,9 +297,20 @@ $res_info = $result2->fetch_assoc();
 
 												<div class="row">
 													<div class="col-md-4">
-														<div class="form-group">
+														<!-- <div class="form-group">
 															<label>Household Number</span><span class="text-danger"><b> *</b></span></label>
 															<input type="text" class="form-control householdnumber" id="householdnumber" onkeyup="GetDetail(this.value)" name="householdnumber" placeholder="Enter Household Number" value="<?= $res_info['id_household'] ?>" required>
+														</div> -->
+														<div class="form-group">
+															<label>Household Number</span><span class="text-danger"><b> *</b></span></label>
+															<select class="form-control js-states input-lg " style="width:100%;" id="single" name="householdnumber" required>
+																<?php foreach ($household as $row2) : ?>
+																	<option value=""></option>
+																	<option value="<?= $row2['id_household'] ?>" <?php if ($res_info['id_household'] == $row2['id_household']) {
+																														echo "selected='selected'";
+																													} ?>>No. <?= $row2['household_number'] . ' (' . $row2['firstname'] . ' ' . $row2['lastname'] . ')' ?></option>
+																<?php endforeach ?>
+															</select>
 														</div>
 													</div>
 													<div class="col-md-4">
@@ -315,7 +339,7 @@ $res_info = $result2->fetch_assoc();
 													<div class="col-md-12">
 														<div class="form-group">
 															<label>Preview (Address)</span></label>
-															<textarea disabled class="form-control" id="detailAdd"></textarea>
+															<textarea disabled class="form-control" id="detailAdd" name="detailAdd"></textarea>
 															<small class="form-text text-muted"><b>E.g., </b>House ownership, Boarder, Tenant</small>
 														</div>
 													</div>
@@ -480,7 +504,37 @@ $res_info = $result2->fetch_assoc();
 	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
 	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 
+	<!-- Select2 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 	<script>
+		$("#single").select2({
+			theme: "bootstrap4",
+			placeholder: "Select Household Number",
+			allowClear: true
+		});
+
+		// Listen for changes in the select option
+		//Household number
+		$('#single').on('change', function() {
+			// Get the selected value
+			var id = $(this).val();
+
+			// Make an AJAX call to the PHP script
+			$.ajax({
+				url: 'get_data_address.php',
+				method: 'POST',
+				data: {
+					id: id
+				},
+				dataType: 'json',
+				success: function(data) {
+					// Populate the input fields with the retrieved data
+					$('#detailAdd').val(data.household_address);
+				}
+			});
+		});
+
 		$('.nationalIdFormat').keyup(function() {
 			var foo = $(this).val().split("-").join(""); // remove hyphens
 			if (foo.length > 0) {
@@ -506,41 +560,41 @@ $res_info = $result2->fetch_assoc();
 		// onkeyup event will occur when the user 
 		// release the key and calls the function
 		// assigned to this event
-		function GetDetail(str) {
-			if (str.length == 0) {
-				document.getElementById("householdnumber").value = "";
-				return;
-			} else {
+		// function GetDetail(str) {
+		// 	if (str.length == 0) {
+		// 		document.getElementById("householdnumber").value = "";
+		// 		return;
+		// 	} else {
 
-				// Creates a new XMLHttpRequest object
-				var xmlhttp = new XMLHttpRequest();
-				xmlhttp.onreadystatechange = function() {
+		// Creates a new XMLHttpRequest object
+		// var xmlhttp = new XMLHttpRequest();
+		// xmlhttp.onreadystatechange = function() {
 
-					// Defines a function to be called when
-					// the readyState property changes
-					if (this.readyState == 4 &&
-						this.status == 200) {
+		// Defines a function to be called when
+		// the readyState property changes
+		// if (this.readyState == 4 &&
+		// 	this.status == 200) {
 
-						// Typical action to be performed
-						// when the document is ready
-						var myObj = JSON.parse(this.responseText);
+		// Typical action to be performed
+		// when the document is ready
+		// var myObj = JSON.parse(this.responseText);
 
-						// Returns the response data as a
-						// string and store this array in
-						// a variable assign the value 
-						// received to first name input field
+		// Returns the response data as a
+		// string and store this array in
+		// a variable assign the value 
+		// received to first name input field
 
-						document.getElementById("detailAdd").value = myObj[0];
-					}
-				};
+		// 		document.getElementById("detailAdd").value = myObj[0];
+		// 	}
+		// };
 
-				// xhttp.open("GET", "filename", true);
-				xmlhttp.open("GET", "gfg.php?user_id=" + str, true);
+		// xhttp.open("GET", "filename", true);
+		// xmlhttp.open("GET", "gfg.php?user_id=" + str, true);
 
-				// Sends the request to the server
-				xmlhttp.send();
-			}
-		}
+		// Sends the request to the server
+		// 		xmlhttp.send();
+		// 	}
+		// }
 	</script>
 </body>
 
