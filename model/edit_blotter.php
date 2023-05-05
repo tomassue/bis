@@ -7,39 +7,37 @@ if (!isset($_SESSION['username'])) {
 	}
 }
 
-$id 	       			= $conn->real_escape_string($_POST['id']);
+$id 	       			= $conn->real_escape_string($_POST['id']); //id_blotter
 $blotter_status 	    = $conn->real_escape_string($_POST['blotter_status']);
 $blotter_date			= $conn->real_escape_string($_POST['blotter_date']);
 $blotter_time			= $conn->real_escape_string($_POST['blotter_time']);
-
 $user 					= $_SESSION['id'];
 
-$queryCheckDuplicateSched = "SELECT * FROM tblblotter_schedule JOIN tblblotter ON tblblotter.id_blotter=tblblotter_schedule.id_blotter WHERE `blotter_date` = '$blotter_date' AND `blotter_time` = '$blotter_time' AND tblblotter.blotter_status='Active'";
+
+$queryCheckDuplicateSched = "SELECT * FROM tblblotter_schedule JOIN tblblotter ON tblblotter.id_blotter=tblblotter_schedule.id_blotter WHERE tblblotter_schedule.blotter_date='$blotter_date' AND tblblotter_schedule.blotter_time='$blotter_time' AND tblblotter.blotter_status='Active' ";
+
 $resultCheckDuplicatedSched = $conn->query($queryCheckDuplicateSched)->num_rows;
-// $checkSched = $resultCheckDuplicatedSched->fetch_assoc();
+// $resultCheckDuplicatedSched = $conn->query($queryCheckDuplicateSched)->fetch_assoc();
 
-// $querycheckActiveStatus = "SELECT * FROM tblblotter WHERE blotter_status = 'Active' ";
-// $resultcheckActiveStatus = $conn->query($querycheckActiveStatus);
-
-if ($resultCheckDuplicatedSched > 0 == FALSE) {
-	if (!empty($id)) {
-		$query 		= "UPDATE tblblotter SET `blotter_status`='$blotter_status', `id_user`='$user' WHERE id_blotter=$id;";
-		$result 	= $conn->query($query);
-		if ($result === true) {
-			$_SESSION['message'] = $resultCheckDuplicatedSched;
-			$_SESSION['success'] = 'success';
-		} else {
-			$_SESSION['message'] = 'Something went wrong!';
-			$_SESSION['success'] = 'danger';
-		}
+// if ($resultCheckDuplicatedSched = 1) {
+if (!empty($id)) {
+	$query 		= "UPDATE tblblotter SET `blotter_status`='$blotter_status', `id_user`='$user' WHERE id_blotter=$id;";
+	$result 	= $conn->query($query);
+	if ($result === true) {
+		$_SESSION['message'] = 'Update blotter successfully';
+		$_SESSION['success'] = 'success';
 	} else {
-		$_SESSION['message'] = 'No Blotter ID found!';
+		$_SESSION['message'] = 'Something went wrong!';
 		$_SESSION['success'] = 'danger';
 	}
 } else {
-	$_SESSION['message'] = 'The schedule has been taken.';
+	$_SESSION['message'] = 'No Blotter ID found!';
 	$_SESSION['success'] = 'danger';
 }
+// } else {
+// 	$_SESSION['message'] = 'The scheduele has already been taken.';
+// 	$_SESSION['success'] = 'danger';
+// }
 
 
 

@@ -2,7 +2,7 @@
 
 <?php if ($_SESSION['role'] == 'administrator') : ?>
     <?php
-    $query = "SELECT * FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position WHERE `archive` = '1' ORDER BY `termend` ASC ";
+    $query = "SELECT * FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position WHERE `archive` = '1' ORDER BY tblposition.id_position ASC ";
     $result = $conn->query($query);
 
     $archived_officials = array();

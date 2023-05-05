@@ -80,17 +80,20 @@ while ($row = $res_o->fetch_assoc()) {
 										<div class="card-title">Current Barangay Officials</div>
 										<?php if (isset($_SESSION['username'])) : ?>
 											<div class="card-tools">
+												<!-- <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm"> -->
+												<a href="#add" data-toggle="modal" class="btn btn-info btn-sm">
+													<i class="fa fa-plus"></i>&nbsp
+													Official
+												</a>
+												<a type="button" href="generate_officials.php" class="btn btn-sm btn-success" title="Print">
+													<i class="fas fa-print"></i>&nbsp Print
+												</a>
 												<?php if ($_SESSION['role'] == 'administrator') : ?>
 													<a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
 														<i class="fas fa-file-archive"></i>&nbsp
 														Archive
 													</a>
 												<?php endif; ?>
-												<!-- <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm"> -->
-												<a href="#add" data-toggle="modal" class="btn btn-info btn-sm">
-													<i class="fa fa-plus"></i>&nbsp
-													Official
-												</a>
 											</div>
 										<?php endif ?>
 									</div>

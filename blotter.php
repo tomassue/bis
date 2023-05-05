@@ -41,6 +41,12 @@ while ($row = $result4->fetch_assoc()) {
 	<link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 	<link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
 	<title>Blotter/Incident Complaint - Barangay Management System</title>
+
+	<!-- Select2 CSS -->
+	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
+	<link rel="stylesheet" href="assets/css/select2.min.css" />
+	<!-- <link rel="stylesheet" href="/path/to/select2.css"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 </head>
 
 <body>
@@ -405,9 +411,19 @@ while ($row = $result4->fetch_assoc()) {
 
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<!-- <div class="form-group">
 													<label for="comp_name">Complainant's Name</label>
 													<input type="text" class="form-control comp_name" id="comp_name" name="comp_name" placeholder="Enter Complainant's Name" required disabled>
+													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>
+												</div> -->
+												<div class="form-group">
+													<label>Complainant's Name</span><span class="text-danger"><b> *</b></span></label>
+													<select class="form-control js-states input-lg comp_name" style="width:100%;" id="comp_name" name="comp_name" required disabled>
+														<?php foreach ($residents as $row2) : ?>
+															<option value=""></option>
+															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] ?> </option>
+														<?php endforeach ?>
+													</select>
 													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>
 												</div>
 											</div>
@@ -459,9 +475,19 @@ while ($row = $result4->fetch_assoc()) {
 
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<!-- <div class="form-group">
 													<label for="resp_name">Respondent's Name<span class="text-danger"><b> *</b></span></label>
 													<input type="text" class="form-control resp_name" id="resp_name" name="resp_name" placeholder="Enter Respondent's Name" required>
+													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>
+												</div> -->
+												<div class="form-group">
+													<label>Respondent's Name</span><span class="text-danger"><b> *</b></span></label>
+													<select class="form-control js-states input-lg resp_name" style="width:100%;" id="resp_name" name="resp_name" required>
+														<?php foreach ($residents as $row2) : ?>
+															<option value=""></option>
+															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] ?> </option>
+														<?php endforeach ?>
+													</select>
 													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>
 												</div>
 											</div>
@@ -651,7 +677,22 @@ while ($row = $result4->fetch_assoc()) {
 	<!-- END -->
 
 	<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+
+	<!-- Select2 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script>
+		$("#comp_name").select2({
+			theme: "bootstrap4",
+			placeholder: "Select Complainant's Name",
+			allowClear: true
+		});
+
+		$("#resp_name").select2({
+			theme: "bootstrap4",
+			placeholder: "Select Respondent's Name",
+			allowClear: true
+		});
+
 		$(document).ready(function() {
 			$('#bookedSched').DataTable();
 		});

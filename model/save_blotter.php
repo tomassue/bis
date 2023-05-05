@@ -29,8 +29,8 @@ $comp_what              = $conn->real_escape_string($_POST['comp_what']);
 $comp_what2             = $conn->real_escape_string($_POST['comp_what2']);
 
 //RESPONDENT'S INFORMATION
-$respname              = $conn->real_escape_string($_POST['resp_name']);
-
+// $respname              = $conn->real_escape_string($_POST['resp_name']);
+$resp_name             = $conn->real_escape_string($_POST['resp_name']);
 //SCHEDULE
 $blotter_date           = $conn->real_escape_string($_POST['blotter_date']);
 $blotter_time           = $conn->real_escape_string($_POST['blotter_time']);
@@ -46,11 +46,11 @@ if (empty($noc_others)) {
 if (empty($complain_name)) {
     $compName = 'N/A';
 } else {
-    //$compName = $complain_name;
+    $compName = $complain_name;
 
-    $mystring = $complain_name;
-    $first = strtok($mystring, ' '); //SO MAO NI ANG PAG CUT SA STRING BEFORE MAG SPACE.
-    $compName = $first;
+    // $mystring = $complain_name;
+    // $first = strtok($mystring, ' '); //SO MAO NI ANG PAG CUT SA STRING BEFORE MAG SPACE.
+    // $compName = $first;
 }
 
 if (empty($comp_nameNotResident)) {
@@ -75,9 +75,9 @@ if (empty($comp_cnumNotResident)) {
     $first = strtok($mystring, ' '); //SO MAO NI ANG PAG CUT SA STRING BEFORE MAG SPACE.
     $comp_name = $first;*/
 
-$mystring2 = $respname;
-$second    = strtok($mystring2, ' ');
-$resp_name = $second;
+// $mystring2 = $respname;
+// $second    = strtok($mystring2, ' ');
+// $resp_name = $second;
 
 $queryCheckComp = "SELECT * FROM tblresident2 WHERE id_resident='$compName'";
 $checkComp = $conn->query($queryCheckComp)->num_rows;

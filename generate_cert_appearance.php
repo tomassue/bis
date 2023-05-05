@@ -16,16 +16,16 @@ if (isset($_POST['submit'])) {
     $cert_appearance = $result->fetch_assoc();
 
     $query1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position NOT IN ('')
-                AND `status`='Incumbent' ORDER BY `order` ASC";
+                AND `status`='Incumbent' AND `archive` = '0' ORDER BY `order` ASC";
     $result1 = $conn->query($query1);
     $officials = array();
     while ($row = $result1->fetch_assoc()) {
         $officials[] = $row;
     }
 
-    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Captain' OR tblposition.position='Barangay Chairman'";
+    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Captain' OR tblposition.position='Barangay Chairman' AND `archive` = '0'";
     $captain = $conn->query($c)->fetch_assoc();
-    $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Secretary'";
+    $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Secretary' AND `archive` = '0'";
     $sec = $conn->query($s)->fetch_assoc();
 ?>
 

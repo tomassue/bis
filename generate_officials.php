@@ -2,17 +2,12 @@
 <?php include 'model/fetch_brgy_info.php' ?>
 
 <?php
-if (isset($_POST['print_official_archives'])) {
-    $termstarted = $conn->real_escape_string($_POST['termstarted']);
-    $termended = $conn->real_escape_string($_POST['termended']);
+$query = "SELECT * FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position WHERE `archive` = '0' ORDER BY tblposition.id_position ASC ";
+$result = $conn->query($query);
 
-    $query = "SELECT * FROM tblofficials JOIN tblposition ON tblposition.id_position=tblofficials.id_position WHERE `archive` = '1' AND `termstart` = '$termstarted' AND `termend` = '$termended' ORDER BY tblposition.id_position ASC ";
-    $result = $conn->query($query);
-
-    $archived_officials = array();
-    while ($row = $result->fetch_assoc()) {
-        $archived_officials[] = $row;
-    }
+$current_officials = array();
+while ($row = $result->fetch_assoc()) {
+    $current_officials[] = $row;
 }
 ?>
 
@@ -102,17 +97,17 @@ if (isset($_POST['print_official_archives'])) {
     </div>
     <hr>
     <div class="card-body">
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
                 <div class="col text-center">
                     <h2><?= strtoupper('List of Barangay Officials') ?></h2>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col text-left">
-                    <h5>Term: <u><?= $termstarted . ' to ' . $termended ?></u></h5>
+                    <h5>Term: <u><?= $termstart . ' to ' . $termended ?></u></h5>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="table-responsive">
             <table id="residenttable" class="display table table-bordered">
@@ -126,8 +121,8 @@ if (isset($_POST['print_official_archives'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($archived_officials)) : ?>
-                        <?php foreach ($archived_officials as $row) : ?>
+                    <?php if (!empty($current_officials)) : ?>
+                        <?php foreach ($current_officials as $row) : ?>
                             <tr>
                                 <td class="text-uppercase"><?= $row['honorifics'] ?> <?= $row['name'] ?></td>
                                 <td style="width: 30%;">
