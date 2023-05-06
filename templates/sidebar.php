@@ -135,6 +135,12 @@ $current_page = PageName();
                             <p>Resident Information</p>
                         </a>
                     </li>
+                    <li class="nav-item <?= $current_page == 'pregnant_women.php' || $current_page == '' ? 'active' : null ?>">
+                        <a href="pregnant_women.php">
+                            <i class="fas fa-child"></i>
+                            <p>Pregnant Women</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>

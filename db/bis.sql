@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 07:35 PM
+-- Generation Time: May 06, 2023 at 05:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,7 +53,8 @@ INSERT INTO `tblblotter` (`id_blotter`, `noc_id`, `noc_others`, `comp_id`, `comp
 (9, 'Others', 'Testing Again', 'N/A', 'Shinobu', 'Zone 5 Upper, Iponan, CDO', '09094568876', 'try', 'try', '3', 'Forwarded to Lupon', '2023-04-22 08:00:39', '2023-05-05 15:51:52', '11'),
 (10, '1', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Swordsmith Village', '09097786675', 'wdefrew', 'fewfwe', '5', 'Settled', '2023-04-22 10:18:34', '2023-05-05 16:53:07', '11'),
 (12, '1', 'N/A', '4', 'N/A', 'N/A', 'N/A', 'tryyytrdy', 'rtysysthstr', '10', 'Active', '2023-05-05 07:18:54', '2023-05-05 16:53:43', '11'),
-(13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Active', '2023-05-05 07:26:15', '2023-05-05 16:13:24', '11');
+(13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Active', '2023-05-05 07:26:15', '2023-05-05 16:13:24', '11'),
+(14, 'Others', 'Sample', 'N/A', 'Shinobu', 'Swordsmith Village', '09098764748', 'fefefeter', 'ewgregreger', '1', 'Settled', '2023-05-06 01:04:47', '2023-05-06 01:09:47', '11');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ INSERT INTO `tblblotter_schedule` (`id_blotter_schedule`, `id_blotter`, `blotter
 (43, 9, '2023-04-22', '13:31:00', '2023-05-05 08:05:16', '2023-05-05 08:05:16'),
 (48, 8, '2023-05-03', '13:30:00', '2023-05-05 08:33:59', '2023-05-05 08:33:59'),
 (54, 13, '2023-05-05', '13:33:00', '2023-05-05 15:40:57', '2023-05-05 15:40:57'),
-(56, 12, '2023-05-06', '13:33:00', '2023-05-05 16:53:52', '2023-05-05 16:53:52');
+(56, 12, '2023-05-06', '13:33:00', '2023-05-05 16:53:52', '2023-05-05 16:53:52'),
+(57, 14, '2023-05-06', '09:30:00', '2023-05-06 01:04:47', '2023-05-06 01:04:47');
 
 -- --------------------------------------------------------
 
@@ -518,6 +520,50 @@ INSERT INTO `tbl_org` (`id_org`, `org_name`, `details`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_p_emergency_contact`
+--
+
+CREATE TABLE `tbl_p_emergency_contact` (
+  `id_p_emergency_contact` int(11) NOT NULL,
+  `emergency_name` varchar(255) NOT NULL,
+  `emergency_relationship` int(255) NOT NULL,
+  `emergency_bday` date NOT NULL,
+  `emergency_cellphone` varchar(50) NOT NULL,
+  `emergency_landline` varchar(255) NOT NULL,
+  `emergency_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `emergency_updated-at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_p_family`
+--
+
+CREATE TABLE `tbl_p_family` (
+  `family_num` varchar(255) NOT NULL,
+  `id_household` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_p_fam_members`
+--
+
+CREATE TABLE `tbl_p_fam_members` (
+  `id_family` int(11) NOT NULL,
+  `id_resident` int(11) NOT NULL,
+  `family_role` varchar(10) NOT NULL,
+  `family_blood_type` varchar(5) NOT NULL,
+  `family_num` varchar(255) NOT NULL,
+  `fam_members_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fam_members_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_special_permit`
 --
 
@@ -779,7 +825,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (95, '2023-05-03 13:03:26', 'admin, has logged in.', '11'),
 (96, '2023-05-03 15:27:25', 'admin, has logged out.', '11'),
 (97, '2023-05-05 01:42:26', 'admin, has logged in.', '11'),
-(98, '2023-05-05 08:04:05', 'admin, has logged in.', '11');
+(98, '2023-05-05 08:04:05', 'admin, has logged in.', '11'),
+(99, '2023-05-06 09:09:50', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -901,6 +948,18 @@ ALTER TABLE `tbl_org`
   ADD PRIMARY KEY (`id_org`);
 
 --
+-- Indexes for table `tbl_p_emergency_contact`
+--
+ALTER TABLE `tbl_p_emergency_contact`
+  ADD PRIMARY KEY (`id_p_emergency_contact`);
+
+--
+-- Indexes for table `tbl_p_fam_members`
+--
+ALTER TABLE `tbl_p_fam_members`
+  ADD PRIMARY KEY (`id_family`);
+
+--
 -- Indexes for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
@@ -935,13 +994,13 @@ ALTER TABLE `tbl_user_logs`
 -- AUTO_INCREMENT for table `tblblotter`
 --
 ALTER TABLE `tblblotter`
-  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule`
 --
 ALTER TABLE `tblblotter_schedule`
-  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule_archive`
@@ -1034,6 +1093,18 @@ ALTER TABLE `tbl_org`
   MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_p_emergency_contact`
+--
+ALTER TABLE `tbl_p_emergency_contact`
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_p_fam_members`
+--
+ALTER TABLE `tbl_p_fam_members`
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
@@ -1055,7 +1126,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

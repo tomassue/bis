@@ -85,7 +85,7 @@ while ($row = $res_o->fetch_assoc()) {
 													<i class="fa fa-plus"></i>&nbsp
 													Official
 												</a>
-												<a type="button" href="generate_officials.php" class="btn btn-sm btn-success" title="Print">
+												<a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
 													<i class="fas fa-print"></i>&nbsp Print
 												</a>
 												<?php if ($_SESSION['role'] == 'administrator') : ?>
