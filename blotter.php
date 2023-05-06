@@ -700,7 +700,7 @@ while ($row = $result4->fetch_assoc()) {
 		$(document).ready(function() {
 			var oTable = $('#blottertable').DataTable({
 				"order": [
-					[3, "asc"]
+					[5, "asc"]
 				]
 			});
 
