@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 05:47 PM
+-- Generation Time: May 08, 2023 at 04:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,8 +52,8 @@ INSERT INTO `tblblotter` (`id_blotter`, `noc_id`, `noc_others`, `comp_id`, `comp
 (8, '1', 'N/A', '1', 'N/A', 'N/A', 'N/A', 'try', 'try', '2', 'Forwarded to Lupon', '2023-04-22 07:59:25', '2023-05-05 16:17:00', '11'),
 (9, 'Others', 'Testing Again', 'N/A', 'Shinobu', 'Zone 5 Upper, Iponan, CDO', '09094568876', 'try', 'try', '3', 'Forwarded to Lupon', '2023-04-22 08:00:39', '2023-05-05 15:51:52', '11'),
 (10, '1', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Swordsmith Village', '09097786675', 'wdefrew', 'fewfwe', '5', 'Settled', '2023-04-22 10:18:34', '2023-05-05 16:53:07', '11'),
-(12, '1', 'N/A', '4', 'N/A', 'N/A', 'N/A', 'tryyytrdy', 'rtysysthstr', '10', 'Active', '2023-05-05 07:18:54', '2023-05-05 16:53:43', '11'),
-(13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Active', '2023-05-05 07:26:15', '2023-05-05 16:13:24', '11'),
+(12, '1', 'N/A', '4', 'N/A', 'N/A', 'N/A', 'tryyytrdy', 'rtysysthstr', '10', 'Settled', '2023-05-05 07:18:54', '2023-05-07 08:18:12', '11'),
+(13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Settled', '2023-05-05 07:26:15', '2023-05-07 08:18:07', '11'),
 (14, 'Others', 'Sample', 'N/A', 'Shinobu', 'Swordsmith Village', '09098764748', 'fefefeter', 'ewgregreger', '1', 'Settled', '2023-05-06 01:04:47', '2023-05-06 01:09:47', '11');
 
 -- --------------------------------------------------------
@@ -420,7 +420,11 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (7, '1234-5678-9097-8876', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Weis', '', 'Wise', '', 'WEE', 'Japan', '2016-01-01', 'Male', 'single', 'co-occupant', 1, '', '2021-01-02', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-02 01:15:20', 11),
 (8, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'New', 'New', 'New', 'Sr.', 'News', 'Jasaan', '2020-01-03', 'Male', 'single', 'new', 4, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 05:45:25', 11),
 (9, '7866-6666-6666-3323', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'COOCCUPANT', 'COOCCUPANT', 'COOCCUPANT', '', 'COOCCUPANT', 'Japan', '2001-05-03', 'Male', 'widow/er', 'co-occupant', 1, 'no', '2023-03-09', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:35:24', 11),
-(10, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'TENANT', 'TENANT', 'TENANT', '', 'TENANT', 'Samps', '2023-01-01', 'Male', 'married', 'tenant', 1, '', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:39:01', 11);
+(10, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'TENANT', 'TENANT', 'TENANT', '', 'TENANT', 'Samps', '2023-01-01', 'Male', 'married', 'tenant', 1, '', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:39:01', 11),
+(11, '1234-5678-7654', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Jane', '', 'Doe', '', 'Jin', 'Jasaan', '1987-05-08', 'Female', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '09876654342', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-08 01:54:22', 11),
+(12, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'John', '', 'Doe', '', 'Jj', 'Jasaan', '1978-05-02', 'Male', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-08 01:58:56', 11),
+(13, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tom', '', 'Doe', '', 'Tomas', 'Jasaan', '2001-01-01', 'Male', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:03:03', 11),
+(14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11);
 
 -- --------------------------------------------------------
 
@@ -473,7 +477,7 @@ INSERT INTO `tbl_household` (`id_household`, `household_number`, `house_no`, `id
 (1, 1, 1, '1', 'Maagad St.', 'Abella\'s residence', 'residential'),
 (2, 2, 2, '2', 'Pacana St.', 'Ella\'s Apartment', 'apartment'),
 (3, 3, 23, '2', 'Laroka St.', 'scac', 'boarding house'),
-(4, 5, 5, '2', 'Laroka St.', 'Ant Aprt.', 'boarding house');
+(4, 5, 5, '2', 'Laroka St.', 'Doe Residence', 'residential');
 
 -- --------------------------------------------------------
 
@@ -545,6 +549,13 @@ CREATE TABLE `tbl_p_family` (
   `id_household` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_p_family`
+--
+
+INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
+('20230508805788000001', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -560,6 +571,13 @@ CREATE TABLE `tbl_p_fam_members` (
   `fam_members_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `fam_members_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_fam_members`
+--
+
+INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
+(1, 11, 'mother', 'O', '20230508805788000001', '2023-05-08 02:46:04', '2023-05-08 02:46:04');
 
 -- --------------------------------------------------------
 
@@ -1066,7 +1084,7 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
@@ -1102,7 +1120,7 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`

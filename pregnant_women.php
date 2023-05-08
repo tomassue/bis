@@ -1,7 +1,7 @@
 <?php include 'server/server.php' ?>
 <?php
 
-$sql = "SELECT * FROM tbl_p_fam_members";
+$sql = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident";
 $result = $conn->query($sql);
 
 $fam_members = array();
@@ -105,6 +105,8 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
+                                                    <th scope="col">Birthday</th>
+                                                    <th scope="col">Cellphone</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -114,8 +116,14 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                     foreach ($fam_members as $row) : ?>
                                                         <tr>
                                                             <td><?= $no ?></td>
-                                                            <td><?= $row['id_resident'] ?></td>
-                                                            <td>Action here</td>
+                                                            <td><?= $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] ?></td>
+                                                            <td><?= date("F j, Y", strtotime($row['birthdate'])) ?></td>
+                                                            <td><?= $row['phone'] ?></td>
+                                                            <td>
+                                                                <a type="button" href="" class="btn btn-link btn-info" title="View blotter details" disabled>
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                     <?php $no++;
                                                     endforeach ?>
@@ -125,7 +133,9 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
-                                                    <th scope="col">Amount</th>
+                                                    <th scope="col">Birthday</th>
+                                                    <th scope="col">Cellphone</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -146,154 +156,156 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <label><b>I. </b>MOTHER'S INFORMATION</label>
-                            <div class="row">
-                                <div class="col-md-6">
+                            <form method="POST" action="model/save_pregnant_women.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>I. </b>MOTHER'S INFORMATION</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Mother</label>
+                                            <select class="form-control js-states" style="width:100%;" id="mother" name="id_resident" required>
+                                                <?php foreach ($getResident as $row) : ?>
+                                                    <option value=""></option>
+                                                    <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Birthday</label>
+                                            <input type="text" class="form-control" id="birthdate" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cellphone (kung meron)</label>
+                                            <input type="text" class="form-control" id="phone" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Blood Type</label>
+                                            <input type="text" class="form-control" name="family_blood_type">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Trabaho</label>
+                                            <input type="text" class="form-control" id="occupation" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- <label><b>II. </b>FATHER'S INFORMATION</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Father</label>
+                                            <select class="form-control js-states" style="width:100%;" id="father" name="id_resident[]" required>
+                                                <?php foreach ($getResident as $row) : ?>
+                                                    <option value=""></option>
+                                                    <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <input type="hidden" value="father" name="family_role[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Birthday</label>
+                                            <input type="text" class="form-control" id="f_birthdate" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cellphone (kung meron)</label>
+                                            <input type="text" class="form-control" id="f_phone" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Blood Type</label>
+                                            <input type="text" class="form-control" name="blood_type[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Trabaho</label>
+                                            <input type="text" class="form-control" id="f_occupation" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <label><b>III. </b>CHILDREN'S INFORMATION</label>
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Mother</label>
-                                        <select class="form-control js-states" style="width:100%;" id="mother" name="id_resident[]" required>
+                                        <label>Anak</label>
+                                        <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
                                             <?php foreach ($getResident as $row) : ?>
-                                                <option value=""></option>
-                                                <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
+                                                <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
                                             <?php endforeach ?>
                                         </select>
-                                        <input type="hidden" value="mother" name="family_role[]">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <hr> -->
+                                <label><b>II. </b>ADDRESS</label>
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Birthday</label>
-                                        <input type="text" class="form-control" id="birthdate" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Cellphone (kung meron)</label>
-                                        <input type="text" class="form-control" id="phone" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Blood Type</label>
-                                        <input type="text" class="form-control" name="blood_type[]">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Trabaho</label>
-                                        <input type="text" class="form-control" id="occupation" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <label><b>II. </b>FATHER'S INFORMATION</label>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Father</label>
-                                        <select class="form-control js-states" style="width:100%;" id="father" name="id_resident[]" required>
-                                            <?php foreach ($getResident as $row) : ?>
+                                        <label>Address</label>
+                                        <select class="form-control js-states" style="width:100%;" id="id_household" name="id_household" required>
+                                            <?php foreach ($getHousehold as $row2) : ?>
                                                 <option value=""></option>
-                                                <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
+                                                <option value="<?= $row['id_household'] ?>"><?= $row2['purok_name'] . ', ' . $row2['household_address'] ?> </option>
                                             <?php endforeach ?>
                                         </select>
-                                        <input type="hidden" value="father" name="family_role[]">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Birthday</label>
-                                        <input type="text" class="form-control" disabled>
+                                <hr>
+                                <!-- <label><b>V. </b>EMERGENCY CONTACT</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Pangalan</label>
+                                            <input type="text" class="form-control" name="emergency_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Kaugnayan</label>
+                                            <input type="text" class="form-control" name="emergency_relationship">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Birthday</label>
+                                            <input type="date" class="form-control" name="emergency_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cellphone (kung meron)</label>
+                                            <input type="text" class="form-control" name="emergency_cp">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Cellphone (kung meron)</label>
-                                        <input type="text" class="form-control" disabled>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Landline (kung meron)</label>
+                                            <input type="text" class="form-control" name="emergency_landline">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Blood Type</label>
-                                        <input type="text" class="form-control" name="blood_type[]">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Trabaho</label>
-                                        <input type="text" class="form-control" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <label><b>III. </b>CHILDREN'S INFORMATION</label>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Anak</label>
-                                    <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
-                                        <?php foreach ($getResident as $row) : ?>
-                                            <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <hr>
-                            <label><b>IV. </b>ADDRESS</label>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <select class="form-control js-states" style="width:100%;" id="id_household" name="id_household" required>
-                                        <?php foreach ($getHousehold as $row2) : ?>
-                                            <option value=""></option>
-                                            <option value="<?= $row['id_household'] ?>"><?= $row2['purok_name'] . ', ' . $row2['household_address'] ?> </option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <hr>
-                            <label><b>V. </b>EMERGENCY CONTACT</label>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Pangalan</label>
-                                        <input type="text" class="form-control" name="emergency_name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Kaugnayan</label>
-                                        <input type="text" class="form-control" name="emergency_relationship">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Birthday</label>
-                                        <input type="date" class="form-control" name="emergency_date">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Cellphone (kung meron)</label>
-                                        <input type="text" class="form-control" name="emergency_cp">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Landline (kung meron)</label>
-                                        <input type="text" class="form-control" name="emergency_landline">
-                                    </div>
-                                </div>
-                            </div>
+                                </div> -->
                         </div>
                         <div>
                             <div class="modal-footer">
+                                <input type="hidden" value="mother" name="mother_family_role">
                                 <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -365,6 +377,30 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                 }
             });
         });
+
+        // Listen for changes in the select option
+        $('#father').on('change', function() {
+            // Get the selected value
+            var id = $(this).val();
+
+            // Make an AJAX call to the PHP script
+            $.ajax({
+                url: 'get_resident_info.php',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // Populate the input fields with the retrieved data
+                    $('#f_birthdate').val(data.birthdate);
+                    $('#f_phone').val(data.phone);
+                    $('#f_occupation').val(data.occupation);
+                }
+            });
+        });
+
+
 
         // add row
         // $("#addRow").click(function() {
