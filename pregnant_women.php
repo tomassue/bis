@@ -120,7 +120,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                             <td><?= date("F j, Y", strtotime($row['birthdate'])) ?></td>
                                                             <td><?= $row['phone'] ?></td>
                                                             <td>
-                                                                <a type="button" href="" class="btn btn-link btn-info" title="View blotter details" disabled>
+                                                                <a type="button" href="pregnant_women_profile_view.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-info" title="View profile" disabled>
                                                                     <i class="fa fa-eye"></i>
                                                                 </a>
                                                             </td>
