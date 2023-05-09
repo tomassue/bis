@@ -1,4 +1,5 @@
 <?php include 'server/server.php' ?>
+
 <?php
 
 $sql = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident";
@@ -11,24 +12,34 @@ while ($row = $result->fetch_assoc()) {
 /////////////////////////////////////////////////////////////////////////////////
 
 $id = $_GET['id'];
+// $query1 = "SELECT * FROM tblresident2 WHERE id_resident='$id'";
+// $result1 = $conn->query($query1);
+// $resident = $result1->fetch_assoc();
 
-$query1 = "SELECT * FROM tblresident2 WHERE id_resident='$id'";
-$result1 = $conn->query($query1);
-$resident = $result1->fetch_assoc();
-
-$query2 = "SELECT * FROM tbl_p_fam_members WHERE id_resident='$id'";
+// $query2 = "SELECT * FROM tbl_p_fam_members WHERE id_resident='$id' AND family_role='mother'";
+$query2 = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE tbl_p_fam_members.id_resident='$id' AND tbl_p_fam_members.family_role='mother'";
 $result2 = $conn->query($query2);
 $mother_profile = $result2->fetch_assoc();
 
+/////////////////////////////////////////////////////////////////////////////////
+
 $family_number = $mother_profile['family_num'];
-$query3 = "SELECT * FROM tbl_p_fam_members WHERE family_num='$family_number' AND family_role='father'";
+$query3 = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE family_num='$family_number' AND family_role='father'";
 $result_query3 = $conn->query($query3);
 $count_father = $result_query3->num_rows;
+$father_info = $result_query3->fetch_assoc();
 
-$query4 = "SELECT * FROM tbl_p_fam_members WHERE family_num='$family_number' AND family_role='child'";
+$query4 = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE family_num='$family_number' AND family_role='children'";
 $result_query4 = $conn->query($query4);
 $count_child = $result_query4->num_rows;
+$child_info = array();
+while ($row3 = $result_query4->fetch_assoc()) {
+    $child_info[] = $row3;
+}
 
+$query5 = "SELECT * FROM tbl_p_emergency_contact WHERE family_num='$family_number'";
+$result_query5 = $conn->query($query5);
+$count_emergency_contact = $result_query5->num_rows;
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -122,11 +133,12 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         <?php endif ?>
                                     </div>
                                 </div>
+                                <!-- MOTHER PROFILE -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="text-center p-1" style="border:1px solid red">
-                                                <img src="<?= preg_match('/data:image/i', $resident['picture']) ? $resident['picture'] : 'assets/uploads/resident_profile/' . $resident['picture'] ?>" alt="Resident Profile" class="img-fluid">
+                                                <img src="<?= preg_match('/data:image/i', $mother_profile['picture']) ? $mother_profile['picture'] : 'assets/uploads/resident_profile/' . $mother_profile['picture'] ?>" alt="Resident Profile" class="img-fluid">
                                             </div>
                                         </div>
                                         <div class="col-md-9">
@@ -136,7 +148,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname']) ?>">
+                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($mother_profile['firstname'] . ' ' . $mother_profile['middlename'] . ' ' . $mother_profile['lastname']) ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -144,7 +156,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($resident['birthdate'])) ?>">
+                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($mother_profile['birthdate'])) ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,7 +166,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $resident['phone'] ?>">
+                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $mother_profile['phone'] ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -172,7 +184,21 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($resident['occupation'])) ?>">
+                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($mother_profile['occupation'])) ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group row">
+                                                        <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Address:</h3>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                        <?php
+                                                        $h_id = $mother_profile['id_household'];
+                                                        $queryHouseholdNumber = "SELECT * FROM tbl_household JOIN tblpurok ON tblpurok.id_purok=tbl_household.id_purok WHERE id_household='$h_id'";
+                                                        $resultHouseholdNumber = $conn->query($queryHouseholdNumber);
+                                                        $householdnum = $resultHouseholdNumber->fetch_assoc();
+                                                        ?>
+                                                        <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($householdnum['purok_name'] . ', ' . $householdnum['household_street_name'] . ', ' . $householdnum['household_address'])) ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,26 +213,27 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="card-head-row">
                                         <div class="card-title">Other Information</div>
                                         <?php if (isset($_SESSION['username'])) : ?>
-                                            <div class="card-tools">
+                                            <!-- <div class="card-tools">
                                                 <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
                                                     <i class="fa fa-plus"></i>&nbsp
                                                     Add
                                                 </a>
-                                                <!-- <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
+                                                <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
                                                     <i class="fas fa-print"></i>&nbsp Print
-                                                </a> -->
+                                                </a>
                                                 <?php if ($_SESSION['role'] == 'administrator') : ?>
-                                                    <!-- <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
+                                                    <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
                                                         <i class="fas fa-file-archive"></i>&nbsp
                                                         Archive
-                                                    </a> -->
+                                                    </a>
                                                 <?php endif; ?>
-                                            </div>
+                                            </div> -->
                                         <?php endif ?>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="accordion accordion-secondary">
+                                        <!--FATHER-->
                                         <div class="card">
                                             <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 <div class="span-icon">
@@ -220,14 +247,22 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
                                                     <?php if ($count_father == 0) : ?>
-                                                        <div class="text-center">
-                                                            No record.
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <a href="#addfatherinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                    Add
+                                                                </a>
+                                                            </div>
+                                                        <?php endif ?>
+                                                        <div class="d-flex justify-content-center">
+                                                            <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="text-center p-1" style="border:1px solid red">
-                                                                    <img src="<?= preg_match('/data:image/i', $resident['picture']) ? $resident['picture'] : 'assets/uploads/resident_profile/' . $resident['picture'] ?>" alt="Resident Profile" class="img-fluid">
+                                                                    <img src="<?= preg_match('/data:image/i', $father_info['picture']) ? $father_info['picture'] : 'assets/uploads/resident_profile/' . $father_info['picture'] ?>" alt="Resident Profile" class="img-fluid">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-9">
@@ -237,7 +272,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname']) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($father_info['firstname'] . ' ' . $father_info['middlename'] . ' ' . $father_info['lastname']) ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
@@ -245,7 +280,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($resident['birthdate'])) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($father_info['birthdate'])) ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -255,7 +290,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $resident['phone'] ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $father_info['phone'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
@@ -263,7 +298,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $mother_profile['family_blood_type'] ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $father_info['family_blood_type'] ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -273,7 +308,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($resident['occupation'])) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($father_info['occupation'])) ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -283,6 +318,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--CHILDREN-->
                                         <div class="card">
                                             <div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                 <div class="span-icon">
@@ -295,29 +331,162 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                             </div>
                                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                 <div class="card-body">
+                                                    <?php if (isset($_SESSION['username'])) : ?>
+                                                        <div class="d-flex justify-content-end">
+                                                            <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                <i class="fa fa-plus"></i>&nbsp
+                                                                Add
+                                                            </a>
+                                                        </div>
+                                                    <?php endif ?>
                                                     <?php if ($count_child == 0) : ?>
-                                                        <div class="text-center">
-                                                            No record.
+                                                        <div class="d-flex justify-content-center">
+                                                            <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                        <?php foreach ($child_info as $row3) : ?>
+                                                            <div class="row mb-5">
+                                                                <div class="col-md-3">
+                                                                    <div class="text-center p-1" style="border:1px solid red">
+                                                                        <img src="<?= preg_match('/data:image/i', $row3['picture']) ? $row3['picture'] : 'assets/uploads/resident_profile/' . $row3['picture'] ?>" alt="Resident Profile" class="img-fluid">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="form-group row">
+                                                                                <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
+                                                                            </div>
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                                <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($row3['firstname'] . ' ' . $row3['middlename'] . ' ' . $row3['lastname']) ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="form-group row">
+                                                                                <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
+                                                                            </div>
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                                <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($row3['birthdate'])) ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="form-group row">
+                                                                                <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
+                                                                            </div>
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                                <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['phone'] ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="form-group row">
+                                                                                <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
+                                                                            </div>
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                                <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['family_blood_type'] ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="form-group row">
+                                                                                <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
+                                                                            </div>
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                                <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($row3['occupation'])) ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endforeach ?>
                                                     <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--EMERGENCY CONTACT-->
                                         <div class="card">
                                             <div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                 <div class="span-icon">
                                                     <div class="flaticon-box-1"></div>
                                                 </div>
                                                 <div class="span-title">
-                                                    Lorem Ipsum #3
+                                                    Emergency Contact
                                                 </div>
                                                 <div class="span-mode"></div>
                                             </div>
                                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    <?php if ($count_emergency_contact == 0) : ?>
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <a href="#addemergencycontactinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                    Add
+                                                                </a>
+                                                            </div>
+                                                        <?php endif ?>
+                                                        <div class="d-flex justify-content-center">
+                                                            <p>No record</p>
+                                                        </div>
+                                                    <?php else : ?>
+                                                        <div class="row mb-5">
+                                                            <div class="col-md-3">
+                                                                <div class="text-center p-1" style="border:1px solid red">
+                                                                    <img src="<?= preg_match('/data:image/i', $row3['picture']) ? $row3['picture'] : 'assets/uploads/resident_profile/' . $row3['picture'] ?>" alt="Resident Profile" class="img-fluid">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($row3['firstname'] . ' ' . $row3['middlename'] . ' ' . $row3['lastname']) ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($row3['birthdate'])) ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['phone'] ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['family_blood_type'] ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($row3['occupation'])) ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -332,29 +501,27 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
 
 
 
-            <!-- Add Mother modal -->
-            <div class="modal fade bd-example-modal-lg" id="addmotherinfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <!-- Add Father modal -->
+            <div class="modal fade bd-example-modal-lg" id="addfatherinfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Add Mother</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Father</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="model/save_pregnant_women.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
-                                <hr>
-                                <!-- <label><b>II. </b>FATHER'S INFORMATION</label>
+                            <form method="POST" action="model/save_p_father_information.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>I. </b>FATHER'S INFORMATION</label>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Father</label>
-                                            <select class="form-control js-states" style="width:100%;" id="father" name="id_resident[]" required>
+                                            <select class="form-control js-states" style="width:100%;" id="father" name="id_resident" required>
                                                 <?php foreach ($getResident as $row) : ?>
                                                     <option value=""></option>
                                                     <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
                                                 <?php endforeach ?>
                                             </select>
-                                            <input type="hidden" value="father" name="family_role[]">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -374,7 +541,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Blood Type</label>
-                                            <input type="text" class="form-control" name="blood_type[]">
+                                            <input type="text" class="form-control" name="blood_type">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -384,8 +551,32 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <label><b>III. </b>CHILDREN'S INFORMATION</label>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="father" name="family_role">
+                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Children modal -->
+            <div class="modal fade bd-example-modal-lg" id="addchildreninfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Children</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_p_children_information.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>II. </b>CHILDREN'S INFORMATION</label>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Anak</label>
@@ -396,21 +587,32 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         </select>
                                     </div>
                                 </div>
-                                <hr> -->
-                                <label><b>II. </b>ADDRESS</label>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <select class="form-control js-states" style="width:100%;" id="id_household" name="id_household" required>
-                                            <?php foreach ($getHousehold as $row2) : ?>
-                                                <option value=""></option>
-                                                <option value="<?= $row['id_household'] ?>"><?= $row2['purok_name'] . ', ' . $row2['household_address'] ?> </option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
-                                <!-- <label><b>V. </b>EMERGENCY CONTACT</label>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="text" value="children" name="family_role">
+                                <input type="text" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Emergency contact modal -->
+            <div class="modal fade bd-example-modal-lg" id="addemergencycontactinfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Emergency contat</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_p_emergency_contact.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>III. </b>EMERGENCY CONTACT</label>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -444,11 +646,12 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                             <input type="text" class="form-control" name="emergency_landline">
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="hidden" value="mother" name="mother_family_role">
+                                <input type="text" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -457,6 +660,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                     </div>
                 </div>
             </div>
+
             <!-- Main Footer -->
             <?php include 'templates/main-footer.php' ?>
             <!-- End Main Footer -->
@@ -474,6 +678,12 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script>
+        var table = $('#pregnantwomen').DataTable({
+            "order": [
+                [0, "desc"]
+            ]
+        });
+
         // START SELECT
         $("#father").select2({
             theme: "bootstrap4",
@@ -493,28 +703,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
             $('.js-example-basic-multiple').select2();
         });
         // END SELECT2
-
-        // Listen for changes in the select option
-        $('#mother').on('change', function() {
-            // Get the selected value
-            var id = $(this).val();
-
-            // Make an AJAX call to the PHP script
-            $.ajax({
-                url: 'get_resident_info.php',
-                method: 'POST',
-                data: {
-                    id: id
-                },
-                dataType: 'json',
-                success: function(data) {
-                    // Populate the input fields with the retrieved data
-                    $('#birthdate').val(data.birthdate);
-                    $('#phone').val(data.phone);
-                    $('#occupation').val(data.occupation);
-                }
-            });
-        });
 
         // Listen for changes in the select option
         $('#father').on('change', function() {
@@ -537,8 +725,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                 }
             });
         });
-
-
 
         // add row
         // $("#addRow").click(function() {
@@ -577,12 +763,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
         // $(document).on('click', '#removeRow', function() {
         //     $(this).closest('#inputFormRow').remove();
         // });
-
-        var table = $('#pregnantwomen').DataTable({
-            "order": [
-                [0, "desc"]
-            ]
-        });
     </script>
 </body>
 

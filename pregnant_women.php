@@ -1,7 +1,7 @@
 <?php include 'server/server.php' ?>
 <?php
 
-$sql = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident";
+$sql = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE family_role='mother' ORDER BY fam_members_created_at DESC";
 $result = $conn->query($sql);
 
 $fam_members = array();
@@ -198,60 +198,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     </div>
                                 </div>
                                 <hr>
-                                <!-- <label><b>II. </b>FATHER'S INFORMATION</label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Father</label>
-                                            <select class="form-control js-states" style="width:100%;" id="father" name="id_resident[]" required>
-                                                <?php foreach ($getResident as $row) : ?>
-                                                    <option value=""></option>
-                                                    <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
-                                                <?php endforeach ?>
-                                            </select>
-                                            <input type="hidden" value="father" name="family_role[]">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Birthday</label>
-                                            <input type="text" class="form-control" id="f_birthdate" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Cellphone (kung meron)</label>
-                                            <input type="text" class="form-control" id="f_phone" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Blood Type</label>
-                                            <input type="text" class="form-control" name="blood_type[]">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Trabaho</label>
-                                            <input type="text" class="form-control" id="f_occupation" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <label><b>III. </b>CHILDREN'S INFORMATION</label>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Anak</label>
-                                        <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
-                                            <?php foreach ($getResident as $row) : ?>
-                                                <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr> -->
                                 <label><b>II. </b>ADDRESS</label>
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -441,9 +387,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
         // });
 
         var table = $('#pregnantwomen').DataTable({
-            "order": [
-                [0, "desc"]
-            ]
+
         });
     </script>
 </body>

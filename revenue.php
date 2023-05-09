@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php
-$sql = "SELECT * FROM tblpayments JOIN tbl_transactions ON tbl_transactions.id_payments=tblpayments.id_payments";
+$sql = "SELECT * FROM tblpayments JOIN tbl_transactions ON tbl_transactions.id_payments=tblpayments.id_payments ORDER BY tbl_transactions.date_transact DESC";
 $result = $conn->query($sql);
 
 $revenue = array();
@@ -121,9 +121,6 @@ while ($row = $result->fetch_assoc()) {
 			});
 
 			var table = $('#revenuetable').DataTable({
-				"order": [
-					[0, "desc"]
-				],
 				dom: 'Bfrtip',
 				buttons: [
 					'print'

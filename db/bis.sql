@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 10:38 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 09, 2023 at 11:04 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -278,13 +278,13 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, 20000.00),
-(2, 60000.00),
-(3, 99999999.99),
-(4, 399.00),
-(5, 6969.00),
-(6, 22.00),
-(7, 25.00);
+(1, '20000.00'),
+(2, '60000.00'),
+(3, '99999999.99'),
+(4, '399.00'),
+(5, '6969.00'),
+(6, '22.00'),
+(7, '25.00');
 
 -- --------------------------------------------------------
 
@@ -534,6 +534,7 @@ CREATE TABLE `tbl_p_emergency_contact` (
   `emergency_bday` date NOT NULL,
   `emergency_cellphone` varchar(50) NOT NULL,
   `emergency_landline` varchar(255) NOT NULL,
+  `family_num` varchar(255) NOT NULL,
   `emergency_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `emergency_updated-at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -548,13 +549,6 @@ CREATE TABLE `tbl_p_family` (
   `family_num` varchar(255) NOT NULL,
   `id_household` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_p_family`
---
-
-INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
-('20230508805788000001', 4);
 
 -- --------------------------------------------------------
 
@@ -571,13 +565,6 @@ CREATE TABLE `tbl_p_fam_members` (
   `fam_members_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `fam_members_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_p_fam_members`
---
-
-INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
-(1, 11, 'mother', 'O', '20230508805788000001', '2023-05-08 02:46:04', '2023-05-08 02:46:04');
 
 -- --------------------------------------------------------
 
@@ -844,7 +831,9 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (96, '2023-05-03 15:27:25', 'admin, has logged out.', '11'),
 (97, '2023-05-05 01:42:26', 'admin, has logged in.', '11'),
 (98, '2023-05-05 08:04:05', 'admin, has logged in.', '11'),
-(99, '2023-05-06 09:09:50', 'admin, has logged in.', '11');
+(99, '2023-05-06 09:09:50', 'admin, has logged in.', '11'),
+(100, '2023-05-09 00:43:52', 'admin, has logged in.', '11'),
+(101, '2023-05-09 03:30:28', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1114,13 +1103,13 @@ ALTER TABLE `tbl_org`
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
@@ -1144,7 +1133,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
