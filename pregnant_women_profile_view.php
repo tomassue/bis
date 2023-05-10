@@ -40,6 +40,7 @@ while ($row3 = $result_query4->fetch_assoc()) {
 $query5 = "SELECT * FROM tbl_p_emergency_contact WHERE family_num='$family_number'";
 $result_query5 = $conn->query($query5);
 $count_emergency_contact = $result_query5->num_rows;
+$emergency_contact_info = $result_query5->fetch_assoc();
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -102,6 +103,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                     <div class="row mt--2">
                         <div class="col-md-12">
 
+                            <!-- SESSION MESSAGE -->
                             <?php if (isset($_SESSION['message'])) : ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>
@@ -113,7 +115,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-head-row">
-                                        <div class="card-title">Profile</div>
+                                        <div class="card-title">Mother's Profile</div>
                                         <?php if (isset($_SESSION['username'])) : ?>
                                             <div class="card-tools">
                                                 <!-- <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
@@ -259,7 +261,16 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
-                                                        <div class="row">
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <a href="#editfatherinfo<?= $father_info['id_resident'] ?>" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <i class="fa fa-edit"></i>&nbsp
+                                                                    Edit
+                                                                </a>
+                                                            </div>
+                                                            <?php include 'p_edit_father.php'; ?>
+                                                        <?php endif ?>
+                                                        <div class="row mb-5">
                                                             <div class="col-md-3">
                                                                 <div class="text-center p-1" style="border:1px solid red">
                                                                     <img src="<?= preg_match('/data:image/i', $father_info['picture']) ? $father_info['picture'] : 'assets/uploads/resident_profile/' . $father_info['picture'] ?>" alt="Resident Profile" class="img-fluid">
@@ -331,19 +342,37 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                             </div>
                                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    <?php if (isset($_SESSION['username'])) : ?>
-                                                        <div class="d-flex justify-content-end">
-                                                            <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                <i class="fa fa-plus"></i>&nbsp
-                                                                Add
-                                                            </a>
-                                                        </div>
-                                                    <?php endif ?>
                                                     <?php if ($count_child == 0) : ?>
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                    Add
+                                                                </a>
+                                                            </div>
+                                                        <?php endif ?>
                                                         <div class="d-flex justify-content-center">
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <div class="m-1">
+                                                                    <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                        Add
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="m-1">
+                                                                    <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                        Edit
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                        <?php endif ?>
                                                         <?php foreach ($child_info as $row3) : ?>
                                                             <div class="row mb-5">
                                                                 <div class="col-md-3">
@@ -431,20 +460,33 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
-                                                        <div class="row mb-5">
-                                                            <div class="col-md-3">
-                                                                <div class="text-center p-1" style="border:1px solid red">
-                                                                    <img src="<?= preg_match('/data:image/i', $row3['picture']) ? $row3['picture'] : 'assets/uploads/resident_profile/' . $row3['picture'] ?>" alt="Resident Profile" class="img-fluid">
-                                                                </div>
+                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                            <div class="d-flex justify-content-end">
+                                                                <a href="#addemergencycontactinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <i class="fa fa-edit"></i>&nbsp
+                                                                    Edit
+                                                                </a>
                                                             </div>
-                                                            <div class="col-md-9">
+                                                        <?php endif ?>
+                                                        <div class="row mb-5">
+                                                            <div class="col">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($row3['firstname'] . ' ' . $row3['middlename'] . ' ' . $row3['lastname']) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($emergency_contact_info['emergency_name']) ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group row">
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Kaugnayan:</h3>
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $emergency_contact_info['emergency_relationship'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
@@ -452,35 +494,25 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($row3['birthdate'])) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= date('F d, Y', strtotime($emergency_contact_info['emergency_bday'])) ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-group row">
-                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Cellphone:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['phone'] ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $emergency_contact_info['emergency_cellphone'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
                                                                         <div class="form-group row">
-                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
+                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Landline:</h3>
                                                                         </div>
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['family_blood_type'] ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="form-group row">
-                                                                            <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
-                                                                        </div>
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($row3['occupation'])) ?>">
+                                                                            <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $emergency_contact_info['emergency_landline'] ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -498,7 +530,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                     </div>
                 </div>
             </div>
-
 
 
             <!-- Add Father modal -->
@@ -556,7 +587,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                             <div class="modal-footer">
                                 <input type="hidden" value="father" name="family_role">
                                 <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
-                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -565,6 +596,71 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                     </div>
                 </div>
             </div>
+
+            <!-- Edit Father modal -->
+            <!-- <div class="modal fade bd-example-modal-lg" id="editfatherinfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Father</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyedit">
+                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>I. </b>FATHER'S INFORMATION</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Father</label>
+                                            <select class="form-control js-states" style="width:100%;" id="editfather" name="id_resident" required>
+                                                <?php foreach ($getResident as $row) : ?>
+                                                    <option value=""></option>
+                                                    <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Birthday</label>
+                                            <input type="text" class="form-control" id="f_birthdate" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cellphone (kung meron)</label>
+                                            <input type="text" class="form-control" id="f_phone" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Blood Type</label>
+                                            <input type="text" class="form-control" name="blood_type">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Trabaho</label>
+                                            <input type="text" class="form-control" id="f_occupation" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="father" name="family_role">
+                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 
             <!-- Add Children modal -->
             <div class="modal fade bd-example-modal-lg" id="addchildreninfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -590,9 +686,9 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="text" value="children" name="family_role">
-                                <input type="text" value="<?= $mother_profile['family_num'] ?>" name="family_num">
-                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <input type="hidden" value="children" name="family_role">
+                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -650,8 +746,8 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="text" value="<?= $mother_profile['family_num'] ?>" name="family_num">
-                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -692,6 +788,13 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
             dropdownParent: $('#bodyadd')
         });
 
+        $("#editfather").select2({
+            theme: "bootstrap4",
+            placeholder: "Select Father",
+            allowClear: true,
+            dropdownParent: $('#bodyedit')
+        });
+
         $("#id_household").select2({
             theme: "bootstrap4",
             placeholder: "Select Household",
@@ -706,6 +809,28 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
 
         // Listen for changes in the select option
         $('#father').on('change', function() {
+            // Get the selected value
+            var id = $(this).val();
+
+            // Make an AJAX call to the PHP script
+            $.ajax({
+                url: 'get_resident_info.php',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // Populate the input fields with the retrieved data
+                    $('#f_birthdate').val(data.birthdate);
+                    $('#f_phone').val(data.phone);
+                    $('#f_occupation').val(data.occupation);
+                }
+            });
+        });
+
+        // Listen for changes in the select option
+        $('#editfather').on('change', function() {
             // Get the selected value
             var id = $(this).val();
 

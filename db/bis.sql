@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2023 at 11:04 AM
+-- Generation Time: May 10, 2023 at 09:12 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -424,7 +424,12 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (11, '1234-5678-7654', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Jane', '', 'Doe', '', 'Jin', 'Jasaan', '1987-05-08', 'Female', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '09876654342', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-08 01:54:22', 11),
 (12, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'John', '', 'Doe', '', 'Jj', 'Jasaan', '1978-05-02', 'Male', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-08 01:58:56', 11),
 (13, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tom', '', 'Doe', '', 'Tomas', 'Jasaan', '2001-01-01', 'Male', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:03:03', 11),
-(14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11);
+(14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11),
+(15, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090643Screenshot_1.png', 'Boo', '', 'Wang', '', 'Boo', 'Jasaan', '1975-03-13', 'Male', 'married', 'new', 5, 'yes', '2002-05-10', 'Yes', 'Confirmed', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-10 01:06:43', 11),
+(16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Malou', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-10 01:05:32', 11),
+(17, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090706Screenshot_2.png', 'Duke', '', 'Wang', '', 'Duke', 'Buki\\', '2001-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:07:06', 11),
+(18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
+(19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11);
 
 -- --------------------------------------------------------
 
@@ -477,7 +482,8 @@ INSERT INTO `tbl_household` (`id_household`, `household_number`, `house_no`, `id
 (1, 1, 1, '1', 'Maagad St.', 'Abella\'s residence', 'residential'),
 (2, 2, 2, '2', 'Pacana St.', 'Ella\'s Apartment', 'apartment'),
 (3, 3, 23, '2', 'Laroka St.', 'scac', 'boarding house'),
-(4, 5, 5, '2', 'Laroka St.', 'Doe Residence', 'residential');
+(4, 5, 5, '2', 'Laroka St.', 'Doe Residence', 'residential'),
+(5, 6, 6, '1', 'Muugad St.', 'Wang Residence', 'residential');
 
 -- --------------------------------------------------------
 
@@ -530,7 +536,7 @@ INSERT INTO `tbl_org` (`id_org`, `org_name`, `details`) VALUES
 CREATE TABLE `tbl_p_emergency_contact` (
   `id_p_emergency_contact` int(11) NOT NULL,
   `emergency_name` varchar(255) NOT NULL,
-  `emergency_relationship` int(255) NOT NULL,
+  `emergency_relationship` varchar(255) NOT NULL,
   `emergency_bday` date NOT NULL,
   `emergency_cellphone` varchar(50) NOT NULL,
   `emergency_landline` varchar(255) NOT NULL,
@@ -538,6 +544,14 @@ CREATE TABLE `tbl_p_emergency_contact` (
   `emergency_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `emergency_updated-at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_emergency_contact`
+--
+
+INSERT INTO `tbl_p_emergency_contact` (`id_p_emergency_contact`, `emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`, `emergency_created_at`, `emergency_updated-at`) VALUES
+(8, 'Tanjiro Kama Doe', 'Brother', '2001-01-29', '09284137476', '', '20230510314056000001', '2023-05-10 01:32:56', '2023-05-10 01:32:56'),
+(9, 'Goe Tom', 'Friend', '2001-01-01', '0978564563', '', '20230510219022000001', '2023-05-10 01:38:32', '2023-05-10 01:38:32');
 
 -- --------------------------------------------------------
 
@@ -549,6 +563,14 @@ CREATE TABLE `tbl_p_family` (
   `family_num` varchar(255) NOT NULL,
   `id_household` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_family`
+--
+
+INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
+('20230510314056000001', 4),
+('20230510219022000001', 5);
 
 -- --------------------------------------------------------
 
@@ -565,6 +587,21 @@ CREATE TABLE `tbl_p_fam_members` (
   `fam_members_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `fam_members_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_fam_members`
+--
+
+INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
+(26, 11, 'mother', 'O', '20230510314056000001', '2023-05-10 00:38:03', '2023-05-10 00:38:03'),
+(28, 13, 'children', '', '20230510314056000001', '2023-05-10 00:38:31', '2023-05-10 00:38:31'),
+(29, 14, 'children', '', '20230510314056000001', '2023-05-10 00:38:31', '2023-05-10 00:38:31'),
+(30, 16, 'mother', 'O', '20230510219022000001', '2023-05-10 01:13:06', '2023-05-10 01:13:06'),
+(31, 15, 'father', 'O', '20230510219022000001', '2023-05-10 01:13:28', '2023-05-10 01:13:28'),
+(32, 17, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
+(33, 18, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
+(34, 19, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
+(35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04');
 
 -- --------------------------------------------------------
 
@@ -1073,7 +1110,7 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
@@ -1085,7 +1122,7 @@ ALTER TABLE `tbl_cert_appearance`
 -- AUTO_INCREMENT for table `tbl_household`
 --
 ALTER TABLE `tbl_household`
-  MODIFY `id_household` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_household` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_nature_of_case`
@@ -1103,13 +1140,13 @@ ALTER TABLE `tbl_org`
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
