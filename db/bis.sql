@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 09:12 AM
+-- Generation Time: May 12, 2023 at 11:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -594,14 +594,14 @@ CREATE TABLE `tbl_p_fam_members` (
 
 INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
 (26, 11, 'mother', 'O', '20230510314056000001', '2023-05-10 00:38:03', '2023-05-10 00:38:03'),
-(28, 13, 'children', '', '20230510314056000001', '2023-05-10 00:38:31', '2023-05-10 00:38:31'),
 (29, 14, 'children', '', '20230510314056000001', '2023-05-10 00:38:31', '2023-05-10 00:38:31'),
 (30, 16, 'mother', 'O', '20230510219022000001', '2023-05-10 01:13:06', '2023-05-10 01:13:06'),
 (31, 15, 'father', 'O', '20230510219022000001', '2023-05-10 01:13:28', '2023-05-10 01:13:28'),
 (32, 17, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
 (33, 18, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
 (34, 19, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
-(35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04');
+(35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04'),
+(36, 13, 'children', '', '20230510314056000001', '2023-05-12 08:43:56', '2023-05-12 08:43:56');
 
 -- --------------------------------------------------------
 
@@ -870,7 +870,9 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (98, '2023-05-05 08:04:05', 'admin, has logged in.', '11'),
 (99, '2023-05-06 09:09:50', 'admin, has logged in.', '11'),
 (100, '2023-05-09 00:43:52', 'admin, has logged in.', '11'),
-(101, '2023-05-09 03:30:28', 'admin, has logged in.', '11');
+(101, '2023-05-09 03:30:28', 'admin, has logged in.', '11'),
+(102, '2023-05-10 07:16:59', 'admin, has logged out.', '11'),
+(103, '2023-05-12 08:02:00', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1146,7 +1148,7 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
@@ -1170,7 +1172,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

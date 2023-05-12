@@ -237,7 +237,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="accordion accordion-secondary">
                                         <!--FATHER-->
                                         <div class="card">
-                                            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <div class="card-header collapsed" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                 <div class="span-icon">
                                                     <div class="flaticon-box-1"></div>
                                                 </div>
@@ -246,7 +246,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 </div>
                                                 <div class="span-mode"></div>
                                             </div>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
                                                     <?php if ($count_father == 0) : ?>
                                                         <?php if (isset($_SESSION['username'])) : ?>
@@ -358,17 +358,11 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                             <div class="d-flex justify-content-end">
                                                                 <div class="m-1">
-                                                                    <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                        <i class="fa fa-plus"></i>&nbsp
-                                                                        Add
-                                                                    </a>
-                                                                </div>
-
-                                                                <div class="m-1">
-                                                                    <a href="#addchildreninfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                    <a href="#editchildreninfo<?= $mother_profile['family_num'] ?>" data-toggle="modal" class="btn btn-info btn-sm">
                                                                         <i class="fa fa-edit"></i>&nbsp
                                                                         Edit
                                                                     </a>
+                                                                    <?php include 'p_edit_children.php' ?>
                                                                 </div>
 
                                                             </div>
@@ -462,10 +456,11 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                     <?php else : ?>
                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                             <div class="d-flex justify-content-end">
-                                                                <a href="#addemergencycontactinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                <a href="#editemergencycontactinfo<?= $emergency_contact_info['id_p_emergency_contact'] ?>" data-toggle="modal" class="btn btn-info btn-sm">
                                                                     <i class="fa fa-edit"></i>&nbsp
                                                                     Edit
                                                                 </a>
+                                                                <?php include 'p_emergency_contact.php'; ?>
                                                             </div>
                                                         <?php endif ?>
                                                         <div class="row mb-5">
@@ -596,71 +591,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                     </div>
                 </div>
             </div>
-
-            <!-- Edit Father modal -->
-            <!-- <div class="modal fade bd-example-modal-lg" id="editfatherinfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Father</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body" id="bodyedit">
-                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
-                                <label><b>I. </b>FATHER'S INFORMATION</label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Father</label>
-                                            <select class="form-control js-states" style="width:100%;" id="editfather" name="id_resident" required>
-                                                <?php foreach ($getResident as $row) : ?>
-                                                    <option value=""></option>
-                                                    <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Birthday</label>
-                                            <input type="text" class="form-control" id="f_birthdate" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Cellphone (kung meron)</label>
-                                            <input type="text" class="form-control" id="f_phone" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Blood Type</label>
-                                            <input type="text" class="form-control" name="blood_type">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Trabaho</label>
-                                            <input type="text" class="form-control" id="f_occupation" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div>
-                            <div class="modal-footer">
-                                <input type="hidden" value="father" name="family_role">
-                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
-                                <input type="hidden" value="<?= $id ?>" name="mother_id">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                </form>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
             <!-- Add Children modal -->
             <div class="modal fade bd-example-modal-lg" id="addchildreninfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
