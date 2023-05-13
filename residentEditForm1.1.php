@@ -371,7 +371,7 @@ $res_info = $result2->fetch_assoc();
 																	<option value="No">No</option>
 																<?php elseif ($res_info['vstatus'] == "No") : ?>
 																	<option value="<?= $res_info['vstatus'] ?>" selected><?= $res_info['vstatus'] ?></option>
-																	<option value="No">No</option>
+																	<option value="Yes">Yes</option>
 																<?php endif; ?>
 																<!-- <option value="<?= $res_info['vstatus'] ?>" selected><?= $res_info['vstatus'] ?></option>
 			                                                    <option value="Yes">Yes</option>
