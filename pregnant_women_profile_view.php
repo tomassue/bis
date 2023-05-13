@@ -462,7 +462,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                 </a>
                                                                 <?php include 'p_edit_emergency_contact.php'; ?>
                                                                 &nbsp; &nbsp;
-                                                                <a href="model/remove_p_emergency_contact_information.php?em_id=<?= $emergency_contact_info['id_p_emergency_contact'] ?>&mother_id=<?= $id ?>" class="btn btn-danger btn-sm">
+                                                                <a href="model/remove_p_emergency_contact_information.php?em_id=<?= $emergency_contact_info['id_p_emergency_contact'] ?>&mother_id=<?= $id ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to remove the emergency contact information?');">
                                                                     <i class="fas fa-minus"></i>&nbsp
                                                                     Remove
                                                                 </a>

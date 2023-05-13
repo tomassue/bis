@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2023 at 03:56 AM
+-- Generation Time: May 13, 2023 at 06:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -551,8 +551,8 @@ CREATE TABLE `tbl_p_emergency_contact` (
 --
 
 INSERT INTO `tbl_p_emergency_contact` (`id_p_emergency_contact`, `emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`, `emergency_created_at`, `emergency_updated-at`) VALUES
-(8, 'Tanjiro Kama Doe', 'Brother', '2001-01-29', '09284137476', '', '20230510314056000001', '2023-05-10 01:32:56', '2023-05-10 01:32:56'),
-(11, 'Go Tom', 'Cousin', '1998-02-01', '09284137470', '', '20230510219022000001', '2023-05-13 01:56:19', '2023-05-13 01:56:28');
+(13, 'Tanjiro Kama Doe', 'Cousin', '2023-05-13', '09284137470', '', '20230510314056000001', '2023-05-13 03:52:50', '2023-05-13 03:52:50'),
+(14, 'Goe Tom', 'Brother', '0000-00-00', '09284137476', '1234567890', '20230510219022000001', '2023-05-13 03:57:16', '2023-05-13 03:57:16');
 
 -- --------------------------------------------------------
 
@@ -595,14 +595,15 @@ CREATE TABLE `tbl_p_fam_members` (
 
 INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
 (26, 11, 'mother', 'O', '20230510314056000001', '2023-05-10 00:38:03', '2023-05-10 00:38:03'),
-(29, 14, 'children', '', '20230510314056000001', '2023-05-10 00:38:31', '2023-05-10 00:38:31'),
 (30, 16, 'mother', 'O', '20230510219022000001', '2023-05-10 01:13:06', '2023-05-10 01:13:06'),
 (31, 15, 'father', 'O', '20230510219022000001', '2023-05-10 01:13:28', '2023-05-10 01:13:28'),
-(32, 17, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
-(33, 18, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
-(34, 19, 'children', '', '20230510219022000001', '2023-05-10 01:13:41', '2023-05-10 01:13:41'),
 (35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04'),
-(36, 13, 'children', '', '20230510314056000001', '2023-05-12 08:43:56', '2023-05-12 08:43:56');
+(60, 13, 'children', '', '20230510314056000001', '2023-05-13 03:03:15', '2023-05-13 03:03:15'),
+(61, 14, 'children', '', '20230510314056000001', '2023-05-13 03:03:15', '2023-05-13 03:03:15'),
+(67, 17, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
+(68, 20, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
+(69, 18, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
+(70, 19, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54');
 
 -- --------------------------------------------------------
 
@@ -651,7 +652,7 @@ CREATE TABLE `tbl_support` (
 --
 
 INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
-(1, '10', '', 'TRY lang', 'Dili ko access.', 'pending', '2023-03-17 03:59:43'),
+(1, '10', '', 'TRY lang', 'Dili ko access.', 'resolved', '2023-03-17 03:59:43'),
 (2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03');
 
 -- --------------------------------------------------------
@@ -1145,13 +1146,13 @@ ALTER TABLE `tbl_org`
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
