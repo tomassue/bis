@@ -8,6 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $id                     =   $_POST['mother_id'];
+$em_id                  =   $_POST['em_id'];
 
 $emergency_name         =   $_POST['emergency_name'];
 $emergency_relationship =   $_POST['emergency_relationship'];
@@ -20,9 +21,14 @@ $family_num         = $conn->real_escape_string($_POST['family_num']);
 
 if (!empty($family_num)) {
     // Loop through the input arrays
-    $query_update = "INSERT INTO tbl_p_emergency_contact (`emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`) 
-                    VALUES ('$emergency_name', '$emergency_relationship', '$emergency_date', '$emergency_cp', '$emergency_landline', '$family_num')";
-    $result_update = $conn->query($query_insert);
+    $query_update = "UPDATE tbl_p_emergency_contact 
+    SET `emergency_name` = '$emergency_name', 
+    `emergency_relationship` = '$emergency_relationship', 
+    `emergency_bday` = '$emergency_date', 
+    `emergency_cellphone` = '$emergency_cp', 
+    `emergency_landline` = '$emergency_landline'
+    WHERE `family_num` = '$family_num' AND `id_p_emergency_contact` = '$em_id'";
+    $result_update = $conn->query($query_update);
 
     if ($result_update) {
         $_SESSION['message'] = 'Updated successfully!';

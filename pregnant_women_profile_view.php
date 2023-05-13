@@ -460,7 +460,12 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     <i class="fa fa-edit"></i>&nbsp
                                                                     Edit
                                                                 </a>
-                                                                <?php include 'p_emergency_contact.php'; ?>
+                                                                <?php include 'p_edit_emergency_contact.php'; ?>
+                                                                &nbsp; &nbsp;
+                                                                <a href="model/remove_p_emergency_contact_information.php?em_id=<?= $emergency_contact_info['id_p_emergency_contact'] ?>&mother_id=<?= $id ?>" class="btn btn-danger btn-sm">
+                                                                    <i class="fas fa-minus"></i>&nbsp
+                                                                    Remove
+                                                                </a>
                                                             </div>
                                                         <?php endif ?>
                                                         <div class="row mb-5">

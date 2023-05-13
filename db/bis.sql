@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2023 at 11:05 AM
+-- Generation Time: May 13, 2023 at 03:56 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -429,7 +429,8 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Malou', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-10 01:05:32', 11),
 (17, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090706Screenshot_2.png', 'Duke', '', 'Wang', '', 'Duke', 'Buki\\', '2001-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:07:06', 11),
 (18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
-(19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11);
+(19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11),
+(20, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nee', '', 'Wang', '', 'Ne', 'Jasaan', '2001-01-02', 'Male', 'single', 'co-occupant', 5, 'no', '2023-05-02', 'Yes', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-13 00:20:25', 11);
 
 -- --------------------------------------------------------
 
@@ -551,7 +552,7 @@ CREATE TABLE `tbl_p_emergency_contact` (
 
 INSERT INTO `tbl_p_emergency_contact` (`id_p_emergency_contact`, `emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`, `emergency_created_at`, `emergency_updated-at`) VALUES
 (8, 'Tanjiro Kama Doe', 'Brother', '2001-01-29', '09284137476', '', '20230510314056000001', '2023-05-10 01:32:56', '2023-05-10 01:32:56'),
-(9, 'Goe Tom', 'Friend', '2001-01-01', '0978564563', '', '20230510219022000001', '2023-05-10 01:38:32', '2023-05-10 01:38:32');
+(11, 'Go Tom', 'Cousin', '1998-02-01', '09284137470', '', '20230510219022000001', '2023-05-13 01:56:19', '2023-05-13 01:56:28');
 
 -- --------------------------------------------------------
 
@@ -872,7 +873,9 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (100, '2023-05-09 00:43:52', 'admin, has logged in.', '11'),
 (101, '2023-05-09 03:30:28', 'admin, has logged in.', '11'),
 (102, '2023-05-10 07:16:59', 'admin, has logged out.', '11'),
-(103, '2023-05-12 08:02:00', 'admin, has logged in.', '11');
+(103, '2023-05-12 08:02:00', 'admin, has logged in.', '11'),
+(104, '2023-05-12 09:05:59', 'admin, has logged out.', '11'),
+(105, '2023-05-13 00:17:19', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1112,7 +1115,7 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
@@ -1142,7 +1145,7 @@ ALTER TABLE `tbl_org`
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
@@ -1172,7 +1175,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

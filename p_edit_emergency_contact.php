@@ -1,4 +1,4 @@
-<!-- Add Emergency contact modal -->
+<!-- Edit Emergency contact modal -->
 <div class="modal fade bd-example-modal-lg" id="editemergencycontactinfo<?= $emergency_contact_info['id_p_emergency_contact'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" id="bodyadd">
-                <form method="POST" action="model/save_p_emergency_contact.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                <form method="POST" action="model/edit_p_emergency_contact_information.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                     <label><b>III. </b>EMERGENCY CONTACT</label>
                     <div class="row">
                         <div class="col-md-6">
@@ -47,6 +47,7 @@
             <div>
                 <div class="modal-footer">
                     <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                    <input type="hidden" value="<?= $emergency_contact_info['id_p_emergency_contact'] ?>" name="em_id">
                     <input type="hidden" value="<?= $id ?>" name="mother_id">
                     <button type="submit" class="btn btn-primary">Save</button>
                     </form>
