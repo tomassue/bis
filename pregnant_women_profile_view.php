@@ -239,7 +239,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         <div class="card">
                                             <div class="card-header collapsed" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                 <div class="span-icon">
-                                                    <div class="flaticon-box-1"></div>
+                                                    <div class="flaticon-user-4"></div>
                                                 </div>
                                                 <div class="span-title">
                                                     Father
@@ -333,7 +333,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         <div class="card">
                                             <div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                 <div class="span-icon">
-                                                    <div class="flaticon-box-1"></div>
+                                                    <div class="flaticon-user-4"></div>
                                                 </div>
                                                 <div class="span-title">
                                                     Children
@@ -364,7 +364,6 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     </a>
                                                                     <?php include 'p_edit_children.php' ?>
                                                                 </div>
-
                                                             </div>
                                                         <?php endif ?>
                                                         <?php foreach ($child_info as $row3) : ?>
@@ -521,6 +520,57 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                     <?php endif ?>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion accordion-secondary">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#One" aria-expanded="true" aria-controls="One">
+                                        <div class="span-icon">
+                                            <div class="flaticon-box-1"></div>
+                                        </div>
+                                        <div class="span-title">
+                                            Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis
+                                        </div>
+                                        <div class="span-mode"></div>
+                                    </div>
+                                    <div id="One" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <div class="span-icon">
+                                            <div class="flaticon-box-1"></div>
+                                        </div>
+                                        <div class="span-title">
+                                            Lorem Ipsum #2
+                                        </div>
+                                        <div class="span-mode"></div>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <div class="span-icon">
+                                            <div class="flaticon-box-1"></div>
+                                        </div>
+                                        <div class="span-title">
+                                            Lorem Ipsum #3
+                                        </div>
+                                        <div class="span-mode"></div>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                                         </div>
                                     </div>
                                 </div>

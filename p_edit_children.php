@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" id="bodyadd">
-                <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                <form method="POST" action="model/edit_p_children_information.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                     <label><b>II. </b>CHILDREN'S INFORMATION</label>
                     <div class="col-md-12">
                         <div class="form-group">
