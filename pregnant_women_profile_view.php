@@ -12,11 +12,6 @@ while ($row = $result->fetch_assoc()) {
 /////////////////////////////////////////////////////////////////////////////////
 
 $id = $_GET['id'];
-// $query1 = "SELECT * FROM tblresident2 WHERE id_resident='$id'";
-// $result1 = $conn->query($query1);
-// $resident = $result1->fetch_assoc();
-
-// $query2 = "SELECT * FROM tbl_p_fam_members WHERE id_resident='$id' AND family_role='mother'";
 $query2 = "SELECT * FROM tbl_p_fam_members JOIN tblresident2 ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE tbl_p_fam_members.id_resident='$id' AND tbl_p_fam_members.family_role='mother'";
 $result2 = $conn->query($query2);
 $mother_profile = $result2->fetch_assoc();
@@ -525,54 +520,32 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                 </div>
                             </div>
 
-                            <div class="accordion accordion-secondary">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#One" aria-expanded="true" aria-controls="One">
-                                        <div class="span-icon">
-                                            <div class="flaticon-box-1"></div>
-                                        </div>
-                                        <div class="span-title">
-                                            Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis
-                                        </div>
-                                        <div class="span-mode"></div>
-                                    </div>
-                                    <div id="One" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <div class="span-icon">
-                                            <div class="flaticon-box-1"></div>
-                                        </div>
-                                        <div class="span-title">
-                                            Lorem Ipsum #2
-                                        </div>
-                                        <div class="span-mode"></div>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                        </div>
+                            <!-- FAMILY CARD -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-head-row">
+                                        <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
+                                        <?php if (isset($_SESSION['username'])) : ?>
+                                            <!-- <div class="card-tools">
+                                                <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-plus"></i>&nbsp
+                                                    Add
+                                                </a>
+                                                <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
+                                                    <i class="fas fa-print"></i>&nbsp Print
+                                                </a>
+                                                <?php if ($_SESSION['role'] == 'administrator') : ?>
+                                                    <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
+                                                        <i class="fas fa-file-archive"></i>&nbsp
+                                                        Archive
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div> -->
+                                        <?php endif ?>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <div class="span-icon">
-                                            <div class="flaticon-box-1"></div>
-                                        </div>
-                                        <div class="span-title">
-                                            Lorem Ipsum #3
-                                        </div>
-                                        <div class="span-mode"></div>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                        </div>
-                                    </div>
+                                <div class="card-body">
+
                                 </div>
                             </div>
 
