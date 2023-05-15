@@ -15,17 +15,19 @@
                             <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
                                 <?php
                                 $fm = $mother_profile['family_num'];
-                                $fetch_children = $conn->query("SELECT * FROM tbl_p_fam_members WHERE family_num='$fm' AND family_role='children'");
+                                // $fetch_children = $conn->query("SELECT * FROM tbl_p_fam_members WHERE family_num='$fm' AND family_role='children'");
+                                $sample = "SELECT * FROM tblresident2 LEFT JOIN tbl_p_fam_members ON tblresident2.id_resident = tbl_p_fam_members.id_resident WHERE tblresident2.id_resident IS NOT NULL";
+                                $sam = $conn->query($sample);
                                 ?>
-                                <?php while ($getChildren = $fetch_children->fetch_assoc()) : ?>
-                                    <?php foreach ($getResident as $row) : ?>
-                                        <?php if ($row['id_resident'] == $getChildren['id_resident']) : ?>
+                                <?php if ($sam == TRUE) : ?>
+                                    <?php foreach ($sam as $row) : ?>
+                                        <?php if ($fm == $row['family_num'] && $row['family_role'] != "father" && $row['family_role'] != "mother") : ?>
                                             <option value="<?= $row['id_resident'] ?>" selected><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
-                                        <?php else : ?>
+                                        <?php elseif ($row['family_role'] != "father" && $row['family_role'] != "mother") : ?>
                                             <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
                                         <?php endif ?>
                                     <?php endforeach ?>
-                                <?php endwhile ?>
+                                <?php endif ?>
                             </select>
                         </div>
                     </div>

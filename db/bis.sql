@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2023 at 10:01 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: May 15, 2023 at 05:09 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -278,13 +278,13 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, '20000.00'),
-(2, '60000.00'),
-(3, '99999999.99'),
-(4, '399.00'),
-(5, '6969.00'),
-(6, '22.00'),
-(7, '25.00');
+(1, 20000.00),
+(2, 60000.00),
+(3, 99999999.99),
+(4, 399.00),
+(5, 6969.00),
+(6, 22.00),
+(7, 25.00);
 
 -- --------------------------------------------------------
 
@@ -600,10 +600,10 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 (35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04'),
 (60, 13, 'children', '', '20230510314056000001', '2023-05-13 03:03:15', '2023-05-13 03:03:15'),
 (61, 14, 'children', '', '20230510314056000001', '2023-05-13 03:03:15', '2023-05-13 03:03:15'),
-(67, 17, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
-(68, 20, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
-(69, 18, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54'),
-(70, 19, 'children', '', '20230510219022000001', '2023-05-13 03:39:54', '2023-05-13 03:39:54');
+(78, 17, 'children', '', '20230510219022000001', '2023-05-15 15:07:32', '2023-05-15 15:07:32'),
+(79, 20, 'children', '', '20230510219022000001', '2023-05-15 15:07:32', '2023-05-15 15:07:32'),
+(80, 18, 'children', '', '20230510219022000001', '2023-05-15 15:07:32', '2023-05-15 15:07:32'),
+(81, 0, 'children', '', '20230510219022000001', '2023-05-15 15:07:32', '2023-05-15 15:07:32');
 
 -- --------------------------------------------------------
 
@@ -876,7 +876,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (102, '2023-05-10 07:16:59', 'admin, has logged out.', '11'),
 (103, '2023-05-12 08:02:00', 'admin, has logged in.', '11'),
 (104, '2023-05-12 09:05:59', 'admin, has logged out.', '11'),
-(105, '2023-05-13 00:17:19', 'admin, has logged in.', '11');
+(105, '2023-05-13 00:17:19', 'admin, has logged in.', '11'),
+(106, '2023-05-14 00:57:24', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1152,7 +1153,7 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
@@ -1176,7 +1177,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
