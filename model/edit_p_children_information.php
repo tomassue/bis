@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
     }
 }
 
-$id                 =   $_POST['mother_id'];
+$id                 = $_POST['mother_id'];
 
 $id_resident        = $_POST['id_resident'];
 $family_role        = $conn->real_escape_string($_POST['family_role']);

@@ -46,6 +46,13 @@ while ($row = $resultResident->fetch_assoc()) {
     $getResident[] = $row;
 }
 
+$queryChildrenResident = "SELECT * FROM tblresident2 LEFT JOIN tbl_p_fam_members ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE tbl_p_fam_members.id_resident IS NULL";
+$resultChildrenResident = $conn->query($queryChildrenResident);
+$getChild = array();
+while ($row = $resultChildrenResident->fetch_assoc()) {
+    $getChild[] = $row;
+}
+
 /////////////////////////////////////////////////////////////////////////////////
 
 $queryHousehold = "SELECT * FROM tbl_household JOIN tblpurok ON tblpurok.id_purok=tbl_household.id_purok";
@@ -351,22 +358,29 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         </div>
                                                     <?php else : ?>
                                                         <?php if (isset($_SESSION['username'])) : ?>
-                                                            <div class="d-flex justify-content-end">
-                                                                <div class="m-1">
-                                                                    <a href="#editchildreninfo<?= $mother_profile['family_num'] ?>" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                        Edit
+                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                <div class="d-flex justify-content-end">
+                                                                    <a href="#addchildreninfo2.0" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                        Add
                                                                     </a>
-                                                                    <?php include 'p_edit_children.php' ?>
                                                                 </div>
-                                                            </div>
+                                                                <br>
+                                                            <?php endif ?>
                                                         <?php endif ?>
                                                         <?php foreach ($child_info as $row3) : ?>
                                                             <div class="row mb-5">
                                                                 <div class="col-md-3">
                                                                     <div class="text-center p-1" style="border:1px solid red">
                                                                         <img src="<?= preg_match('/data:image/i', $row3['picture']) ? $row3['picture'] : 'assets/uploads/resident_profile/' . $row3['picture'] ?>" alt="Resident Profile" class="img-fluid">
+                                                                    </div><br>
+                                                                    <div>
+                                                                        <a href="model/remove_p_child_information.php?child_id=<?= $row3['id_resident'] ?>&mother_id=<?= $id ?>" class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('Are you sure you want to proceed? This cannot be undone.')">
+                                                                            <i class="fa fa-minus"></i>&nbsp
+                                                                            Remove
+                                                                        </a>
                                                                     </div>
+
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <div class="row">
@@ -635,6 +649,43 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="form-group">
                                         <label>Anak</label>
                                         <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
+                                            <?php foreach ($getResident as $row) : ?>
+                                                <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="children" name="family_role">
+                                <input type="hidden" value="<?= $mother_profile['family_num'] ?>" name="family_num">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Children modal 2.0 -->
+            <div class="modal fade bd-example-modal-lg" id="addchildreninfo2.0" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Children 2.0</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_p_children_information.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label><b>II. </b>CHILDREN'S INFORMATION</label>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Anak</label>
+                                        <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
+
                                             <?php foreach ($getResident as $row) : ?>
                                                 <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
                                             <?php endforeach ?>

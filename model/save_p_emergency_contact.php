@@ -25,7 +25,7 @@ if (!empty($family_num)) {
     $result_insert = $conn->query($query_insert);
 
     if ($result_insert) {
-        $_SESSION['message'] = 'Added successfully!';
+        $_SESSION['message'] = 'Emergency contact information is added successfully!';
         $_SESSION['success'] = 'success';
     }
 } else {
