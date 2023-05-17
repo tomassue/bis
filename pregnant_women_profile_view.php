@@ -148,7 +148,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         </div>
                                         <div class="col-md-9">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                     </div>
@@ -156,7 +156,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($mother_profile['firstname'] . ' ' . $mother_profile['middlename'] . ' ' . $mother_profile['lastname']) ?>">
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                     </div>
@@ -166,7 +166,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
                                                     </div>
@@ -174,7 +174,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $mother_profile['phone'] ?>">
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
                                                     </div>
@@ -184,7 +184,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
                                                     </div>
@@ -192,7 +192,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords(trim($mother_profile['occupation'])) ?>">
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-lg">
                                                     <div class="form-group row">
                                                         <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Address:</h3>
                                                     </div>
@@ -271,6 +271,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     Edit
                                                                 </a>
                                                             </div>
+                                                            <br>
                                                             <?php include 'p_edit_father.php'; ?>
                                                         <?php endif ?>
                                                         <div class="row mb-5">
@@ -281,7 +282,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                             </div>
                                                             <div class="col-md-9">
                                                                 <div class="row">
-                                                                    <div class="col">
+                                                                    <div class="col-lg">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                                         </div>
@@ -289,7 +290,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($father_info['firstname'] . ' ' . $father_info['middlename'] . ' ' . $father_info['lastname']) ?>">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col">
+                                                                    <div class="col-lg">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                                         </div>
@@ -299,7 +300,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col">
+                                                                    <div class="col-lg">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
                                                                         </div>
@@ -307,7 +308,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                             <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $father_info['phone'] ?>">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col">
+                                                                    <div class="col-lg">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
                                                                         </div>
@@ -317,7 +318,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col">
+                                                                    <div class="col-lg">
                                                                         <div class="form-group row">
                                                                             <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
                                                                         </div>
@@ -385,7 +386,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <div class="row">
-                                                                        <div class="col">
+                                                                        <div class="col-lg">
                                                                             <div class="form-group row">
                                                                                 <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Name:</h3>
                                                                             </div>
@@ -393,7 +394,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                                 <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= ucwords($row3['firstname'] . ' ' . $row3['middlename'] . ' ' . $row3['lastname']) ?>">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="col-lg">
                                                                             <div class="form-group row">
                                                                                 <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Birthday:</h3>
                                                                             </div>
@@ -403,7 +404,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col">
+                                                                        <div class="col-lg">
                                                                             <div class="form-group row">
                                                                                 <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Phone:</h3>
                                                                             </div>
@@ -411,7 +412,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                                 <input type="text" class="form-control fw-bold" style="font-size:20px" value="<?= $row3['phone'] ?>">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="col-lg">
                                                                             <div class="form-group row">
                                                                                 <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Blood Type:</h3>
                                                                             </div>
@@ -421,7 +422,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col">
+                                                                        <div class="col-lg">
                                                                             <div class="form-group row">
                                                                                 <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Occupation:</h3>
                                                                             </div>
@@ -536,12 +537,14 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                             </div>
 
                             <!-- FAMILY CARD -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-head-row">
-                                        <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
-                                        <?php if (isset($_SESSION['username'])) : ?>
-                                            <!-- <div class="card-tools">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card full-height">
+                                        <div class="card-header">
+                                            <div class="card-head-row">
+                                                <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
+                                                <?php if (isset($_SESSION['username'])) : ?>
+                                                    <!-- <div class="card-tools">
                                                 <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
                                                     <i class="fa fa-plus"></i>&nbsp
                                                     Add
@@ -556,10 +559,73 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                     </a>
                                                 <?php endif; ?>
                                             </div> -->
-                                        <?php endif ?>
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Petsa ng unang checkup:</p>
+                                                </div>
+                                                <div class="col">
+                                                    HIS
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Edad:</p>
+                                                </div>
+                                                <div class="col">
+                                                    HIS
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
+
+                                <div class="col-md-4">
+                                    <div class="card full-height">
+                                        <div class="card-header">
+                                            <div class="card-head-row">
+                                                <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
+                                                <?php if (isset($_SESSION['username'])) : ?>
+                                                    <!-- <div class="card-tools">
+                                                <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-plus"></i>&nbsp
+                                                    Add
+                                                </a>
+                                                <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
+                                                    <i class="fas fa-print"></i>&nbsp Print
+                                                </a>
+                                                <?php if ($_SESSION['role'] == 'administrator') : ?>
+                                                    <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
+                                                        <i class="fas fa-file-archive"></i>&nbsp
+                                                        Archive
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div> -->
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Petsa ng unang checkup:</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <p>HIS</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Edad:</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <p>HIS</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
