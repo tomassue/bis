@@ -46,11 +46,12 @@ while ($row = $resultResident->fetch_assoc()) {
     $getResident[] = $row;
 }
 
-$queryChildrenResident = "SELECT * FROM tblresident2 LEFT JOIN tbl_p_fam_members ON tblresident2.id_resident=tbl_p_fam_members.id_resident WHERE tbl_p_fam_members.id_resident IS NULL";
-$resultChildrenResident = $conn->query($queryChildrenResident);
-$getChild = array();
-while ($row = $resultChildrenResident->fetch_assoc()) {
-    $getChild[] = $row;
+//This QUERY is for the multi-select that will only provide options to those residents who are not saved to the tbl_p_fam_members.
+$queryRID = "SELECT * FROM tblresident2 WHERE id_resident NOT IN (SELECT id_resident FROM tbl_p_fam_members)";
+$resultRID = $conn->query($queryRID);
+$getRID = array();
+while ($row = $resultRID->fetch_assoc()) {
+    $getRID[] = $row;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -440,7 +441,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                         <div class="card">
                                             <div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                 <div class="span-icon">
-                                                    <div class="flaticon-box-1"></div>
+                                                    <div class="flaticon-user-4"></div>
                                                 </div>
                                                 <div class="span-title">
                                                     Emergency Contact
@@ -559,10 +560,8 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     </div>
                                 </div>
                                 <div class="card-body">
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -649,7 +648,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="form-group">
                                         <label>Anak</label>
                                         <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
-                                            <?php foreach ($getResident as $row) : ?>
+                                            <?php foreach ($getRID as $row) : ?>
                                                 <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
                                             <?php endforeach ?>
                                         </select>
@@ -675,7 +674,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Add Children 2.0</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Children</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
@@ -685,8 +684,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="form-group">
                                         <label>Anak</label>
                                         <select class="js-example-basic-multiple" name="id_resident[]" multiple="multiple">
-
-                                            <?php foreach ($getResident as $row) : ?>
+                                            <?php foreach ($getRID as $row) : ?>
                                                 <option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?></option>
                                             <?php endforeach ?>
                                         </select>

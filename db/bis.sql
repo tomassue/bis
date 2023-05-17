@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2023 at 11:18 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: May 17, 2023 at 08:42 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -278,13 +278,13 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, '20000.00'),
-(2, '60000.00'),
-(3, '99999999.99'),
-(4, '399.00'),
-(5, '6969.00'),
-(6, '22.00'),
-(7, '25.00');
+(1, 20000.00),
+(2, 60000.00),
+(3, 99999999.99),
+(4, 399.00),
+(5, 6969.00),
+(6, 22.00),
+(7, 25.00);
 
 -- --------------------------------------------------------
 
@@ -430,7 +430,9 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (17, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090706Screenshot_2.png', 'Duke', '', 'Wang', '', 'Duke', 'Buki\\', '2001-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:07:06', 11),
 (18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
 (19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11),
-(20, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nee', '', 'Wang', '', 'Ne', 'Jasaan', '2001-01-02', 'Male', 'single', 'co-occupant', 5, 'no', '2023-05-02', 'Yes', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-13 00:20:25', 11);
+(20, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nee', '', 'Wang', '', 'Ne', 'Jasaan', '2001-01-02', 'Male', 'single', 'co-occupant', 5, 'no', '2023-05-02', 'Yes', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-13 00:20:25', 11),
+(21, '0909-8765-4322', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tanjiro', 'Kama', 'Doe', '', 'Jiro', 'Japan', '2001-01-29', 'Male', 'single', 'co-occupant', 4, '', '2023-05-17', 'Yes', 'Confirmed', '09764124567', 'tanjiro@gmail.com', 'Water Hashira / Sun Breathing Hashira', 1, '2', 'No', 'Yes', '', '2023-05-17 01:14:59', 11),
+(22, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nimal', 'Ka', 'Doe', '', 'Mil', 'Jasaan', '2001-05-17', 'Female', 'single', 'co-occupant', 4, '', '2023-05-17', 'No', '', '', '', 'Water Hashira', 1, '2', 'No', 'No', '', '2023-05-17 01:19:02', 11);
 
 -- --------------------------------------------------------
 
@@ -551,8 +553,8 @@ CREATE TABLE `tbl_p_emergency_contact` (
 --
 
 INSERT INTO `tbl_p_emergency_contact` (`id_p_emergency_contact`, `emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`, `emergency_created_at`, `emergency_updated-at`) VALUES
-(13, 'Tanjiro Kama Doe', 'Cousin', '2023-05-13', '09284137470', '', '20230510314056000001', '2023-05-13 03:52:50', '2023-05-13 04:13:10'),
-(15, 'Tanjiro Kama Doe', 'Meek', '2002-05-16', '0988776654', '', '20230510219022000001', '2023-05-16 03:35:00', '2023-05-16 03:35:00');
+(15, 'Tanjiro Kama Doe', 'Meek', '2002-05-16', '0988776654', '', '20230510219022000001', '2023-05-16 03:35:00', '2023-05-16 03:35:00'),
+(16, 'Tanjiro Kama Doe', 'Brother', '2023-05-17', '09098876549', '', '20230510314056000001', '2023-05-17 06:38:32', '2023-05-17 06:38:32');
 
 -- --------------------------------------------------------
 
@@ -600,7 +602,12 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 (35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04'),
 (108, 18, 'children', '', '20230510219022000001', '2023-05-16 03:34:08', '2023-05-16 03:34:08'),
 (109, 19, 'children', '', '20230510219022000001', '2023-05-16 03:34:08', '2023-05-16 03:34:08'),
-(112, 20, 'children', '', '20230510219022000001', '2023-05-16 03:37:58', '2023-05-16 03:37:58');
+(114, 17, 'children', '', '20230510219022000001', '2023-05-16 12:34:58', '2023-05-16 12:34:58'),
+(119, 13, 'children', '', '20230510314056000001', '2023-05-17 06:24:32', '2023-05-17 06:24:32'),
+(121, 14, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
+(122, 21, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
+(123, 22, 'children', '', '20230510314056000001', '2023-05-17 06:26:50', '2023-05-17 06:26:50'),
+(124, 20, 'children', '', '20230510219022000001', '2023-05-17 06:27:07', '2023-05-17 06:27:07');
 
 -- --------------------------------------------------------
 
@@ -650,7 +657,8 @@ CREATE TABLE `tbl_support` (
 
 INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
 (1, '10', '', 'TRY lang', 'Dili ko access.', 'resolved', '2023-03-17 03:59:43'),
-(2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03');
+(2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03'),
+(3, '10', '0909876554', 'hello', 'nauns kaman', 'resolved', '2023-05-17 06:34:33');
 
 -- --------------------------------------------------------
 
@@ -874,7 +882,11 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (103, '2023-05-12 08:02:00', 'admin, has logged in.', '11'),
 (104, '2023-05-12 09:05:59', 'admin, has logged out.', '11'),
 (105, '2023-05-13 00:17:19', 'admin, has logged in.', '11'),
-(106, '2023-05-14 00:57:24', 'admin, has logged in.', '11');
+(106, '2023-05-14 00:57:24', 'admin, has logged in.', '11'),
+(107, '2023-05-17 06:34:07', 'admin, has logged out.', '11'),
+(108, '2023-05-17 06:34:16', 'staff, has logged in.', '10'),
+(109, '2023-05-17 06:34:37', 'staff, has logged out.', '10'),
+(110, '2023-05-17 06:34:42', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1114,7 +1126,7 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
@@ -1144,13 +1156,13 @@ ALTER TABLE `tbl_org`
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
@@ -1162,7 +1174,7 @@ ALTER TABLE `tbl_special_permit`
 -- AUTO_INCREMENT for table `tbl_support`
 --
 ALTER TABLE `tbl_support`
-  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
@@ -1174,7 +1186,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
