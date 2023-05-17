@@ -587,41 +587,72 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                     <div class="card full-height">
                                         <div class="card-header">
                                             <div class="card-head-row">
-                                                <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
+                                                <div class="card-title d-inline-block text-truncate"><span class="">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</span></div>
                                                 <?php if (isset($_SESSION['username'])) : ?>
-                                                    <!-- <div class="card-tools">
-                                                <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
-                                                    <i class="fa fa-plus"></i>&nbsp
-                                                    Add
-                                                </a>
-                                                <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
-                                                    <i class="fas fa-print"></i>&nbsp Print
-                                                </a>
-                                                <?php if ($_SESSION['role'] == 'administrator') : ?>
-                                                    <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
-                                                        <i class="fas fa-file-archive"></i>&nbsp
-                                                        Archive
-                                                    </a>
-                                                <?php endif; ?>
-                                            </div> -->
+                                                    <div class="card-tools">
+                                                        <a href="#" data-toggle="modal" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-plus"></i>&nbsp
+                                                            Edit
+                                                        </a>
+                                                    </div>
                                                 <?php endif ?>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div class="row">
+                                            <div class="row mb-2">
                                                 <div class="col-sm">
                                                     <p class="fw-bold">Petsa ng unang checkup:</p>
                                                 </div>
                                                 <div class="col-sm">
-                                                    <p>HIS</p>
+                                                    <input type="text" class="form-control" value="HIS">
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="row mb-2">
                                                 <div class="col-sm">
-                                                    <p class="fw-bold">Edad:</p>
+                                                    <p class="fw-bold">Edad (Age):</p>
                                                 </div>
                                                 <div class="col-sm">
-                                                    <p>HIS</p>
+                                                    <input type="text" class="form-control" value="HIS">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Timbang (weight):</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" value="HIS">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Taas (height):</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" value="HIS">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Kalagayan ng Kalusugan (Nutritional status based on Body Max Index):</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" value="HIS">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Petsa ng huling regla (Date of last menstrual period):</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" value="HIS">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm">
+                                                    <p class="fw-bold">Kailan ako manganganak? (Expected date of delivery):</p>
+                                                </div>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" value="HIS">
                                                 </div>
                                             </div>
                                         </div>
