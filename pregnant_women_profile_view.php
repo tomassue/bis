@@ -63,6 +63,16 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
     $getHousehold[] = $row2;
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+
+$queryhcpc = "SELECT * FROM tbl_p_history_and_current_pregnancy_condition WHERE `id_resident` = '$id'";
+$resulthcpc = $conn->query($queryhcpc)->num_rows;
+$gethcpc = $conn->query($queryhcpc)->fetch_assoc();
+
+/////////////////////////////////////////////////////////////////////////////////
+
+// $queryNo_p = "SELECT * FROM"; SELECT no. of children
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -260,7 +270,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                 </a>
                                                             </div>
                                                         <?php endif ?>
-                                                        <div class="d-flex justify-content-center">
+                                                        <div class=text-center">
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
@@ -355,7 +365,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                 </a>
                                                             </div>
                                                         <?php endif ?>
-                                                        <div class="d-flex justify-content-center">
+                                                        <div class="text-center">
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
@@ -433,6 +443,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr>
                                                         <?php endforeach ?>
                                                     <?php endif ?>
                                                 </div>
@@ -460,7 +471,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                                 </a>
                                                             </div>
                                                         <?php endif ?>
-                                                        <div class="d-flex justify-content-center">
+                                                        <div class="text-center">
                                                             <p>No record</p>
                                                         </div>
                                                     <?php else : ?>
@@ -536,31 +547,39 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                 </div>
                             </div>
 
-                            <!-- CARD 2 -->
+                            <!-- Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis card -->
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card full-height">
                                         <div class="card-header">
                                             <div class="card-head-row">
-                                                <div class="card-title d-inline-block text-truncate"><span class="">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</span></div>
+                                                <div class="card-title d-inline-block text-truncate"><span title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</span></div>
                                                 <?php if (isset($_SESSION['username'])) : ?>
                                                     <div class="card-tools">
-                                                        <a href="#" data-toggle="modal" class="btn btn-info btn-sm">
-                                                            <i class="fa fa-edit"></i>&nbsp
-                                                            Edit
-                                                        </a>
+                                                        <?php if ($resulthcpc == 1) : ?>
+                                                            <a href="#edithcpc<?= $gethcpc['id_mother_h_c_pregnancy_condition'] ?>" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                <i class="fa fa-edit"></i>&nbsp
+                                                                Edit
+                                                            </a>
+                                                            <?php include 'p_edit_hcpc.php'; ?>
+                                                        <?php elseif ($resulthcpc == 0) : ?>
+                                                            <a href="#addhcpc" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                <i class="fa fa-plus"></i>&nbsp
+                                                                Add
+                                                            </a>
+                                                        <?php endif ?>
                                                     </div>
                                                 <?php endif ?>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div id="input-fields" style="display:none">
+                                            <?php if ($resulthcpc == 1) : ?>
                                                 <div class="row mb-2">
                                                     <div class="col-sm">
                                                         <p class="fw-bold">Petsa ng unang checkup:</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <input type="text" class="form-control" value="<?= date("F j, Y", strtotime($gethcpc['first_check_up_date'])) ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -574,7 +593,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         $now = new DateTime();
                                                         $diff = $now->diff($dob);
                                                         ?>
-                                                        <input type="text" class="form-control" value="<?= $diff->y . ' ' . 'years old' ?>" readonly>
+                                                        <input type="text" class="form-control" value="<?= $diff->y . ' ' . 'years old' ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -582,7 +601,13 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <p class="fw-bold">Timbang (weight):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <!-- <input type="text" class="form-control" value="<?= rtrim($gethcpc['p_weight'], "0") ?>"> -->
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" name="p_height" value="<?= rtrim($gethcpc['p_weight'], "0") ?>">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="basic-addon3">kg</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -590,7 +615,12 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <p class="fw-bold">Taas (height):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" name="p_height" value="<?= $gethcpc['p_height'] * 100 ?>">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="basic-addon3">m</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -598,7 +628,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <p class="fw-bold">Kalagayan ng Kalusugan (Nutritional status based on Body Max Index):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <input type="text" class="form-control" value="<?= rtrim($gethcpc['health_condition'], "0") ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -606,7 +636,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <p class="fw-bold">Petsa ng huling regla (Date of last menstrual period):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <input type="text" class="form-control" value="<?= date("F j, Y", strtotime($gethcpc['last_mens_period_date'])) ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -614,10 +644,22 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                                                         <p class="fw-bold">Kailan ako manganganak? (Expected date of delivery):</p>
                                                     </div>
                                                     <div class="col-sm">
+                                                        <input type="text" class="form-control" value="<?= date("F j, Y", strtotime($gethcpc['expected_date_delivery'])) ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-sm">
+                                                        <p class="fw-bold">No. of Pregnancy:</p>
+                                                    </div>
+                                                    <div class="col-sm">
                                                         <input type="text" class="form-control" value="">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <?php else : ?>
+                                                <div class="text-center">
+                                                    <p>No record to show</p>
+                                                </div>
+                                            <?php endif ?>
                                         </div>
                                     </div>
                                 </div>
@@ -869,6 +911,104 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                 </div>
             </div>
 
+            <!-- Add Kasalukuyan at Nakaraang Kondisyon habang nagbubuntis modal -->
+            <div class="modal fade bd-example-modal-lg" id="addhcpc" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Petsa ng unang check-up: </label>
+                                            <input type="date" class="form-control" name="first_check_up_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Edad (Age): </label>
+                                            <?php
+                                            $bdate = $mother_profile['birthdate'];
+                                            $dob = new DateTime($bdate);
+                                            $now = new DateTime();
+                                            $diff = $now->diff($dob);
+                                            ?>
+                                            <input type="text" class="form-control" value="<?= $diff->y . ' ' . 'years old' ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Timbang (Weight):</label>
+                                            <!-- <input type="text" class="form-control" name="p_weight"> -->
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="p_weight" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2" name="p_weight">kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Taas (Height): </label>
+                                            <!-- <input type="text" class="form-control" name="p_height"> -->
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="p_height" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon3">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;" title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index): </label>
+                                            <input type="text" class="form-control" name="health_condition" placeholder="BMI" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Petsa ng huling regla (Date of last menstrual period): </label>
+                                            <input type="date" class="form-control" name="last_mens_period_date" id="last_mens_period" onchange="calculateExpectedDeliveryDate()">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Kailan ako manganganak (Expected date of delivery): </label>
+                                            <input type="date" class="form-control" name="expected_date_delivery" id="expected_date_delivery">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">No. of Pregnancy</label>
+                                            <input type="number" class="form-control" name=""> <!-- The output for this will be based on her children. -->
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Main Footer -->
             <?php include 'templates/main-footer.php' ?>
             <!-- End Main Footer -->
@@ -886,6 +1026,18 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script>
+        function calculateExpectedDeliveryDate() {
+            var initialDate = document.getElementById("last_mens_period").value;
+            var dueDate = new Date(initialDate);
+            dueDate.setDate(dueDate.getDate() + (40 * 7)); // add 40 weeks
+
+            // format due date as yyyy-mm-dd
+            var formattedDueDate = dueDate.getFullYear() + '-' + ('0' + (dueDate.getMonth() + 1)).slice(-2) + '-' + ('0' + dueDate.getDate()).slice(-2);
+
+            // set the due date as the value of the other input field
+            document.getElementById("expected_date_delivery").value = formattedDueDate;
+        }
+
         var table = $('#pregnantwomen').DataTable({
             "order": [
                 [0, "desc"]

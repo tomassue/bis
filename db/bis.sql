@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 10:37 AM
+-- Generation Time: May 20, 2023 at 01:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -284,7 +284,8 @@ INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
 (4, 399.00),
 (5, 6969.00),
 (6, 22.00),
-(7, 25.00);
+(7, 25.00),
+(8, 600.00);
 
 -- --------------------------------------------------------
 
@@ -612,6 +613,32 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_p_history_and_current_pregnancy_condition`
+--
+
+CREATE TABLE `tbl_p_history_and_current_pregnancy_condition` (
+  `id_mother_h_c_pregnancy_condition` int(11) NOT NULL,
+  `id_resident` int(11) NOT NULL,
+  `first_check_up_date` date NOT NULL,
+  `p_weight` decimal(10,2) NOT NULL,
+  `p_height` decimal(10,2) NOT NULL,
+  `health_condition` decimal(10,2) NOT NULL COMMENT 'Body Mass Index',
+  `last_mens_period_date` date NOT NULL,
+  `expected_date_delivery` date NOT NULL,
+  `delivered_status` int(2) NOT NULL DEFAULT 0 COMMENT '0-active; 1-archived'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_history_and_current_pregnancy_condition`
+--
+
+INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_pregnancy_condition`, `id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`, `delivered_status`) VALUES
+(7, 11, '2023-05-18', 45.80, 124.00, 56.20, '2023-02-14', '2023-11-21', 0),
+(8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_special_permit`
 --
 
@@ -727,7 +754,8 @@ INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_t
 (0, 11, '20230502168865000001', '2023-05-02 01:37:40', 'Certificate of Appearance for Weise Weise', 'James Maximus'),
 (0, 11, '20230502965388000001', '2023-05-02 01:48:05', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Tom Abella'),
 (0, 11, '20230502750550000001', '2023-05-02 01:55:47', 'Certificate of Appearance for Sample Me', 'Sample Me'),
-(7, 11, '20230503865832000001', '2023-05-03 06:40:17', 'Barangay Clearance for TENANT, TENANT TENANT', 'James Reading');
+(7, 11, '20230503865832000001', '2023-05-03 06:40:17', 'Barangay Clearance for TENANT, TENANT TENANT', 'James Reading'),
+(8, 11, '20230518157633000001', '2023-05-18 03:41:49', 'Barangay Clearance for Abella, Tom ', 'James Reading');
 
 -- --------------------------------------------------------
 
@@ -1020,6 +1048,12 @@ ALTER TABLE `tbl_p_fam_members`
   ADD PRIMARY KEY (`id_family`);
 
 --
+-- Indexes for table `tbl_p_history_and_current_pregnancy_condition`
+--
+ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
+  ADD PRIMARY KEY (`id_mother_h_c_pregnancy_condition`);
+
+--
 -- Indexes for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
@@ -1096,7 +1130,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1163,6 +1197,12 @@ ALTER TABLE `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_fam_members`
   MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+
+--
+-- AUTO_INCREMENT for table `tbl_p_history_and_current_pregnancy_condition`
+--
+ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
+  MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
