@@ -33,7 +33,7 @@
                                 <label>Timbang (Weight):</label>
                                 <!-- <input type="text" class="form-control" name="p_weight"> -->
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="p_weight" value="<?= $gethcpc['p_weight'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                    <input type="text" class="form-control" name="p_weight" value="<?= rtrim($gethcpc['p_weight'], ".0") ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon2" name="p_weight">kg</span>
                                     </div>
@@ -45,7 +45,7 @@
                                 <label>Taas (Height): </label>
                                 <!-- <input type="text" class="form-control" name="p_height"> -->
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="p_height" value="<?= $gethcpc['p_height'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                    <input type="text" class="form-control" name="p_height" value="<?= rtrim($gethcpc['p_height'], ".0") ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon3">cm</span>
                                     </div>
@@ -57,7 +57,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="d-inline-block text-truncate" style="max-width: 100%;" title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index): </label>
-                                <input type="text" class="form-control" name="health_condition" placeholder="BMI" value="<?= $gethcpc['health_condition'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                <input type="text" class="form-control" name="health_condition" placeholder="BMI" value="<?= rtrim($gethcpc['health_condition'], ".0") ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
                             </div>
                         </div>
                         <div class="col-md-6">

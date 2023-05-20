@@ -71,7 +71,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// $queryNo_p = "SELECT * FROM"; SELECT no. of children
+$queryNo_p = "SELECT * FROM tbl_p_fam_members WHERE"
 
 ?>
 <!DOCTYPE html>
@@ -603,7 +603,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                                     <div class="col-sm">
                                                         <!-- <input type="text" class="form-control" value="<?= rtrim($gethcpc['p_weight'], "0") ?>"> -->
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="p_height" value="<?= rtrim($gethcpc['p_weight'], "0") ?>">
+                                                            <input type="text" class="form-control" name="p_height" value="<?= rtrim($gethcpc['p_weight'], ".0") ?>">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text" id="basic-addon3">kg</span>
                                                             </div>
@@ -628,7 +628,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                                         <p class="fw-bold">Kalagayan ng Kalusugan (Nutritional status based on Body Max Index):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="<?= rtrim($gethcpc['health_condition'], "0") ?>">
+                                                        <input type="text" class="form-control" value="<?= rtrim($gethcpc['health_condition'], ".0") ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -652,7 +652,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                                         <p class="fw-bold">No. of Pregnancy:</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="">
+                                                        <input type="text" class="form-control" value="sfds">
                                                     </div>
                                                 </div>
                                             <?php else : ?>
