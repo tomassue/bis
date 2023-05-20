@@ -71,8 +71,6 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
 
 /////////////////////////////////////////////////////////////////////////////////
 
-$queryNo_p = "SELECT * FROM tbl_p_fam_members WHERE"
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -616,7 +614,7 @@ $queryNo_p = "SELECT * FROM tbl_p_fam_members WHERE"
                                                     </div>
                                                     <div class="col-sm">
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="p_height" value="<?= $gethcpc['p_height'] * 100 ?>">
+                                                            <input type="text" class="form-control" name="p_height" value="<?= $gethcpc['p_height'] * 0.01 ?>">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text" id="basic-addon3">m</span>
                                                             </div>
@@ -652,7 +650,7 @@ $queryNo_p = "SELECT * FROM tbl_p_fam_members WHERE"
                                                         <p class="fw-bold">No. of Pregnancy:</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control" value="sfds">
+                                                        <input type="text" class="form-control" value="<?= $count_child + 1 ?>">
                                                     </div>
                                                 </div>
                                             <?php else : ?>
@@ -992,7 +990,7 @@ $queryNo_p = "SELECT * FROM tbl_p_fam_members WHERE"
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="d-inline-block text-truncate" style="max-width: 100%;">No. of Pregnancy</label>
-                                            <input type="number" class="form-control" name=""> <!-- The output for this will be based on her children. -->
+                                            <input type="number" class="form-control" name="<?= $count_child + 1 ?>"> <!-- The output for this will be based on her children and for being pregnant now. -->
                                         </div>
                                     </div>
                                 </div>

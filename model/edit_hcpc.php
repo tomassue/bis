@@ -19,12 +19,13 @@ $expected_date_delivery     = $conn->real_escape_string($_POST['expected_date_de
 
 if (!empty($id)) {
     // Loop through the input arrays
-    $query_insert = "INSERT INTO tbl_p_history_and_current_pregnancy_condition (`id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`) 
-                    VALUES ('$id', '$first_check_up_date', '$p_weight', '$p_height', '$health_condition', '$last_mens_period_date', '$expected_date_delivery')";
-    $result_insert = $conn->query($query_insert);
+    $query_update = "UPDATE tbl_p_history_and_current_pregnancy_condition
+                    SET first_check_up_date = '$first_check_up_date', p_weight = '$p_weight', p_height = '$p_height', health_condition = '$health_condition', last_mens_period_date = '$last_mens_period_date', expected_date_delivery = '$expected_date_delivery'
+                    WHERE id_resident = '$id'";
+    $result_update = $conn->query($query_update);
 
-    if ($result_insert) {
-        $_SESSION['message'] = 'Added successfully!';
+    if ($result_update) {
+        $_SESSION['message'] = 'Edited successfully!';
         $_SESSION['success'] = 'success';
     }
 } else {

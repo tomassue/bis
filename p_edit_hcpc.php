@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" id="bodyadd">
-                <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                <form method="POST" action="model/edit_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                     <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
                     <div class="row">
                         <div class="col-md-6">
@@ -79,7 +79,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="d-inline-block text-truncate" style="max-width: 100%;">No. of Pregnancy</label>
-                                <input type="number" class="form-control" name=""> <!-- The output for this will be based on her children. -->
+                                <input type="number" class="form-control" value="<?= $count_child + 1 ?>"> <!-- The output for this will be based on her children and for being pregnant now. -->
                             </div>
                         </div>
                     </div>

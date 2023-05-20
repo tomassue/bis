@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 05:36 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: May 20, 2023 at 12:28 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -278,14 +278,14 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, '20000.00'),
-(2, '60000.00'),
-(3, '99999999.99'),
-(4, '399.00'),
-(5, '6969.00'),
-(6, '22.00'),
-(7, '25.00'),
-(8, '600.00');
+(1, 20000.00),
+(2, 60000.00),
+(3, 99999999.99),
+(4, 399.00),
+(5, 6969.00),
+(6, 22.00),
+(7, 25.00),
+(8, 600.00);
 
 -- --------------------------------------------------------
 
@@ -607,8 +607,8 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 (119, 13, 'children', '', '20230510314056000001', '2023-05-17 06:24:32', '2023-05-17 06:24:32'),
 (121, 14, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
 (122, 21, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
-(123, 22, 'children', '', '20230510314056000001', '2023-05-17 06:26:50', '2023-05-17 06:26:50'),
-(125, 20, 'children', '', '20230510219022000001', '2023-05-20 03:26:22', '2023-05-20 03:26:22');
+(125, 20, 'children', '', '20230510219022000001', '2023-05-20 03:26:22', '2023-05-20 03:26:22'),
+(126, 22, 'children', '', '20230510314056000001', '2023-05-20 10:03:57', '2023-05-20 10:03:57');
 
 -- --------------------------------------------------------
 
@@ -633,8 +633,8 @@ CREATE TABLE `tbl_p_history_and_current_pregnancy_condition` (
 --
 
 INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_pregnancy_condition`, `id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`, `delivered_status`) VALUES
-(7, 11, '2023-05-18', '45.80', '124.00', '56.20', '2023-02-14', '2023-11-21', 0),
-(8, 16, '2023-05-20', '67.00', '126.00', '13.00', '2023-05-02', '2024-02-06', 0);
+(7, 11, '2023-05-20', 45.80, 1200.00, 56.20, '2023-02-14', '2023-11-21', 0),
+(8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0);
 
 -- --------------------------------------------------------
 
@@ -1196,7 +1196,7 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_history_and_current_pregnancy_condition`
