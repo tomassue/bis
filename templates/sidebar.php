@@ -315,6 +315,11 @@ $current_page = PageName();
                                             <span class="sub-item">Nature of Case</span>
                                         </a>
                                     </li>
+                                    <li class="<?= $current_page == '' ? 'active' : null ?>">
+                                        <a href="p_services_and_medication.php">
+                                            <span class="sub-item">Medication and Services</span>
+                                        </a>
+                                    </li>
 
                                     <?php if ($_SESSION['role'] == 'staff') : ?>
                                         <li>

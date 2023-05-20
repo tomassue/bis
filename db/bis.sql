@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 12:28 PM
+-- Generation Time: May 20, 2023 at 07:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -633,8 +633,39 @@ CREATE TABLE `tbl_p_history_and_current_pregnancy_condition` (
 --
 
 INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_pregnancy_condition`, `id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`, `delivered_status`) VALUES
-(7, 11, '2023-05-20', 45.80, 1200.00, 56.20, '2023-02-14', '2023-11-21', 0),
+(7, 11, '2023-05-20', 43.40, 124.00, 56.20, '2023-02-14', '2023-11-21', 0),
 (8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_p_medication_and_other_services`
+--
+
+CREATE TABLE `tbl_p_medication_and_other_services` (
+  `id_med_other_services` int(11) NOT NULL,
+  `med_or_services_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_medication_and_other_services`
+--
+
+INSERT INTO `tbl_p_medication_and_other_services` (`id_med_other_services`, `med_or_services_name`) VALUES
+(1, 'Iron'),
+(2, 'Folic Acid'),
+(3, 'Calcium Carbonate'),
+(4, 'Iodine'),
+(5, 'Pagsusuri sa STI/HIV/AIDS'),
+(6, 'Pagsusuri ng ngipin'),
+(7, 'Pagsusuri ng Hepatitis B'),
+(8, 'Pagpapatingin sa suso'),
+(9, 'Pagsusuri ng plema (Kung may palatandaan ng tisis, ubo na mahigit sa 14 na araw)'),
+(10, 'Hemoglobin Count'),
+(11, 'Complete Blood Count'),
+(12, 'Urinalysis'),
+(13, 'Stool Examination'),
+(14, 'Acetic Acid Wash');
 
 -- --------------------------------------------------------
 
@@ -1054,6 +1085,12 @@ ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
   ADD PRIMARY KEY (`id_mother_h_c_pregnancy_condition`);
 
 --
+-- Indexes for table `tbl_p_medication_and_other_services`
+--
+ALTER TABLE `tbl_p_medication_and_other_services`
+  ADD PRIMARY KEY (`id_med_other_services`);
+
+--
 -- Indexes for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
@@ -1203,6 +1240,12 @@ ALTER TABLE `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
   MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`
+--
+ALTER TABLE `tbl_p_medication_and_other_services`
+  MODIFY `id_med_other_services` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`

@@ -54,6 +54,14 @@ function editPurok(that){
     $('#purok_id').val(purok_id);
 }
 
+function editMedOrService(that){
+    med_or_services_name = $(that).attr('data-name');
+    ms_id = $(that).attr('data-id');
+
+    $('#med_or_services_name').val(med_or_services_name);
+    $('#ms_id').val(ms_id);
+}
+
 function editOrg(that){
     org = $(that).attr('data-name');
     details = $(that).attr('data-details');

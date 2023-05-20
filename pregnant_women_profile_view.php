@@ -666,7 +666,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                     <div class="card full-height">
                                         <div class="card-header">
                                             <div class="card-head-row">
-                                                <div class="card-title">Kasalukuyan at Nakaraang Kondisyon Habang Nagbubuntis</div>
+                                                <div class="card-title">Immunization Record</div>
                                                 <?php if (isset($_SESSION['username'])) : ?>
                                                     <!-- <div class="card-tools">
                                                 <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
