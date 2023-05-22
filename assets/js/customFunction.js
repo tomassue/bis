@@ -62,6 +62,14 @@ function editMedOrService(that){
     $('#ms_id').val(ms_id);
 }
 
+function editTetanusVaccine(that){
+    tetanus_vaccine_detail = $(that).attr('data-tetanus_vaccine_detail');
+    tetanus_id = $(that).attr('data-tetanus_id');
+
+    $('#tetanus_containing_vaccine_detail_id').val(tetanus_vaccine_detail);
+    $('#tetanus_vac_id').val(tetanus_id);
+}
+
 function editOrg(that){
     org = $(that).attr('data-name');
     details = $(that).attr('data-details');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 07:11 PM
+-- Generation Time: May 22, 2023 at 06:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -639,6 +639,20 @@ INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_preg
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_p_immunization_record`
+--
+
+CREATE TABLE `tbl_p_immunization_record` (
+  `id_immunization_record` int(11) NOT NULL,
+  `id_mother_h_c_pregnancy_condition` int(11) NOT NULL,
+  `tetanus_containing_vaccine` int(11) NOT NULL,
+  `date_given` int(11) NOT NULL,
+  `when_to_return` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_p_medication_and_other_services`
 --
 
@@ -666,6 +680,29 @@ INSERT INTO `tbl_p_medication_and_other_services` (`id_med_other_services`, `med
 (12, 'Urinalysis'),
 (13, 'Stool Examination'),
 (14, 'Acetic Acid Wash');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_p_tetanus_vaccine`
+--
+
+CREATE TABLE `tbl_p_tetanus_vaccine` (
+  `tetanus_containing_vaccine` int(11) NOT NULL,
+  `tetanus_containing_vaccine_detail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_tetanus_vaccine`
+--
+
+INSERT INTO `tbl_p_tetanus_vaccine` (`tetanus_containing_vaccine`, `tetanus_containing_vaccine_detail`) VALUES
+(1, '1st dose - as early as possible during pregnancy'),
+(2, '2nd dose - at least 4 weeks after dose 1'),
+(3, '3rd dose - at least 4 weeks after dose 2'),
+(4, '4th dose - at least 1 year after dose 3'),
+(5, '5th dose - at least 1 year after dose 4'),
+(6, 'Fully Immunized (nakatanggap na ng 5 doses ng Tetanus-containing Vaccines)');
 
 -- --------------------------------------------------------
 
@@ -1085,10 +1122,22 @@ ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
   ADD PRIMARY KEY (`id_mother_h_c_pregnancy_condition`);
 
 --
+-- Indexes for table `tbl_p_immunization_record`
+--
+ALTER TABLE `tbl_p_immunization_record`
+  ADD PRIMARY KEY (`id_immunization_record`);
+
+--
 -- Indexes for table `tbl_p_medication_and_other_services`
 --
 ALTER TABLE `tbl_p_medication_and_other_services`
   ADD PRIMARY KEY (`id_med_other_services`);
+
+--
+-- Indexes for table `tbl_p_tetanus_vaccine`
+--
+ALTER TABLE `tbl_p_tetanus_vaccine`
+  ADD PRIMARY KEY (`tetanus_containing_vaccine`);
 
 --
 -- Indexes for table `tbl_special_permit`
@@ -1242,10 +1291,22 @@ ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
   MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `tbl_p_immunization_record`
+--
+ALTER TABLE `tbl_p_immunization_record`
+  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`
 --
 ALTER TABLE `tbl_p_medication_and_other_services`
   MODIFY `id_med_other_services` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tbl_p_tetanus_vaccine`
+--
+ALTER TABLE `tbl_p_tetanus_vaccine`
+  MODIFY `tetanus_containing_vaccine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`

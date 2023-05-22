@@ -272,7 +272,7 @@ $current_page = PageName();
                                 <?php endif ?>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'household_number.php' || $current_page == 'organization_or_association.php' || $current_page == 'nature_of_case.php' || $current_page == 'position.php'  || $current_page == 'precinct.php' || $current_page == 'chairmanship.php' || $current_page == 'users.php' || $current_page == 'support.php' ||  $current_page == 'backup.php' || $current_page == 'officials_archives.php' || $current_page == 'nature_of_case.php' ? 'show' : null ?>" id="settings">
+                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'household_number.php' || $current_page == 'organization_or_association.php' || $current_page == 'nature_of_case.php' || $current_page == 'position.php'  || $current_page == 'precinct.php' || $current_page == 'chairmanship.php' || $current_page == 'users.php' || $current_page == 'support.php' ||  $current_page == 'backup.php' || $current_page == 'officials_archives.php' || $current_page == 'nature_of_case.php' ||  $current_page == 'p_services_and_medication.php' || $current_page == 'p_tetanus_containing_vaccine.php' ? 'show' : null ?>" id="settings">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="#barangay" data-toggle="modal">
@@ -315,9 +315,14 @@ $current_page = PageName();
                                             <span class="sub-item">Nature of Case</span>
                                         </a>
                                     </li>
-                                    <li class="<?= $current_page == '' ? 'active' : null ?>">
-                                        <a href="p_services_and_medication.php">
-                                            <span class="sub-item">Medication and Services</span>
+                                    <li class="<?= $current_page == 'p_services_and_medication.php' ? 'active' : null ?>">
+                                        <a href="p_services_and_medication.php" class="d-inline-block text-truncate">
+                                            <span class="sub-item" title="Services and Medication">Services and Medication</span>
+                                        </a>
+                                    </li>
+                                    <li class="<?= $current_page == 'p_tetanus_containing_vaccine.php' ? 'active' : null ?>">
+                                        <a href="p_tetanus_containing_vaccine.php" class="d-inline-block text-truncate">
+                                            <span class="sub-item" title="Tetanus-containing Vaccine">Tetanus-containing Vaccine</span>
                                         </a>
                                     </li>
 

@@ -71,6 +71,23 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
 
 /////////////////////////////////////////////////////////////////////////////////
 
+$hcpc_id = $gethcpc['id_mother_h_c_pregnancy_condition'];
+
+$queryImmunization = "SELECT * FROM tbl_p_immunization_record WHERE `id_mother_h_c_pregnancy_condition` = $hcpc_id";
+$getImmunization = $conn->query($queryImmunization);
+$immunizationDetails = array();
+while ($row = $getImmunization->fetch_assoc()) {
+    $immunizationDetails[] = $row;
+}
+
+$queryTetanusVac = "SELECT * FROM tbl_p_tetanus_vaccine";
+$resultTetanusVac = $conn->query($queryTetanusVac);
+$tetanusVac = array();
+while ($row = $resultTetanusVac->fetch_assoc()) {
+    $tetanusVac[] = $row;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -662,61 +679,77 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                     </div>
                                 </div>
 
+                                <!-- Immunization Record -->
                                 <div class="col-md-8">
                                     <div class="card full-height">
                                         <div class="card-header">
                                             <div class="card-head-row">
                                                 <div class="card-title">Immunization Record</div>
                                                 <?php if (isset($_SESSION['username'])) : ?>
-                                                    <!-- <div class="card-tools">
-                                                <a href="#addmotherinfo" data-toggle="modal" class="btn btn-info btn-sm">
-                                                    <i class="fa fa-plus"></i>&nbsp
-                                                    Add
-                                                </a>
-                                                <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
-                                                    <i class="fas fa-print"></i>&nbsp Print
-                                                </a>
-                                                <?php if ($_SESSION['role'] == 'administrator') : ?>
-                                                    <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
-                                                        <i class="fas fa-file-archive"></i>&nbsp
-                                                        Archive
-                                                    </a>
-                                                <?php endif; ?>
-                                            </div> -->
-                                                <?php endif ?>
+                                                    <div class="card-tools">
+                                                        <a href="#addimmunization" data-toggle="modal" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-plus"></i>&nbsp
+                                                            Add
+                                                        </a>
+                                                        <!-- <a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
+                                                            <i class="fas fa-print"></i>&nbsp Print
+                                                        </a>
+                                                        <?php if ($_SESSION['role'] == 'administrator') : ?>
+                                                            <a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
+                                                                <i class="fas fa-file-archive"></i>&nbsp
+                                                                Archive
+                                                            </a>
+                                                        <?php endif; ?>
+                                                    </div> -->
+                                                    <?php endif ?>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm">
-                                                    <p class="fw-bold">Petsa ng unang checkup:</p>
-                                                </div>
-                                                <div class="col">
-                                                    HIS
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm">
-                                                    <p class="fw-bold">Edad:</p>
-                                                </div>
-                                                <div class="col">
-                                                    HIS
-                                                </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tetanus-containing Vaccine</th>
+                                                            <th>Date Given</th>
+                                                            <th>When to return</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                            <td>Table cell</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                <div class="col-12">
+                                <!-- Trimester Cards -->
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header d-flex p-0">
-                                            <h3 class="card-title p-3">Tabs</h3>
+                                            <h3 class="card-title p-3">Trimesters</h3>
                                             <ul class="nav nav-pills ml-auto p-2">
-                                                <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Tab 1</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Tab 2</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Tab 3</a></li>
-                                                <li class="nav-item dropdown">
+                                                <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">First Trimester</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Second Trimester</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Third Trimester</a></li>
+                                                <!-- <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                                                         Dropdown <span class="caret"></span>
                                                     </a>
@@ -727,7 +760,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" tabindex="-1" href="#">Separated link</a>
                                                     </div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                         <div class="card-body">
@@ -768,6 +801,33 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                                     </div>
 
                                 </div>
+
+                                <!-- Gamutan at Iba pang Serbisyo -->
+                                <div class="col-md-12">
+                                    <div class="card full-height">
+                                        <div class="card-header">
+                                            <div class="card-head-row">
+                                                <div class="card-title d-inline-block text-truncate"><span title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Gamutan at Iba pang Serbisyo</span></div>
+                                                <?php if (isset($_SESSION['username'])) : ?>
+                                                    <div class="card-tools">
+                                                        <a href="#" data-toggle="modal" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-plus"></i>&nbsp
+                                                            Add
+                                                        </a>
+                                                        <!-- <a href="#" data-toggle="modal" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-plus"></i>&nbsp
+                                                            Edit
+                                                        </a> -->
+                                                    </div>
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -977,6 +1037,104 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">Add Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Petsa ng unang check-up: </label>
+                                            <input type="date" class="form-control" name="first_check_up_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Edad (Age): </label>
+                                            <?php
+                                            $bdate = $mother_profile['birthdate'];
+                                            $dob = new DateTime($bdate);
+                                            $now = new DateTime();
+                                            $diff = $now->diff($dob);
+                                            ?>
+                                            <input type="text" class="form-control" value="<?= $diff->y . ' ' . 'years old' ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Timbang (Weight):</label>
+                                            <!-- <input type="text" class="form-control" name="p_weight"> -->
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="p_weight" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2" name="p_weight">kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Taas (Height): </label>
+                                            <!-- <input type="text" class="form-control" name="p_height"> -->
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="p_height" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon3">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;" title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index): </label>
+                                            <input type="text" class="form-control" name="health_condition" placeholder="BMI" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Petsa ng huling regla (Date of last menstrual period): </label>
+                                            <input type="date" class="form-control" name="last_mens_period_date" id="last_mens_period" onchange="calculateExpectedDeliveryDate()">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Kailan ako manganganak (Expected date of delivery): </label>
+                                            <input type="date" class="form-control" name="expected_date_delivery" id="expected_date_delivery">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">No. of Pregnancy</label>
+                                            <input type="number" class="form-control" name="<?= $count_child + 1 ?>"> <!-- The output for this will be based on her children and for being pregnant now. -->
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Immunization Record modal -->
+            <div class="modal fade bd-example-modal-lg" id="addimmunization" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Immunization Record</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
