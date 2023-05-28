@@ -73,7 +73,7 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
 
 $hcpc_id = $gethcpc['id_mother_h_c_pregnancy_condition'];
 
-$queryImmunization = "SELECT * FROM tbl_p_immunization_record WHERE `id_mother_h_c_pregnancy_condition` = $hcpc_id";
+$queryImmunization = "SELECT * FROM tbl_p_immunization_record JOIN tbl_p_tetanus_vaccine ON tbl_p_tetanus_vaccine.tetanus_containing_vaccine=tbl_p_immunization_record.tetanus_containing_vaccine WHERE `id_mother_h_c_pregnancy_condition` = $hcpc_id ORDER BY tbl_p_tetanus_vaccine.tetanus_containing_vaccine_detail";
 $getImmunization = $conn->query($queryImmunization);
 $immunizationDetails = array();
 while ($row = $getImmunization->fetch_assoc()) {
@@ -85,6 +85,14 @@ $resultTetanusVac = $conn->query($queryTetanusVac);
 $tetanusVac = array();
 while ($row = $resultTetanusVac->fetch_assoc()) {
     $tetanusVac[] = $row;
+}
+
+//Fethc tetanus vaccine option that has not been selected yet.
+$queryTV = "SELECT * FROM tbl_p_tetanus_vaccine WHERE tetanus_containing_vaccine NOT IN (SELECT tetanus_containing_vaccine FROM tbl_p_immunization_record WHERE id_mother_h_c_pregnancy_condition = '$hcpc_id')";
+$resultTV = $conn->query($queryTV);
+$getTV = array();
+while ($row = $resultTV->fetch_assoc()) {
+    $getTV[] = $row;
 }
 
 
@@ -708,32 +716,42 @@ while ($row = $resultTetanusVac->fetch_assoc()) {
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Tetanus-containing Vaccine</th>
-                                                            <th>Date Given</th>
-                                                            <th>When to return</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                            <td>Table cell</td>
-                                                        </tr>
-                                                    </tbody>
+                                                    <?php if (!empty($immunizationDetails)) : ?>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Tetanus-containing Vaccine</th>
+                                                                <th>Date Given</th>
+                                                                <th>When to return</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($immunizationDetails as $index => $row) : ?>
+                                                                <?php $selectId = "select_" . $index; ?>
+                                                                <tr>
+                                                                    <td><?= $row['tetanus_containing_vaccine_detail'] ?></td>
+                                                                    <td><?= date("F j, Y", strtotime($row['date_given'])) ?></td>
+                                                                    <td>
+                                                                        <?php
+                                                                        if ($row['when_to_return'] === '0000-00-00') {
+                                                                            echo " ";
+                                                                        } else {
+                                                                            echo date("F j, Y", strtotime($row['when_to_return']));
+                                                                        }
+                                                                        ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a type="button" href="#editimmunization<?= $row['id_immunization_record'] ?>" data-toggle="modal" class="btn btn-link btn-primary" title="Edit">
+                                                                            <i class="fa fa-edit"></i>
+                                                                        </a>
+                                                                        <?php include 'p_edit_immunization_record.php'; ?>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach ?>
+                                                        <?php else : ?>
+                                                            <p class="text-center">No record to show</p>
+                                                        <?php endif ?>
+                                                        </tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -1137,87 +1155,40 @@ while ($row = $resultTetanusVac->fetch_assoc()) {
                             <h5 class="modal-title" id="exampleModalLongTitle">Add Immunization Record</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-                        <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
-                                <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Petsa ng unang check-up: </label>
-                                            <input type="date" class="form-control" name="first_check_up_date">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Edad (Age): </label>
-                                            <?php
-                                            $bdate = $mother_profile['birthdate'];
-                                            $dob = new DateTime($bdate);
-                                            $now = new DateTime();
-                                            $diff = $now->diff($dob);
-                                            ?>
-                                            <input type="text" class="form-control" value="<?= $diff->y . ' ' . 'years old' ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Timbang (Weight):</label>
-                                            <!-- <input type="text" class="form-control" name="p_weight"> -->
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="p_weight" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="basic-addon2" name="p_weight">kg</span>
-                                                </div>
+                        <div class="modal-body" id="bodyaddimmunization">
+                            <form method="POST" action="model/save_immunization_record.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <div id="inputContainer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tetanus-containing Vaccine </label>
+                                                <select class="form-control js-states" style="width:100%;" id="tetanus_containing_vaccine" name="tcv" required>
+                                                    <?php foreach ($getTV as $row) : ?>
+                                                        <option value=""></option>
+                                                        <option value="<?= $row['tetanus_containing_vaccine'] ?>"><?= $row['tetanus_containing_vaccine_detail'] ?> </option>
+                                                    <?php endforeach ?>
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Taas (Height): </label>
-                                            <!-- <input type="text" class="form-control" name="p_height"> -->
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="p_height" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="basic-addon3">cm</span>
-                                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Date Given </label>
+                                                <input type="date" class="form-control" name="date_given" id="date_given">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="d-inline-block text-truncate" style="max-width: 100%;" title="Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index)">Kalagayan ng Kalusugan (Nutritional status based on Body Mass Index): </label>
-                                            <input type="text" class="form-control" name="health_condition" placeholder="BMI" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Petsa ng huling regla (Date of last menstrual period): </label>
-                                            <input type="date" class="form-control" name="last_mens_period_date" id="last_mens_period" onchange="calculateExpectedDeliveryDate()">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">Kailan ako manganganak (Expected date of delivery): </label>
-                                            <input type="date" class="form-control" name="expected_date_delivery" id="expected_date_delivery">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="d-inline-block text-truncate" style="max-width: 100%;">No. of Pregnancy</label>
-                                            <input type="number" class="form-control" name="<?= $count_child + 1 ?>"> <!-- The output for this will be based on her children and for being pregnant now. -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>When to Return </label>
+                                                <input type="date" class="form-control" name="when_to_return" id="when_to_return">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                         </div>
                         <div>
-                            <div class="modal-footer">
+                            <div class=" modal-footer">
                                 <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <input type="hidden" value="<?= $hcpc_id ?>" name="hcpc_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1287,6 +1258,19 @@ while ($row = $resultTetanusVac->fetch_assoc()) {
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
         });
+
+        $("#tetanus_containing_vaccine").select2({
+            theme: "bootstrap4",
+            placeholder: "-Select-",
+            allowClear: true,
+            dropdownParent: $('#bodyaddimmunization')
+        });
+
+        $(".immunizationSelect").select2({
+            theme: "bootstrap4",
+            placeholder: "-Select-",
+            allowClear: true
+        });
         // END SELECT2
 
         // Listen for changes in the select option
@@ -1334,41 +1318,23 @@ while ($row = $resultTetanusVac->fetch_assoc()) {
         });
 
         // add row
-        // $("#addRow").click(function() {
-        //     var html = '';
-        //     html += '<div id="inputFormRow">';
-        //     html += '<div class="row">';
-        //     html += '<div class="col-md-6">';
-        //     html += '<div class="form-group">';
-        //     html += '<label>Anak</label>';
-        //     html += '<select class="form-control js-states  " style="width:100%;" id="child" name="child" required>';
-        //     html += '<?php foreach ($getResident as $row) : ?>';
-        //     html += '<option value=""></option>';
-        //     html += '<option value="<?= $row['id_resident'] ?>"><?= $row['firstname'] . ' ' . $row['lastname'] ?> </option>';
-        //     html += '<?php endforeach ?>';
-        //     html += '</select>';
-        //     html += '</div>';
-        //     html += '</div>';
-        //     html += '<div class="col-md-6">';
-        //     html += '<div class="form-group">';
-        //     html += '<label>Birthday</label>';
-        //     html += '<div class="input-group">';
-        //     html += '<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" disabled>';
-        //     html += '<div class="input-group-prepend">';
-        //     html += '<button class="btn btn-default btn-danger" type="button" id="removeRow">Remove</button>';
-        //     html += '</div>';
-        //     html += '</div>';
-        //     html += '</div>';
-        //     html += '</div>';
-        //     html += '</div>';
-        //     html += '</div>';
+        // $(document).ready(function() {
+        //     // Add Field button click event
+        //     $('#addField').click(function() {
+        //         $('#inputContainer').append('');
+        //     });
 
-        //     $('#newRow').append(html);
+        //     // Remove Field button click event
+        //     $(document).on('click', '.removeField', function() {
+        //         $(this).closest('.inputRow').remove();
+        //     });
+
+        // Form submission event
+        // $('#myForm').submit(function(e) {
+        //     e.preventDefault();
+        //     var formData = $(this).serialize();
+        //     console.log(formData); // You can perform an AJAX request or submit the form data to the server using this variable
         // });
-
-        // remove row
-        // $(document).on('click', '#removeRow', function() {
-        //     $(this).closest('#inputFormRow').remove();
         // });
     </script>
 </body>
