@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 06:18 PM
+-- Generation Time: May 28, 2023 at 07:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -646,9 +646,23 @@ CREATE TABLE `tbl_p_immunization_record` (
   `id_immunization_record` int(11) NOT NULL,
   `id_mother_h_c_pregnancy_condition` int(11) NOT NULL,
   `tetanus_containing_vaccine` int(11) NOT NULL,
-  `date_given` int(11) NOT NULL,
-  `when_to_return` int(11) NOT NULL
+  `date_given` date NOT NULL,
+  `when_to_return` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_p_immunization_record`
+--
+
+INSERT INTO `tbl_p_immunization_record` (`id_immunization_record`, `id_mother_h_c_pregnancy_condition`, `tetanus_containing_vaccine`, `date_given`, `when_to_return`) VALUES
+(5, 8, 1, '2023-05-20', '0000-00-00'),
+(6, 8, 2, '2023-06-28', '0000-00-00'),
+(10, 7, 2, '2023-05-28', '0000-00-00'),
+(11, 7, 1, '2023-04-28', '2023-05-28'),
+(12, 7, 4, '2023-06-28', '0000-00-00'),
+(13, 7, 3, '2023-06-01', '2023-08-28'),
+(14, 7, 6, '2023-05-28', '0000-00-00'),
+(15, 7, 5, '2023-09-28', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1294,7 +1308,7 @@ ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
 -- AUTO_INCREMENT for table `tbl_p_immunization_record`
 --
 ALTER TABLE `tbl_p_immunization_record`
-  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`

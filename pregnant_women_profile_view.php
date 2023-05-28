@@ -1173,7 +1173,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Date Given </label>
-                                                <input type="date" class="form-control" name="date_given" id="date_given">
+                                                <input type="date" class="form-control" name="date_given" id="date_given" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
