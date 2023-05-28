@@ -625,7 +625,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                     </div>
                                                     <div class="col-sm">
                                                         <!-- <input type="text" class="form-control" value="<?= rtrim($gethcpc['p_weight'], "0") ?>"> -->
-                                                        <div class="input-group mb-3">
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control" name="p_height" value="<?= rtrim($gethcpc['p_weight'], ".0") ?>">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text" id="basic-addon3">kg</span>
@@ -638,7 +638,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                         <p class="fw-bold">Taas (height):</p>
                                                     </div>
                                                     <div class="col-sm">
-                                                        <div class="input-group mb-3">
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control" name="p_height" value="<?= $gethcpc['p_height'] * 0.01 ?>">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text" id="basic-addon3">m</span>
@@ -761,63 +761,2052 @@ while ($row = $resultTV->fetch_assoc()) {
                                 <!-- Trimester Cards -->
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header d-flex p-0">
-                                            <h3 class="card-title p-3">Trimesters</h3>
-                                            <ul class="nav nav-pills ml-auto p-2">
-                                                <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">First Trimester</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Second Trimester</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Third Trimester</a></li>
-                                                <!-- <li class="nav-item dropdown">
-                                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                                        Dropdown <span class="caret"></span>
-                                                    </a>
-                                                    <div class="dropdown-menu" style="">
-                                                        <a class="dropdown-item" tabindex="-1" href="#">Action</a>
-                                                        <a class="dropdown-item" tabindex="-1" href="#">Another action</a>
-                                                        <a class="dropdown-item" tabindex="-1" href="#">Something else here</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" tabindex="-1" href="#">Separated link</a>
-                                                    </div>
-                                                </li> -->
-                                            </ul>
+                                        <div class="card-header">
+                                            <h4 class="card-title">Trimesters</h4>
                                         </div>
                                         <div class="card-body">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="tab_1">
-                                                    A wonderful serenity has taken possession of my entire soul,
-                                                    like these sweet mornings of spring which I enjoy with my whole heart.
-                                                    I am alone, and feel the charm of existence in this spot,
-                                                    which was created for the bliss of souls like mine. I am so happy,
-                                                    my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                                                    that I neglect my talents. I should be incapable of drawing a single stroke
-                                                    at the present moment; and yet I feel that I never was a greater artist than now.
+                                            <ul class="nav nav-pills nav-secondary  nav-pills-no-bd nav-pills-icons justify-content-center mb-4" id="pills-tab-with-icon" role="tablist">
+                                                <li class="nav-item submenu">
+                                                    <a class="nav-link active show" id="pills-home-tab-icon" data-toggle="pill" href="#pills-home-icon" role="tab" aria-controls="pills-home-icon" aria-selected="true">
+                                                        <i class="flaticon-calendar"></i>
+                                                        <blockquote class="blockquote text-center">
+                                                            <p class="h3 mb-0">Sa Unang Tatlong Buwan (First Trimester)</p>
+                                                            <p class="mb-0">Hindi dapat bababa sa isang tsek-up.</p>
+                                                        </blockquote>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item submenu">
+                                                    <a class="nav-link" id="pills-profile-tab-icon" data-toggle="pill" href="#pills-profile-icon" role="tab" aria-controls="pills-profile-icon" aria-selected="false">
+                                                        <i class="flaticon-calendar"></i>
+                                                        <blockquote class="blockquote text-center">
+                                                            <p class="h3 mb-0">Sa Pangalawang Tatlong Buwan (Second Trimester)</p>
+                                                            <p class="mb-0">Hindi dapat bababa sa isang tsek-up.</p>
+                                                        </blockquote>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item submenu">
+                                                    <a class="nav-link" id="pills-contact-tab-icon" data-toggle="pill" href="#pills-contact-icon" role="tab" aria-controls="pills-contact-icon" aria-selected="false">
+                                                        <i class="flaticon-calendar"></i>
+                                                        <blockquote class="blockquote text-center">
+                                                            <p class="h3 mb-0">Sa Huling Tatlong Buwan (Last Trimester)</p>
+                                                            <p class="mb-0">Hindi dapat bababa sa dalawang tsek-up.</p>
+                                                        </blockquote>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content mt-2 mb-3" id="pills-with-icon-tabContent">
+                                                <div class="tab-pane fade active show" id="pills-home-icon" role="tabpanel" aria-labelledby="pills-home-tab-icon">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                                <div class="tab-pane" id="tab_2">
-                                                    The European languages are members of the same family. Their separate existence is a myth.
-                                                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                                                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                                                    new common language would be desirable: one could refuse to pay expensive translators. To
-                                                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                                                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                                                    and regular than that of the individual languages.
+                                                <div class="tab-pane fade" id="pills-profile-icon" role="tabpanel" aria-labelledby="pills-profile-tab-icon">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                                <div class="tab-pane" id="tab_3">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                                                    like Aldus PageMaker including versions of Lorem Ipsum.
-                                                </div>
+                                                <div class="tab-pane fade" id="pills-contact-icon" role="tabpanel" aria-labelledby="pills-contact-tab-icon">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="card full-height">
+                                                                <div class="card-header">
+                                                                    <div class="card-head-row">
+                                                                        <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
+                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                            <div class="card-tools">
+                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-edit"></i>&nbsp
+                                                                                        Edit
+                                                                                    </a>
+                                                                                    <?php include 'p_edit_hcpc.php'; ?>
+                                                                                <?php elseif ($resulthcpc == 0) : ?>
+                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                        <i class="fa fa-plus"></i>&nbsp
+                                                                                        Add
+                                                                                    </a>
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Timbang (weight):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Taas (height):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control">
+                                                                                <div class="input-group-append">
+                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-sm">
+                                                                            <p class="fw-bold">Notes:</p>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <!-- Gamutan at Iba pang Serbisyo -->
