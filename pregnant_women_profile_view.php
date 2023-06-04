@@ -95,6 +95,11 @@ while ($row = $resultTV->fetch_assoc()) {
     $getTV[] = $row;
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+
+$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition` ='$hcpc_id'";
+$result1Trimester = $conn->query($query1Trimester);
+$count1Trimester = $result1Trimester->num_rows;
 
 ?>
 <!DOCTYPE html>
@@ -797,6 +802,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                             <div class="tab-content mt-2 mb-3" id="pills-with-icon-tabContent">
                                                 <div class="tab-pane fade active show" id="pills-home-icon" role="tabpanel" aria-labelledby="pills-home-tab-icon">
                                                     <div class="row">
+                                                        <!--1st Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -804,14 +810,14 @@ while ($row = $resultTV->fetch_assoc()) {
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
                                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                <?php if ($count1Trimester == 1) : ?>
                                                                                     <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-edit"></i>&nbsp
                                                                                         Edit
                                                                                     </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($resulthcpc == 0) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+
+                                                                                <?php elseif ($count1Trimester == 0) : ?>
+                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
@@ -1019,6 +1025,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--2nd Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -1026,14 +1033,13 @@ while ($row = $resultTV->fetch_assoc()) {
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
                                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                <?php if ($count1Trimester == 1) : ?>
                                                                                     <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-edit"></i>&nbsp
                                                                                         Edit
                                                                                     </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($resulthcpc == 0) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                <?php elseif ($count1Trimester == 0) : ?>
+                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
@@ -1241,6 +1247,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--3rd Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -1467,6 +1474,7 @@ while ($row = $resultTV->fetch_assoc()) {
 
                                                 <div class="tab-pane fade" id="pills-profile-icon" role="tabpanel" aria-labelledby="pills-profile-tab-icon">
                                                     <div class="row">
+                                                        <!--4th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -1689,6 +1697,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--5th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -1911,6 +1920,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--6th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -2137,6 +2147,8 @@ while ($row = $resultTV->fetch_assoc()) {
 
                                                 <div class="tab-pane fade" id="pills-contact-icon" role="tabpanel" aria-labelledby="pills-contact-tab-icon">
                                                     <div class="row">
+
+                                                        <!--7th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -2359,6 +2371,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--8th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -2581,6 +2594,7 @@ while ($row = $resultTV->fetch_assoc()) {
                                                             </div>
                                                         </div>
 
+                                                        <!--9th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
@@ -3047,7 +3061,7 @@ while ($row = $resultTV->fetch_assoc()) {
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                                 <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -3187,6 +3201,225 @@ while ($row = $resultTV->fetch_assoc()) {
                 </div>
             </div>
 
+            <!-- 1st Month Trimester Add Modal -->
+            <div class="modal fade bd-example-modal-lg" id="add1stTrimester" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body" id="bodyadd">
+                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                                <input type="text" name="month" value="1">
+                                <input type="text" name="hcpc_id" value="<?= $hcpc_id ?>">
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Petsa</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="date" name="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Timbang (weight):</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon3">kg</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Taas (height):</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon3">m</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Age of Gestation:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Blood Pressure:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Nutritional Status:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Mga payong binigay:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Laboratory Tests Done:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Urinalysis:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Treatments:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Referral sa ospital:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm">
+                                        <p class="fw-bold">Notes:</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="modal-footer">
+                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Main Footer -->
             <?php include 'templates/main-footer.php' ?>
             <!-- End Main Footer -->
@@ -3194,7 +3427,7 @@ while ($row = $resultTV->fetch_assoc()) {
 
     </div>
     <?php include 'templates/footer.php' ?>
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="assets/js/plgin/datatables/datatables.min.js"></script>
     <script src="assets/js/plugin/moment/moment.min.js"></script>
     <script src="assets/js/plugin/dataTables.dateTime.min.js"></script>
     <script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 01:11 AM
+-- Generation Time: Jun 04, 2023 at 07:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -721,6 +721,41 @@ INSERT INTO `tbl_p_tetanus_vaccine` (`tetanus_containing_vaccine`, `tetanus_cont
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_p_trimester`
+--
+
+CREATE TABLE `tbl_p_trimester` (
+  `id_p_trimester` int(11) NOT NULL,
+  `id_mother_h_c_pregnancy_condition` int(11) NOT NULL,
+  `month` int(2) NOT NULL,
+  `date_check_up_trimester` date NOT NULL,
+  `weight_trimester` decimal(10,2) NOT NULL,
+  `height_trimester` decimal(10,2) NOT NULL,
+  `age_of_gestation` varchar(255) NOT NULL,
+  `blood_pressure` varchar(255) NOT NULL,
+  `nutritional_status` varchar(100) NOT NULL,
+  `examination_condition_pregnant_woman` varchar(255) NOT NULL,
+  `advices_given` text NOT NULL,
+  `birth_plan_changes` text NOT NULL,
+  `teeth_examination` text NOT NULL,
+  `laboratory_tests_done` text NOT NULL,
+  `urinalysis` varchar(255) NOT NULL,
+  `complete_blood_count` varchar(255) NOT NULL,
+  `etiologic_tests` varchar(255) NOT NULL,
+  `pap_smear` varchar(255) NOT NULL,
+  `gestational_diabetes` varchar(255) NOT NULL,
+  `bacteriuria` varchar(255) NOT NULL,
+  `treatments` varchar(255) NOT NULL,
+  `discussions_or_service_given` text NOT NULL,
+  `date_of_return` date NOT NULL,
+  `name_health_service_provider` varchar(255) NOT NULL,
+  `hospital_referral` varchar(255) NOT NULL,
+  `notes` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_special_permit`
 --
 
@@ -996,7 +1031,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (107, '2023-05-17 06:34:07', 'admin, has logged out.', '11'),
 (108, '2023-05-17 06:34:16', 'staff, has logged in.', '10'),
 (109, '2023-05-17 06:34:37', 'staff, has logged out.', '10'),
-(110, '2023-05-17 06:34:42', 'admin, has logged in.', '11');
+(110, '2023-05-17 06:34:42', 'admin, has logged in.', '11'),
+(111, '2023-05-28 23:34:49', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1152,6 +1188,12 @@ ALTER TABLE `tbl_p_medication_and_other_services`
 --
 ALTER TABLE `tbl_p_tetanus_vaccine`
   ADD PRIMARY KEY (`tetanus_containing_vaccine`);
+
+--
+-- Indexes for table `tbl_p_trimester`
+--
+ALTER TABLE `tbl_p_trimester`
+  ADD PRIMARY KEY (`id_p_trimester`);
 
 --
 -- Indexes for table `tbl_special_permit`
@@ -1323,6 +1365,12 @@ ALTER TABLE `tbl_p_tetanus_vaccine`
   MODIFY `tetanus_containing_vaccine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `tbl_p_trimester`
+--
+ALTER TABLE `tbl_p_trimester`
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
@@ -1344,7 +1392,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
