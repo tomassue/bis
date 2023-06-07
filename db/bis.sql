@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 08:26 PM
+-- Generation Time: Jun 07, 2023 at 09:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -753,6 +753,14 @@ CREATE TABLE `tbl_p_trimester` (
   `notes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_p_trimester`
+--
+
+INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condition`, `month`, `date_check_up_trimester`, `weight_trimester`, `height_trimester`, `age_of_gestation`, `blood_pressure`, `nutritional_status`, `examination_condition_pregnant_woman`, `advices_given`, `birth_plan_changes`, `teeth_examination`, `laboratory_tests_done`, `urinalysis`, `complete_blood_count`, `etiologic_tests`, `pap_smear`, `gestational_diabetes`, `bacteriuria`, `treatments`, `discussions_or_service_given`, `date_of_return`, `name_health_service_provider`, `hospital_referral`, `notes`) VALUES
+(1, 7, 1, '2023-06-08', 34.00, 34.00, '34', '34', '34', '34', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'eragreg', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'reghrthas', '345hgn', 'fWEFWEF', 'FGBSrefger', 'geagrgr', 'greager', 'agererg', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', '2023-06-10', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'agregerger', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf'),
+(2, 7, 2, '2023-06-09', 35.00, 35.00, '35', '35', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', '2023-06-17', 'sample', 'sample', 'sample');
+
 -- --------------------------------------------------------
 
 --
@@ -1368,7 +1376,7 @@ ALTER TABLE `tbl_p_tetanus_vaccine`
 -- AUTO_INCREMENT for table `tbl_p_trimester`
 --
 ALTER TABLE `tbl_p_trimester`
-  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`

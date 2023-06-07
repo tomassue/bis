@@ -97,11 +97,15 @@ while ($row = $resultTV->fetch_assoc()) {
 
 /////////////////////////////////////////////////////////////////////////////////
 
-$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition` ='$hcpc_id' AND `month` = '1'";
+$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month` = '1'";
 $result1Trimester = $conn->query($query1Trimester);
 $count1Trimester = $result1Trimester->num_rows;
+$get1Trimester = $result1Trimester->fetch_assoc();
 
-
+$query2Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month` = '2'";
+$result2Trimester = $conn->query($query2Trimester);
+$count2Trimester = $result2Trimester->num_rows;
+$get2Trimester = $result2Trimester->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
@@ -834,7 +838,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Petsa</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['date_check_up_trimester'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -843,7 +847,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                         </div>
                                                                         <div class="col-sm">
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control">
+                                                                                <input type="text" class="form-control" value="<?= rtrim($get1Trimester['weight_trimester'], ".0") ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text" id="basic-addon3">kg</span>
                                                                                 </div>
@@ -856,7 +860,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                         </div>
                                                                         <div class="col-sm">
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control">
+                                                                                <input type="text" class="form-control" value="<?= rtrim($get1Trimester['height_trimester'], ".0") ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text" id="basic-addon3">m</span>
                                                                                 </div>
@@ -868,7 +872,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Age of Gestation:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['age_of_gestation'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -876,7 +880,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Blood Pressure:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['blood_pressure'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -884,7 +888,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Nutritional Status:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['nutritional_status'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -892,7 +896,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['examination_condition_pregnant_woman'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -900,7 +904,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Mga payong binigay:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get1Trimester['advices_given'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -908,7 +912,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get1Trimester['birth_plan_changes'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -916,7 +920,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pagsusuri ng Ngipin:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['teeth_examination'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -924,7 +928,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Laboratory Tests Done:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get1Trimester['laboratory_tests_done'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -932,7 +936,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Urinalysis:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['urinalysis'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -940,7 +944,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Complete Blood Count (CBC):</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['complete_blood_count'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -948,7 +952,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['etiologic_tests'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -956,7 +960,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['pap_smear'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -964,7 +968,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['gestational_diabetes'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -972,7 +976,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['bacteriuria'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -980,7 +984,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Treatments:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['treatments'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -988,7 +992,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get1Trimester['discussions_or_service_given'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -996,7 +1000,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Petsa ng Pagbalik:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['date_of_return'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1004,7 +1008,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pangalan ng Health Service Provider:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="3"><?= $get1Trimester['name_health_service_provider'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1012,7 +1016,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Referral sa ospital:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get1Trimester['hospital_referral'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1020,7 +1024,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Notes:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get1Trimester['notes'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1035,12 +1039,12 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
                                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($count1Trimester == 1) : ?>
+                                                                                <?php if ($count2Trimester == 1) : ?>
                                                                                     <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-edit"></i>&nbsp
                                                                                         Edit
                                                                                     </a>
-                                                                                <?php elseif ($count1Trimester == 0) : ?>
+                                                                                <?php elseif ($count2Trimester == 0) : ?>
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="2" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
@@ -1056,7 +1060,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Petsa</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['date_check_up_trimester'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1065,7 +1069,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                         </div>
                                                                         <div class="col-sm">
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control">
+                                                                                <input type="text" class="form-control" value="<?= rtrim($get2Trimester['weight_trimester'], ".0") ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text" id="basic-addon3">kg</span>
                                                                                 </div>
@@ -1078,7 +1082,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                         </div>
                                                                         <div class="col-sm">
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control">
+                                                                                <input type="text" class="form-control" value="<?= rtrim($get2Trimester['height_trimester'], ".0") ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text" id="basic-addon3">m</span>
                                                                                 </div>
@@ -1090,7 +1094,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Age of Gestation:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['age_of_gestation'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1098,7 +1102,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Blood Pressure:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['blood_pressure'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1106,7 +1110,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Nutritional Status:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['nutritional_status'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1114,7 +1118,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['examination_condition_pregnant_woman'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1122,7 +1126,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Mga payong binigay:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get2Trimester['advices_given'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1130,7 +1134,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get2Trimester['birth_plan_changes'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1138,7 +1142,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pagsusuri ng Ngipin:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['teeth_examination'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1146,7 +1150,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Laboratory Tests Done:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get2Trimester['laboratory_tests_done'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1154,7 +1158,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Urinalysis:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['urinalysis'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1162,7 +1166,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Complete Blood Count (CBC):</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['complete_blood_count'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1170,7 +1174,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['etiologic_tests'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1178,7 +1182,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['pap_smear'] ?>?">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1186,7 +1190,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['gestational_diabetes'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1194,7 +1198,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['bacteriuria'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1202,7 +1206,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Treatments:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['treatments'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1210,7 +1214,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get2Trimester['discussions_or_service_given'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1218,7 +1222,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Petsa ng Pagbalik:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['date_of_return'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1226,7 +1230,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Pangalan ng Health Service Provider:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="3"><?= $get2Trimester['name_health_service_provider'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1234,7 +1238,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Referral sa ospital:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                            <input type="text" class="form-control" value="<?= $get2Trimester['hospital_referral'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mb-2">
@@ -1242,7 +1246,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                             <p class="fw-bold">Notes:</p>
                                                                         </div>
                                                                         <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            <textarea class="form-control" id="comment" rows="5"><?= $get2Trimester['notes'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -3212,14 +3216,13 @@ $count1Trimester = $result1Trimester->num_rows;
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                            <form method="POST" action="model/save_p_trimester.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                                 <div class="row mb-2">
-                                    <input type="text" name="input_field" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
                                     <div class="col-sm">
                                         <p class="fw-bold">Petsa</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="date" name="" class="form-control">
+                                        <input type="date" name="date_check_up_trimester" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3228,7 +3231,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                     </div>
                                     <div class="col-sm">
                                         <div class="input-group">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="weight_trimester">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon3">kg</span>
                                             </div>
@@ -3241,9 +3244,9 @@ $count1Trimester = $result1Trimester->num_rows;
                                     </div>
                                     <div class="col-sm">
                                         <div class="input-group">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="height_trimester">
                                             <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon3">m</span>
+                                                <span class="input-group-text" id="basic-addon3">cm</span>
                                             </div>
                                         </div>
                                     </div>
@@ -3253,7 +3256,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Age of Gestation:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="age_of_gestation">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3261,7 +3264,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Blood Pressure:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="blood_pressure">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3269,7 +3272,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Nutritional Status:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="nutritional_status">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3277,7 +3280,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="examination_condition_pregnant_woman">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3285,7 +3288,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Mga payong binigay:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                        <textarea class="form-control" id="comment" rows="5" name="advices_given"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3293,7 +3296,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                        <textarea class="form-control" id="comment" rows="5" name="birth_plan_changes"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3301,7 +3304,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Pagsusuri ng Ngipin:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="teeth_examination">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3309,7 +3312,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Laboratory Tests Done:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                        <textarea class="form-control" id="comment" rows="5" name="laboratory_tests_done"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3317,7 +3320,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Urinalysis:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="urinalysis">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3325,7 +3328,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Complete Blood Count (CBC):</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="complete_blood_count">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3333,7 +3336,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="etiologic_tests">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3341,7 +3344,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="pap_smear">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3349,7 +3352,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="gestational_diabetes">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3357,7 +3360,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="bacteriuria">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3365,7 +3368,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Treatments:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="treatments">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3373,7 +3376,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                        <textarea class="form-control" id="comment" rows="5" name="discussions_or_service_given"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3381,7 +3384,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Petsa ng Pagbalik:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="date" class="form-control" name="date_of_return">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3389,7 +3392,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Pangalan ng Health Service Provider:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                                        <textarea class="form-control" id="comment" rows="3" name="name_health_service_provider"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3397,7 +3400,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Referral sa ospital:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="hospital_referral">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -3405,13 +3408,15 @@ $count1Trimester = $result1Trimester->num_rows;
                                         <p class="fw-bold">Notes:</p>
                                     </div>
                                     <div class="col-sm">
-                                        <textarea class="form-control" id="comment" rows="5"></textarea>
+                                        <textarea class="form-control" id="comment" rows="5" name="notes"></textarea>
                                     </div>
                                 </div>
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <input type="text" name="month" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
+                                <input type="text" value="<?= $hcpc_id ?>" name="hcpc_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
