@@ -97,9 +97,11 @@ while ($row = $resultTV->fetch_assoc()) {
 
 /////////////////////////////////////////////////////////////////////////////////
 
-$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition` ='$hcpc_id'";
+$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition` ='$hcpc_id' AND `month` = '1'";
 $result1Trimester = $conn->query($query1Trimester);
 $count1Trimester = $result1Trimester->num_rows;
+
+
 
 ?>
 <!DOCTYPE html>
@@ -817,7 +819,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                                     </a>
 
                                                                                 <?php elseif ($count1Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="1" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
@@ -1039,7 +1041,7 @@ $count1Trimester = $result1Trimester->num_rows;
                                                                                         Edit
                                                                                     </a>
                                                                                 <?php elseif ($count1Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="2" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
@@ -3210,10 +3212,9 @@ $count1Trimester = $result1Trimester->num_rows;
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
-                                <input type="text" name="month" value="1">
-                                <input type="text" name="hcpc_id" value="<?= $hcpc_id ?>">
+                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                                 <div class="row mb-2">
+                                    <input type="text" name="input_field" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
                                     <div class="col-sm">
                                         <p class="fw-bold">Petsa</p>
                                     </div>
@@ -3558,6 +3559,24 @@ $count1Trimester = $result1Trimester->num_rows;
         //     console.log(formData); // You can perform an AJAX request or submit the form data to the server using this variable
         // });
         // });
+
+        var modalLinks = document.querySelectorAll('.open-modal');
+
+        // Attach click event listeners to each <a> tag
+        modalLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var inputValue = this.getAttribute('data-input-value');
+                setInputValue(inputValue);
+                openModal();
+            });
+        });
+
+        // Function to set the input field value
+        function setInputValue(value) {
+            var inputField = document.getElementById('input_field');
+            inputField.value = value;
+        }
     </script>
 </body>
 

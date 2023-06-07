@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2023 at 07:48 PM
+-- Generation Time: Jun 06, 2023 at 08:26 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -421,7 +421,7 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (7, '1234-5678-9097-8876', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Weis', '', 'Wise', '', 'WEE', 'Japan', '2016-01-01', 'Male', 'single', 'co-occupant', 1, '', '2021-01-02', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-02 01:15:20', 11),
 (8, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'New', 'New', 'New', 'Sr.', 'News', 'Jasaan', '2020-01-03', 'Male', 'single', 'new', 4, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 05:45:25', 11),
 (9, '7866-6666-6666-3323', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'COOCCUPANT', 'COOCCUPANT', 'COOCCUPANT', '', 'COOCCUPANT', 'Japan', '2001-05-03', 'Male', 'widow/er', 'co-occupant', 1, 'no', '2023-03-09', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:35:24', 11),
-(10, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'TENANT', 'TENANT', 'TENANT', '', 'TENANT', 'Samps', '2023-01-01', 'Male', 'married', 'tenant', 1, '', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:39:01', 11),
+(10, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'TENANT', 'TENANT', 'TENANT', '', 'TENT', 'Samps', '2023-01-01', 'Male', 'married', 'tenant', 1, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-06-06 18:24:10', 11),
 (11, '1234-5678-7654', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Jane', '', 'Doe', '', 'Jin', 'Jasaan', '1987-05-08', 'Female', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '09876654342', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-08 01:54:22', 11),
 (12, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'John', '', 'Doe', '', 'Jj', 'Jasaan', '1978-05-02', 'Male', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-08 01:58:56', 11),
 (13, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tom', '', 'Doe', '', 'Tomas', 'Jasaan', '2001-01-01', 'Male', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:03:03', 11),
