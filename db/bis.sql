@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 06:48 AM
+-- Generation Time: Jun 08, 2023 at 10:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -765,7 +765,8 @@ INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condit
 (7, 7, 5, '2023-07-05', 45.00, 45.00, '45', '45', '45', '45', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', '2023-08-05', 'month 5', 'month 5', 'month 5'),
 (8, 7, 6, '2023-07-06', 46.00, 46.00, 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', '2023-08-06', 'Sample 6', 'Sample 6', 'Sample 6'),
 (9, 7, 7, '2023-07-07', 47.00, 47.00, 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', '2023-08-07', 'sample 7', 'sample 7', 'sample 7'),
-(10, 7, 8, '2023-07-08', 48.00, 48.00, 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', '2023-08-08', 'month 8', 'month 8', 'month 8');
+(10, 7, 8, '2023-07-08', 48.00, 48.00, 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', '2023-08-08', 'month 8', 'month 8', 'month 8'),
+(11, 7, 9, '2023-08-09', 49.00, 49.00, '49', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', '2023-08-09', 'month 9', 'month 9', 'month 9');
 
 -- --------------------------------------------------------
 
@@ -1382,7 +1383,7 @@ ALTER TABLE `tbl_p_tetanus_vaccine`
 -- AUTO_INCREMENT for table `tbl_p_trimester`
 --
 ALTER TABLE `tbl_p_trimester`
-  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`

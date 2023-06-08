@@ -4220,14 +4220,14 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
                                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($resulthcpc == 1) : ?>
+                                                                                <?php if ($count9Trimester == 1) : ?>
                                                                                     <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
                                                                                         <i class="fa fa-edit"></i>&nbsp
                                                                                         Edit
                                                                                     </a>
                                                                                     <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($resulthcpc == 0) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                <?php elseif ($count9Trimester == 0) : ?>
+                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="9" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
@@ -4237,200 +4237,397 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Petsa</p>
+                                                                    <?php if ($count9Trimester == 1) : ?>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Petsa</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['date_check_up_trimester'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Timbang (weight):</p>
-                                                                        </div>
-                                                                        <div class="col-sm">
-                                                                            <div class="input-group">
-                                                                                <input type="text" class="form-control">
-                                                                                <div class="input-group-append">
-                                                                                    <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Timbang (weight):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control" value="<?= rtrim($get9Trimester['weight_trimester'], ".0") ?>">
+                                                                                    <div class="input-group-append">
+                                                                                        <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Taas (height):</p>
-                                                                        </div>
-                                                                        <div class="col-sm">
-                                                                            <div class="input-group">
-                                                                                <input type="text" class="form-control">
-                                                                                <div class="input-group-append">
-                                                                                    <span class="input-group-text" id="basic-addon3">m</span>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Taas (height):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control" value="<?= rtrim($get9Trimester['height_trimester'], ".0") ?>">
+                                                                                    <div class="input-group-append">
+                                                                                        <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Age of Gestation:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Age of Gestation:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['age_of_gestation'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Blood Pressure:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['blood_pressure'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Blood Pressure:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Nutritional Status:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['nutritional_status'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['examination_condition_pregnant_woman'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Nutritional Status:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Mga payong binigay:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"><?= $get9Trimester['advices_given'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"><?= $get9Trimester['birth_plan_changes'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['teeth_examination'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"><?= $get9Trimester['laboratory_tests_done'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Mga payong binigay:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Urinalysis:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['urinalysis'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['complete_blood_count'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['etiologic_tests'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['pap_smear'] ?>?">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['gestational_diabetes'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['bacteriuria'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Treatments:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['treatments'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"><?= $get9Trimester['discussions_or_service_given'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Urinalysis:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['date_of_return'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="3"><?= $get9Trimester['name_health_service_provider'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Referral sa ospital:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control" value="<?= $get9Trimester['hospital_referral'] ?>">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Notes:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"><?= $get9Trimester['notes'] ?></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                    <?php else : ?>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Petsa</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Timbang (weight):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control">
+                                                                                    <div class="input-group-append">
+                                                                                        <span class="input-group-text" id="basic-addon3">kg</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Taas (height):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control">
+                                                                                    <div class="input-group-append">
+                                                                                        <span class="input-group-text" id="basic-addon3">m</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Age of Gestation:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Blood Pressure:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Nutritional Status:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pagsusuri ng kalagayan ng buntis:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Mga payong binigay:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Treatments:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Mga pagbabago sa Birth Plan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pagsusuri ng Ngipin:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Laboratory Tests Done:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Urinalysis:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Complete Blood Count (CBC):</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Etiologic tests para sa STIs, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pap Smear, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Gestational diabetes (oral glucose challenge test), kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Referral sa ospital:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Bacteriuria, kung kinakailangan:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Treatments:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-sm">
-                                                                            <p class="fw-bold">Notes:</p>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pinag-usapan/Serbisyong ibinigay:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-sm">
-                                                                            <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Petsa ng Pagbalik:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Pangalan ng Health Service Provider:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="3"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Referral sa ospital:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm">
+                                                                                <p class="fw-bold">Notes:</p>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endif ?>
                                                                 </div>
                                                             </div>
                                                         </div>
