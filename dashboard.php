@@ -131,8 +131,11 @@ while ($row = $result17->fetch_assoc()) {
 
 						$query_noc = "SELECT * FROM tbl_nature_of_case";
 						$count_noc = $conn->query($query_noc)->num_rows;
+
+						$query_official = "SELECT * FROM tblofficials";
+						$count_official = $conn->query($query_official)->num_rows;
 						?>
-						<?php if ($count_zone == 0 || $count_householdnumber == 0 || $count_org == 0 || $count_position == 0 || $count_chairmanship == 0 || $count_noc == 0) : ?>
+						<?php if ($count_zone == 0 || $count_householdnumber == 0 || $count_org == 0 || $count_position == 0 || $count_chairmanship == 0 || $count_noc == 0 || $count_official == 0) : ?>
 							<div class="col-md-12">
 								<div class="card full-height alert alert-danger">
 									<div class="card-body">
