@@ -4,7 +4,7 @@ $sql = "SELECT *,
 	tbl_users.id_user as user_id
 	FROM tbl_transactions 
 	JOIN tbl_users ON tbl_users.id_user=tbl_transactions.id_user 
-	ORDER BY tbl_transactions.date_transact DESC";
+	ORDER BY tbl_transactions.created_at_transact DESC";
 // $sql = "SELECT * FROM tbl_transactions";
 $result = $conn->query($sql);
 

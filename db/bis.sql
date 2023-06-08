@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 04:54 PM
+-- Generation Time: Jun 08, 2023 at 05:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -281,7 +281,8 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, 50.00);
+(1, 55.00),
+(2, 1025.00);
 
 -- --------------------------------------------------------
 
@@ -789,7 +790,8 @@ CREATE TABLE `tbl_special_permit` (
 INSERT INTO `tbl_special_permit` (`id_special_permit`, `grantee`, `representative`, `action`, `start_date`, `end_date`, `issued_date`, `id_user`) VALUES
 (1, 'Choco Shake', 'Rustom Abella', 'to perform installation of  streamer /tarpaulin along CM Recto – Julio Pacana St. junction. The  installation will start from August 25, 2015 and will expire on September 25,  2015.', '2023-02-13', '2024-02-13', '2023-02-13', '11'),
 (2, 'Abella Construction Corp', 'Rustom Abella', 'to install', '2023-03-17', '2023-03-24', '2023-03-17', '11'),
-(3, 'Mismaler Corp', 'Tomas Abella', 'to function the everything', '2023-05-01', '2023-05-05', '2023-05-02', '11');
+(3, 'Mismaler Corp', 'Tomas Abella', 'to function the everything', '2023-05-01', '2023-05-05', '2023-05-02', '11'),
+(4, 'ABC Company', 'Tommy Abella', 'To function a kuan', '2023-06-08', '2023-07-08', '2023-06-08', '11');
 
 -- --------------------------------------------------------
 
@@ -828,15 +830,18 @@ CREATE TABLE `tbl_transactions` (
   `transact_no` text NOT NULL,
   `date_transact` timestamp NOT NULL DEFAULT current_timestamp(),
   `details_transact` varchar(250) NOT NULL,
-  `recipient_name` varchar(255) NOT NULL
+  `recipient_name` varchar(255) NOT NULL,
+  `created_at_transact` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_transactions`
 --
 
-INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`, `recipient_name`) VALUES
-(1, 11, '20230608699692000001', '2023-06-08 09:39:00', 'Barangay Clearance for Wang, Malou ', 'Tommy');
+INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`, `recipient_name`, `created_at_transact`) VALUES
+(1, 11, '20230608883982000001', '2023-06-08 15:04:22', 'Barangay Clearance for Abella, Tom ', 'Tommy Abella', '2023-06-08 15:04:22'),
+(0, 11, '20230608879757000001', '2023-06-08 15:06:09', 'Certificate of Indigency for Wang, Malou ', 'Tomass', '2023-06-08 15:06:09'),
+(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29');
 
 -- --------------------------------------------------------
 
@@ -1236,7 +1241,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1338,7 +1343,7 @@ ALTER TABLE `tbl_p_trimester`
 -- AUTO_INCREMENT for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
-  MODIFY `id_special_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_special_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_support`
