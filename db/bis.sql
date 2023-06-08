@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 10:18 AM
+-- Generation Time: Jun 08, 2023 at 04:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -54,7 +54,8 @@ INSERT INTO `tblblotter` (`id_blotter`, `noc_id`, `noc_others`, `comp_id`, `comp
 (10, '1', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Swordsmith Village', '09097786675', 'wdefrew', 'fewfwe', '5', 'Settled', '2023-04-22 10:18:34', '2023-05-05 16:53:07', '11'),
 (12, '1', 'N/A', '4', 'N/A', 'N/A', 'N/A', 'tryyytrdy', 'rtysysthstr', '10', 'Settled', '2023-05-05 07:18:54', '2023-05-07 08:18:12', '11'),
 (13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Settled', '2023-05-05 07:26:15', '2023-05-07 08:18:07', '11'),
-(14, 'Others', 'Sample', 'N/A', 'Shinobu', 'Swordsmith Village', '09098764748', 'fefefeter', 'ewgregreger', '1', 'Settled', '2023-05-06 01:04:47', '2023-05-06 01:09:47', '11');
+(14, 'Others', 'Sample', 'N/A', 'Shinobu', 'Swordsmith Village', '09098764748', 'fefefeter', 'ewgregreger', '1', 'Settled', '2023-05-06 01:04:47', '2023-05-06 01:09:47', '11'),
+(15, 'Others', 'Sample', '16', 'N/A', 'N/A', 'N/A', 'Sample here', 'Sample here again...', '11', 'Active', '2023-06-08 09:46:10', '2023-06-08 09:46:10', '11');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,8 @@ INSERT INTO `tblblotter_schedule` (`id_blotter_schedule`, `id_blotter`, `blotter
 (48, 8, '2023-05-03', '13:30:00', '2023-05-05 08:33:59', '2023-05-05 08:33:59'),
 (54, 13, '2023-05-05', '13:33:00', '2023-05-05 15:40:57', '2023-05-05 15:40:57'),
 (56, 12, '2023-05-06', '13:33:00', '2023-05-05 16:53:52', '2023-05-05 16:53:52'),
-(57, 14, '2023-05-06', '09:30:00', '2023-05-06 01:04:47', '2023-05-06 01:04:47');
+(57, 14, '2023-05-06', '09:30:00', '2023-05-06 01:04:47', '2023-05-06 01:04:47'),
+(59, 15, '2023-06-10', '10:00:00', '2023-06-08 09:46:52', '2023-06-08 09:46:52');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,8 @@ INSERT INTO `tblblotter_schedule_archive` (`id_blotter_schedule_archive`, `id_bl
 (33, 12, '2023-05-05', '13:32:00', '2023-05-05 08:45:40', '2023-05-05 08:45:40', '2023-05-05 15:39:53'),
 (34, 13, '2023-05-05', '13:32:00', '2023-05-05 15:31:53', '2023-05-05 15:31:53', '2023-05-05 15:40:57'),
 (35, 12, '2023-05-05', '13:33:00', '2023-05-05 15:39:53', '2023-05-05 15:39:53', '2023-05-05 16:13:15'),
-(36, 12, '2023-05-05', '13:33:00', '2023-05-05 16:13:15', '2023-05-05 16:13:15', '2023-05-05 16:53:52');
+(36, 12, '2023-05-05', '13:33:00', '2023-05-05 16:13:15', '2023-05-05 16:13:15', '2023-05-05 16:53:52'),
+(37, 15, '2023-06-10', '09:00:00', '2023-06-08 09:46:10', '2023-06-08 09:46:10', '2023-06-08 09:46:52');
 
 -- --------------------------------------------------------
 
@@ -278,14 +281,7 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, 20000.00),
-(2, 60000.00),
-(3, 99999999.99),
-(4, 399.00),
-(5, 6969.00),
-(6, 22.00),
-(7, 25.00),
-(8, 600.00);
+(1, 50.00);
 
 -- --------------------------------------------------------
 
@@ -662,7 +658,8 @@ INSERT INTO `tbl_p_immunization_record` (`id_immunization_record`, `id_mother_h_
 (12, 7, 4, '2023-06-28', '0000-00-00'),
 (13, 7, 3, '2023-06-01', '2023-08-28'),
 (14, 7, 6, '2023-05-28', '0000-00-00'),
-(15, 7, 5, '2023-09-28', '0000-00-00');
+(15, 7, 5, '2023-09-28', '0000-00-00'),
+(16, 8, 3, '2023-06-08', '2023-07-08');
 
 -- --------------------------------------------------------
 
@@ -839,55 +836,7 @@ CREATE TABLE `tbl_transactions` (
 --
 
 INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`, `recipient_name`) VALUES
-(1, 11, '20230501977391000001', '2023-05-01 09:58:03', 'Barangay Clearance for Red, Test Testtwo', 'James'),
-(0, 11, '20230501072475000001', '2023-05-01 09:59:28', 'Barangay Clearance for Abella, James ', 'James Maximus'),
-(2, 27, '20230501981494000001', '2023-05-01 10:07:53', 'Barangay Clearance for Calapis, Motsur with authorization letter', 'Max'),
-(0, 27, '20230501153564000001', '2023-05-01 10:08:20', 'Barangay Clearance for Calapis, Motsur ', 'Max again'),
-(0, 11, '20230501763408000001', '2023-05-01 11:37:26', 'Certificate of Oneness for Abella, Tom ', 'James Reid'),
-(3, 11, '20230501127189000001', '2023-05-01 11:39:04', 'Barangay Clearance for Abella, Tom ', 'James Reid'),
-(0, 11, '20230501455863000001', '2023-05-01 12:27:33', 'Certificate of Indigency for Abella, James with authorization letter', 'Tom Abella'),
-(0, 11, '20230501324629000001', '2023-05-01 14:13:11', 'Certificate of Oneness for RUSTOM C. ABELLA', 'James Reid'),
-(0, 11, '20230501793821000001', '2023-05-01 14:16:14', 'Certificate of Oneness for Tom Abella', 'James Rid'),
-(0, 11, '20230501150875000001', '2023-05-01 15:01:16', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Sample'),
-(0, 11, '20230501571457000001', '2023-05-01 15:41:53', 'Construction Clearance for Jaime P. Ramen', 'Tom Abella'),
-(0, 11, '20230501388226000001', '2023-05-01 15:42:16', 'Construction Clearance for Milk Shake', 'James Reid'),
-(0, 11, '20230502415356000001', '2023-05-01 16:07:31', 'Certificate of Appearance for Tom Abella', 'Testing Ni'),
-(0, 11, '20230502815615000001', '2023-05-01 16:11:53', 'Certificate of Appearance for Shinobu', 'Ngek'),
-(0, 11, '20230502484127000001', '2023-05-01 16:14:46', 'Construction Clearance for Shinobu', 'James Reid'),
-(4, 11, '20230502499088000001', '2023-05-01 16:28:03', 'Special Permit for Choco Shake. REPRESENTATIVE: Rustom Abella', 'Nadine Lustre'),
-(5, 11, '20230502759245000001', '2023-05-01 16:31:15', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomassue'),
-(6, 11, '20230502571627000001', '2023-05-02 01:16:09', 'Barangay Clearance for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502781133000001', '2023-05-02 01:21:36', 'Certificate of Indigency for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502897122000001', '2023-05-02 01:24:22', 'Certificate of Oneness for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502168865000001', '2023-05-02 01:37:40', 'Certificate of Appearance for Weise Weise', 'James Maximus'),
-(0, 11, '20230502965388000001', '2023-05-02 01:48:05', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Tom Abella'),
-(0, 11, '20230502750550000001', '2023-05-02 01:55:47', 'Certificate of Appearance for Sample Me', 'Sample Me'),
-(7, 11, '20230503865832000001', '2023-05-03 06:40:17', 'Barangay Clearance for TENANT, TENANT TENANT', 'James Reading'),
-(1, 11, '20230501977391000001', '2023-05-01 09:58:03', 'Barangay Clearance for Red, Test Testtwo', 'James'),
-(0, 11, '20230501072475000001', '2023-05-01 09:59:28', 'Barangay Clearance for Abella, James ', 'James Maximus'),
-(2, 27, '20230501981494000001', '2023-05-01 10:07:53', 'Barangay Clearance for Calapis, Motsur with authorization letter', 'Max'),
-(0, 27, '20230501153564000001', '2023-05-01 10:08:20', 'Barangay Clearance for Calapis, Motsur ', 'Max again'),
-(0, 11, '20230501763408000001', '2023-05-01 11:37:26', 'Certificate of Oneness for Abella, Tom ', 'James Reid'),
-(3, 11, '20230501127189000001', '2023-05-01 11:39:04', 'Barangay Clearance for Abella, Tom ', 'James Reid'),
-(0, 11, '20230501455863000001', '2023-05-01 12:27:33', 'Certificate of Indigency for Abella, James with authorization letter', 'Tom Abella'),
-(0, 11, '20230501324629000001', '2023-05-01 14:13:11', 'Certificate of Oneness for RUSTOM C. ABELLA', 'James Reid'),
-(0, 11, '20230501793821000001', '2023-05-01 14:16:14', 'Certificate of Oneness for Tom Abella', 'James Rid'),
-(0, 11, '20230501150875000001', '2023-05-01 15:01:16', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Sample'),
-(0, 11, '20230501571457000001', '2023-05-01 15:41:53', 'Construction Clearance for Jaime P. Ramen', 'Tom Abella'),
-(0, 11, '20230501388226000001', '2023-05-01 15:42:16', 'Construction Clearance for Milk Shake', 'James Reid'),
-(0, 11, '20230502415356000001', '2023-05-01 16:07:31', 'Certificate of Appearance for Tom Abella', 'Testing Ni'),
-(0, 11, '20230502815615000001', '2023-05-01 16:11:53', 'Certificate of Appearance for Shinobu', 'Ngek'),
-(0, 11, '20230502484127000001', '2023-05-01 16:14:46', 'Construction Clearance for Shinobu', 'James Reid'),
-(4, 11, '20230502499088000001', '2023-05-01 16:28:03', 'Special Permit for Choco Shake. REPRESENTATIVE: Rustom Abella', 'Nadine Lustre'),
-(5, 11, '20230502759245000001', '2023-05-01 16:31:15', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomassue'),
-(6, 11, '20230502571627000001', '2023-05-02 01:16:09', 'Barangay Clearance for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502781133000001', '2023-05-02 01:21:36', 'Certificate of Indigency for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502897122000001', '2023-05-02 01:24:22', 'Certificate of Oneness for Wise, Weis ', 'Tom Abella'),
-(0, 11, '20230502168865000001', '2023-05-02 01:37:40', 'Certificate of Appearance for Weise Weise', 'James Maximus'),
-(0, 11, '20230502965388000001', '2023-05-02 01:48:05', 'Certificate of Appearance for RUSTOM C. ABELLA', 'Tom Abella'),
-(0, 11, '20230502750550000001', '2023-05-02 01:55:47', 'Certificate of Appearance for Sample Me', 'Sample Me'),
-(7, 11, '20230503865832000001', '2023-05-03 06:40:17', 'Barangay Clearance for TENANT, TENANT TENANT', 'James Reading'),
-(8, 11, '20230518157633000001', '2023-05-18 03:41:49', 'Barangay Clearance for Abella, Tom ', 'James Reading');
+(1, 11, '20230608699692000001', '2023-06-08 09:39:00', 'Barangay Clearance for Wang, Malou ', 'Tommy');
 
 -- --------------------------------------------------------
 
@@ -1245,19 +1194,19 @@ ALTER TABLE `tbl_user_logs`
 -- AUTO_INCREMENT for table `tblblotter`
 --
 ALTER TABLE `tblblotter`
-  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule`
 --
 ALTER TABLE `tblblotter_schedule`
-  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule_archive`
 --
 ALTER TABLE `tblblotter_schedule_archive`
-  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tblbrgy_info`
@@ -1287,7 +1236,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1365,7 +1314,7 @@ ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
 -- AUTO_INCREMENT for table `tbl_p_immunization_record`
 --
 ALTER TABLE `tbl_p_immunization_record`
-  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`

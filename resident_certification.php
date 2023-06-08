@@ -212,7 +212,7 @@ while ($row = $result1->fetch_assoc()) {
 																			<!-- <a type="button" data-toggle="tooltip" href="generate_brgy_cert.php?id=<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a> -->
-																			<a type="button" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" data-toggle="modal" class="btn btn-link btn-warning" onclick="return confirm('This resident has not lived in this barangay for more than six months. Do you want to proceed?')" data-original-title="Generate Certificate">
+																			<a type="button" data-toggle="modal" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return showConfirmation(event)" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
 																			<?php include 'resident_certification_modal.php'; ?>
@@ -321,6 +321,17 @@ while ($row = $result1->fetch_assoc()) {
 				return true;
 			}
 			return false;
+		}
+
+		function showConfirmation(event) {
+			var result = confirm("This resident has not lived in this barangay for more than six months. Do you want to proceed?");
+			if (result) {
+				return true; // Allow the default behavior (opening the modal)
+			} else {
+				event.stopPropagation(); // Prevent event propagation to stop modal from opening
+				event.preventDefault(); // Prevent the default behavior of the anchor tag
+				return false;
+			}
 		}
 	</script>
 </body>
