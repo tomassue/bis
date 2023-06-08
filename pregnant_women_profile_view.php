@@ -5224,7 +5224,7 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                         <div>
                             <div class="modal-footer">
                                 <input type="hidden" value="<?= $id ?>" name="mother_id">
-                                <input type="text" name="month" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
+                                <input type="hidden" name="month" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
                                 <input type="hidden" value="<?= $hcpc_id ?>" name="hcpc_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
