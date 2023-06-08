@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2023 at 09:05 PM
+-- Generation Time: Jun 08, 2023 at 06:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -758,8 +758,14 @@ CREATE TABLE `tbl_p_trimester` (
 --
 
 INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condition`, `month`, `date_check_up_trimester`, `weight_trimester`, `height_trimester`, `age_of_gestation`, `blood_pressure`, `nutritional_status`, `examination_condition_pregnant_woman`, `advices_given`, `birth_plan_changes`, `teeth_examination`, `laboratory_tests_done`, `urinalysis`, `complete_blood_count`, `etiologic_tests`, `pap_smear`, `gestational_diabetes`, `bacteriuria`, `treatments`, `discussions_or_service_given`, `date_of_return`, `name_health_service_provider`, `hospital_referral`, `notes`) VALUES
-(1, 7, 1, '2023-06-08', 34.00, 34.00, '34', '34', '34', '34', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'eragreg', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'reghrthas', '345hgn', 'fWEFWEF', 'FGBSrefger', 'geagrgr', 'greager', 'agererg', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', '2023-06-10', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf', 'agregerger', 'ejaglbrgureiagbre\r\ngjreiaogpberuagr\r\n-gnrjaegrne\r\n1. fenjafnbeg\r\n2. ejfNEJWFNE\r\n3. EFwkfnewf'),
-(2, 7, 2, '2023-06-09', 35.00, 35.00, '35', '35', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', 'sample', '2023-06-17', 'sample', 'sample', 'sample');
+(3, 7, 1, '2023-06-08', 35.00, 34.00, '34', '35', 'sample', 'safeafewf', 'fsafegfewgreahre', 'fsafegfewgreahre', '', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', '2023-06-15', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre'),
+(4, 7, 2, '2023-06-08', 100.00, 100.00, 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', '2023-06-17', 'sample3', 'sample3', 'sample3'),
+(5, 7, 3, '2023-06-12', 141.00, 141.00, 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', '2023-06-10', 'sample4', 'sample4', 'sample4'),
+(6, 7, 4, '2023-06-08', 44.00, 44.00, '44', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', '2023-06-22', 'month 4', 'month 4', 'month 4'),
+(7, 7, 5, '2023-07-05', 45.00, 45.00, '45', '45', '45', '45', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', '2023-08-05', 'month 5', 'month 5', 'month 5'),
+(8, 7, 6, '2023-07-06', 46.00, 46.00, 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', '2023-08-06', 'Sample 6', 'Sample 6', 'Sample 6'),
+(9, 7, 7, '2023-07-07', 47.00, 47.00, 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', '2023-08-07', 'sample 7', 'sample 7', 'sample 7'),
+(10, 7, 8, '2023-07-08', 48.00, 48.00, 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', '2023-08-08', 'month 8', 'month 8', 'month 8');
 
 -- --------------------------------------------------------
 
@@ -1376,7 +1382,7 @@ ALTER TABLE `tbl_p_tetanus_vaccine`
 -- AUTO_INCREMENT for table `tbl_p_trimester`
 --
 ALTER TABLE `tbl_p_trimester`
-  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
