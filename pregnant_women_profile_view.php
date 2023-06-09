@@ -71,15 +71,6 @@ $gethcpc = $conn->query($queryhcpc)->fetch_assoc();
 
 /////////////////////////////////////////////////////////////////////////////////
 
-$hcpc_id = $gethcpc['id_mother_h_c_pregnancy_condition'];
-
-$queryImmunization = "SELECT * FROM tbl_p_immunization_record JOIN tbl_p_tetanus_vaccine ON tbl_p_tetanus_vaccine.tetanus_containing_vaccine=tbl_p_immunization_record.tetanus_containing_vaccine WHERE `id_mother_h_c_pregnancy_condition` = $hcpc_id ORDER BY tbl_p_tetanus_vaccine.tetanus_containing_vaccine_detail";
-$getImmunization = $conn->query($queryImmunization);
-$immunizationDetails = array();
-while ($row = $getImmunization->fetch_assoc()) {
-    $immunizationDetails[] = $row;
-}
-
 $queryTetanusVac = "SELECT * FROM tbl_p_tetanus_vaccine";
 $resultTetanusVac = $conn->query($queryTetanusVac);
 $tetanusVac = array();
@@ -87,62 +78,74 @@ while ($row = $resultTetanusVac->fetch_assoc()) {
     $tetanusVac[] = $row;
 }
 
-//Fethc tetanus vaccine option that has not been selected yet.
-$queryTV = "SELECT * FROM tbl_p_tetanus_vaccine WHERE tetanus_containing_vaccine NOT IN (SELECT tetanus_containing_vaccine FROM tbl_p_immunization_record WHERE id_mother_h_c_pregnancy_condition = '$hcpc_id')";
-$resultTV = $conn->query($queryTV);
-$getTV = array();
-while ($row = $resultTV->fetch_assoc()) {
-    $getTV[] = $row;
+if (!empty($gethcpc)) {
+
+    $hcpc_id = $gethcpc['id_mother_h_c_pregnancy_condition'];
+
+    $queryImmunization = "SELECT * FROM tbl_p_immunization_record JOIN tbl_p_tetanus_vaccine ON tbl_p_tetanus_vaccine.tetanus_containing_vaccine=tbl_p_immunization_record.tetanus_containing_vaccine WHERE `id_mother_h_c_pregnancy_condition` = $hcpc_id ORDER BY tbl_p_tetanus_vaccine.tetanus_containing_vaccine_detail";
+    $getImmunization = $conn->query($queryImmunization);
+    $immunizationDetails = array();
+    while ($row = $getImmunization->fetch_assoc()) {
+        $immunizationDetails[] = $row;
+    }
+
+    //Fetch tetanus vaccine option that has not been selected yet.
+    $queryTV = "SELECT * FROM tbl_p_tetanus_vaccine WHERE tetanus_containing_vaccine NOT IN (SELECT tetanus_containing_vaccine FROM tbl_p_immunization_record WHERE id_mother_h_c_pregnancy_condition = '$hcpc_id')";
+    $resultTV = $conn->query($queryTV);
+    $getTV = array();
+    while ($row = $resultTV->fetch_assoc()) {
+        $getTV[] = $row;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+    //TRIMESTERS
+    $query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='1'";
+    $result1Trimester = $conn->query($query1Trimester);
+    $count1Trimester = $result1Trimester->num_rows;
+    $get1Trimester = $result1Trimester->fetch_assoc();
+
+    $query2Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='2'";
+    $result2Trimester = $conn->query($query2Trimester);
+    $count2Trimester = $result2Trimester->num_rows;
+    $get2Trimester = $result2Trimester->fetch_assoc();
+
+    $query3Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='3'";
+    $result3Trimester = $conn->query($query3Trimester);
+    $count3Trimester = $result3Trimester->num_rows;
+    $get3Trimester = $result3Trimester->fetch_assoc();
+
+    $query4Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='4'";
+    $result4Trimester = $conn->query($query4Trimester);
+    $count4Trimester = $result4Trimester->num_rows;
+    $get4Trimester = $result4Trimester->fetch_assoc();
+
+    $query5Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='5'";
+    $result5Trimester = $conn->query($query5Trimester);
+    $count5Trimester = $result5Trimester->num_rows;
+    $get5Trimester = $result5Trimester->fetch_assoc();
+
+    $query6Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='6'";
+    $result6Trimester = $conn->query($query6Trimester);
+    $count6Trimester = $result6Trimester->num_rows;
+    $get6Trimester = $result6Trimester->fetch_assoc();
+
+    $query7Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='7'";
+    $result7Trimester = $conn->query($query7Trimester);
+    $count7Trimester = $result7Trimester->num_rows;
+    $get7Trimester = $result7Trimester->fetch_assoc();
+
+    $query8Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='8'";
+    $result8Trimester = $conn->query($query8Trimester);
+    $count8Trimester = $result8Trimester->num_rows;
+    $get8Trimester = $result8Trimester->fetch_assoc();
+
+    $query9Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='9'";
+    $result9Trimester = $conn->query($query9Trimester);
+    $count9Trimester = $result9Trimester->num_rows;
+    $get9Trimester = $result9Trimester->fetch_assoc();
 }
-
-/////////////////////////////////////////////////////////////////////////////////
-
-
-//TRIMESTERS
-$query1Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='1'";
-$result1Trimester = $conn->query($query1Trimester);
-$count1Trimester = $result1Trimester->num_rows;
-$get1Trimester = $result1Trimester->fetch_assoc();
-
-$query2Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='2'";
-$result2Trimester = $conn->query($query2Trimester);
-$count2Trimester = $result2Trimester->num_rows;
-$get2Trimester = $result2Trimester->fetch_assoc();
-
-$query3Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='3'";
-$result3Trimester = $conn->query($query3Trimester);
-$count3Trimester = $result3Trimester->num_rows;
-$get3Trimester = $result3Trimester->fetch_assoc();
-
-$query4Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='4'";
-$result4Trimester = $conn->query($query4Trimester);
-$count4Trimester = $result4Trimester->num_rows;
-$get4Trimester = $result4Trimester->fetch_assoc();
-
-$query5Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='5'";
-$result5Trimester = $conn->query($query5Trimester);
-$count5Trimester = $result5Trimester->num_rows;
-$get5Trimester = $result5Trimester->fetch_assoc();
-
-$query6Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='6'";
-$result6Trimester = $conn->query($query6Trimester);
-$count6Trimester = $result6Trimester->num_rows;
-$get6Trimester = $result6Trimester->fetch_assoc();
-
-$query7Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='7'";
-$result7Trimester = $conn->query($query7Trimester);
-$count7Trimester = $result7Trimester->num_rows;
-$get7Trimester = $result7Trimester->fetch_assoc();
-
-$query8Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='8'";
-$result8Trimester = $conn->query($query8Trimester);
-$count8Trimester = $result8Trimester->num_rows;
-$get8Trimester = $result8Trimester->fetch_assoc();
-
-$query9Trimester = "SELECT * FROM tbl_p_trimester WHERE `id_mother_h_c_pregnancy_condition`='$hcpc_id' AND `month`='9'";
-$result9Trimester = $conn->query($query9Trimester);
-$count9Trimester = $result9Trimester->num_rows;
-$get9Trimester = $result9Trimester->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -844,32 +847,43 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                             <div class="tab-content mt-2 mb-3" id="pills-with-icon-tabContent">
                                                 <div class="tab-pane fade active show" id="pills-home-icon" role="tabpanel" aria-labelledby="pills-home-tab-icon">
                                                     <div class="row">
+
                                                         <!--1st Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count1Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
+                                                                        <?php if (!empty($count1Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count1Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
 
-                                                                                <?php elseif ($count1Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="1" class="btn btn-info btn-sm open-modal">
-                                                                                        <i class="fa fa-plus"></i>&nbsp
-                                                                                        Add
-                                                                                    </a>
-                                                                                <?php endif ?>
+                                                                                    <?php elseif ($count1Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="1" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count1Trimester)) : ?>
+                                                                            <div class="card-tools">
+                                                                                <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="1" class="btn btn-info btn-sm open-modal">
+                                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                                    Add
+                                                                                </a>
                                                                             </div>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count1Trimester == 1) : ?>
+                                                                    <?php if (!empty($count1Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -1270,25 +1284,35 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                        <?php if (!empty($count2Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count2Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                    <?php elseif ($count2Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="2" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count2Trimester)) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($count2Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                <?php elseif ($count2Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="2" class="btn btn-info btn-sm open-modal">
-                                                                                        <i class="fa fa-plus"></i>&nbsp
-                                                                                        Add
-                                                                                    </a>
-                                                                                <?php endif ?>
+                                                                                <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="2" class="btn btn-info btn-sm open-modal">
+                                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                                    Add
+                                                                                </a>
                                                                             </div>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count2Trimester == 1) : ?>
+                                                                    <?php if (!empty($count2Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -1689,26 +1713,36 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                        <?php if (!empty($count3Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count3Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count3Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="3" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count3Trimester)) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($count3Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count3Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="3" class="btn btn-info btn-sm open-modal">
-                                                                                        <i class="fa fa-plus"></i>&nbsp
-                                                                                        Add
-                                                                                    </a>
-                                                                                <?php endif ?>
+                                                                                <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="3" class="btn btn-info btn-sm open-modal">
+                                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                                    Add
+                                                                                </a>
                                                                             </div>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count3Trimester == 1) : ?>
+                                                                    <?php if (!empty($count3Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -2107,32 +2141,43 @@ $get9Trimester = $result9Trimester->fetch_assoc();
 
                                                 <div class="tab-pane fade" id="pills-profile-icon" role="tabpanel" aria-labelledby="pills-profile-tab-icon">
                                                     <div class="row">
+
                                                         <!--4th Month (Trimester)-->
                                                         <div class="col-md-4">
                                                             <div class="card full-height">
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
+                                                                        <?php if (!empty($count4Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count4Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count4Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="4" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count4Trimester)) : ?>
                                                                             <div class="card-tools">
-                                                                                <?php if ($count4Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count4Trimester == 0) : ?>
-                                                                                    <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="4" class="btn btn-info btn-sm open-modal">
-                                                                                        <i class="fa fa-plus"></i>&nbsp
-                                                                                        Add
-                                                                                    </a>
-                                                                                <?php endif ?>
+                                                                                <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="4" class="btn btn-info btn-sm open-modal">
+                                                                                    <i class="fa fa-plus"></i>&nbsp
+                                                                                    Add
+                                                                                </a>
                                                                             </div>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count4Trimester == 1) : ?>
+                                                                    <?php if (!empty($count4Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -2533,26 +2578,38 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count5Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count5Trimester == 0) : ?>
+                                                                        <?php if (!empty($count5Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count5Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count5Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="5" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count5Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="5" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
-                                                                                <?php endif ?>
-                                                                            </div>
+                                                                                </div>
+                                                                            <?php endif ?>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count5Trimester == 1) : ?>
+                                                                    <?php if (!empty($count5Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -2953,26 +3010,38 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count6Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count6Trimester == 0) : ?>
+                                                                        <?php if (!empty($count6Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count6Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count6Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="6" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count6Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="6" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
-                                                                                <?php endif ?>
-                                                                            </div>
+                                                                                </div>
+                                                                            <?php endif ?>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count6Trimester == 1) : ?>
+                                                                    <?php if (!empty($count6Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -3378,26 +3447,38 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Unang check-up">Unang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count7Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count7Trimester == 0) : ?>
+                                                                        <?php if (!empty($count7Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count7Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count7Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="7" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count7Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="7" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
-                                                                                <?php endif ?>
-                                                                            </div>
+                                                                                </div>
+                                                                            <?php endif ?>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count7Trimester == 1) : ?>
+                                                                    <?php if (!empty($count7Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -3798,26 +3879,38 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikalawang check-up">Ikalawang check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count8Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count8Trimester == 0) : ?>
+                                                                        <?php if (!empty($count8Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count8Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count8Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="8" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count8Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="8" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
-                                                                                <?php endif ?>
-                                                                            </div>
+                                                                                </div>
+                                                                            <?php endif ?>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count8Trimester == 1) : ?>
+                                                                    <?php if (!empty($count8Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -4218,26 +4311,38 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                                                                 <div class="card-header">
                                                                     <div class="card-head-row">
                                                                         <div class="card-title d-inline-block text-truncate"><span title="Ikatlong check-up">Ikatlong check-up</span></div>
-                                                                        <?php if (isset($_SESSION['username'])) : ?>
-                                                                            <div class="card-tools">
-                                                                                <?php if ($count9Trimester == 1) : ?>
-                                                                                    <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
-                                                                                        <i class="fa fa-edit"></i>&nbsp
-                                                                                        Edit
-                                                                                    </a>
-                                                                                    <?php include 'p_edit_hcpc.php'; ?>
-                                                                                <?php elseif ($count9Trimester == 0) : ?>
+                                                                        <?php if (!empty($count9Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
+                                                                                    <?php if ($count9Trimester == 1) : ?>
+                                                                                        <a href="" id="activate-fields" data-toggle="modal" class="btn btn-info btn-sm">
+                                                                                            <i class="fa fa-edit"></i>&nbsp
+                                                                                            Edit
+                                                                                        </a>
+                                                                                        <?php include 'p_edit_hcpc.php'; ?>
+                                                                                    <?php elseif ($count9Trimester == 0) : ?>
+                                                                                        <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="9" class="btn btn-info btn-sm open-modal">
+                                                                                            <i class="fa fa-plus"></i>&nbsp
+                                                                                            Add
+                                                                                        </a>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endif ?>
+                                                                        <?php elseif (empty($count9Trimester)) : ?>
+                                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                                <div class="card-tools">
                                                                                     <a href="#add1stTrimester" id="activate-fields" data-toggle="modal" data-input-value="9" class="btn btn-info btn-sm open-modal">
                                                                                         <i class="fa fa-plus"></i>&nbsp
                                                                                         Add
                                                                                     </a>
-                                                                                <?php endif ?>
-                                                                            </div>
+                                                                                </div>
+                                                                            <?php endif ?>
                                                                         <?php endif ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <?php if ($count9Trimester == 1) : ?>
+                                                                    <?php if (!empty($count9Trimester)) : ?>
                                                                         <div class="row mb-2">
                                                                             <div class="col-sm">
                                                                                 <p class="fw-bold">Petsa</p>
@@ -4876,7 +4981,7 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" id="bodyadd">
-                            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
+                            <form method="POST" action="model/save_hcpc.php" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to proceed?');">
                                 <label>Nanay, sagutin ang mga sumusunod sa tulong ng iyong doktor, nars, o midwife.</label>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -4955,7 +5060,7 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="hidden" value="<?= $id ?>" name="mother_id">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -5223,9 +5328,9 @@ $get9Trimester = $result9Trimester->fetch_assoc();
                         </div>
                         <div>
                             <div class="modal-footer">
-                                <input type="hidden" value="<?= $id ?>" name="mother_id">
-                                <input type="hidden" name="month" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
-                                <input type="hidden" value="<?= $hcpc_id ?>" name="hcpc_id">
+                                <input type="text" value="<?= $id ?>" name="mother_id">
+                                <input type="text" name="month" id="input_field" value="<?php echo isset($_POST['input_field']) ? $_POST['input_field'] : ''; ?>">
+                                <input type="text" value="<?= $hcpc_id ?>" name="hcpc_id">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

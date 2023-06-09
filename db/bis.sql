@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 05:12 PM
+-- Generation Time: Jun 09, 2023 at 06:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -224,8 +224,7 @@ INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_position`,
 (8, 'Hon.', 'Pedro C. Sacal', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
 (9, 'Hon.', 'Rey M. Galla', '4', '2023-04-28', '2024-04-28', 'Incumbent', 0),
 (10, 'Ms.', 'Mirra G. Gabata', '5', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(11, 'Ms.', 'Maricris O. Mabao', '2', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(12, 'Ms.', 'Shinobu', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0);
+(11, 'Ms.', 'Maricris O. Mabao', '2', '2023-04-28', '2024-04-28', 'Incumbent', 0);
 
 -- --------------------------------------------------------
 
@@ -423,8 +422,8 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (12, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'John', '', 'Doe', '', 'Jj', 'Jasaan', '1978-05-02', 'Male', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-08 01:58:56', 11),
 (13, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tom', '', 'Doe', '', 'Tomas', 'Jasaan', '2001-01-01', 'Male', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:03:03', 11),
 (14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11),
-(15, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090643Screenshot_1.png', 'Boo', '', 'Wang', '', 'Boo', 'Jasaan', '1975-03-13', 'Male', 'married', 'new', 5, 'yes', '2002-05-10', 'Yes', 'Confirmed', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-10 01:06:43', 11),
-(16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Malou', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-10 01:05:32', 11),
+(15, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090643Screenshot_1.png', 'Lou', '', 'Wang', '', 'Boo', 'Jasaan', '1975-03-13', 'Male', 'married', 'new', 5, 'yes', '2002-05-10', 'Yes', 'Confirmed', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-06-08 15:49:37', 11),
+(16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Marie', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-06-08 15:48:56', 11),
 (17, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090706Screenshot_2.png', 'Duke', '', 'Wang', '', 'Duke', 'Buki\\', '2001-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:07:06', 11),
 (18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
 (19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11),
@@ -571,7 +570,8 @@ CREATE TABLE `tbl_p_family` (
 
 INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
 ('20230510314056000001', 4),
-('20230510219022000001', 5);
+('20230510219022000001', 5),
+('20230609463304000001', 4);
 
 -- --------------------------------------------------------
 
@@ -605,7 +605,9 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 (121, 14, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
 (122, 21, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
 (125, 20, 'children', '', '20230510219022000001', '2023-05-20 03:26:22', '2023-05-20 03:26:22'),
-(126, 22, 'children', '', '20230510314056000001', '2023-05-20 10:03:57', '2023-05-20 10:03:57');
+(126, 22, 'children', '', '20230510314056000001', '2023-05-20 10:03:57', '2023-05-20 10:03:57'),
+(127, 9, 'mother', 'O', '20230609463304000001', '2023-06-09 02:55:02', '2023-06-09 02:55:02'),
+(128, 3, 'father', '', '20230609463304000001', '2023-06-09 04:09:22', '2023-06-09 04:09:22');
 
 -- --------------------------------------------------------
 
@@ -631,7 +633,8 @@ CREATE TABLE `tbl_p_history_and_current_pregnancy_condition` (
 
 INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_pregnancy_condition`, `id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`, `delivered_status`) VALUES
 (7, 11, '2023-05-20', 43.40, 124.00, 56.20, '2023-02-14', '2023-11-21', 0),
-(8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0);
+(8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0),
+(9, 9, '2023-06-09', 45.00, 45.00, 0.00, '2023-02-09', '2023-11-16', 0);
 
 -- --------------------------------------------------------
 
@@ -660,7 +663,8 @@ INSERT INTO `tbl_p_immunization_record` (`id_immunization_record`, `id_mother_h_
 (13, 7, 3, '2023-06-01', '2023-08-28'),
 (14, 7, 6, '2023-05-28', '0000-00-00'),
 (15, 7, 5, '2023-09-28', '0000-00-00'),
-(16, 8, 3, '2023-06-08', '2023-07-08');
+(16, 8, 3, '2023-06-08', '2023-07-08'),
+(17, 8, 4, '2023-06-10', '2023-06-11');
 
 -- --------------------------------------------------------
 
@@ -756,7 +760,6 @@ CREATE TABLE `tbl_p_trimester` (
 --
 
 INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condition`, `month`, `date_check_up_trimester`, `weight_trimester`, `height_trimester`, `age_of_gestation`, `blood_pressure`, `nutritional_status`, `examination_condition_pregnant_woman`, `advices_given`, `birth_plan_changes`, `teeth_examination`, `laboratory_tests_done`, `urinalysis`, `complete_blood_count`, `etiologic_tests`, `pap_smear`, `gestational_diabetes`, `bacteriuria`, `treatments`, `discussions_or_service_given`, `date_of_return`, `name_health_service_provider`, `hospital_referral`, `notes`) VALUES
-(3, 7, 1, '2023-06-08', 35.00, 34.00, '34', '35', 'sample', 'safeafewf', 'fsafegfewgreahre', 'fsafegfewgreahre', '', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre', '2023-06-15', 'fsafegfewgreahre', 'fsafegfewgreahre', 'fsafegfewgreahre'),
 (4, 7, 2, '2023-06-08', 100.00, 100.00, 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', '2023-06-17', 'sample3', 'sample3', 'sample3'),
 (5, 7, 3, '2023-06-12', 141.00, 141.00, 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', '2023-06-10', 'sample4', 'sample4', 'sample4'),
 (6, 7, 4, '2023-06-08', 44.00, 44.00, '44', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', '2023-06-22', 'month 4', 'month 4', 'month 4'),
@@ -764,7 +767,9 @@ INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condit
 (8, 7, 6, '2023-07-06', 46.00, 46.00, 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', '2023-08-06', 'Sample 6', 'Sample 6', 'Sample 6'),
 (9, 7, 7, '2023-07-07', 47.00, 47.00, 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', '2023-08-07', 'sample 7', 'sample 7', 'sample 7'),
 (10, 7, 8, '2023-07-08', 48.00, 48.00, 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', '2023-08-08', 'month 8', 'month 8', 'month 8'),
-(11, 7, 9, '2023-08-09', 49.00, 49.00, '49', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', '2023-08-09', 'month 9', 'month 9', 'month 9');
+(11, 7, 9, '2023-08-09', 49.00, 49.00, '49', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', '2023-08-09', 'month 9', 'month 9', 'month 9'),
+(12, 8, 1, '2023-06-09', 1.00, 1.00, '1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', '2023-07-01', 'sample 1', 'sample 1', 'sample 1'),
+(13, 0, 9, '2023-06-09', 9.00, 9.00, '9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', '2023-07-09', 'sample 9', 'sample 9', 'sample 9');
 
 -- --------------------------------------------------------
 
@@ -1307,19 +1312,19 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_history_and_current_pregnancy_condition`
 --
 ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
-  MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_immunization_record`
 --
 ALTER TABLE `tbl_p_immunization_record`
-  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`
@@ -1337,7 +1342,7 @@ ALTER TABLE `tbl_p_tetanus_vaccine`
 -- AUTO_INCREMENT for table `tbl_p_trimester`
 --
 ALTER TABLE `tbl_p_trimester`
-  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
