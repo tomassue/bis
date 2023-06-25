@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2023 at 06:16 AM
+-- Generation Time: Jun 25, 2023 at 03:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -281,7 +281,9 @@ CREATE TABLE `tblpayments` (
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
 (1, 55.00),
-(2, 1025.00);
+(2, 1025.00),
+(3, 50.00),
+(4, 600.00);
 
 -- --------------------------------------------------------
 
@@ -424,7 +426,6 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11),
 (15, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090643Screenshot_1.png', 'Lou', '', 'Wang', '', 'Boo', 'Jasaan', '1975-03-13', 'Male', 'married', 'new', 5, 'yes', '2002-05-10', 'Yes', 'Confirmed', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-06-08 15:49:37', 11),
 (16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Marie', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-06-08 15:48:56', 11),
-(17, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090706Screenshot_2.png', 'Duke', '', 'Wang', '', 'Duke', 'Buki\\', '2001-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:07:06', 11),
 (18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
 (19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11),
 (20, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nee', '', 'Wang', '', 'Ne', 'Jasaan', '2001-01-02', 'Male', 'single', 'co-occupant', 5, 'no', '2023-05-02', 'Yes', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-13 00:20:25', 11),
@@ -571,7 +572,12 @@ CREATE TABLE `tbl_p_family` (
 INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
 ('20230510314056000001', 4),
 ('20230510219022000001', 5),
-('20230609463304000001', 4);
+('20230609463304000001', 4),
+('20230609578608000001', 4),
+('20230510314056000001', 4),
+('20230510219022000001', 5),
+('20230609463304000001', 4),
+('20230609578608000001', 4);
 
 -- --------------------------------------------------------
 
@@ -607,7 +613,8 @@ INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `fam
 (125, 20, 'children', '', '20230510219022000001', '2023-05-20 03:26:22', '2023-05-20 03:26:22'),
 (126, 22, 'children', '', '20230510314056000001', '2023-05-20 10:03:57', '2023-05-20 10:03:57'),
 (127, 9, 'mother', 'O', '20230609463304000001', '2023-06-09 02:55:02', '2023-06-09 02:55:02'),
-(128, 3, 'father', '', '20230609463304000001', '2023-06-09 04:09:22', '2023-06-09 04:09:22');
+(128, 3, 'father', '', '20230609463304000001', '2023-06-09 04:09:22', '2023-06-09 04:09:22'),
+(129, 5, 'mother', 'AB', '20230609578608000001', '2023-06-09 04:24:57', '2023-06-09 04:24:57');
 
 -- --------------------------------------------------------
 
@@ -846,7 +853,14 @@ CREATE TABLE `tbl_transactions` (
 INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`, `recipient_name`, `created_at_transact`) VALUES
 (1, 11, '20230608883982000001', '2023-06-08 15:04:22', 'Barangay Clearance for Abella, Tom ', 'Tommy Abella', '2023-06-08 15:04:22'),
 (0, 11, '20230608879757000001', '2023-06-08 15:06:09', 'Certificate of Indigency for Wang, Malou ', 'Tomass', '2023-06-08 15:06:09'),
-(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29');
+(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29'),
+(1, 11, '20230608883982000001', '2023-06-08 15:04:22', 'Barangay Clearance for Abella, Tom ', 'Tommy Abella', '2023-06-08 15:04:22'),
+(0, 11, '20230608879757000001', '2023-06-08 15:06:09', 'Certificate of Indigency for Wang, Malou ', 'Tomass', '2023-06-08 15:06:09'),
+(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29'),
+(3, 11, '20230609295813000001', '2023-06-09 07:16:40', 'Barangay Clearance for Abella, Tom ', 'tom', '2023-06-09 07:16:40'),
+(0, 11, '20230625161877000001', '2023-06-25 12:57:31', 'Construction Clearance for Jaime P. Ramen', 'LOL', '2023-06-25 12:57:31'),
+(0, 11, '20230625705980000001', '2023-06-25 13:00:12', 'Construction Clearance for Milk Shake', 'LOLS', '2023-06-25 13:00:12'),
+(4, 11, '20230625756261000001', '2023-06-25 13:03:21', 'Barangay Clearance for Wang, Lou ', 'TOMASS', '2023-06-25 13:03:21');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1020,12 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (108, '2023-05-17 06:34:16', 'staff, has logged in.', '10'),
 (109, '2023-05-17 06:34:37', 'staff, has logged out.', '10'),
 (110, '2023-05-17 06:34:42', 'admin, has logged in.', '11'),
-(111, '2023-05-28 23:34:49', 'admin, has logged in.', '11');
+(111, '2023-05-28 23:34:49', 'admin, has logged in.', '11'),
+(112, '2023-06-09 04:36:29', 'admin, has logged out.', '11'),
+(113, '2023-06-09 07:08:48', 'admin, has logged out.', '11'),
+(114, '2023-06-09 07:08:58', 'admin, has logged in.', '11'),
+(115, '2023-06-09 07:09:33', 'admin, has logged out.', '11'),
+(116, '2023-06-09 07:14:57', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1246,7 +1265,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1312,7 +1331,7 @@ ALTER TABLE `tbl_p_emergency_contact`
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_history_and_current_pregnancy_condition`
@@ -1366,7 +1385,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
