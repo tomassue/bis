@@ -183,9 +183,9 @@ while ($row = $result->fetch_assoc()) {
 			});
 
 			var table = $('#transactiontable').DataTable({
-				"order": [
-					[0, "desc"]
-				],
+				// "order": [
+				// 	[0, "asc"]
+				// ],
 				dom: 'Bfrtip',
 				buttons: [
 					'print'
