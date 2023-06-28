@@ -3,8 +3,7 @@
 $sql = "SELECT *, 
 	tbl_users.id_user as user_id
 	FROM tbl_transactions 
-	JOIN tbl_users ON tbl_users.id_user=tbl_transactions.id_user 
-	ORDER BY tbl_transactions.created_at_transact DESC";
+	JOIN tbl_users ON tbl_users.id_user=tbl_transactions.id_user";
 // $sql = "SELECT * FROM tbl_transactions";
 $result = $conn->query($sql);
 
@@ -66,11 +65,11 @@ while ($row = $result->fetch_assoc()) {
 									<div class="row mb-3 w-50">
 										<div class="col">
 											<label>Start Date</label>
-											<input type="text" class="form-control" placeholder="Enter date" id="min">
+											<input type="date" class="form-control" id="min" name="min">
 										</div>
 										<div class="col">
 											<label>End Date</label>
-											<input type="text" class="form-control" placeholder="Enter date" id="max">
+											<input type="date" class="form-control" id="max" name="max">
 										</div>
 									</div>
 									<div class="table-responsive">
@@ -87,14 +86,14 @@ while ($row = $result->fetch_assoc()) {
 											</thead>
 											<tbody>
 												<?php if (!empty($transactions)) : ?>
-													<?php $no = 1;
+													<?php
 													foreach ($transactions as $row) : ?>
 														<tr>
 															<?php
-															$transact_date = strtotime($row['date_transact']);
-															$date_transact = date("F j, Y, g:i a", $transact_date);
+															// $transact_date = strtotime($row['date_transact']);
+															// $date_transact = date("F j, Y, g:i a", $transact_date);
 															?>
-															<td><?= $date_transact ?></td>
+															<td><?= $row['date_transact'] ?></td>
 															<td><?= $row['transact_no'] ?></td>
 															<td><?= $row['recipient_name'] ?></td>
 															<td><?= $row['details_transact'] ?></td>
@@ -115,7 +114,7 @@ while ($row = $result->fetch_assoc()) {
 															</td>
 															<td><?= $row['user_username'] ?></td>
 														</tr>
-													<?php $no++;
+													<?php
 													endforeach ?>
 												<?php endif ?>
 											</tbody>
@@ -146,56 +145,45 @@ while ($row = $result->fetch_assoc()) {
 
 	</div>
 	<?php include 'templates/footer.php' ?>
+
 	<script src="assets/js/plugin/datatables/datatables.min.js"></script>
 	<script src="assets/js/plugin/moment/moment.min.js"></script>
 	<script src="assets/js/plugin/dataTables.dateTime.min.js"></script>
 	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
 	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
+
 	<script>
-		var minDate, maxDate;
-
-		// Custom filtering function which will search data in column four between two values
-		$.fn.dataTable.ext.search.push(
-			function(settings, data, dataIndex) {
-				var min = minDate.val();
-				var max = maxDate.val();
-				var date = new Date(data[0]);
-
-				if (
-					(min === null && max === null) ||
-					(min === null && date <= max) ||
-					(min <= date && max === null) ||
-					(min <= date && date <= max)
-				) {
-					return true;
-				}
-				return false;
-			}
-		);
-
 		$(document).ready(function() {
-			// Create date inputs
-			minDate = new DateTime($('#min'), {
-				format: 'MMMM Do YYYY'
-			});
-			maxDate = new DateTime($('#max'), {
-				format: 'MMMM Do YYYY'
-			});
-
-			var table = $('#transactiontable').DataTable({
-				// "order": [
-				// 	[0, "asc"]
-				// ],
+			var dataTable = $('#transactiontable').DataTable({
+				"order": [
+					[0, "desc"]
+				],
 				dom: 'Bfrtip',
 				buttons: [
 					'print'
 				]
 			});
 
-			// Refilter the table
-			$('#min, #max').on('change', function() {
-				table.draw();
+			$('#min, #max').change(function() {
+				dataTable.draw();
 			});
+
+			$.fn.dataTable.ext.search.push(
+				function(settings, data, dataIndex) {
+					var startDate = $('#min').val();
+					var endDate = $('#max').val();
+					var date = data[0]; // Replace 'dateColumnIndex' with the appropriate index of the date column in your table
+
+					if ((startDate === '' && endDate === '') ||
+						(startDate === '' && date <= endDate) ||
+						(startDate <= date && endDate === '') ||
+						(startDate <= date && date <= endDate)) {
+						return true;
+					}
+
+					return false;
+				}
+			);
 		});
 	</script>
 </body>
