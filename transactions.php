@@ -76,6 +76,7 @@ while ($row = $result->fetch_assoc()) {
 										<table id="transactiontable" class="display table table-striped">
 											<thead>
 												<tr>
+													<th scope="col">Timestamp</th>
 													<th scope="col">Date</th>
 													<th scope="col">Transaction No.</th>
 													<th scope="col">Name</th>
@@ -90,10 +91,11 @@ while ($row = $result->fetch_assoc()) {
 													foreach ($transactions as $row) : ?>
 														<tr>
 															<?php
-															// $transact_date = strtotime($row['date_transact']);
-															// $date_transact = date("F j, Y, g:i a", $transact_date);
+															$transact_date = strtotime($row['date_transact']);
+															$date_transact = date("F j, Y, g:i a", $transact_date);
 															?>
 															<td><?= $row['date_transact'] ?></td>
+															<td><?= $date_transact ?></td>
 															<td><?= $row['transact_no'] ?></td>
 															<td><?= $row['recipient_name'] ?></td>
 															<td><?= $row['details_transact'] ?></td>
@@ -120,6 +122,7 @@ while ($row = $result->fetch_assoc()) {
 											</tbody>
 											<tfoot>
 												<tr>
+													<th scope="col">Timestamp</th>
 													<th scope="col">Date</th>
 													<th scope="col">Transaction No.</th>
 													<th scope="col">Name</th>
@@ -163,6 +166,9 @@ while ($row = $result->fetch_assoc()) {
 					'print'
 				]
 			});
+
+			//hide the column 0 since we don't want it visible to the user and it is used for date range filter and sorting
+			dataTable.column(0).visible(false);
 
 			$('#min, #max').change(function() {
 				dataTable.draw();
