@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
         $officials[] = $row;
     }
 
-    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Captain' OR tblposition.position='Barangay Chairman'  AND `archive` = '0'";
+    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Captain' OR tblposition.position='Barangay Chairman' AND `archive` = '0' AND `status` = 'Incumbent'";
     $captain = $conn->query($c)->fetch_assoc();
 
     $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Secretary'  AND `archive` = '0'";
