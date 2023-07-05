@@ -9,6 +9,8 @@ while ($row = $result->fetch_assoc()) {
 	$permit[] = $row;
 }
 
+$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman'";
+$check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,13 +96,14 @@ while ($row = $result->fetch_assoc()) {
 															<?php if (isset($_SESSION['username'])) : ?>
 																<td>
 																	<div class="form-button-action">
-																		<a type="button" data-toggle="modal" href="#special_permit<?= $row['id_special_permit'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Special Permit">
-																			<i class="fas fa-file-alt"></i>
-																		</a>
-																		<?php include 'special_permit_modal.php' ?>
-																		<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'administrator') : ?>
-																			<!-- <a type="button" data-toggle="tooltip" href="model/remove_special_permit.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this special permit?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fa fa-times"></i> -->
+																		<?php if ($check_chairman['status'] == 'Incumbent') : ?>
+																			<a type="button" data-toggle="modal" href="#special_permit<?= $row['id_special_permit'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Special Permit">
+																				<i class="fas fa-file-alt"></i>
+																			</a>
+																			<?php include 'special_permit_modal.php' ?>
+																		<?php else : ?>
+																			<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Special Permit">
+																				<i class="fas fa-file-alt"></i>
 																			</a>
 																		<?php endif ?>
 																	</div>
@@ -203,6 +206,15 @@ while ($row = $result->fetch_assoc()) {
 				return true;
 			}
 			return false;
+		}
+
+		function showCheck_chairman_secretary() {
+			swal("Please make sure the Barangay Chairman is properly set to Incumbent and is properly set.", {
+				title: "Warning!",
+				buttons: false,
+				timer: 3000,
+				icon: "warning",
+			});
 		}
 	</script>
 </body>

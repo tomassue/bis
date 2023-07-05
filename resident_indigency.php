@@ -14,6 +14,9 @@ $purok = array();
 while ($row = $result1->fetch_assoc()) {
 	$purok[] = $row;
 }
+
+$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman'";
+$check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,16 +201,22 @@ while ($row = $result1->fetch_assoc()) {
 																		$currentTime = date('Y-m-d');
 																		$dateOfresidence = date('Y-m-d', strtotime("+6 months", strtotime($row['date_of_residence'])));
 																		?>
-																		<?php if ($currentTime >= $dateOfresidence) : ?>
-																			<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																		<?php if ($check_chairman['status'] == 'Incumbent') : ?>
+																			<?php if ($currentTime >= $dateOfresidence) : ?>
+																				<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																					<i class="fas fa-file-alt"></i>
+																				</a>
+																				<?php include 'resident_indigency_modal.php' ?>
+																			<?php elseif ($currentTime < $dateOfresidence) : ?>
+																				<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return showConfirmation(event)" data-original-title="Generate Certificate">
+																					<i class="fas fa-file-alt"></i>
+																				</a>
+																				<?php include 'resident_indigency_modal.php' ?>
+																			<?php endif ?>
+																		<?php else : ?>
+																			<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
-																			<?php include 'resident_indigency_modal.php' ?>
-																		<?php elseif ($currentTime < $dateOfresidence) : ?>
-																			<a type="button" data-toggle="modal" href="#prpose<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return showConfirmation(event)" data-original-title="Generate Certificate">
-																				<i class="fas fa-file-alt"></i>
-																			</a>
-																			<?php include 'resident_indigency_modal.php' ?>
 																		<?php endif ?>
 																	</div>
 																</td>
@@ -286,6 +295,15 @@ while ($row = $result1->fetch_assoc()) {
 				event.preventDefault(); // Prevent the default behavior of the anchor tag
 				return false;
 			}
+		}
+
+		function showCheck_chairman_secretary() {
+			swal("Please make sure the Barangay Chairman is properly set to Incumbent and is properly set.", {
+				title: "Warning!",
+				buttons: false,
+				timer: 3000,
+				icon: "warning",
+			});
 		}
 	</script>
 </body>
