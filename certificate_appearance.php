@@ -9,7 +9,7 @@ while ($row = $result->fetch_assoc()) {
 	$cert_appearance[] = $row;
 }
 
-$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman'";
+$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman' AND `archive` = '0'";
 $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -96,15 +96,21 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 															<?php if (isset($_SESSION['username'])) : ?>
 																<td>
 																	<div class="form-button-action">
-																		<?php if ($check_chairman['status'] == 'Incumbent') : ?>
-																			<a type="button" data-toggle="modal" href="#cert_appearance<?= $row['id_cert_appearance'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate of Appearance">
-																				<i class="fas fa-file-alt"></i>
-																			</a>
-																			<?php include 'certificate_appearance_modal.php' ?>
-																		<?php else : ?>
+																		<?php if (!isset($check_chairman['status'])) : ?>
 																			<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Certificate of Appearance">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																		<?php elseif (isset($check_chairman['status'])) : ?>
+																			<?php if ($check_chairman['status'] == 'Incumbent') : ?>
+																				<a type="button" data-toggle="modal" href="#cert_appearance<?= $row['id_cert_appearance'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate of Appearance">
+																					<i class="fas fa-file-alt"></i>
+																				</a>
+																				<?php include 'certificate_appearance_modal.php' ?>
+																			<?php else : ?>
+																				<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Certificate of Appearance">
+																					<i class="fas fa-file-alt"></i>
+																				</a>
+																			<?php endif ?>
 																		<?php endif ?>
 																	</div>
 																</td>
@@ -205,12 +211,16 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 		}
 
 		function showCheck_chairman_secretary() {
-			swal("Please make sure the Barangay Chairman is properly set to Incumbent and is properly set.", {
+			const el = document.createElement('div')
+			el.innerHTML = "Please make sure the Barangay Chairman and the other officials are properly set in the <a href='officials.php'>Brgy Officials and Staff</a>!"
+
+			swal({
 				title: "Warning!",
+				content: el,
 				buttons: false,
-				timer: 3000,
+				timer: 4000,
 				icon: "warning",
-			});
+			})
 		}
 	</script>
 </body>
