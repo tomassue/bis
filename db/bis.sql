@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2023 at 03:10 PM
+-- Generation Time: Jul 09, 2023 at 05:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -251,9 +251,6 @@ INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_offic
 (24, 6, 1),
 (25, 6, 2),
 (26, 6, 5),
-(27, 7, 3),
-(28, 7, 5),
-(29, 7, 6),
 (30, 8, 1),
 (31, 8, 8),
 (50, 3, 2),
@@ -262,7 +259,10 @@ INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_offic
 (53, 9, 6),
 (54, 4, 1),
 (55, 4, 2),
-(56, 4, 5);
+(56, 4, 5),
+(66, 7, 3),
+(67, 7, 5),
+(68, 7, 6);
 
 -- --------------------------------------------------------
 
@@ -283,7 +283,12 @@ INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
 (1, 55.00),
 (2, 1025.00),
 (3, 50.00),
-(4, 600.00);
+(4, 600.00),
+(5, 75.00),
+(6, 56.00),
+(7, 56.00),
+(8, 56.00),
+(9, 60.00);
 
 -- --------------------------------------------------------
 
@@ -326,10 +331,10 @@ CREATE TABLE `tblposition` (
 
 INSERT INTO `tblposition` (`id_position`, `position`, `order`) VALUES
 (1, 'Barangay Chairman', 1),
-(2, 'Barangay Secretary', 5),
-(3, 'Barangay Kagawad', 2),
-(4, 'SK Chairman', 3),
-(5, 'Barangay Treasurer', 4);
+(2, 'Barangay Kagawad', 2),
+(3, 'SK Kagawad', 3),
+(4, 'Barangay Treasurer', 4),
+(5, 'Barangay Secretary', 5);
 
 -- --------------------------------------------------------
 
@@ -415,7 +420,7 @@ INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `pro
 (3, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090852tom.jpg', 'Tomas', '', 'Howland', '', 'Tom', 'Tacloban City', '2001-01-29', 'Female', 'single', 'tenant', 2, 'no', '2021-02-13', 'No', '', '', '', 'Student', 1, '1', 'No', 'No', '', '2023-02-14 16:29:23', 11),
 (4, '1111-1111-1111-1111', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Japanese', 'person.png', 'Sample', 'Sample', 'Sample', '', 'Samp', 'Samps', '2019-03-13', 'Male', 'single', 'new', 1, 'yes', '2023-03-13', 'Yes', 'Confirmed', '', 'samp@mail.com', 'Student', 1, 'none', 'No', 'No', '', '2023-03-13 04:55:37', 11),
 (5, '1223-3445-5677', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '170320231121111143202.jpg', 'Test', 'Testtwo', 'Red', 'Sr.', 'Tom', 'Japan', '2002-03-17', 'Male', 'married', 'tenant', 1, 'no', '2023-03-17', 'Yes', 'Unconfirmed', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-03-17 03:21:11', 11),
-(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 4, 'no', '2023-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:23:56', 11),
+(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 4, 'no', '2022-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-07-04 06:42:02', 11),
 (7, '1234-5678-9097-8876', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Weis', '', 'Wise', '', 'WEE', 'Japan', '2016-01-01', 'Male', 'single', 'co-occupant', 1, '', '2021-01-02', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-02 01:15:20', 11),
 (8, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'New', 'New', 'New', 'Sr.', 'News', 'Jasaan', '2020-01-03', 'Male', 'single', 'new', 4, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 05:45:25', 11),
 (9, '7866-6666-6666-3323', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'COOCCUPANT', 'COOCCUPANT', 'COOCCUPANT', '', 'COOCCUPANT', 'Japan', '2001-05-03', 'Male', 'widow/er', 'co-occupant', 1, 'no', '2023-03-09', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:35:24', 11),
@@ -860,7 +865,13 @@ INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_t
 (3, 11, '20230609295813000001', '2023-06-09 07:16:40', 'Barangay Clearance for Abella, Tom ', 'tom', '2023-06-09 07:16:40'),
 (0, 11, '20230625161877000001', '2023-06-25 12:57:31', 'Construction Clearance for Jaime P. Ramen', 'LOL', '2023-06-25 12:57:31'),
 (0, 11, '20230625705980000001', '2023-06-25 13:00:12', 'Construction Clearance for Milk Shake', 'LOLS', '2023-06-25 13:00:12'),
-(4, 11, '20230625756261000001', '2023-06-25 13:03:21', 'Barangay Clearance for Wang, Lou ', 'TOMASS', '2023-06-25 13:03:21');
+(4, 11, '20230625756261000001', '2023-06-25 13:03:21', 'Barangay Clearance for Wang, Lou ', 'TOMASS', '2023-06-25 13:03:21'),
+(5, 11, '20230626978282000001', '2023-06-26 12:46:12', 'Barangay Clearance for Abella, Tom ', 'Tomas', '2023-06-26 12:46:12'),
+(6, 10, '20230627427563000001', '2023-06-27 13:08:15', 'Barangay Clearance for Abella, Tom ', 'LOLA', '2023-06-27 13:08:15'),
+(7, 11, '20230628485349000001', '2023-06-28 07:52:05', 'Barangay Clearance for Abella, Tom ', 'LOLs', '2023-06-28 07:52:05'),
+(0, 11, '20230629791253000001', '2023-06-29 05:03:52', 'Certificate of Indigency for Abella, Tom ', 'Ngee', '2023-06-29 05:03:52'),
+(8, 11, '20230705416438000001', '2023-07-05 06:13:28', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomas', '2023-07-05 06:13:28'),
+(9, 11, '20230709624993000001', '2023-07-09 15:21:05', 'Barangay Clearance for Abella, James ', 'Tomas', '2023-07-09 15:21:05');
 
 -- --------------------------------------------------------
 
@@ -1025,7 +1036,22 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (113, '2023-06-09 07:08:48', 'admin, has logged out.', '11'),
 (114, '2023-06-09 07:08:58', 'admin, has logged in.', '11'),
 (115, '2023-06-09 07:09:33', 'admin, has logged out.', '11'),
-(116, '2023-06-09 07:14:57', 'admin, has logged in.', '11');
+(116, '2023-06-09 07:14:57', 'admin, has logged in.', '11'),
+(117, '2023-06-26 12:31:48', 'admin, has logged in.', '11'),
+(118, '2023-06-26 12:32:21', 'admin, has logged out.', '11'),
+(119, '2023-06-26 12:33:21', 'admin, has logged in.', '11'),
+(120, '2023-06-26 12:34:15', 'admin, has logged out.', '11'),
+(121, '2023-06-27 13:06:08', 'admin, has logged out.', '11'),
+(122, '2023-06-27 13:06:50', 'staff, has logged in.', '10'),
+(123, '2023-06-27 13:08:23', 'staff, has logged out.', '10'),
+(124, '2023-06-27 13:08:27', 'admin, has logged in.', '11'),
+(125, '2023-06-27 13:31:50', 'admin, has logged out.', '11'),
+(126, '2023-06-27 13:37:50', 'staff, has logged in.', '10'),
+(127, '2023-06-27 13:41:11', 'staff, has logged out.', '10'),
+(128, '2023-06-27 13:41:17', 'admin, has logged in.', '11'),
+(129, '2023-06-29 05:40:12', 'admin, has logged out.', '11'),
+(130, '2023-06-29 05:41:23', 'admin, has logged in.', '11'),
+(131, '2023-06-29 05:41:24', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1259,13 +1285,13 @@ ALTER TABLE `tblofficials`
 -- AUTO_INCREMENT for table `tblofficials_chairmanships`
 --
 ALTER TABLE `tblofficials_chairmanships`
-  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1385,7 +1411,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
