@@ -11,6 +11,7 @@ if (isset($_SESSION['role'])) {
 }
 
 $res_o = $conn->query($off_q);
+$official_count = $conn->query($off_q)->num_rows;
 
 $official = array();
 while ($row = $res_o->fetch_assoc()) {
@@ -85,9 +86,15 @@ while ($row = $res_o->fetch_assoc()) {
 													<i class="fa fa-plus"></i>&nbsp
 													Official
 												</a>
-												<a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
-													<i class="fas fa-print"></i>&nbsp Print
-												</a>
+												<?php if ($official_count === 0) : ?>
+													<a type="button" href="#" class="btn btn-sm btn-secondary disabled" title="Print">
+														<i class="fas fa-print"></i>&nbsp Print
+													</a>
+												<?php else : ?>
+													<a type="button" href="generate_officials.php" class="btn btn-sm btn-secondary" title="Print">
+														<i class="fas fa-print"></i>&nbsp Print
+													</a>
+												<?php endif ?>
 												<?php if ($_SESSION['role'] == 'administrator') : ?>
 													<a href="model/archive_officials.php" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to archive the BRGY OFFICIALS?')">
 														<i class="fas fa-file-archive"></i>&nbsp

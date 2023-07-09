@@ -14,7 +14,7 @@ while ($row = $result1->fetch_assoc()) {
 	$purok[] = $row;
 }
 
-$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman'";
+$query_check_chairman = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.id_position=tblposition.id_position WHERE tblposition.position='Barangay Chairman' AND `archive` = '0'";
 $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Clearance <?= $check_chairman['status'] ?></h2>
+								<h2 class="text-white fw-bold">Barangay Clearance</h2>
 							</div>
 						</div>
 					</div>
@@ -202,22 +202,28 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 																		$currentTime = date('Y-m-d');
 																		$dateOfresidence = date('Y-m-d', strtotime("+6 months", strtotime($row['date_of_residence'])));
 																		?>
-																		<?php if ($check_chairman['status'] == 'Incumbent') : ?>
-																			<?php if ($currentTime >= $dateOfresidence) : ?>
-																				<a type="button" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" data-toggle="modal" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
-																					<i class="fas fa-file-alt"></i>
-																				</a>
-																				<?php include 'resident_certification_modal.php'; ?>
-																			<?php elseif ($currentTime < $dateOfresidence) : ?>
-																				<a type="button" data-toggle="modal" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return showConfirmation(event)" data-original-title="Generate Certificate">
-																					<i class="fas fa-file-alt"></i>
-																				</a>
-																				<?php include 'resident_certification_modal.php'; ?>
-																			<?php endif ?>
-																		<?php else : ?>
+																		<?php if (!isset($check_chairman['status'])) : ?>
 																			<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Certificate">
 																				<i class="fas fa-file-alt"></i>
 																			</a>
+																		<?php elseif (isset($check_chairman['status'])) : ?>
+																			<?php if ($check_chairman['status'] == 'Incumbent') : ?>
+																				<?php if ($currentTime >= $dateOfresidence) : ?>
+																					<a type="button" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" data-toggle="modal" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
+																						<i class="fas fa-file-alt"></i>
+																					</a>
+																					<?php include 'resident_certification_modal.php'; ?>
+																				<?php elseif ($currentTime < $dateOfresidence) : ?>
+																					<a type="button" data-toggle="modal" href="#purpose_brgy_cert<?= $row['id_resident'] ?>" class="btn btn-link btn-warning" onclick="return showConfirmation(event)" data-original-title="Generate Certificate">
+																						<i class="fas fa-file-alt"></i>
+																					</a>
+																					<?php include 'resident_certification_modal.php'; ?>
+																				<?php endif ?>
+																			<?php else : ?>
+																				<a type="button" onclick="showCheck_chairman_secretary()" data-toggle="modal" class="btn btn-link btn-danger" data-original-title="Generate Certificate">
+																					<i class="fas fa-file-alt"></i>
+																				</a>
+																			<?php endif ?>
 																		<?php endif ?>
 																	</div>
 																</td>
@@ -337,12 +343,22 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 		}
 
 		function showCheck_chairman_secretary() {
-			swal("Please make sure the Barangay Chairman is properly set to Incumbent and is properly set.", {
+			// swal("Please make sure the Barangay Chairman and the other officials are properly set in the Brgy Officials and Staff menu.", {
+			// 	title: "Warning!",
+			// 	buttons: false,
+			// 	timer: 3000,
+			// 	icon: "warning",
+			// });
+			const el = document.createElement('div')
+			el.innerHTML = "Please make sure the Barangay Chairman and the other officials are properly set in the <a href='officials.php'>Brgy Officials and Staff</a>!"
+
+			swal({
 				title: "Warning!",
+				content: el,
 				buttons: false,
-				timer: 3000,
+				timer: 4000,
 				icon: "warning",
-			});
+			})
 		}
 	</script>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 05:30 PM
+-- Generation Time: Jul 09, 2023 at 06:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -288,7 +288,8 @@ INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
 (6, 56.00),
 (7, 56.00),
 (8, 56.00),
-(9, 60.00);
+(9, 60.00),
+(10, 600.00);
 
 -- --------------------------------------------------------
 
@@ -871,7 +872,8 @@ INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_t
 (7, 11, '20230628485349000001', '2023-06-28 07:52:05', 'Barangay Clearance for Abella, Tom ', 'LOLs', '2023-06-28 07:52:05'),
 (0, 11, '20230629791253000001', '2023-06-29 05:03:52', 'Certificate of Indigency for Abella, Tom ', 'Ngee', '2023-06-29 05:03:52'),
 (8, 11, '20230705416438000001', '2023-07-05 06:13:28', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomas', '2023-07-05 06:13:28'),
-(9, 11, '20230709624993000001', '2023-07-09 15:21:05', 'Barangay Clearance for Abella, James ', 'Tomas', '2023-07-09 15:21:05');
+(9, 11, '20230709624993000001', '2023-07-09 15:21:05', 'Barangay Clearance for Abella, James ', 'Tomas', '2023-07-09 15:21:05'),
+(10, 11, '20230710634495000001', '2023-07-09 16:32:31', 'Barangay Clearance for Abella, Tom ', 'Tomas', '2023-07-09 16:32:31');
 
 -- --------------------------------------------------------
 
@@ -1061,7 +1063,8 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (138, '2023-07-09 15:29:43', 'tom, has logged out.', '26'),
 (139, '2023-07-09 15:29:47', 'tom, has logged in.', '26'),
 (140, '2023-07-09 15:30:00', 'tom, has logged out.', '26'),
-(141, '2023-07-09 15:30:04', 'admin, has logged in.', '11');
+(141, '2023-07-09 15:30:04', 'admin, has logged in.', '11'),
+(142, '2023-07-09 16:33:01', 'admin, has logged out.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1301,7 +1304,7 @@ ALTER TABLE `tblofficials_chairmanships`
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -1421,7 +1424,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
