@@ -39,11 +39,11 @@ $current_page = PageName();
 
                 </div>
                 <div class="info">
-                    <a data-toggle="collapse" href="<?= isset($_SESSION['username']) && $_SESSION['role'] == 'administrator' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
+                    <a data-toggle="collapse" href="<?= isset($_SESSION['username']) ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
                             <?= isset($_SESSION['username']) ? ucfirst($_SESSION['username']) : 'Guest User' ?>
                             <span class="user-level"><?= isset($_SESSION['role']) ? ucfirst($_SESSION['role']) : 'Guest' ?></span>
-                            <?= isset($_SESSION['username']) && $_SESSION['role'] == 'administrator' ? '<span class="caret"></span>' : null ?>
+                            <?= isset($_SESSION['username']) ? '<span class="caret"></span>' : null ?>
                         </span>
                     </a>
                     <div class="clearfix"></div>
