@@ -13,7 +13,7 @@
                     </div>
                     <div class="form-group">
                         <label>Transaction details<span class="text-danger"><b> *</b></span></label>
-                        <textarea class="form-control" onkeypress="return onlyAlphabets(event);" name="details" required>Certificate of Indigency for <?= ucwords($row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']) ?></textarea>
+                        <textarea class="form-control" onkeypress="return onlyAlphabets(event);" name="details" required>Certificate of Indigency for <?= ucwords($row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . ($row['ext'] === '' ? '' : ', ' . $row['ext'])) ?></textarea>
                     </div>
                     <hr>
                     <div class="form-group">

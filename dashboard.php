@@ -135,12 +135,13 @@ while ($row = $result17->fetch_assoc()) {
 						$query_official = "SELECT * FROM tblofficials";
 						$count_official = $conn->query($query_official)->num_rows;
 						?>
-						<?php if ($count_zone == 0 || $count_householdnumber == 0 || $count_org == 0 || $count_position == 0 || $count_chairmanship == 0 || $count_noc == 0 || $count_official == 0) : ?>
+						<?php if ($count_zone == 0 || $count_householdnumber == 0 || $count_org == 0 || $count_position == 0 || $count_chairmanship == 0 || $count_noc == 0) : ?>
 							<div class="col-md-12">
 								<div class="card full-height alert alert-danger">
 									<div class="card-body">
 										<div class="card-title"><b>NOTICE!</b></div>
 										<div class="card-category">Before using the system, certain things are need to be done to avoid any error. If you are not an administrator, have the administrator do these recommendations first.</div>
+
 										<div class="card-body">
 											<span class="fw-bold">Kindly locate settings (sidebar) then add data to these items:</span>
 											<ul class="list-group pt-4">
@@ -163,11 +164,11 @@ while ($row = $result17->fetch_assoc()) {
 													<li class="list-group-item">Click&nbsp<u><a href="organization_or_association.php" style="color: black">Organization/Association</a></u>&nbspto add or edit any recognized organization/association. For example,&nbsp<b>senior citizens</b>&nbspand&nbsp<b>SK</b></li>
 												<?php endif; ?>
 
-												<!-- <?php if ($count_position > 0) : ?>
-											  	<li class="list-group-item"><del>Click&nbsp<u><a href="position.php" style="color: black">Positions</a></u>&nbspto add or edit positions you have in your barangay. For instance, barangay chairman, barangay kagawad, barangay secretary, etc..</li></del>
-											  <?php else : ?>
-											  	<li class="list-group-item">Click&nbsp<u><a href="position.php" style="color: black">Positions</a></u>&nbspto add or edit positions you have in your barangay. For instance, barangay chairman, barangay kagawad, barangay secretary, etc..</li>
-											  <?php endif; ?> -->
+												<?php if ($count_position > 0) : ?>
+													<li class="list-group-item"><del>Click&nbsp<u><a href="position.php" style="color: black">Positions</a></u>&nbspto add or edit positions you have in your barangay. For instance, barangay chairman, barangay kagawad, barangay secretary, etc..</li></del>
+												<?php else : ?>
+													<li class="list-group-item">Click&nbsp<u><a href="position.php" style="color: black">Positions</a></u>&nbspto add or edit positions you have in your barangay. For instance, barangay chairman, barangay kagawad, barangay secretary, etc..</li>
+												<?php endif; ?>
 
 												<?php if ($count_chairmanship > 0) : ?>
 													<li class="list-group-item"><del>Click&nbsp<u><a href="chairmanship.php" style="color: black">Chairmanship</a></u>&nbspto add or edit chairmanship. For example, Committee on Education, Committee on Agriculture, etc..</li></del>

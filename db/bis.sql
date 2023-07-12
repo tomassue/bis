@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 06:33 PM
+-- Generation Time: Jul 12, 2023 at 10:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -49,13 +49,9 @@ CREATE TABLE `tblblotter` (
 --
 
 INSERT INTO `tblblotter` (`id_blotter`, `noc_id`, `noc_others`, `comp_id`, `comp_nameNotResident`, `comp_addNotResident`, `comp_cnumNotResident`, `comp_what`, `comp_what2`, `resp_id`, `blotter_status`, `created_at_blotter`, `updated_at_blotter`, `id_user`) VALUES
-(8, '1', 'N/A', '1', 'N/A', 'N/A', 'N/A', 'try', 'try', '2', 'Forwarded to Lupon', '2023-04-22 07:59:25', '2023-05-05 16:17:00', '11'),
-(9, 'Others', 'Testing Again', 'N/A', 'Shinobu', 'Zone 5 Upper, Iponan, CDO', '09094568876', 'try', 'try', '3', 'Forwarded to Lupon', '2023-04-22 08:00:39', '2023-05-05 15:51:52', '11'),
-(10, '1', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Swordsmith Village', '09097786675', 'wdefrew', 'fewfwe', '5', 'Settled', '2023-04-22 10:18:34', '2023-05-05 16:53:07', '11'),
-(12, '1', 'N/A', '4', 'N/A', 'N/A', 'N/A', 'tryyytrdy', 'rtysysthstr', '10', 'Settled', '2023-05-05 07:18:54', '2023-05-07 08:18:12', '11'),
-(13, '2', 'N/A', 'N/A', 'Tokito', 'Tokito', '09098764748', 'try', 'try', '10', 'Settled', '2023-05-05 07:26:15', '2023-05-07 08:18:07', '11'),
-(14, 'Others', 'Sample', 'N/A', 'Shinobu', 'Swordsmith Village', '09098764748', 'fefefeter', 'ewgregreger', '1', 'Settled', '2023-05-06 01:04:47', '2023-05-06 01:09:47', '11'),
-(15, 'Others', 'Sample', '16', 'N/A', 'N/A', 'N/A', 'Sample here', 'Sample here again...', '11', 'Active', '2023-06-08 09:46:10', '2023-06-08 09:46:10', '11');
+(1, 'Others', 'Sample', '1', 'N/A', 'N/A', 'N/A', 'wew', 'wew', '2', 'Active', '2023-07-11 17:12:38', '2023-07-11 17:16:32', '11'),
+(2, '2', 'N/A', 'N/A', 'Muzan Kibutsuji', 'Zone 5 Upper, Iponan, CDO', '09097786675', 'wow', 'wow', '1', 'Active', '2023-07-11 17:13:13', '2023-07-11 17:13:13', '11'),
+(3, '3', 'N/A', '2', 'N/A', 'N/A', 'N/A', 'pow', 'pow', '1', 'Active', '2023-07-11 17:15:38', '2023-07-11 17:15:38', '11');
 
 -- --------------------------------------------------------
 
@@ -77,13 +73,9 @@ CREATE TABLE `tblblotter_schedule` (
 --
 
 INSERT INTO `tblblotter_schedule` (`id_blotter_schedule`, `id_blotter`, `blotter_date`, `blotter_time`, `created_at_blotter_schedule`, `updated_at_blotter_schedule`) VALUES
-(29, 10, '2023-04-22', '14:20:00', '2023-04-22 10:18:34', '2023-04-22 10:18:34'),
-(43, 9, '2023-04-22', '13:31:00', '2023-05-05 08:05:16', '2023-05-05 08:05:16'),
-(48, 8, '2023-05-03', '13:30:00', '2023-05-05 08:33:59', '2023-05-05 08:33:59'),
-(54, 13, '2023-05-05', '13:33:00', '2023-05-05 15:40:57', '2023-05-05 15:40:57'),
-(56, 12, '2023-05-06', '13:33:00', '2023-05-05 16:53:52', '2023-05-05 16:53:52'),
-(57, 14, '2023-05-06', '09:30:00', '2023-05-06 01:04:47', '2023-05-06 01:04:47'),
-(59, 15, '2023-06-10', '10:00:00', '2023-06-08 09:46:52', '2023-06-08 09:46:52');
+(3, 3, '2023-07-15', '09:00:00', '2023-07-11 17:15:38', '2023-07-11 17:15:38'),
+(6, 1, '2023-07-20', '10:30:00', '2023-07-11 17:17:12', '2023-07-11 17:17:12'),
+(9, 2, '2023-07-15', '10:00:00', '2023-07-11 17:22:48', '2023-07-11 17:22:48');
 
 -- --------------------------------------------------------
 
@@ -106,41 +98,12 @@ CREATE TABLE `tblblotter_schedule_archive` (
 --
 
 INSERT INTO `tblblotter_schedule_archive` (`id_blotter_schedule_archive`, `id_blotter`, `archive_blotter_date`, `archive_blotter_time`, `created_at_blotter_schedule_archive`, `updated_at_blotter_schedule_archive`, `created_at_blotter_schedule`) VALUES
-(3, 8, '2023-04-22', '12:00:00', '2023-04-22 07:59:25', '2023-04-22 07:59:25', '2023-04-27 08:40:51'),
-(4, 8, '2023-04-22', '13:00:00', '2023-04-22 07:59:35', '2023-04-22 07:59:35', '2023-04-27 08:40:51'),
-(5, 9, '2023-04-22', '12:00:00', '2023-04-22 08:00:39', '2023-04-22 08:00:39', '2023-04-27 08:40:51'),
-(6, 9, '2023-04-22', '12:30:00', '2023-04-22 08:01:37', '2023-04-22 08:01:37', '2023-04-27 08:40:51'),
-(7, 8, '2023-04-22', '13:30:00', '2023-04-22 07:59:56', '2023-04-22 07:59:56', '2023-04-27 08:40:51'),
-(8, 8, '2023-04-22', '12:30:00', '2023-04-22 08:13:05', '2023-04-22 08:13:05', '2023-04-27 08:40:51'),
-(9, 8, '2023-04-23', '12:30:00', '2023-04-22 08:39:38', '2023-04-22 08:39:38', '2023-04-27 08:40:51'),
-(10, 8, '2023-04-22', '12:30:00', '2023-04-22 08:40:19', '2023-04-22 08:40:19', '2023-04-27 08:40:51'),
-(11, 9, '2023-04-22', '13:30:00', '2023-04-22 08:10:13', '2023-04-22 08:10:13', '2023-04-27 08:40:51'),
-(12, 9, '2023-04-22', '12:30:00', '2023-04-22 09:13:37', '2023-04-22 09:13:37', '2023-04-27 08:40:51'),
-(13, 8, '2023-04-22', '13:30:00', '2023-04-22 08:42:26', '2023-04-22 08:42:26', '2023-04-27 08:40:51'),
-(14, 8, '2023-04-22', '13:20:00', '2023-04-22 10:19:48', '2023-04-22 10:19:48', '2023-04-27 08:40:51'),
-(15, 8, '2023-04-22', '13:30:00', '2023-04-22 10:20:20', '2023-04-22 10:20:20', '2023-04-27 08:40:51'),
-(16, 13, '2023-05-05', '18:30:00', '2023-05-05 07:26:15', '2023-05-05 07:26:15', '2023-05-05 07:26:56'),
-(17, 12, '2023-05-05', '16:56:00', '2023-05-05 07:18:54', '2023-05-05 07:18:54', '2023-05-05 07:37:07'),
-(18, 13, '2023-05-05', '13:30:00', '2023-05-05 07:26:56', '2023-05-05 07:26:56', '2023-05-05 07:40:56'),
-(19, 13, '2023-05-05', '13:35:00', '2023-05-05 07:40:56', '2023-05-05 07:40:56', '2023-05-05 07:46:33'),
-(20, 13, '2023-05-05', '13:30:00', '2023-05-05 07:46:33', '2023-05-05 07:46:33', '2023-05-05 07:47:26'),
-(21, 8, '2023-05-03', '09:00:00', '2023-04-27 08:38:46', '2023-04-27 08:38:46', '2023-05-05 07:48:15'),
-(22, 13, '2023-05-05', '13:36:00', '2023-05-05 07:47:26', '2023-05-05 07:47:26', '2023-05-05 07:56:52'),
-(23, 9, '2023-04-22', '13:30:00', '2023-04-22 10:13:25', '2023-04-22 10:13:25', '2023-05-05 08:05:16'),
-(24, 13, '2023-05-05', '13:30:00', '2023-05-05 07:56:52', '2023-05-05 07:56:52', '2023-05-05 08:08:08'),
-(25, 8, '2023-05-03', '13:30:00', '2023-05-05 07:48:15', '2023-05-05 07:48:15', '2023-05-05 08:08:41'),
-(26, 13, '2023-05-05', '13:31:00', '2023-05-05 08:08:08', '2023-05-05 08:08:08', '2023-05-05 08:11:00'),
-(27, 13, '2023-05-05', '13:30:00', '2023-05-05 08:11:00', '2023-05-05 08:11:00', '2023-05-05 08:32:48'),
-(28, 8, '2023-05-03', '13:31:00', '2023-05-05 08:08:41', '2023-05-05 08:08:41', '2023-05-05 08:33:59'),
-(29, 12, '2023-05-05', '13:30:00', '2023-05-05 07:37:07', '2023-05-05 07:37:07', '2023-05-05 08:35:04'),
-(30, 13, '2023-05-05', '13:31:00', '2023-05-05 08:32:48', '2023-05-05 08:32:48', '2023-05-05 08:42:08'),
-(31, 12, '2023-05-05', '13:31:00', '2023-05-05 08:35:04', '2023-05-05 08:35:04', '2023-05-05 08:45:40'),
-(32, 13, '2023-05-05', '13:32:00', '2023-05-05 08:42:08', '2023-05-05 08:42:08', '2023-05-05 15:31:53'),
-(33, 12, '2023-05-05', '13:32:00', '2023-05-05 08:45:40', '2023-05-05 08:45:40', '2023-05-05 15:39:53'),
-(34, 13, '2023-05-05', '13:32:00', '2023-05-05 15:31:53', '2023-05-05 15:31:53', '2023-05-05 15:40:57'),
-(35, 12, '2023-05-05', '13:33:00', '2023-05-05 15:39:53', '2023-05-05 15:39:53', '2023-05-05 16:13:15'),
-(36, 12, '2023-05-05', '13:33:00', '2023-05-05 16:13:15', '2023-05-05 16:13:15', '2023-05-05 16:53:52'),
-(37, 15, '2023-06-10', '09:00:00', '2023-06-08 09:46:10', '2023-06-08 09:46:10', '2023-06-08 09:46:52');
+(1, 1, '2023-07-12', '09:23:00', '2023-07-11 17:12:38', '2023-07-11 17:12:38', '2023-07-11 17:16:39'),
+(2, 1, '2023-07-19', '09:23:00', '2023-07-11 17:16:39', '2023-07-11 17:16:39', '2023-07-11 17:16:53'),
+(3, 1, '2023-07-19', '10:30:00', '2023-07-11 17:16:53', '2023-07-11 17:16:53', '2023-07-11 17:17:12'),
+(4, 2, '2023-07-14', '10:00:00', '2023-07-11 17:13:13', '2023-07-11 17:13:13', '2023-07-11 17:22:08'),
+(5, 2, '2023-07-12', '10:00:00', '2023-07-11 17:22:08', '2023-07-11 17:22:08', '2023-07-11 17:22:36'),
+(6, 2, '2023-07-05', '10:00:00', '2023-07-11 17:22:36', '2023-07-11 17:22:36', '2023-07-11 17:22:48');
 
 -- --------------------------------------------------------
 
@@ -189,8 +152,7 @@ INSERT INTO `tblchairmanship` (`id_chairmanship`, `title`) VALUES
 (4, 'Committee on Agriculture'),
 (5, 'Committee on Finance'),
 (6, 'Committee on Peace and Order'),
-(7, 'Committee on Tourism and Sports'),
-(8, 'Committee on Senior Citizen');
+(7, 'Committee on Tourism and Sports');
 
 -- --------------------------------------------------------
 
@@ -214,17 +176,18 @@ CREATE TABLE `tblofficials` (
 --
 
 INSERT INTO `tblofficials` (`id_officials`, `honorifics`, `name`, `id_position`, `termstart`, `termend`, `status`, `archive`) VALUES
-(1, 'Hon.', 'Reuben U. Pacalioga', '1', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(2, 'Ms.', 'Venus N. Ahmee', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(3, 'Hon.', 'Noel S. Ilogon', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(4, 'Hon.', 'Renan Noel B. Ilogon', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(5, 'Hon.', 'Glenn T. Inesin', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(6, 'Hon.', 'Democrito D. Elevado', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(7, 'Hon.', 'Alvin P. Garrote', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(8, 'Hon.', 'Pedro C. Sacal', '3', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(9, 'Hon.', 'Rey M. Galla', '4', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(10, 'Ms.', 'Mirra G. Gabata', '5', '2023-04-28', '2024-04-28', 'Incumbent', 0),
-(11, 'Ms.', 'Maricris O. Mabao', '2', '2023-04-28', '2024-04-28', 'Incumbent', 0);
+(1, 'Hon.', 'Reuben U. Pacalioga', '1', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(2, 'Hon.', 'Venus N. Ahmee', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(3, 'Hon.', 'Noel S. Ilogon', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(4, 'Hon.', 'Renan Noel B. Ilogon', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(5, 'Hon.', 'Glenn T. Inesin', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(6, 'Hon.', 'Democrito D. Elevado', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(7, 'Hon.', 'Alvin P. Garrote', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(8, 'Hon.', 'Alvin P. Garrote', '2', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(9, 'Hon.', 'Pedro C. Sacal', '2', '2023-07-11', '0024-07-11', 'Incumbent', 0),
+(10, 'Hon.', 'Rey M. Galla', '3', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(11, 'Hon.', 'Mirra G. Gabata', '4', '2023-07-11', '2024-07-11', 'Incumbent', 0),
+(12, 'Hon.', 'Maricris O. Mabao', '5', '2023-07-11', '2024-07-11', 'Incumbent', 0);
 
 -- --------------------------------------------------------
 
@@ -243,26 +206,8 @@ CREATE TABLE `tblofficials_chairmanships` (
 --
 
 INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
-(13, 2, 2),
-(14, 2, 8),
-(21, 5, 1),
-(22, 5, 2),
-(23, 5, 4),
-(24, 6, 1),
-(25, 6, 2),
-(26, 6, 5),
-(30, 8, 1),
-(31, 8, 8),
-(50, 3, 2),
-(51, 3, 5),
-(52, 12, 1),
-(53, 9, 6),
-(54, 4, 1),
-(55, 4, 2),
-(56, 4, 5),
-(66, 7, 3),
-(67, 7, 5),
-(68, 7, 6);
+(17, 1, 1),
+(18, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -280,16 +225,17 @@ CREATE TABLE `tblpayments` (
 --
 
 INSERT INTO `tblpayments` (`id_payments`, `amounts`) VALUES
-(1, 55.00),
-(2, 1025.00),
+(1, 50.00),
+(2, 50.00),
 (3, 50.00),
-(4, 600.00),
-(5, 75.00),
-(6, 56.00),
-(7, 56.00),
-(8, 56.00),
-(9, 60.00),
-(10, 600.00);
+(4, 50.00),
+(5, 50.00),
+(6, 3000.00),
+(7, 5000.00),
+(8, 50.00),
+(9, 50.00),
+(10, 3000.00),
+(11, 50.00);
 
 -- --------------------------------------------------------
 
@@ -310,9 +256,7 @@ CREATE TABLE `tblpermit` (
 --
 
 INSERT INTO `tblpermit` (`id_permit`, `name`, `location`, `applied`, `id_user`) VALUES
-(1, 'Milk Shake', 'Infinity Castle', '2023-02-13', '11'),
-(2, 'Jaime P. Ramen', 'Zone 06', '2023-03-17', '11'),
-(3, 'Shinobu', 'Zone 07', '2023-05-05', '11');
+(1, 'Coffee Ta Bai!', 'Zone 06', '2023-07-13', '11');
 
 -- --------------------------------------------------------
 
@@ -366,8 +310,10 @@ CREATE TABLE `tblpurok` (
 --
 
 INSERT INTO `tblpurok` (`id_purok`, `purok_name`, `purok_details`) VALUES
-(1, 'Zone 01', 'Zone 01'),
-(2, 'Zone 02', 'Zone 02');
+(1, 'Zone 1', 'wew'),
+(2, 'Zone 2', ''),
+(3, 'Zone 3', ''),
+(4, 'Zone 4', '');
 
 -- --------------------------------------------------------
 
@@ -416,27 +362,8 @@ CREATE TABLE `tblresident2` (
 --
 
 INSERT INTO `tblresident2` (`id_resident`, `national_id`, `region`, `city`, `province`, `barangay`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `ext`, `alias`, `birthplace`, `birthdate`, `sex`, `civilstatus`, `residence_type`, `id_household`, `family_head`, `date_of_residence`, `vstatus`, `identified_as`, `phone`, `email`, `occupation`, `resident_type`, `id_org`, `pwd`, `indigent`, `remarks`, `res_updated_at`, `id_user`) VALUES
-(1, '1234-5678-9000', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090530unnamed.jpg', 'Tom', '', 'Abella', '', 'Tom', 'Bulua', '2001-01-29', 'Male', 'single', 'new', 4, 'yes', '2019-02-13', 'Yes', 'Confirmed', '09876543212', '', 'Student', 0, '1', 'No', 'Yes', '', '2023-05-03 15:20:03', 11),
-(2, '0909-8765-3456', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090731uzui.jpg', 'Motsur', '', 'Calapis', 'IV', 'Mot', 'Bulua', '2001-01-01', 'Male', 'single', 'co-occupant', 1, 'no', '2023-02-13', 'No', '', '', '', 'Student', 1, 'none', 'Yes', 'Yes', '', '2023-03-13 04:57:23', 11),
-(3, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '13022023090852tom.jpg', 'Tomas', '', 'Howland', '', 'Tom', 'Tacloban City', '2001-01-29', 'Female', 'single', 'tenant', 2, 'no', '2021-02-13', 'No', '', '', '', 'Student', 1, '1', 'No', 'No', '', '2023-02-14 16:29:23', 11),
-(4, '1111-1111-1111-1111', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Japanese', 'person.png', 'Sample', 'Sample', 'Sample', '', 'Samp', 'Samps', '2019-03-13', 'Male', 'single', 'new', 1, 'yes', '2023-03-13', 'Yes', 'Confirmed', '', 'samp@mail.com', 'Student', 1, 'none', 'No', 'No', '', '2023-03-13 04:55:37', 11),
-(5, '1223-3445-5677', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '170320231121111143202.jpg', 'Test', 'Testtwo', 'Red', 'Sr.', 'Tom', 'Japan', '2002-03-17', 'Male', 'married', 'tenant', 1, 'no', '2023-03-17', 'Yes', 'Unconfirmed', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-03-17 03:21:11', 11),
-(6, '1233-3221-1232-4422', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '2204202318291920201018_123908.jpg', 'James', '', 'Abella', '', 'Max', 'Jasaan', '2022-04-08', 'Male', 'single', 'co-occupant', 4, 'no', '2022-04-01', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-07-04 06:42:02', 11),
-(7, '1234-5678-9097-8876', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Weis', '', 'Wise', '', 'WEE', 'Japan', '2016-01-01', 'Male', 'single', 'co-occupant', 1, '', '2021-01-02', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-02 01:15:20', 11),
-(8, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'New', 'New', 'New', 'Sr.', 'News', 'Jasaan', '2020-01-03', 'Male', 'single', 'new', 4, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 05:45:25', 11),
-(9, '7866-6666-6666-3323', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'COOCCUPANT', 'COOCCUPANT', 'COOCCUPANT', '', 'COOCCUPANT', 'Japan', '2001-05-03', 'Male', 'widow/er', 'co-occupant', 1, 'no', '2023-03-09', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-05-03 06:35:24', 11),
-(10, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'TENANT', 'TENANT', 'TENANT', '', 'TENT', 'Samps', '2023-01-01', 'Male', 'married', 'tenant', 1, 'no', '2023-05-03', 'No', '', '', '', 'N/A', 1, 'none', 'No', 'No', '', '2023-06-06 18:24:10', 11),
-(11, '1234-5678-7654', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Jane', '', 'Doe', '', 'Jin', 'Jasaan', '1987-05-08', 'Female', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '09876654342', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-05-08 01:54:22', 11),
-(12, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'John', '', 'Doe', '', 'Jj', 'Jasaan', '1978-05-02', 'Male', 'married', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-05-08 01:58:56', 11),
-(13, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tom', '', 'Doe', '', 'Tomas', 'Jasaan', '2001-01-01', 'Male', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:03:03', 11),
-(14, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Halaka', '', 'Doe', '', 'Do', 'Jasaan', '2003-01-29', 'Female', 'single', 'co-occupant', 4, '', '2023-05-01', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-08 02:04:33', 11),
-(15, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090643Screenshot_1.png', 'Lou', '', 'Wang', '', 'Boo', 'Jasaan', '1975-03-13', 'Male', 'married', 'new', 5, 'yes', '2002-05-10', 'Yes', 'Confirmed', '', '', 'Professor', 1, 'none', 'No', 'No', '', '2023-06-08 15:49:37', 11),
-(16, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023090532download.jpg', 'Marie', '', 'Wang', '', 'Lou', 'Bukidnon', '1978-02-08', 'Female', 'married', 'co-occupant', 5, 'no', '2002-05-10', 'Yes', 'Unconfirmed', '', '', 'House Wife', 1, 'none', 'No', 'No', '', '2023-06-08 15:48:56', 11),
-(18, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091227Screenshot_3.png', 'Kala', '', 'Wang', '', 'Kal', 'Jasaan', '2001-01-01', 'Female', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:27', 11),
-(19, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '10052023091250Screenshot_4.png', 'Vey', '', 'Wang', '', 'Vey', 'Jasaan', '2013-01-01', 'Male', 'single', 'co-occupant', 5, 'no', '2002-05-10', 'No', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-10 01:12:50', 11),
-(20, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nee', '', 'Wang', '', 'Ne', 'Jasaan', '2001-01-02', 'Male', 'single', 'co-occupant', 5, 'no', '2023-05-02', 'Yes', '', '', '', 'Student', 1, 'none', 'No', 'No', '', '2023-05-13 00:20:25', 11),
-(21, '0909-8765-4322', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Tanjiro', 'Kama', 'Doe', '', 'Jiro', 'Japan', '2001-01-29', 'Male', 'single', 'co-occupant', 4, '', '2023-05-17', 'Yes', 'Confirmed', '09764124567', 'tanjiro@gmail.com', 'Water Hashira / Sun Breathing Hashira', 1, '2', 'No', 'Yes', '', '2023-05-17 01:14:59', 11),
-(22, '', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'Nimal', 'Ka', 'Doe', '', 'Mil', 'Jasaan', '2001-05-17', 'Female', 'single', 'co-occupant', 4, '', '2023-05-17', 'No', '', '', '', 'Water Hashira', 1, '2', 'No', 'No', '', '2023-05-17 01:19:02', 11);
+(1, '1111-1111-1111', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', '11072023225255285882556_1445824979206719_2927059040504518943_n.png', 'James', 'Calapis', 'Testing', 'Sr.', 'James', 'Jasaan', '2001-07-11', 'Male', 'single', 'new', 7, 'no', '2001-07-11', 'Yes', '', '', '', 'Student', 1, '2', 'No', 'Yes', '', '2023-07-11 17:21:38', 11),
+(2, '2222-2222-2222', 'Region X', 'Cagayan de Oro', 'Misamis Oriental', 'Barangay 25', 'Filipino', 'person.png', 'James', 'Calapis', 'Testing', 'Jr.', 'Jem', 'Jasaan', '2005-01-11', 'Male', 'single', 'co-occupant', 7, 'no', '2001-07-11', 'Yes', 'Unconfirmed', '', '', 'Student', 1, 'none', 'No', 'Yes', '', '2023-07-11 15:51:52', 11);
 
 -- --------------------------------------------------------
 
@@ -459,11 +386,7 @@ CREATE TABLE `tbl_cert_appearance` (
 --
 
 INSERT INTO `tbl_cert_appearance` (`id_cert_appearance`, `name`, `venue`, `date`, `purpose`, `created_at`, `id_user`) VALUES
-(1, 'RUSTOM C. ABELLA', 'SWORDSMITH VILLAGE', '2023-02-13', 'Meeting with the Hashira', '2023-02-13', '11'),
-(2, 'Tom Abella', 'Barangay 25 Hall', '2023-03-17', 'Employment', '2023-03-17', '11'),
-(3, 'Shinobu', 'Swordsmith Village', '2023-04-12', 'to kill Muzan Kibutsuji', '2023-05-02', '11'),
-(4, 'Weise Weise', 'Entertainment Arc', '2023-05-02', 'Meeting with the hashira.', '2023-05-02', '11'),
-(5, 'Sample Me', 'Cak', '2023-05-01', 'visit tempest city', '2023-05-02', '11');
+(1, 'Justin Biebers', 'Barangay 25 Hall', '2023-07-15', 'Presentation', '2023-07-12', '11');
 
 -- --------------------------------------------------------
 
@@ -474,7 +397,7 @@ INSERT INTO `tbl_cert_appearance` (`id_cert_appearance`, `name`, `venue`, `date`
 CREATE TABLE `tbl_household` (
   `id_household` int(11) NOT NULL,
   `household_number` int(100) NOT NULL,
-  `house_no` int(100) NOT NULL COMMENT '(2.1)',
+  `house_no` int(100) DEFAULT NULL COMMENT '(2.1)',
   `id_purok` varchar(50) NOT NULL,
   `household_street_name` varchar(100) NOT NULL COMMENT '(2.2)',
   `household_address` varchar(250) NOT NULL COMMENT '(2.3)',
@@ -486,11 +409,10 @@ CREATE TABLE `tbl_household` (
 --
 
 INSERT INTO `tbl_household` (`id_household`, `household_number`, `house_no`, `id_purok`, `household_street_name`, `household_address`, `household_type`) VALUES
-(1, 1, 1, '1', 'Maagad St.', 'Abella\'s residence', 'residential'),
-(2, 2, 2, '2', 'Pacana St.', 'Ella\'s Apartment', 'apartment'),
-(3, 3, 23, '2', 'Laroka St.', 'scac', 'boarding house'),
-(4, 5, 5, '2', 'Laroka St.', 'Doe Residence', 'residential'),
-(5, 6, 6, '1', 'Muugad St.', 'Wang Residence', 'residential');
+(1, 1, 1, '2', 'Pacana St.', 'Sacal Residence', 'apartment'),
+(5, 3, 3, '2', 'Pacana St.', 'wew', 'boarding house'),
+(6, 2, 2, '1', '34', 'wrewfe', 'residential'),
+(7, 4, 14, '1', 'Alagad St.', 'Warren Apt.', 'residential');
 
 -- --------------------------------------------------------
 
@@ -511,8 +433,9 @@ CREATE TABLE `tbl_nature_of_case` (
 --
 
 INSERT INTO `tbl_nature_of_case` (`noc_id`, `noc_name`, `noc_details`, `id_user`, `noc_updated_at`) VALUES
-(1, 'Light coercion', 'Light coercion', '11', '2023-02-13 00:36:04'),
-(2, 'Physical Injury', 'Physical Injury', '11', '2023-02-13 00:36:45');
+(1, 'Unjust Vexation', '', '11', '2023-07-11 08:36:13'),
+(2, 'Hit and Run', '', '11', '2023-07-11 08:41:43'),
+(3, 'Covet', '', '11', '2023-07-11 08:41:48');
 
 -- --------------------------------------------------------
 
@@ -531,8 +454,8 @@ CREATE TABLE `tbl_org` (
 --
 
 INSERT INTO `tbl_org` (`id_org`, `org_name`, `details`) VALUES
-(1, 'Senior Citizen', 'Senior Citizen'),
-(2, 'SK', 'SK');
+(1, 'Senior Citizen', ''),
+(2, 'SK', '');
 
 -- --------------------------------------------------------
 
@@ -552,14 +475,6 @@ CREATE TABLE `tbl_p_emergency_contact` (
   `emergency_updated-at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_p_emergency_contact`
---
-
-INSERT INTO `tbl_p_emergency_contact` (`id_p_emergency_contact`, `emergency_name`, `emergency_relationship`, `emergency_bday`, `emergency_cellphone`, `emergency_landline`, `family_num`, `emergency_created_at`, `emergency_updated-at`) VALUES
-(15, 'Tanjiro Kama Doe', 'Meek', '2002-05-16', '0988776654', '', '20230510219022000001', '2023-05-16 03:35:00', '2023-05-16 03:35:00'),
-(16, 'Tanjiro Kama Doe', 'Brother', '2023-05-17', '09098876549', '', '20230510314056000001', '2023-05-17 06:38:32', '2023-05-17 06:38:32');
-
 -- --------------------------------------------------------
 
 --
@@ -570,20 +485,6 @@ CREATE TABLE `tbl_p_family` (
   `family_num` varchar(255) NOT NULL,
   `id_household` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_p_family`
---
-
-INSERT INTO `tbl_p_family` (`family_num`, `id_household`) VALUES
-('20230510314056000001', 4),
-('20230510219022000001', 5),
-('20230609463304000001', 4),
-('20230609578608000001', 4),
-('20230510314056000001', 4),
-('20230510219022000001', 5),
-('20230609463304000001', 4),
-('20230609578608000001', 4);
 
 -- --------------------------------------------------------
 
@@ -600,27 +501,6 @@ CREATE TABLE `tbl_p_fam_members` (
   `fam_members_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `fam_members_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_p_fam_members`
---
-
-INSERT INTO `tbl_p_fam_members` (`id_family`, `id_resident`, `family_role`, `family_blood_type`, `family_num`, `fam_members_created_at`, `fam_members_updated_at`) VALUES
-(26, 11, 'mother', 'O', '20230510314056000001', '2023-05-10 00:38:03', '2023-05-10 00:38:03'),
-(30, 16, 'mother', 'O', '20230510219022000001', '2023-05-10 01:13:06', '2023-05-10 01:13:06'),
-(31, 15, 'father', 'O', '20230510219022000001', '2023-05-10 01:13:28', '2023-05-10 01:13:28'),
-(35, 12, 'father', 'O', '20230510314056000001', '2023-05-10 03:17:12', '2023-05-10 07:06:04'),
-(108, 18, 'children', '', '20230510219022000001', '2023-05-16 03:34:08', '2023-05-16 03:34:08'),
-(109, 19, 'children', '', '20230510219022000001', '2023-05-16 03:34:08', '2023-05-16 03:34:08'),
-(114, 17, 'children', '', '20230510219022000001', '2023-05-16 12:34:58', '2023-05-16 12:34:58'),
-(119, 13, 'children', '', '20230510314056000001', '2023-05-17 06:24:32', '2023-05-17 06:24:32'),
-(121, 14, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
-(122, 21, 'children', '', '20230510314056000001', '2023-05-17 06:26:30', '2023-05-17 06:26:30'),
-(125, 20, 'children', '', '20230510219022000001', '2023-05-20 03:26:22', '2023-05-20 03:26:22'),
-(126, 22, 'children', '', '20230510314056000001', '2023-05-20 10:03:57', '2023-05-20 10:03:57'),
-(127, 9, 'mother', 'O', '20230609463304000001', '2023-06-09 02:55:02', '2023-06-09 02:55:02'),
-(128, 3, 'father', '', '20230609463304000001', '2023-06-09 04:09:22', '2023-06-09 04:09:22'),
-(129, 5, 'mother', 'AB', '20230609578608000001', '2023-06-09 04:24:57', '2023-06-09 04:24:57');
 
 -- --------------------------------------------------------
 
@@ -640,15 +520,6 @@ CREATE TABLE `tbl_p_history_and_current_pregnancy_condition` (
   `delivered_status` int(2) NOT NULL DEFAULT 0 COMMENT '0-active; 1-archived'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_p_history_and_current_pregnancy_condition`
---
-
-INSERT INTO `tbl_p_history_and_current_pregnancy_condition` (`id_mother_h_c_pregnancy_condition`, `id_resident`, `first_check_up_date`, `p_weight`, `p_height`, `health_condition`, `last_mens_period_date`, `expected_date_delivery`, `delivered_status`) VALUES
-(7, 11, '2023-05-20', 43.40, 124.00, 56.20, '2023-02-14', '2023-11-21', 0),
-(8, 16, '2023-05-20', 67.00, 126.00, 13.00, '2023-05-02', '2024-02-06', 0),
-(9, 9, '2023-06-09', 45.00, 45.00, 0.00, '2023-02-09', '2023-11-16', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -663,22 +534,6 @@ CREATE TABLE `tbl_p_immunization_record` (
   `when_to_return` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_p_immunization_record`
---
-
-INSERT INTO `tbl_p_immunization_record` (`id_immunization_record`, `id_mother_h_c_pregnancy_condition`, `tetanus_containing_vaccine`, `date_given`, `when_to_return`) VALUES
-(5, 8, 1, '2023-05-20', '0000-00-00'),
-(6, 8, 2, '2023-06-28', '0000-00-00'),
-(10, 7, 2, '2023-05-28', '0000-00-00'),
-(11, 7, 1, '2023-04-28', '2023-05-28'),
-(12, 7, 4, '2023-06-28', '0000-00-00'),
-(13, 7, 3, '2023-06-01', '2023-08-28'),
-(14, 7, 6, '2023-05-28', '0000-00-00'),
-(15, 7, 5, '2023-09-28', '0000-00-00'),
-(16, 8, 3, '2023-06-08', '2023-07-08'),
-(17, 8, 4, '2023-06-10', '2023-06-11');
-
 -- --------------------------------------------------------
 
 --
@@ -690,26 +545,6 @@ CREATE TABLE `tbl_p_medication_and_other_services` (
   `med_or_services_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_p_medication_and_other_services`
---
-
-INSERT INTO `tbl_p_medication_and_other_services` (`id_med_other_services`, `med_or_services_name`) VALUES
-(1, 'Iron'),
-(2, 'Folic Acid'),
-(3, 'Calcium Carbonate'),
-(4, 'Iodine'),
-(5, 'Pagsusuri sa STI/HIV/AIDS'),
-(6, 'Pagsusuri ng ngipin'),
-(7, 'Pagsusuri ng Hepatitis B'),
-(8, 'Pagpapatingin sa suso'),
-(9, 'Pagsusuri ng plema (Kung may palatandaan ng tisis, ubo na mahigit sa 14 na araw)'),
-(10, 'Hemoglobin Count'),
-(11, 'Complete Blood Count'),
-(12, 'Urinalysis'),
-(13, 'Stool Examination'),
-(14, 'Acetic Acid Wash');
-
 -- --------------------------------------------------------
 
 --
@@ -720,18 +555,6 @@ CREATE TABLE `tbl_p_tetanus_vaccine` (
   `tetanus_containing_vaccine` int(11) NOT NULL,
   `tetanus_containing_vaccine_detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_p_tetanus_vaccine`
---
-
-INSERT INTO `tbl_p_tetanus_vaccine` (`tetanus_containing_vaccine`, `tetanus_containing_vaccine_detail`) VALUES
-(1, '1st dose - as early as possible during pregnancy'),
-(2, '2nd dose - at least 4 weeks after dose 1'),
-(3, '3rd dose - at least 4 weeks after dose 2'),
-(4, '4th dose - at least 1 year after dose 3'),
-(5, '5th dose - at least 1 year after dose 4'),
-(6, 'Fully Immunized (nakatanggap na ng 5 doses ng Tetanus-containing Vaccines)');
 
 -- --------------------------------------------------------
 
@@ -768,22 +591,6 @@ CREATE TABLE `tbl_p_trimester` (
   `notes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_p_trimester`
---
-
-INSERT INTO `tbl_p_trimester` (`id_p_trimester`, `id_mother_h_c_pregnancy_condition`, `month`, `date_check_up_trimester`, `weight_trimester`, `height_trimester`, `age_of_gestation`, `blood_pressure`, `nutritional_status`, `examination_condition_pregnant_woman`, `advices_given`, `birth_plan_changes`, `teeth_examination`, `laboratory_tests_done`, `urinalysis`, `complete_blood_count`, `etiologic_tests`, `pap_smear`, `gestational_diabetes`, `bacteriuria`, `treatments`, `discussions_or_service_given`, `date_of_return`, `name_health_service_provider`, `hospital_referral`, `notes`) VALUES
-(4, 7, 2, '2023-06-08', 100.00, 100.00, 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', 'sample3', '2023-06-17', 'sample3', 'sample3', 'sample3'),
-(5, 7, 3, '2023-06-12', 141.00, 141.00, 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', 'sample4', '2023-06-10', 'sample4', 'sample4', 'sample4'),
-(6, 7, 4, '2023-06-08', 44.00, 44.00, '44', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', 'month 4', '2023-06-22', 'month 4', 'month 4', 'month 4'),
-(7, 7, 5, '2023-07-05', 45.00, 45.00, '45', '45', '45', '45', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', 'month 5', '2023-08-05', 'month 5', 'month 5', 'month 5'),
-(8, 7, 6, '2023-07-06', 46.00, 46.00, 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', 'Sample 6', '2023-08-06', 'Sample 6', 'Sample 6', 'Sample 6'),
-(9, 7, 7, '2023-07-07', 47.00, 47.00, 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', 'sample 7', '2023-08-07', 'sample 7', 'sample 7', 'sample 7'),
-(10, 7, 8, '2023-07-08', 48.00, 48.00, 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', 'month 8', '2023-08-08', 'month 8', 'month 8', 'month 8'),
-(11, 7, 9, '2023-08-09', 49.00, 49.00, '49', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', 'month 9', '2023-08-09', 'month 9', 'month 9', 'month 9'),
-(12, 8, 1, '2023-06-09', 1.00, 1.00, '1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', 'sample 1', '2023-07-01', 'sample 1', 'sample 1', 'sample 1'),
-(13, 0, 9, '2023-06-09', 9.00, 9.00, '9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', 'sample 9', '2023-07-09', 'sample 9', 'sample 9', 'sample 9');
-
 -- --------------------------------------------------------
 
 --
@@ -806,10 +613,7 @@ CREATE TABLE `tbl_special_permit` (
 --
 
 INSERT INTO `tbl_special_permit` (`id_special_permit`, `grantee`, `representative`, `action`, `start_date`, `end_date`, `issued_date`, `id_user`) VALUES
-(1, 'Choco Shake', 'Rustom Abella', 'to perform installation of  streamer /tarpaulin along CM Recto – Julio Pacana St. junction. The  installation will start from August 25, 2015 and will expire on September 25,  2015.', '2023-02-13', '2024-02-13', '2023-02-13', '11'),
-(2, 'Abella Construction Corp', 'Rustom Abella', 'to install', '2023-03-17', '2023-03-24', '2023-03-17', '11'),
-(3, 'Mismaler Corp', 'Tomas Abella', 'to function the everything', '2023-05-01', '2023-05-05', '2023-05-02', '11'),
-(4, 'ABC Company', 'Tommy Abella', 'To function a kuan', '2023-06-08', '2023-07-08', '2023-06-08', '11');
+(1, 'Mismaler Corp', 'Rustom Abella', 'to perform installation of streamer /tarpaulin along CM Recto – Julio Pacana St. junction.', '2023-07-12', '2023-08-12', '2023-07-12', '11');
 
 -- --------------------------------------------------------
 
@@ -826,15 +630,6 @@ CREATE TABLE `tbl_support` (
   `status_support` varchar(10) NOT NULL DEFAULT 'pending',
   `date` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_support`
---
-
-INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
-(1, '10', '', 'TRY lang', 'Dili ko access.', 'resolved', '2023-03-17 03:59:43'),
-(2, '10', '09098766654', 'Naunsa kaman?', 'Naa kay problema nako?! Tubag!', 'pending', '2023-04-02 09:01:03'),
-(3, '10', '0909876554', 'hello', 'nauns kaman', 'resolved', '2023-05-17 06:34:33');
 
 -- --------------------------------------------------------
 
@@ -857,23 +652,25 @@ CREATE TABLE `tbl_transactions` (
 --
 
 INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_transact`, `details_transact`, `recipient_name`, `created_at_transact`) VALUES
-(1, 11, '20230608883982000001', '2023-06-08 15:04:22', 'Barangay Clearance for Abella, Tom ', 'Tommy Abella', '2023-06-08 15:04:22'),
-(0, 11, '20230608879757000001', '2023-06-08 15:06:09', 'Certificate of Indigency for Wang, Malou ', 'Tomass', '2023-06-08 15:06:09'),
-(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29'),
-(1, 11, '20230608883982000001', '2023-06-08 15:04:22', 'Barangay Clearance for Abella, Tom ', 'Tommy Abella', '2023-06-08 15:04:22'),
-(0, 11, '20230608879757000001', '2023-06-08 15:06:09', 'Certificate of Indigency for Wang, Malou ', 'Tomass', '2023-06-08 15:06:09'),
-(2, 11, '20230608005459000001', '2023-06-08 15:11:29', 'Special Permit for ABC Company. REPRESENTATIVE: Tommy Abella', 'Tomassue', '2023-06-08 15:11:29'),
-(3, 11, '20230609295813000001', '2023-06-09 07:16:40', 'Barangay Clearance for Abella, Tom ', 'tom', '2023-06-09 07:16:40'),
-(0, 11, '20230625161877000001', '2023-06-25 12:57:31', 'Construction Clearance for Jaime P. Ramen', 'LOL', '2023-06-25 12:57:31'),
-(0, 11, '20230625705980000001', '2023-06-25 13:00:12', 'Construction Clearance for Milk Shake', 'LOLS', '2023-06-25 13:00:12'),
-(4, 11, '20230625756261000001', '2023-06-25 13:03:21', 'Barangay Clearance for Wang, Lou ', 'TOMASS', '2023-06-25 13:03:21'),
-(5, 11, '20230626978282000001', '2023-06-26 12:46:12', 'Barangay Clearance for Abella, Tom ', 'Tomas', '2023-06-26 12:46:12'),
-(6, 10, '20230627427563000001', '2023-06-27 13:08:15', 'Barangay Clearance for Abella, Tom ', 'LOLA', '2023-06-27 13:08:15'),
-(7, 11, '20230628485349000001', '2023-06-28 07:52:05', 'Barangay Clearance for Abella, Tom ', 'LOLs', '2023-06-28 07:52:05'),
-(0, 11, '20230629791253000001', '2023-06-29 05:03:52', 'Certificate of Indigency for Abella, Tom ', 'Ngee', '2023-06-29 05:03:52'),
-(8, 11, '20230705416438000001', '2023-07-05 06:13:28', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Tomas Abella', 'Tomas', '2023-07-05 06:13:28'),
-(9, 11, '20230709624993000001', '2023-07-09 15:21:05', 'Barangay Clearance for Abella, James ', 'Tomas', '2023-07-09 15:21:05'),
-(10, 11, '20230710634495000001', '2023-07-09 16:32:31', 'Barangay Clearance for Abella, Tom ', 'Tomas', '2023-07-09 16:32:31');
+(1, 11, '20230711806874000001', '2023-07-11 15:19:14', 'Barangay Clearance for Testing, James ', 'Tomas', '2023-07-11 15:19:14'),
+(2, 11, '20230711964293000001', '2023-07-11 15:19:52', 'Barangay Clearance for Testing, James ', 'James', '2023-07-11 15:19:52'),
+(3, 11, '20230711942028000001', '2023-07-11 15:32:07', 'Barangay Clearance for Testing, James ', 'Tomassue', '2023-07-11 15:32:07'),
+(4, 11, '20230711884776000001', '2023-07-11 15:43:19', 'Barangay Clearance for Testing, James Calapis', 'Tom Abella', '2023-07-11 15:43:19'),
+(5, 11, '20230711162825000001', '2023-07-11 15:43:41', 'Barangay Clearance for Testing, James Calapis', 'Tomas', '2023-07-11 15:43:41'),
+(0, 11, '20230711532161000001', '2023-07-11 15:56:02', 'Certificate of Indigency for James Calapis Testing, Jr.', 'Tomas', '2023-07-11 15:56:02'),
+(0, 11, '20230711008001000001', '2023-07-11 15:56:26', 'Certificate of Indigency for James Calapis Testing', 'Tomas', '2023-07-11 15:56:26'),
+(0, 11, '20230712424282000001', '2023-07-11 16:03:13', 'Certificate of Oneness for James Calapis Testing, Jr.', 'Tomassue', '2023-07-11 16:03:13'),
+(0, 11, '20230712665246000001', '2023-07-11 16:04:00', 'Certificate of Oneness for James Calapis Testing', 'Tom Abella', '2023-07-11 16:04:00'),
+(0, 11, '20230712152356000001', '2023-07-11 16:10:10', 'Certificate of Appearance for Justin Biebers', 'tom', '2023-07-11 16:10:10'),
+(0, 11, '20230712645384000001', '2023-07-11 16:19:28', 'Certificate of Appearance for Justin Biebers', 'Tom Abella', '2023-07-11 16:19:28'),
+(0, 11, '20230712300079000001', '2023-07-11 16:26:53', 'Construction Clearance for Coffee Ta Bai!', 'Tom Abella', '2023-07-11 16:26:53'),
+(0, 11, '20230712204438000001', '2023-07-11 16:46:50', 'Construction Clearance for Coffee Ta Bai!', 'Tomas', '2023-07-11 16:46:50'),
+(6, 11, '20230712923135000001', '2023-07-11 16:54:44', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Rustom Abella', 'Tom Abella', '2023-07-11 16:54:44'),
+(7, 11, '20230712239831000001', '2023-07-11 16:56:33', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Rustom Abella', 'Tomas', '2023-07-11 16:56:33'),
+(8, 11, '20230712615006000001', '2023-07-11 16:57:01', 'Barangay Clearance for James Calapis Testing, Jr.', 'Tomas', '2023-07-11 16:57:01'),
+(9, 26, '20230712857922000001', '2023-07-12 05:01:28', 'Barangay Clearance for James Calapis Testing, Sr.', 'James', '2023-07-12 05:01:28'),
+(10, 28, '20230712230343000001', '2023-07-12 08:23:36', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Rustom Abella', 'Jims', '2023-07-12 08:23:36'),
+(11, 28, '20230712578011000001', '2023-07-12 08:24:19', 'Barangay Clearance for James Calapis Testing, Sr.', 'Jims Jims', '2023-07-12 08:24:19');
 
 -- --------------------------------------------------------
 
@@ -903,7 +700,8 @@ INSERT INTO `tbl_users` (`id_user`, `user_username`, `user_firstname`, `user_mid
 (10, 'staff', 'Marie Mae', 'Kump', 'Bullhorse', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 'staff', '03052021043218icon.png', 'Active', '2021-05-03 02:32:18', '2023-03-17 03:42:14'),
 (11, 'admin', 'Rustom', 'Calapis', 'Abella', 'cbfdac6008f9cab4083784cbd1874f76618d2a97', 'administrator', '13022023093336head.jpg', 'Active', '2021-05-03 02:33:03', '2023-02-13 01:33:36'),
 (26, 'tom', 'Tom', '', 'Abella', '2bc6038c3dfca09b2da23c8b6da8ba884dc2dcc2', 'staff', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAD6AdQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECCf/EACIQAQEBAAEEAgMBAQAAAAAAAAARASESMUFhAlFxgZGxQv/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/xAAcEQEBAQACAwEAAAAAAAAAAAAAEQEhMQISUUH/2gAMAwEAAhEDEQA/AOVd9l3uTFyYtVN+e73Tvq7l8pynRb2sWb9p1ejqW6cHOJQEKXS+jUD/AFagBeV6tQWgAgFBbAO4IL2Tut4QUoAgFAKUACgBSgBSgBQFoQBAAAA3IAXQ4WwC6BfgVc3c5Sr1F1U3SlpnJahV/JuREFp1IKtW61ny3OGbsM4azaWG79xbDNzTVzd8eiU6/YnAe2qTMLn0n8XhzRLi7z4T9gGgKgB28oAAAAAX1gAAALwmwAAAADNgAAABQAAAAAAAzYBAAAAAApQDdoAAAAAAABQAIAE0xc1VLDTcz7QCBKFwgLL4SacIX0AAQKgQAAAAAAAAAAACewAAAAAAAAAAAAACwADfyAAAAAAAGYAAAAs9pQFhEBSACAXABZ6MxSrGV6ScoI12GaEarVoVLmgTEi36TwIQLAQA0APAAAAAAAAAAAAAAAAAAAAAAAAAAAAABx9AAAAAAAAAAAAuTycICgHEEJpdDNgF1c0vo/QqXRf0AgsxOPYgHHtZn2CCyeUAAAAA/wBAAAAAAOwAAAAAFoAAAAAAAAAAAAAAAAAAAAAAAAALvbsnC36FT+lgcQQAACmYBmwMyrDpUFz4gRABDNi8IABYAAAaAABxAAAAAAAAKAAAAAABoAAAAAAAAAAAAQnsAAAAAAAAAACEKAAAs/BupBQqxCgT8hRBbfCcfQKLwgIAAAAAUAAAAAAAAAAAAAAAAAAAAAA7AFAAAAAAAAAAAAAAKAAAAAAX3oL2zulX9oKFBUKAgAKACAAAbtAAAAAAAAAAAAADdoAAAAAAAAAAAAAAAAABoAAABmUAAAAAAAAAAAAAIGZVABYASjIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaBKAX0bkAKdwugAtBJovULVXjU3E7F1AIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALmelmCxkXfiZgRCVqYXMCMzRq0WrGc/AbCoySloAAAaABAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAoAAAAAAAAABAAIALvZKChSgQOdXugQJ6C6IpIG5ys9qiAIAAAAAAAAAAAAAAB2AAAAAAAAAAAAAAAAAAAAAAAAACAAAZsAAAAAFyJoACgAgALQMyggAABCAEpCcAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAgAAQABQAAgCAC9KiEWJu0VekQUWzTqO6bkSbKLUBECgoAIAAAAAAAAAAAABYAAAAAAAAAB4CgU3aAAAAAG4AAAAF9AAABdKABSgAAEC6AZ+TeRRpLiHCNVeAmDU34iUq9KSJ0i1JoLQ7BBkAAAAAAAFgAIFAACUAzFmoAAAAAAAQAAAAAAAAAAAAAAAD+AAAAAAVb6SVYKX0X0dKzA5TNw6sWJF7Xk6l3nymfFF4Rr9hPiHrqhOWaH4i/rDcP+kTMKAIgAAGdwC59AAAKACAAAvUgC9RUAAAAAKAAAAAAAAAAAAAAX0AGgAAAAKACBkW5iGdxaaZsaICbpm0+XY+PcKeTjEzueWpxUXgWCVX/2Q==', 'Active', '2023-02-13 00:37:22', '2023-07-09 15:29:57'),
-(27, 'mismaan', 'Mismaan', '', 'Lumaag', '79f02606e3aa2d095783c566037f1757fe0c808f', 'staff', 'person.png', 'Active', '2023-04-30 00:42:46', '2023-04-30 00:42:46');
+(27, 'mismaan', 'Mismaan', '', 'Lumaag', '79f02606e3aa2d095783c566037f1757fe0c808f', 'staff', 'person.png', 'Active', '2023-04-30 00:42:46', '2023-04-30 00:42:46'),
+(28, 'jims', 'jims', 'test', 'sample', 'c1c83adaf3130fd0eaea46b603ad9904a3396ed2', 'administrator', 'person.png', 'Inactive', '2023-07-12 08:22:33', '2023-07-12 08:25:34');
 
 -- --------------------------------------------------------
 
@@ -923,148 +721,28 @@ CREATE TABLE `tbl_user_logs` (
 --
 
 INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUES
-(1, '2023-02-12 14:00:55', 'admin, has logged out.', '1'),
-(2, '2023-02-12 22:36:38', 'admin, has logged in.', '11'),
-(3, '2023-02-12 22:37:49', 'admin, has logged out.', '11'),
-(4, '2023-02-12 22:37:52', 'admin, has logged in.', '11'),
-(5, '2023-02-12 22:38:44', 'admin, has logged out.', '11'),
-(6, '2023-02-12 22:38:49', 'admin, has logged in.', '11'),
-(7, '2023-02-12 22:41:37', 'admin, has logged out.', '11'),
-(8, '2023-02-12 22:41:44', 'admin, has logged in.', '11'),
-(9, '2023-02-12 22:44:41', 'admin, has logged out.', '11'),
-(10, '2023-02-13 00:28:33', 'admin, has logged in.', '11'),
-(11, '2023-02-13 16:31:33', 'admin, has logged out.', '11'),
-(12, '2023-02-13 16:31:38', 'admin, has logged in.', '11'),
-(13, '2023-02-13 16:31:52', 'admin, has logged out.', '11'),
-(14, '2023-02-14 14:26:14', 'admin, has logged in.', '11'),
-(15, '2023-02-14 14:26:43', 'admin, has logged out.', '11'),
-(16, '2023-02-14 14:26:46', 'admin, has logged in.', '11'),
-(17, '2023-02-14 16:29:49', 'admin, has logged out.', '11'),
-(18, '2023-02-14 18:19:54', 'admin, has logged in.', '11'),
-(19, '2023-02-14 18:20:06', 'admin, has logged out.', '11'),
-(20, '2023-02-14 18:46:32', 'admin, has logged in.', '11'),
-(21, '2023-03-17 03:54:32', 'admin, has logged out.', '11'),
-(22, '2023-03-17 03:54:40', 'staff, has logged in.', '10'),
-(23, '2023-03-17 03:59:49', 'staff, has logged out.', '10'),
-(24, '2023-03-17 03:59:55', 'admin, has logged in.', '11'),
-(25, '2023-03-20 05:44:16', 'admin, has logged out.', '11'),
-(26, '2023-03-27 03:22:26', 'admin, has logged in.', '11'),
-(27, '2023-03-27 04:05:26', 'admin, has logged out.', '11'),
-(28, '2023-03-28 06:27:20', 'admin, has logged in.', '11'),
-(29, '2023-03-30 03:47:15', 'admin, has logged out.', '11'),
-(30, '2023-03-30 03:47:18', 'admin, has logged in.', '11'),
-(31, '2023-04-02 07:48:15', 'admin, has logged in.', '11'),
-(32, '2023-04-02 08:45:18', 'admin, has logged in.', '11'),
-(33, '2023-04-02 09:00:35', 'admin, has logged out.', '11'),
-(34, '2023-04-02 09:00:39', 'staff, has logged in.', '10'),
-(35, '2023-04-02 09:01:06', 'staff, has logged out.', '10'),
-(36, '2023-04-02 09:01:10', 'admin, has logged in.', '11'),
-(37, '2023-04-02 09:52:14', 'admin, has logged out.', '11'),
-(38, '2023-04-02 09:52:16', 'admin, has logged in.', '11'),
-(39, '2023-04-02 14:46:13', 'admin, has logged out.', '11'),
-(40, '2023-04-03 02:06:17', 'admin, has logged in.', '11'),
-(41, '2023-04-03 05:59:58', 'admin, has logged out.', '11'),
-(42, '2023-04-03 06:00:02', 'staff, has logged in.', '10'),
-(43, '2023-04-03 06:09:15', 'staff, has logged out.', '10'),
-(44, '2023-04-03 06:09:18', 'admin, has logged in.', '11'),
-(45, '2023-04-03 06:09:43', 'admin, has logged out.', '11'),
-(46, '2023-04-03 06:10:03', 'staff, has logged in.', '10'),
-(47, '2023-04-03 06:15:14', 'staff, has logged out.', '10'),
-(48, '2023-04-03 06:15:18', 'admin, has logged in.', '11'),
-(49, '2023-04-03 06:20:14', 'admin, has logged out.', '11'),
-(50, '2023-04-03 06:20:18', 'staff, has logged in.', '10'),
-(51, '2023-04-03 06:33:30', 'staff, has logged out.', '10'),
-(52, '2023-04-03 06:33:34', 'admin, has logged in.', '11'),
-(53, '2023-04-03 09:09:57', 'admin, has logged out.', '11'),
-(54, '2023-04-03 15:43:00', 'admin, has logged in.', '11'),
-(55, '2023-04-03 16:20:02', 'admin, has logged out.', '11'),
-(56, '2023-04-03 16:20:04', 'admin, has logged in.', '11'),
-(57, '2023-04-03 16:21:33', 'admin, has logged out.', '11'),
-(58, '2023-04-04 00:25:16', 'admin, has logged in.', '11'),
-(59, '2023-04-04 03:47:20', 'admin, has logged out.', '11'),
-(60, '2023-04-04 03:48:04', 'staff, has logged in.', '10'),
-(61, '2023-04-04 03:48:11', 'staff, has logged out.', '10'),
-(62, '2023-04-04 03:48:17', 'admin, has logged in.', '11'),
-(63, '2023-04-12 15:25:24', 'admin, has logged in.', '11'),
-(64, '2023-04-26 07:54:46', 'admin, has logged in.', '11'),
-(65, '2023-04-28 01:10:51', 'admin, has logged out.', '11'),
-(66, '2023-04-28 01:12:34', 'admin, has logged in.', '11'),
-(67, '2023-04-28 06:06:56', 'admin, has logged out.', '11'),
-(68, '2023-04-28 06:07:00', 'staff, has logged in.', '10'),
-(69, '2023-04-28 06:21:08', 'staff, has logged out.', '10'),
-(70, '2023-04-28 06:21:11', 'admin, has logged in.', '11'),
-(71, '2023-04-29 11:46:43', 'admin, has logged in.', '11'),
-(72, '2023-04-30 00:42:50', 'admin, has logged out.', '11'),
-(73, '2023-04-30 00:42:54', 'mismaan, has logged in.', '27'),
-(74, '2023-04-30 00:50:04', 'mismaan, has logged out.', '27'),
-(75, '2023-04-30 00:51:30', 'mismaan, has logged in.', '27'),
-(76, '2023-04-30 00:52:06', 'mismaan, has logged out.', '27'),
-(77, '2023-04-30 00:52:55', 'admin, has logged in.', '11'),
-(78, '2023-05-01 03:25:50', 'admin, has logged out.', ''),
-(79, '2023-05-01 03:25:54', 'admin, has logged in.', '11'),
-(80, '2023-05-01 05:17:44', 'admin, has logged out.', ''),
-(81, '2023-05-01 05:17:47', 'admin, has logged in.', '11'),
-(82, '2023-05-01 07:55:51', 'admin, has logged out.', '1'),
-(83, '2023-05-01 07:55:57', 'mismaan, has logged in.', '27'),
-(84, '2023-05-01 07:57:03', 'mismaan, has logged out.', '27'),
-(85, '2023-05-01 07:57:09', 'admin, has logged in.', '11'),
-(86, '2023-05-01 10:06:56', 'admin, has logged out.', '11'),
-(87, '2023-05-01 10:07:02', 'mismaan, has logged in.', '27'),
-(88, '2023-05-01 10:08:42', 'mismaan, has logged out.', '27'),
-(89, '2023-05-01 10:08:47', 'admin, has logged in.', '11'),
-(90, '2023-05-01 11:36:45', 'admin, has logged in.', '11'),
-(91, '2023-05-02 02:51:48', 'admin, has logged out.', '11'),
-(92, '2023-05-02 02:52:48', 'admin, has logged in.', '11'),
-(93, '2023-05-02 02:52:50', 'admin, has logged out.', '11'),
-(94, '2023-05-03 01:08:08', 'admin, has logged in.', '11'),
-(95, '2023-05-03 13:03:26', 'admin, has logged in.', '11'),
-(96, '2023-05-03 15:27:25', 'admin, has logged out.', '11'),
-(97, '2023-05-05 01:42:26', 'admin, has logged in.', '11'),
-(98, '2023-05-05 08:04:05', 'admin, has logged in.', '11'),
-(99, '2023-05-06 09:09:50', 'admin, has logged in.', '11'),
-(100, '2023-05-09 00:43:52', 'admin, has logged in.', '11'),
-(101, '2023-05-09 03:30:28', 'admin, has logged in.', '11'),
-(102, '2023-05-10 07:16:59', 'admin, has logged out.', '11'),
-(103, '2023-05-12 08:02:00', 'admin, has logged in.', '11'),
-(104, '2023-05-12 09:05:59', 'admin, has logged out.', '11'),
-(105, '2023-05-13 00:17:19', 'admin, has logged in.', '11'),
-(106, '2023-05-14 00:57:24', 'admin, has logged in.', '11'),
-(107, '2023-05-17 06:34:07', 'admin, has logged out.', '11'),
-(108, '2023-05-17 06:34:16', 'staff, has logged in.', '10'),
-(109, '2023-05-17 06:34:37', 'staff, has logged out.', '10'),
-(110, '2023-05-17 06:34:42', 'admin, has logged in.', '11'),
-(111, '2023-05-28 23:34:49', 'admin, has logged in.', '11'),
-(112, '2023-06-09 04:36:29', 'admin, has logged out.', '11'),
-(113, '2023-06-09 07:08:48', 'admin, has logged out.', '11'),
-(114, '2023-06-09 07:08:58', 'admin, has logged in.', '11'),
-(115, '2023-06-09 07:09:33', 'admin, has logged out.', '11'),
-(116, '2023-06-09 07:14:57', 'admin, has logged in.', '11'),
-(117, '2023-06-26 12:31:48', 'admin, has logged in.', '11'),
-(118, '2023-06-26 12:32:21', 'admin, has logged out.', '11'),
-(119, '2023-06-26 12:33:21', 'admin, has logged in.', '11'),
-(120, '2023-06-26 12:34:15', 'admin, has logged out.', '11'),
-(121, '2023-06-27 13:06:08', 'admin, has logged out.', '11'),
-(122, '2023-06-27 13:06:50', 'staff, has logged in.', '10'),
-(123, '2023-06-27 13:08:23', 'staff, has logged out.', '10'),
-(124, '2023-06-27 13:08:27', 'admin, has logged in.', '11'),
-(125, '2023-06-27 13:31:50', 'admin, has logged out.', '11'),
-(126, '2023-06-27 13:37:50', 'staff, has logged in.', '10'),
-(127, '2023-06-27 13:41:11', 'staff, has logged out.', '10'),
-(128, '2023-06-27 13:41:17', 'admin, has logged in.', '11'),
-(129, '2023-06-29 05:40:12', 'admin, has logged out.', '11'),
-(130, '2023-06-29 05:41:23', 'admin, has logged in.', '11'),
-(131, '2023-06-29 05:41:24', 'admin, has logged in.', '11'),
-(132, '2023-07-09 15:23:54', 'admin, has logged out.', '11'),
-(133, '2023-07-09 15:23:58', 'staff, has logged in.', '10'),
-(134, '2023-07-09 15:27:11', 'staff, has logged out.', '10'),
-(135, '2023-07-09 15:27:15', 'admin, has logged in.', '11'),
-(136, '2023-07-09 15:28:14', 'admin, has logged out.', '11'),
-(137, '2023-07-09 15:28:18', 'tom, has logged in.', '26'),
-(138, '2023-07-09 15:29:43', 'tom, has logged out.', '26'),
-(139, '2023-07-09 15:29:47', 'tom, has logged in.', '26'),
-(140, '2023-07-09 15:30:00', 'tom, has logged out.', '26'),
-(141, '2023-07-09 15:30:04', 'admin, has logged in.', '11'),
-(142, '2023-07-09 16:33:01', 'admin, has logged out.', '11');
+(1, '2023-07-11 18:05:39', 'admin, has logged out.', '11'),
+(2, '2023-07-11 18:05:41', 'admin, has logged in.', '11'),
+(3, '2023-07-11 18:19:12', 'admin, has logged out.', '11'),
+(4, '2023-07-12 05:00:06', 'tom, has logged in.', '26'),
+(5, '2023-07-12 05:00:37', 'tom, has logged out.', '26'),
+(6, '2023-07-12 05:00:41', 'admin, has logged in.', '11'),
+(7, '2023-07-12 05:00:55', 'admin, has logged out.', '11'),
+(8, '2023-07-12 05:00:59', 'tom, has logged in.', '26'),
+(9, '2023-07-12 05:03:34', 'tom, has logged out.', '26'),
+(10, '2023-07-12 05:03:39', 'admin, has logged in.', '11'),
+(11, '2023-07-12 05:04:53', 'admin, has logged out.', '11'),
+(12, '2023-07-12 08:21:42', 'admin, has logged in.', '11'),
+(13, '2023-07-12 08:22:46', 'admin, has logged out.', '11'),
+(14, '2023-07-12 08:22:51', 'jims, has logged in.', '28'),
+(15, '2023-07-12 08:23:04', 'jims, has logged out.', '28'),
+(16, '2023-07-12 08:23:11', 'jims, has logged in.', '28'),
+(17, '2023-07-12 08:24:46', 'jims, has logged out.', '28'),
+(18, '2023-07-12 08:24:55', 'admin, has logged in.', '11'),
+(19, '2023-07-12 08:25:39', 'admin, has logged out.', '11'),
+(20, '2023-07-12 08:25:51', 'admin, has logged in.', '11'),
+(21, '2023-07-12 08:26:30', 'admin, has logged out.', '11'),
+(22, '2023-07-12 08:26:33', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -1262,19 +940,19 @@ ALTER TABLE `tbl_user_logs`
 -- AUTO_INCREMENT for table `tblblotter`
 --
 ALTER TABLE `tblblotter`
-  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_blotter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule`
 --
 ALTER TABLE `tblblotter_schedule`
-  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_blotter_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblblotter_schedule_archive`
 --
 ALTER TABLE `tblblotter_schedule_archive`
-  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_blotter_schedule_archive` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblbrgy_info`
@@ -1286,7 +964,7 @@ ALTER TABLE `tblbrgy_info`
 -- AUTO_INCREMENT for table `tblchairmanship`
 --
 ALTER TABLE `tblchairmanship`
-  MODIFY `id_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tblofficials`
@@ -1298,19 +976,19 @@ ALTER TABLE `tblofficials`
 -- AUTO_INCREMENT for table `tblofficials_chairmanships`
 --
 ALTER TABLE `tblofficials_chairmanships`
-  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_payments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
 --
 ALTER TABLE `tblpermit`
-  MODIFY `id_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblposition`
@@ -1328,103 +1006,103 @@ ALTER TABLE `tblprecinct`
 -- AUTO_INCREMENT for table `tblpurok`
 --
 ALTER TABLE `tblpurok`
-  MODIFY `id_purok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_purok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblresident2`
 --
 ALTER TABLE `tblresident2`
-  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_resident` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_cert_appearance`
 --
 ALTER TABLE `tbl_cert_appearance`
-  MODIFY `id_cert_appearance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cert_appearance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_household`
 --
 ALTER TABLE `tbl_household`
-  MODIFY `id_household` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_household` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_nature_of_case`
 --
 ALTER TABLE `tbl_nature_of_case`
-  MODIFY `noc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `noc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_org`
 --
 ALTER TABLE `tbl_org`
-  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_emergency_contact`
 --
 ALTER TABLE `tbl_p_emergency_contact`
-  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_p_emergency_contact` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_fam_members`
 --
 ALTER TABLE `tbl_p_fam_members`
-  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id_family` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_history_and_current_pregnancy_condition`
 --
 ALTER TABLE `tbl_p_history_and_current_pregnancy_condition`
-  MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_mother_h_c_pregnancy_condition` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_immunization_record`
 --
 ALTER TABLE `tbl_p_immunization_record`
-  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_immunization_record` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_medication_and_other_services`
 --
 ALTER TABLE `tbl_p_medication_and_other_services`
-  MODIFY `id_med_other_services` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_med_other_services` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_tetanus_vaccine`
 --
 ALTER TABLE `tbl_p_tetanus_vaccine`
-  MODIFY `tetanus_containing_vaccine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `tetanus_containing_vaccine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_p_trimester`
 --
 ALTER TABLE `tbl_p_trimester`
-  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_p_trimester` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_special_permit`
 --
 ALTER TABLE `tbl_special_permit`
-  MODIFY `id_special_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_special_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_support`
 --
 ALTER TABLE `tbl_support`
-  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

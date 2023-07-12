@@ -223,7 +223,18 @@ if (isset($_POST["submit"])) {
                                                 </h2>
 
                                                 <h2 class="mt-3 mb-5" style="font-family: Book Antiqua; text-indent: 90px; line-height: 50px; text-align: justify;">
-                                                    Issued this <span class="fw-bold" style="font-size:25px"><?= date("F d/Y", strtotime($s_permit['issued_date'])); ?></span>, <?= $brgy ?>, City of <?= $town ?>.
+                                                    Issued this <span class="fw-bold" style="font-size:25px">
+                                                        <!-- <?= date("F d/Y", strtotime($s_permit['issued_date'])); ?> -->
+
+                                                        <?php
+                                                        $issued_date = strtotime($s_permit['issued_date']); // Get the timestamp of the issued date
+                                                        $formatted_date = date('jS \d\a\y \of F/Y', $issued_date); // Format the date
+                                                        $formatted_date = preg_replace('/(\d+)([a-z]{2})/', '<strong>$1$2</strong>', $formatted_date); // Bold the day and year
+
+                                                        echo $formatted_date . '.';
+                                                        ?>
+
+                                                    </span> <?= $brgy ?>, City of <?= $town ?>.
                                                 </h2>
 
                                                 <br>

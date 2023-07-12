@@ -147,7 +147,7 @@ while ($row = $result4->fetch_assoc()) {
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <?= ucwords($row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']) ?>
+                                                                <?= ucwords($row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . ($row['ext'] === '' ? '' : ', ' . $row['ext'])) ?>
                                                             </td>
                                                             <td><?= $row['birthdate'] ?></td>
                                                             <?php

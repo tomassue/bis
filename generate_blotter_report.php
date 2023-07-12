@@ -117,7 +117,7 @@ $sec = $conn->query($s)->fetch_assoc();
                                                                     $comp = $resultCompResident->fetch_assoc();
                                                                     ?>
 
-                                                                    <?= ucwords($comp['firstname'] . ' ' . $comp['middlename'] . ' ' . $comp['lastname']) ?>
+                                                                    <?= ucwords($comp['firstname'] . ' ' . $comp['middlename'] . ' ' . $comp['lastname'] . ($comp['ext'] === '' ? '' : ', ' . $comp['ext'])) ?>
                                                                 <?php elseif ($blotter['comp_id'] == 'N/A') : ?>
                                                                     <?= ucwords($blotter['comp_nameNotResident']) ?>
                                                                 <?php endif ?>
@@ -217,7 +217,7 @@ $sec = $conn->query($s)->fetch_assoc();
                                                             $resultRespondent = $conn->query($queryRespondent);
                                                             $respName = $resultRespondent->fetch_assoc();
                                                             ?>
-                                                            <span class="fw-bold" style="font-size:20px"><?= ucwords($respName['firstname'] . ' ' . $respName['middlename'] . ' ' . $respName['lastname']) ?></span>
+                                                            <span class="fw-bold" style="font-size:20px"><?= ucwords($respName['firstname'] . ' ' . $respName['middlename'] . ' ' . $respName['lastname'] . ($respName['ext'] === '' ? '' : ', ' . $respName['ext'])) ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">

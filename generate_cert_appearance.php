@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
                                                 </h2>
 
                                                 <h2 class="mt-3 text-uppercase fw-bold" style="font-family: Book Antiqua; line-height: 50px; text-align: justify;">
-                                                    Date<span style="padding-left: 109px;">:&nbsp &nbsp<?= $cert_appearance['date'] ?></span>
+                                                    Date<span style="padding-left: 109px;">:&nbsp &nbsp<?= date('F d, Y', strtotime($cert_appearance['date'])) ?></span>
                                                 </h2>
 
                                                 <h2 class="mt-3 mb-5 fw-bold" style="font-family: Book Antiqua; line-height: 50px; text-align: justify;">

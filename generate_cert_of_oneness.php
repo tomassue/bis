@@ -206,7 +206,7 @@ if (isset($_POST["submit"])) {
                                                 </h2>
 
                                                 <h2 class="mt-3" style="font-family: Book Antiqua; text-indent: 90px; line-height: 50px; text-align: justify;">
-                                                    <span class="fw-bold text-uppercase">This is to certify </span> that <span class="fw-bold text-uppercase" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname']) ?></span>, of legal age, a bonafide resident of
+                                                    <span class="fw-bold text-uppercase">This is to certify </span> that <span class="fw-bold text-uppercase" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . $resident['middlename'] . ' ' . $resident['lastname'] . ($resident['ext'] === '' ? '' : ', ' . $resident['ext'])) ?></span>, of legal age, a bonafide resident of
                                                     <span>
                                                         <?php
                                                         $houseHNum = $resident['id_household'];

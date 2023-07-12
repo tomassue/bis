@@ -66,7 +66,7 @@ while ($row2 = $resultHousehold->fetch_assoc()) {
                 </div>
                 <div class="page-inner">
                     <div class="alert alert-warning">
-                        This module is <b>NOT</b> finish yet.
+                        This module is <b>NOT</b> finished yet.
                     </div>
                     <div class="row mt--2">
                         <div class="col-md-12">

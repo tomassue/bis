@@ -201,7 +201,15 @@ if (isset($_POST["submit"])) {
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        Issued this <span class="fw-bold" style="font-size:25px"><?= date("jS \of F Y") ?></span> at Barangay 25, Cagayan de Oro City, Philippines.
+                                                        Issued this <span class="fw-bold" style="font-size:25px">
+
+                                                            <?php
+                                                            $date = date('jS \d\a\y \of F, Y');
+                                                            $formattedDate = preg_replace('/(\d+)(\w+)(, \d+)/', '<strong>$1$2</strong>$3', $date);
+                                                            echo $formattedDate;
+                                                            ?>
+
+                                                        </span> at Barangay 25, Cagayan de Oro City, Philippines.
                                                     </h2>
 
                                                     <br>

@@ -73,9 +73,9 @@ if (!empty($user) && !empty($name)) {
 // unset($_SESSION['amount']);
 // unset($_SESSION['purpose']);
 
-if ($_SESSION['page'] = 'brgy_cert') {
+if ($_SESSION['page'] === 'brgy_cert') {
     header("Location: ../resident_certification.php");
-} else if ($_SESSION['page'] = 'special_permit') {
+} else if ($_SESSION['page'] === 'special_permit') {
     header("Location: ../special_permit.php");
 }
 

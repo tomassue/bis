@@ -103,7 +103,7 @@
 														endforeach ?>
 													<?php else : ?>
 														<tr>
-															<td colspan="3" class="text-center">No Available Data</td>
+															<td colspan="5" class="text-center">No Available Data</td>
 														</tr>
 													<?php endif ?>
 												</tbody>

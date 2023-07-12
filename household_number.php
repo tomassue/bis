@@ -302,7 +302,15 @@
                                                             <tr>
                                                                 <td><?= $no ?></td>
                                                                 <td><?= $row['household_number'] ?></td>
-                                                                <td><?= $row['house_no'] ?></td>
+                                                                <td>
+                                                                    <?php
+                                                                    if ($row['house_no'] == 0) {
+                                                                        echo 'N/A';
+                                                                    } else {
+                                                                        echo $row['house_no'];
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td>
                                                                     <?php
                                                                     $purok_id =  $row['id_purok'];
@@ -339,7 +347,7 @@
                                                         endforeach ?>
                                                     <?php else : ?>
                                                         <tr>
-                                                            <td colspan="4" class="text-center">No Available Data</td>
+                                                            <td colspan="8" class="text-center">No Available Data</td>
                                                         </tr>
                                                     <?php endif ?>
                                                 </tbody>
@@ -382,7 +390,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>House No.</label>
-                                        <input type="number" class="form-control" placeholder="Enter House no." name="house_no" required>
+                                        <input type="number" class="form-control" placeholder="Enter House no." name="house_no">
                                     </div>
                                     <div class="form-group">
                                         <label for="household_purok">Purok/Zone</label>
@@ -438,7 +446,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>House No.</label>
-                                        <input type="number" class="form-control" placeholder="Enter House no." name="house_no" id="house_no" required>
+                                        <input type="number" class="form-control" placeholder="Enter House no." name="house_no" id="house_no">
                                     </div>
                                     <div class="form-group">
                                         <label for="household_purok">Purok/Zone</label>

@@ -71,7 +71,7 @@
                             <?php foreach ($position as $pos_row) : ?>
                                 <option value="<?= $pos_row['id_position'] ?>" <?php if ($official_id['id_position'] == $pos_row['id_position']) {
                                                                                     echo 'selected = "selected"';
-                                                                                } ?>>Brgy. <?= $pos_row['position'] ?></option>
+                                                                                } ?>><?= $pos_row['position'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>

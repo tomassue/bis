@@ -201,7 +201,7 @@ while ($row = $result4->fetch_assoc()) {
 																	$resultPurokName = $conn->query($queryPurokName);
 																	$pname = $resultPurokName->fetch_assoc();
 
-																	echo "<span class='fw-bold'>" . $complainant['firstname'] . ' ' . $complainant['middlename'] . ' ' . $complainant['lastname'] . "</span><br>" . $householdnum['household_street_name'] . ', ' . $householdnum['household_address'] . ', ' . $pname['purok_name'] . '<br>' . $complainant['phone'];
+																	echo "<span class='fw-bold'>" . $complainant['firstname'] . ' ' . $complainant['middlename'] . ' ' . $complainant['lastname'] . ($complainant['ext'] === '' ? '' : ', ' . $complainant['ext']) . "</span><br>" . $householdnum['household_street_name'] . ', ' . $householdnum['household_address'] . ', ' . $pname['purok_name'] . '<br>' . $complainant['phone'];
 																} elseif ($row['comp_id'] == "N/A") {
 																	echo "<span class='fw-bold'>" . $row['comp_nameNotResident'] . "</span><br><span class='font-italic'>" . $row['comp_addNotResident'] . '<br>' . $row['comp_cnumNotResident'] . '</span>';
 																}
@@ -216,7 +216,7 @@ while ($row = $result4->fetch_assoc()) {
 																	$queryRespondent = $conn->query($sqlRespondent);
 
 																	foreach ($queryRespondent as $respondent) {
-																		echo $f_name = $respondent['firstname'] . ' ' . $respondent['middlename'] . ' ' . $respondent['lastname'];
+																		echo $f_name = $respondent['firstname'] . ' ' . $respondent['middlename'] . ' ' . $respondent['lastname'] . ($respondent['ext'] === '' ? '' : ', ' . $respondent['ext']);
 																	}
 																}
 																?>
@@ -421,7 +421,7 @@ while ($row = $result4->fetch_assoc()) {
 													<select class="form-control js-states input-lg comp_name" style="width:100%;" id="comp_name" name="comp_name" required disabled>
 														<?php foreach ($residents as $row2) : ?>
 															<option value=""></option>
-															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] ?> </option>
+															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] . ($row2['ext'] === '' ? '' : ', ' . $row2['ext']) ?> </option>
 														<?php endforeach ?>
 													</select>
 													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>
@@ -485,7 +485,7 @@ while ($row = $result4->fetch_assoc()) {
 													<select class="form-control js-states input-lg resp_name" style="width:100%;" id="resp_name" name="resp_name" required>
 														<?php foreach ($residents as $row2) : ?>
 															<option value=""></option>
-															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] ?> </option>
+															<option value="<?= $row2['id_resident'] ?>"> <?= $row2['firstname'] . ' ' . $row2['middlename'] . ' ' . $row2['lastname'] . ($row2['ext'] === '' ? '' : ', ' . $row2['ext']) ?> </option>
 														<?php endforeach ?>
 													</select>
 													<small class="form-text text-muted">Make sure to <b>SELECT ONLY</b> what was suggested in the dropdown.</small>

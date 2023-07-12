@@ -140,7 +140,7 @@ $check_chairman = $conn->query($query_check_chairman)->fetch_assoc();
 																<div class="avatar avatar-xs">
 																	<img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/' . $row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
 																</div>
-																<?= ucwords($row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']) ?>
+																<?= ucwords($row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . ($row['ext'] === '' ? '' : ', ' . $row['ext'])) ?>
 															</td>
 															<td><?= $row['national_id'] ?></td>
 															<td><?= $row['alias'] ?></td>
