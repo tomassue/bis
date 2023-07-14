@@ -68,7 +68,7 @@ $current_page = PageName();
                     </span>
                     <h4 class="text-section">Core</h4>
                 </li>
-                <li class="nav-item <?= $current_page == 'dashboard.php' || $current_page == 'resident_info.php' || $current_page == 'purok_info.php'  ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page == 'dashboard.php' || $current_page == 'resident_info2.php' || $current_page == 'purok_info.php'  ? 'active' : null ?>">
                     <a href="dashboard.php">
                         <i class="fa fa-tasks"></i>
                         <p>Dashboard</p>
