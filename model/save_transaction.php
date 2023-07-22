@@ -10,8 +10,12 @@ if (!isset($_SESSION['username'])) {
 }
 
 $user           = $_SESSION['id']; //ID of the user
+
 $name           = $_SESSION['recipients_name'];
+$escaped_name   = $conn->real_escape_string($name);
+
 $details        = $_SESSION['details'];
+$escaped_details = $conn->real_escape_string($details);
 
 //FOR THE TRANSACTION NUMBER
 $counter = 0;
@@ -20,7 +24,7 @@ $transact_no = date('Ymd') . str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT) . st
 if (!empty($user) && !empty($name)) {
 
     $insert2 = "INSERT INTO tbl_transactions (`id_payments`, `id_user`, `transact_no`, `details_transact`, `recipient_name`) 
-                        VALUES ('$insert_last_id', '$user', '$transact_no', '$details', '$name')";
+                        VALUES ('$insert_last_id', '$user', '$transact_no', '$escaped_details', '$escaped_name')";
     $result2 = $conn->query($insert2);
 
     if ($result2 === true) {

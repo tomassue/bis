@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form method="POST" action="generate_cert_appearance.php">
                     <div class="form-group">
-                        <label>Recipient's Name</label>
+                        <label>Recipient's Name<span class="text-danger"><b> *</b></span></label>
                         <input type="text" class="form-control" placeholder="Enter recepients name" name="recipients_name" onkeypress="return onlyAlphabets(event)" required>
                     </div>
                     <div class="form-group">

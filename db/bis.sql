@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2023 at 10:27 AM
+-- Generation Time: Jul 22, 2023 at 07:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -206,8 +206,9 @@ CREATE TABLE `tblofficials_chairmanships` (
 --
 
 INSERT INTO `tblofficials_chairmanships` (`id_officials_chairmanship`, `id_officials`, `id_chairmanship`) VALUES
-(17, 1, 1),
-(18, 1, 4);
+(19, 9, 1),
+(20, 9, 4),
+(21, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -256,7 +257,10 @@ CREATE TABLE `tblpermit` (
 --
 
 INSERT INTO `tblpermit` (`id_permit`, `name`, `location`, `applied`, `id_user`) VALUES
-(1, 'Coffee Ta Bai!', 'Zone 06', '2023-07-13', '11');
+(1, 'Coffee Ta Bai!', 'Zone 06', '2023-07-13', '11'),
+(2, 'Lod\'an', 'Zone 07', '2023-07-22', '11'),
+(3, 'Lodan', 'Zone 08', '2023-07-22', '11'),
+(4, 'Loda\'n', 'Zone 09', '2023-07-22', '11');
 
 -- --------------------------------------------------------
 
@@ -631,6 +635,13 @@ CREATE TABLE `tbl_support` (
   `date` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_support`
+--
+
+INSERT INTO `tbl_support` (`id_support`, `id_user`, `number`, `subject`, `message`, `status_support`, `date`) VALUES
+(1, '27', '', 'TRY lang', 'Test', 'pending', '2023-07-12 23:51:09');
+
 -- --------------------------------------------------------
 
 --
@@ -670,7 +681,16 @@ INSERT INTO `tbl_transactions` (`id_payments`, `id_user`, `transact_no`, `date_t
 (8, 11, '20230712615006000001', '2023-07-11 16:57:01', 'Barangay Clearance for James Calapis Testing, Jr.', 'Tomas', '2023-07-11 16:57:01'),
 (9, 26, '20230712857922000001', '2023-07-12 05:01:28', 'Barangay Clearance for James Calapis Testing, Sr.', 'James', '2023-07-12 05:01:28'),
 (10, 28, '20230712230343000001', '2023-07-12 08:23:36', 'Special Permit for Mismaler Corp. REPRESENTATIVE: Rustom Abella', 'Jims', '2023-07-12 08:23:36'),
-(11, 28, '20230712578011000001', '2023-07-12 08:24:19', 'Barangay Clearance for James Calapis Testing, Sr.', 'Jims Jims', '2023-07-12 08:24:19');
+(11, 28, '20230712578011000001', '2023-07-12 08:24:19', 'Barangay Clearance for James Calapis Testing, Sr.', 'Jims Jims', '2023-07-12 08:24:19'),
+(0, 11, '20230722512320000001', '2023-07-22 04:31:02', 'Construction Clearance for Coffee Ta Bai!', 'Tomas', '2023-07-22 04:31:02'),
+(0, 11, '20230722980607000001', '2023-07-22 04:33:43', 'Construction Clearance for Coffee Ta Bai!', 'Tomas', '2023-07-22 04:33:43'),
+(0, 11, '20230722204764000001', '2023-07-22 04:34:28', 'Construction Clearance for Lodan', 'James', '2023-07-22 04:34:28'),
+(0, 11, '20230722061022000001', '2023-07-22 04:39:17', 'Construction Clearance for Lodan', 'Tom Abella', '2023-07-22 04:39:17'),
+(0, 11, '20230722887215000001', '2023-07-22 04:45:32', 'Construction Clearance for Lodan', 'James Maximus', '2023-07-22 04:45:32'),
+(0, 11, '20230722811058000001', '2023-07-22 04:49:19', 'Construction Clearance for Lodan', 'Tomas', '2023-07-22 04:49:19'),
+(0, 11, '20230722690138000001', '2023-07-22 04:58:45', 'Construction Clearance for Coffee Ta Bai!', 'Tom\'as', '2023-07-22 04:58:45'),
+(0, 11, '20230722554522000001', '2023-07-22 05:00:34', 'Construction Clearance for Coffee Ta Bai!', 'Tom\'Abella', '2023-07-22 05:00:34'),
+(0, 11, '20230722816984000001', '2023-07-22 05:02:08', 'Construction Clearance for Loda\'n', 'Tomas', '2023-07-22 05:02:08');
 
 -- --------------------------------------------------------
 
@@ -701,7 +721,7 @@ INSERT INTO `tbl_users` (`id_user`, `user_username`, `user_firstname`, `user_mid
 (11, 'admin', 'Rustom', 'Calapis', 'Abella', 'cbfdac6008f9cab4083784cbd1874f76618d2a97', 'administrator', '13022023093336head.jpg', 'Active', '2021-05-03 02:33:03', '2023-02-13 01:33:36'),
 (26, 'tom', 'Tom', '', 'Abella', '2bc6038c3dfca09b2da23c8b6da8ba884dc2dcc2', 'staff', 'data:image/jpeg;base64,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', 'Active', '2023-02-13 00:37:22', '2023-07-09 15:29:57'),
 (27, 'mismaan', 'Mismaan', '', 'Lumaag', '79f02606e3aa2d095783c566037f1757fe0c808f', 'staff', 'person.png', 'Active', '2023-04-30 00:42:46', '2023-04-30 00:42:46'),
-(28, 'jims', 'jims', 'test', 'sample', 'c1c83adaf3130fd0eaea46b603ad9904a3396ed2', 'administrator', 'person.png', 'Inactive', '2023-07-12 08:22:33', '2023-07-12 08:25:34');
+(28, 'jims', 'jims', 'test', 'sample', 'c1c83adaf3130fd0eaea46b603ad9904a3396ed2', 'administrator', 'person.png', 'Inactive', '2023-07-12 08:22:33', '2023-07-12 23:50:51');
 
 -- --------------------------------------------------------
 
@@ -742,7 +762,19 @@ INSERT INTO `tbl_user_logs` (`id_user_logs`, `date`, `details`, `id_user`) VALUE
 (19, '2023-07-12 08:25:39', 'admin, has logged out.', '11'),
 (20, '2023-07-12 08:25:51', 'admin, has logged in.', '11'),
 (21, '2023-07-12 08:26:30', 'admin, has logged out.', '11'),
-(22, '2023-07-12 08:26:33', 'admin, has logged in.', '11');
+(22, '2023-07-12 08:26:33', 'admin, has logged in.', '11'),
+(23, '2023-07-12 23:50:26', 'admin, has logged out.', '11'),
+(24, '2023-07-12 23:50:33', 'admin, has logged in.', '11'),
+(25, '2023-07-12 23:50:54', 'admin, has logged out.', '11'),
+(26, '2023-07-12 23:51:00', 'mismaan, has logged in.', '27'),
+(27, '2023-07-12 23:51:12', 'mismaan, has logged out.', '27'),
+(28, '2023-07-12 23:51:16', 'admin, has logged in.', '11'),
+(29, '2023-07-22 04:30:05', 'admin, has logged out.', '11'),
+(30, '2023-07-22 04:30:08', 'admin, has logged in.', '11'),
+(31, '2023-07-22 05:02:52', 'admin, has logged out.', '11'),
+(32, '2023-07-22 05:02:55', 'staff, has logged in.', '10'),
+(33, '2023-07-22 05:06:21', 'staff, has logged out.', '10'),
+(34, '2023-07-22 05:06:33', 'admin, has logged in.', '11');
 
 --
 -- Indexes for dumped tables
@@ -976,7 +1008,7 @@ ALTER TABLE `tblofficials`
 -- AUTO_INCREMENT for table `tblofficials_chairmanships`
 --
 ALTER TABLE `tblofficials_chairmanships`
-  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_officials_chairmanship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
@@ -988,7 +1020,7 @@ ALTER TABLE `tblpayments`
 -- AUTO_INCREMENT for table `tblpermit`
 --
 ALTER TABLE `tblpermit`
-  MODIFY `id_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_permit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblposition`
@@ -1090,7 +1122,7 @@ ALTER TABLE `tbl_special_permit`
 -- AUTO_INCREMENT for table `tbl_support`
 --
 ALTER TABLE `tbl_support`
-  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
@@ -1102,7 +1134,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_logs`
 --
 ALTER TABLE `tbl_user_logs`
-  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
