@@ -158,11 +158,11 @@ while ($row = $res_o->fetch_assoc()) {
 																	<?php include 'officials_edit_form_modal.php' ?>
 
 																	<!--This is for removing-->
-																	<!-- <?php if ($_SESSION['role'] == 'administrator') : ?> -->
-																	<!-- <a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																		<i class="fa fa-times"></i>
-																	</a> -->
-																	<!-- <?php endif ?> -->
+																	<?php if ($_SESSION['role'] == 'administrator') : ?>
+																		<a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
+																			<i class="fa fa-times"></i>
+																		</a>
+																	<?php endif ?>
 																</td>
 															<?php endif ?>
 														</tr>

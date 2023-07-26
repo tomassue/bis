@@ -203,7 +203,7 @@ if (isset($_POST["submit"])) {
                                                 </h2>
 
                                                 <h2 class="mt-3" style="font-family: Book Antiqua; text-indent: 90px; line-height: 50px; text-align: justify;">
-                                                    <span class="fw-bold">A Certificate of Indigence is issued </span> to <span class="fw-bold text-uppercase" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . strtoupper(substr($resident['middlename'], 0, 1)) . '. ' . $resident['lastname'] . ($resident['ext'] === '' ? '' : ', ' . $resident['ext'])) ?></span>, of legal age, <span class="text-lowercase"><?= ucwords($resident['civilstatus']) ?></span>, <?= ucwords($resident['citizenship']) ?> Citizen, a resident at
+                                                    <span class="fw-bold">A Certificate of Indigence is issued </span> to <span class="fw-bold text-uppercase" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . strtoupper(substr($resident['middlename'], 0, 1)) . ($resident['middlename'] === '' ? '' : ', ' . $resident['middlename']) . $resident['lastname'] . ($resident['ext'] === '' ? '' : ', ' . $resident['ext'])) ?></span>, of legal age, <span class="text-lowercase"><?= ucwords($resident['civilstatus']) ?></span>, <?= ucwords($resident['citizenship']) ?> Citizen, a resident at
                                                     <span>
                                                         <?php
                                                         $houseHNum = $resident['id_household'];

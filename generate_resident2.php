@@ -62,6 +62,9 @@ $mother_profile = $result2->fetch_assoc();
                                                 <i class="fa fa-print"></i>
                                                 Print Report
                                             </button>
+                                            <a type="button" href="resident2.php" class="btn btn-sm btn-warning" data-original-title="Go Back">
+                                                <i class="fas fa-file-alt"></i>&nbsp Go Back
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

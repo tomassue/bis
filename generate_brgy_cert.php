@@ -201,7 +201,7 @@ if (isset($_POST["submit"])) {
                                                 </h2>
 
                                                 <h2 class="mt-3" style="font-family: Book Antiqua; text-indent: 90px; line-height: 50px; text-align: justify;">
-                                                    <span class="fw-bold text-uppercase">This is to certify</span> that <span class="fw-bold" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . strtoupper(substr($resident['middlename'], 0, 1)) . '. ' . $resident['lastname'] . ($resident['ext'] === '' ? '' : ', ' . $resident['ext']))
+                                                    <span class="fw-bold text-uppercase">This is to certify</span> that <span class="fw-bold" style="font-size:25px"><?= ucwords($resident['firstname'] . ' ' . strtoupper(substr($resident['middlename'], 0, 1)) . ($resident['middlename'] === '' ? '' : ', ' . $resident['middlename']) . $resident['lastname'] . ($resident['ext'] === '' ? '' : ', ' . $resident['ext']))
                                                                                                                                                                         ?></span>, of legal age, <span class="text-lowercase"><?= ucwords($resident['civilstatus']) ?></span>, <?= ucwords($resident['citizenship']) ?> Citizen, a resident of
                                                     <span>
                                                         <?php
