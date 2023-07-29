@@ -69,6 +69,9 @@ $sec = $conn->query($s)->fetch_assoc();
                                                 <i class="fa fa-print"></i>
                                                 Print Report
                                             </button>
+                                            <a type="button" href="blotter.php" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure you want to go back? You will have to repeat the process again from the previous page.')" data-original-title="Go Back">
+                                                <i class="fas fa-file-alt"></i>&nbsp Go Back
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
