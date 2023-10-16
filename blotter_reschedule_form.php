@@ -117,7 +117,7 @@
                                                             <li class="feed-item feed-item-danger">
                                                                 <time class="date"><?= date("M d", strtotime($row['created_at_blotter_schedule'])) ?></time>
                                                                 <span class="text">
-                                                                    <?= $blotter['user_username'] ?>, set a schedule to
+                                                                    <?= $blotter['user_username'] ?>, set a new schedule starting from
                                                                     <a href="generate_blotter_report.php?id=<?= $id ?>">"<?= date("M d", strtotime($row['archive_blotter_date'])) . ' ' . date("h:i A", strtotime($row['archive_blotter_time'])) ?>"</a>
                                                                 </span>
                                                             </li>
