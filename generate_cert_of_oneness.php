@@ -167,7 +167,7 @@ if (isset($_POST["submit"])) {
                                             </div>
                                         </div>
                                         <div class="row mt-2">
-                                            <div class="col-md-4">
+                                            <div class="col-sm-4">
                                                 <div class="text-center border border-top-0 border-left-0 border-bottom-0" style="margin-top: -9px;">
                                                     <!-- <img style="margin-top: 10px;" src="assets/uploads/resident_profile/<?= $resident['picture'] ?>" class="img-fluid" width="200" />--><br><br>
                                                     <div class="text-left">
@@ -188,7 +188,7 @@ if (isset($_POST["submit"])) {
 
                                             </div>
 
-                                            <div class="col-md-8">
+                                            <div class="col-sm-8">
                                                 <div class="text-center">
                                                     <h2 class="mt-4 fw-bold"> </h2>
                                                 </div>

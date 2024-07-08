@@ -86,7 +86,7 @@ $sec = $conn->query($s)->fetch_assoc();
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-3">
+                                        <div class="col-sm-3">
                                             <div class="text-center p-3" style="border:2px solid black">
                                                 <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid" width="200" />
                                                 <?php if (!empty($officials)) : ?>
@@ -98,7 +98,7 @@ $sec = $conn->query($s)->fetch_assoc();
 
                                             </div>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-sm-9">
                                             <div class="text-center">
                                                 <h2 class="mt-4 fw-bold">OFFICE OF THE BARANGAY CAPTAIN</h2>
                                             </div>

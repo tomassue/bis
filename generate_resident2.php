@@ -80,12 +80,12 @@ $mother_profile = $result2->fetch_assoc();
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-3">
+                                        <div class="col-sm-3">
                                             <div class="text-center p-1" style="border:1px solid red">
                                                 <img src="<?= preg_match('/data:image/i', $resident['picture']) ? $resident['picture'] : 'assets/uploads/resident_profile/' . $resident['picture'] ?>" alt="Resident Profile" class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-sm-9">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group row">
